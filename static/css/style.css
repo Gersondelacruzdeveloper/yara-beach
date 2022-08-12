@@ -1,3 +1,71 @@
-body{
-    background-color: red;
+
+/*-------------------------------------------------------------------- Variables */
+
+:root {
+    --white: #ffffff;
+    --black: #212529;
+    --font: "Montserrat", Georgia, sans-serif;
+    --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    --orange-pantone: #f85a15;
+    --font: "Montserrat", Georgia, sans-serif;
+    --culture: #f2f2f2;
+  }
+
+  /* -------------------------------------------------------------------- Resets */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--culture);
+    min-height: 400px;
+    margin-bottom: 100px;
+    font-family: var(--font);
+  }
+
+
+/* -------------------------------------------------------------------- navbar */
+.sear-btn{
+    background-color: var(--orange-pantone);
+    color:var(--white);
+}
+
+.navbar-brand img{
+width:200px;
+}
+
+.links-container{
+    margin-left:100px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+/* -------------------------------------------------------------------- Media queries */
+
+/* large devices (tablet, etc 1150px and down) */
+@media only screen and (max-width: 1042px) {
+ 
+    .links-container{
+        margin-left:50px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+/* medium devices (988px and down) */
+@media only screen and (max-width: 988px) {
+ 
+    .links-container{
+        margin-left:0;
+        display: grid;
+        grid-template-columns: auto;
+    }
+}
+
+/* Small devices (phones, 373px and down) */
+@media only screen and (max-width: 373px) {
+  
 }
