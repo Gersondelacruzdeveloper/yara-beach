@@ -63,11 +63,11 @@
                          <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Sign in
+                            <i class="fa-solid fa-user"></i> Sign in
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"> Sign in</a></li>
-                            <li><a class="dropdown-item" href="#">Sign up</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i>  Sign in</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-plus"></i> Sign up</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -90,8 +90,38 @@
         {% endblock %}
     </main>
 
-    <footer>
-        footer
+    <footer id="footer">
+
+       <!--Copyright-->
+     <div class="footer-copyright">
+        <p>&copy;
+          <script>document.write(new Date().getFullYear())</script> Yara beach
+        </p>
+      </div>
+
+    </div>
+
+
+    <!--links Icon-->
+    <div class="social-media-links">
+      <div class="social_links">
+        <a aria-label="facebook" rel="noopener" href="https://www.facebook.com/" target="_blank"><i
+            class="fa-brands fa-facebook"></i></a>
+      </div>
+      <div class="social_links">
+        <a aria-label="instagram" rel="noopener" href="https://www.instagram.com/" target="_blank"><i
+            class="fa-brands fa-instagram"></i></a>
+      </div>
+      <div class="social_links">
+        <a aria-label="twitter" rel="noopener" target="_blank" href="https://twitter.com/"><i
+            class="fa-brands fa-twitter"></i></a>
+      </div>
+      <div class="social_links">
+        <a aria-label="tiktok" rel="noopener" target="_blank" href="https://www.tiktok.com/"><i
+            class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+
     </footer>
 
     <!--Bootstrap 5.2 Javascript -->
