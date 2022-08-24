@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h2>
-    Hello world
-</h2>
+
+<div class="home-banner card">
+    <div class="hero-image">
+        <img src="{% static 'images/beach.jpg' %}" alt="beach and a palm tree image">
+    </div>
+   <h2> Welcome to Dominican Republic ! </h2>
+</div>
+
+
 
 {% endblock content %}

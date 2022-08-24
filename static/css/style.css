@@ -43,6 +43,41 @@ width:200px;
     display: grid;
     grid-template-columns: auto auto auto auto;
 }
+/* -------------------------------------------------------------------- home */
+/* Slides */
+.home-banner h2{
+font-family: "Qwitcher Grypen", sans-serif;
+position: absolute;
+bottom: 0px;
+left:2%;
+font-size: 120px;
+animation: typing 2s steps(18), blink .5s step-end 10 alternate;
+white-space: nowrap;
+overflow: hidden;
+width: 32ch;
+color:var(--white)
+}
+
+
+.hero-image img{
+    width: 100%;
+}
+
+/* ----------------Animation for home*/
+
+@keyframes typing {
+    0% {
+        width: 0;
+        color:var(--white);
+      }
+}
+@keyframes blink {
+    50% {
+        border-color: transparent;
+        border-right: 3px solid;
+      }
+}
+
 
 
 /* -------------------------------------------------------------------- footer */
@@ -72,12 +107,6 @@ width:200px;
 .social_links a{
     color:white;
 }
-
-
-
-
-
-
 
 
 /* -------------------------------------------------------------------- Media queries */
