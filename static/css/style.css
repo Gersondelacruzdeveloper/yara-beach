@@ -58,10 +58,23 @@ width: 32ch;
 color:var(--white)
 }
 
+.heading{
+    display: none;
+}
 
-.hero-image img{
+.slide img{
     width: 100%;
 }
+
+.slide{
+    display:none;
+}
+
+.active{
+    display:block;
+
+}
+
 
 /* ----------------Animation for home*/
 
@@ -112,7 +125,28 @@ color:var(--white)
 /* -------------------------------------------------------------------- Media queries */
 
 /* large devices (tablet, etc 1150px and down) */
+@media only screen and (max-width: 1492px) {
+    .home-banner h2{
+        font-size: 100px;
+        }
+  
+}
+
+
+
+
+
+/* large devices (tablet, etc 1150px and down) */
 @media only screen and (max-width: 1042px) {
+
+    .home-banner img{
+     height:300px;
+    }
+ 
+
+    .home-banner h2{
+        font-size: 80px;
+    }
  
     .links-container{
         margin-left:50px;
@@ -123,6 +157,13 @@ color:var(--white)
 
 /* medium devices (988px and down) */
 @media only screen and (max-width: 988px) {
+    .home-banner h2{
+        font-size: 50px;
+    }
+
+    .home-banner img{
+        height:200px;
+    }
  
     .links-container{
         margin-left:0;
@@ -132,6 +173,13 @@ color:var(--white)
 }
 
 /* Small devices (phones, 373px and down) */
-@media only screen and (max-width: 373px) {
-  
+@media only screen and (max-width: 503px) {
+    .home-banner h2{
+        font-size: 40px;
+    }
+
+    .home-banner img{
+        height:auto;
+    }
+
 }
