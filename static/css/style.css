@@ -76,6 +76,7 @@ color:var(--white)
 
 }
 
+/* cards sections */
 .section-title{
     display: grid;
     grid-template-columns: auto auto;
@@ -160,7 +161,6 @@ object-fit: cover;
 
 
 /* ----------------Animation for home*/
-
 @keyframes typing {
     0% {
         width: 0;
@@ -173,7 +173,6 @@ object-fit: cover;
         border-right: 3px solid;
       }
 }
-
 
 
 /* -------------------------------------------------------------------- footer */
@@ -211,12 +210,17 @@ object-fit: cover;
 @media only screen and (max-width: 1492px) {
     .home-banner h2{
         font-size: 100px;
-        }
+     }
   
 }
 
-
-
+/* large devices (tablet, etc 1279px and down) */
+@media only screen and (max-width: 1270px) {
+    .card-container{
+        grid-template-columns: auto auto auto ;
+      }
+  
+}
 
 
 /* large devices (tablet, etc 1150px and down) */
@@ -240,6 +244,9 @@ object-fit: cover;
 
 /* medium devices (988px and down) */
 @media only screen and (max-width: 988px) {
+    .card-container{
+        grid-template-columns: auto auto;
+      }
     .home-banner h2{
         font-size: 50px;
     }
@@ -254,6 +261,20 @@ object-fit: cover;
         grid-template-columns: auto;
     }
 }
+
+/* medium devices (631px and down) */
+@media only screen and (max-width: 631px) {
+    .card-container{
+        grid-template-columns: auto ;
+      }
+      .section-title h3{
+        font-size: 15px;
+    }
+    .btn{
+        font-size: 15px;
+    }
+}
+
 
 /* Small devices (phones, 373px and down) */
 @media only screen and (max-width: 503px) {
