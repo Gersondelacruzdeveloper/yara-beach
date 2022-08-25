@@ -30,8 +30,9 @@
 
 /* -------------------------------------------------------------------- navbar */
 .sear-btn{
-    background-color: var(--orange-pantone);
+    background-color: #f96728;
     color:var(--white);
+    border:transparent;
 }
 
 .navbar-brand img{
@@ -51,7 +52,7 @@ position: absolute;
 bottom: 0px;
 left:2%;
 font-size: 120px;
-animation: typing 2s steps(18), blink .5s step-end 10 alternate;
+animation: typing 2s steps(18), blink .5s step-end 3 alternate;
 white-space: nowrap;
 overflow: hidden;
 width: 32ch;
@@ -73,6 +74,88 @@ color:var(--white)
 .active{
     display:block;
 
+}
+
+.section-title{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 90%;
+    margin: 10px auto;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.section-title h3{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: #192024;
+}
+
+ .btn-outline-secondary:hover,
+ .btn-outline-secondary:active, 
+ .btn-outline-secondary:visited {
+    background-color: var(--orange-pantone) !important;
+}
+.btn-outline-secondary{
+    border:2px solid var(--orange-pantone);
+    font-family:  sans-serif;
+}
+
+
+.card-container{
+  width: 90%;
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: center;
+  align-items: center;
+}
+.card-title{
+    font-size:14px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #192024;
+    margin: 12px 0 2px;
+}
+
+
+.card-wrapper{
+    margin: 10px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+}
+.card-wrapper img{
+border-radius: 10px;
+width: 300px;
+height: 310px;
+object-fit: cover;
+}
+  
+.card-wrapper>img:hover {
+    opacity: 0.7;
+}
+
+
+.price{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+}
+
+.card-star i{
+    font-size: 14px;
+    color:var(--orange-pantone)
+}
+
+.card-star span{
+    font-size: 14px;
+    color:var(--gun-metal);
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-weight: 600;
 }
 
 
