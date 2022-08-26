@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 django = "==4.1"
+environs = "*"
+dj-database-url = "*"
+whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 
