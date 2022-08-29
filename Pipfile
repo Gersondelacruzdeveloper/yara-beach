@@ -10,6 +10,7 @@ dj-database-url = "*"
 whitenoise = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+django-allauth = "*"
 
 [dev-packages]
 
