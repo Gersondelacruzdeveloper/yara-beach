@@ -35,11 +35,10 @@
     <link rel="icon" type="image/png" sizes="512x512" href="{% static 'images/favicon/android-chrome-512x512.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
-    <!-- Local stylesheets -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Qwitcher Grypen" rel="stylesheet">
-
+    <!-- Local stylesheets -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -85,6 +84,12 @@
             </div>
         </div>
     </nav>
+
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        messages
+     </div>
+    {% endif%}
 
     <main>
         {% block content %}

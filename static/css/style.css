@@ -7,6 +7,7 @@
     --font: "Montserrat", Georgia, sans-serif;
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     --orange-pantone: #f85a15;
+    --orange-pantone-lighter:#f96728;
     --gun-metal:#212a30;
     --font: "Montserrat", Georgia, sans-serif;
     --culture: #f2f2f2;
@@ -30,7 +31,7 @@
 
 /* -------------------------------------------------------------------- navbar */
 .sear-btn{
-    background-color: #f96728;
+    background-color: var(--orange-pantone-lighter);
     color:var(--white);
     border:transparent;
 }
@@ -160,6 +161,7 @@ object-fit: cover;
 }
 
 
+
 /* ----------------Animation for home*/
 @keyframes typing {
     0% {
@@ -174,6 +176,52 @@ object-fit: cover;
       }
 }
 
+/* -------------------------------------------------------------------- accounts signup/signin etc */
+
+.user_card{
+    width: 350px;
+    margin-top: 10%;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: var(--shadow);
+    -webkit-box-shadow: var(--shadow);
+    -moz-box-shadow: var(--shadow);
+    border-radius: 5px;
+}
+.form_container {
+    margin-top: 20px;
+}
+.user_button{
+    width: 100%;
+    background-color:var(--orange-pantone);
+    color:var(--white)
+}
+
+.btn:hover {
+    color:var(--white);
+    background-color: var(--orange-pantone-lighter);
+    border-color: var(--white);
+}
+
+.input-group-text {
+    height: 40px;
+    background:var(--orange-pantone)!important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+}
+.btn-container {
+    padding: 0 2rem;
+}
 
 /* -------------------------------------------------------------------- footer */
 #footer {
@@ -260,6 +308,8 @@ object-fit: cover;
         display: grid;
         grid-template-columns: auto;
     }
+
+
 }
 
 /* medium devices (631px and down) */
@@ -291,7 +341,10 @@ object-fit: cover;
     .social_links a{
         font-size: 20px;
     }
-
+    .user_card{
+        width: 70%;
+        margin: 10% auto;
+    }
 }
 
 

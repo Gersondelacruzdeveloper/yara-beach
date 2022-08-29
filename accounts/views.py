@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import CreatUserForm
+from .forms import CustomeUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
@@ -9,13 +9,13 @@ def sign_up(request):
     if request.user.is_authenticated:
         return redirect('home')
     else:
-        form = CreatUserForm()
+        form = CustomeUserForm()
         if request.method == 'POST':
-            form = CreatUserForm(request.POST)
+            form = CustomeUserForm(request.POST)
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('username')
                 messages.success(request, 'User ' + '' + user + '' + ' have been created now you can login')
-                return redirect('login')
+                return redirect('home')
     context = {'form':form}
     return render(request, 'registration/signup.html', context)
