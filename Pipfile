@@ -12,6 +12,7 @@ gunicorn = "*"
 psycopg2-binary = "*"
 django-allauth = "*"
 django-crispy-forms = "*"
+crispy-bootstrap5 = "*"
 
 [dev-packages]
 
