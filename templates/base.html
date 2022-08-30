@@ -60,17 +60,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-bed"></i> stays</a>
                     </li>
-
-                         <li class="nav-item dropdown">
+                    {% if not user.is_authenticated %}
+                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="fa-solid fa-user"></i> Sign in
+                            <i class="fa-solid fa-user"></i> My account
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i>  Sign in</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-plus"></i> Sign up</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_login' %}"><i class="fa-solid fa-user"></i>  Sign in</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_signup' %}"><i class="fa-solid fa-user-plus"></i> Register Account</a></li>
                         </ul>
                     </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>  Hi {{user|title}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fa-solid fa-user"></i> Logout</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_reset_password' %}"><i class="fa-solid fa-user-plus"></i> Change Password</a></li>
+                        </ul>
+                    </li>
+
+                    {% endif %}
+
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i> Contact us</a>
                     </li>
@@ -84,12 +98,6 @@
             </div>
         </div>
     </nav>
-
-    {% if messages %}
-    <div class="alert alert-success" role="alert">
-        {{messages}}
-     </div>
-    {% endif%}
 
     <main>
         {% block content %}
