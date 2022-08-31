@@ -11,20 +11,22 @@
 <div class="container h-100">
   <div class="d-flex justify-content-center h-100">
     <div class="user_card">
-      <h3 class="form-title">Sign In</h3>
       {% get_providers as socialaccount_providers %}
 
       {% if socialaccount_providers %}
 
-      <div class="socialaccount_ballot">
+      <div class="socialaccount_ballot" >
         <ul class="socialaccount_providers">
-          {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %} 
         </ul>
       </div>
+
+      <div class="border-top border-bottom my-3 text-center">{% trans 'OR' %}</div>
 
       {% include "socialaccount/snippets/login_extra.html" %}
 
       {% endif %}
+      <h3 class="form-title">Sign In</h3>
 
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
