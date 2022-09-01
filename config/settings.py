@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third-party apps installed app
     'allauth.socialaccount.providers.google',
-    # 'allauth.socialaccount.providers.facebook',
-    # 'allauth.socialaccount.providers.github',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
