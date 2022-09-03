@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # My apps
     'home',
     'excursions'
+    'rentals'
 ]
 
 # social acount 
