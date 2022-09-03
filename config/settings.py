@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     # My apps
     'home',
-    'excursions'
+    'excursions',
     'rentals'
 ]
 
