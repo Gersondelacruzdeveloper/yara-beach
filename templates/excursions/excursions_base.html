@@ -60,13 +60,15 @@
                             <i class="fa-solid fa-user"></i> Excursions
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fa-solid fa-user"></i> Top Excursions</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_change_password' %}"><i class="fa-solid fa-user-plus"></i> Top tours</a></li>
+                            <li><a class="dropdown-item" href=""></i>Sort by newest</a></li>
+                            <li><a class="dropdown-item" href="">Sort by Oldest</a></li>
+                            <li><a class="dropdown-item" href="">Price (low to high)</a></li>
+                            <li><a class="dropdown-item" href="">Price (high to low) </a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-bed"></i> <i class="fa-duotone fa-house"></i> Home</a>
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i> Home</a>
                     </li>
                     {% if not user.is_authenticated %}
                      <li class="nav-item dropdown">
@@ -99,7 +101,7 @@
                     
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search excursions" aria-label="Search">
                     <button class="btn sear-btn btn-outline-secondary" type="submit">Search</button>
                 </form>
             </div>
