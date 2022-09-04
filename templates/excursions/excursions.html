@@ -9,7 +9,7 @@
     <div class="card-container">
       {% for excursion in excursions %}
         <div class="card-wrapper">
-            <img src="{{excursion.images.url}}"
+            <img src="{{excursion.image.url}}"
                 alt="boat-escursion image">
             <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
             <div class="card-star">
@@ -21,7 +21,7 @@
                 <span> 8.5 very good</span>
             </div>
             <div class="price">
-                £320
+                £{{excursion.Price}}
             </div>
         </div>
 
