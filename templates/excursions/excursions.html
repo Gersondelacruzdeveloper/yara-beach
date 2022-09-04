@@ -10,7 +10,7 @@
       {% for excursion in excursions %}
         <div class="card-wrapper">
             <img src="{{excursion.image.url}}"
-                alt="boat-escursion image">
+                alt="{{excursion.image_alt}}">
             <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
             <div class="card-star">
                 <i class="fa-solid fa-star"></i>
