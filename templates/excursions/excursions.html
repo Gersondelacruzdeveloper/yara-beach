@@ -7,11 +7,11 @@
     <h1 class="text-center mt-5"> All Excursions</h1>
 
     <div class="card-container">
-
+      {% for excursion in excursions %}
         <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/2d.jpg"
+            <img src="{{excursion.images.url}}"
                 alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
+            <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
             <div class="card-star">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
@@ -25,132 +25,8 @@
             </div>
         </div>
 
-        <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/07/71/e5/77.jpg"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-
-        <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/0b/b6/b0/ce.jpg"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-
-        <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/01.jpg"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-        <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/2d.jpg" alt="boat-escursion image">
-               <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-               <div class="card-star">
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <span> 8.5 very good</span>
-               </div>
-               <div class="price">
-                   £320
-               </div>
-           </div>
-
-           <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/2d.jpg" alt="boat-escursion image">
-               <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-               <div class="card-star">
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <span> 8.5 very good</span>
-               </div>
-               <div class="price">
-                   £320
-               </div>
-           </div>
-
-           <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/2d.jpg" alt="boat-escursion image">
-               <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-               <div class="card-star">
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <span> 8.5 very good</span>
-               </div>
-               <div class="price">
-                   £320
-               </div>
-           </div>
-
-           <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/2d.jpg" alt="boat-escursion image">
-               <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-               <div class="card-star">
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <span> 8.5 very good</span>
-               </div>
-               <div class="price">
-                   £320
-               </div>
-           </div>
-
-
-        <div>
-        </div>
-
-
-
-
-
+        {% endfor%}
+    <div>
 </section>
-
-
-
-
 
 {% endblock content %}

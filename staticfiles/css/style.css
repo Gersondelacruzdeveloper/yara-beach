@@ -7,6 +7,7 @@
     --font: "Montserrat", Georgia, sans-serif;
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     --orange-pantone: #f85a15;
+    --orange-pantone-lighter:#f96728;
     --gun-metal:#212a30;
     --font: "Montserrat", Georgia, sans-serif;
     --culture: #f2f2f2;
@@ -30,7 +31,7 @@
 
 /* -------------------------------------------------------------------- navbar */
 .sear-btn{
-    background-color: #f96728;
+    background-color: var(--orange-pantone-lighter);
     color:var(--white);
     border:transparent;
 }
@@ -160,6 +161,7 @@ object-fit: cover;
 }
 
 
+
 /* ----------------Animation for home*/
 @keyframes typing {
     0% {
@@ -174,7 +176,61 @@ object-fit: cover;
       }
 }
 
+/* -------------------------------------------------------------------- accounts signup/signin etc */
 
+.user_card{
+    width: 350px;
+    margin-top: 5%;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: var(--shadow);
+    -webkit-box-shadow: var(--shadow);
+    -moz-box-shadow: var(--shadow);
+    border-radius: 5px;
+}
+.form_container {
+    margin-top: 20px;
+}
+
+.user_button{
+    width: 100%;
+    background-color:var(--orange-pantone);
+    color:var(--white)
+}
+
+.btn:hover {
+    color:var(--white);
+    background-color: var(--orange-pantone-lighter);
+    border-color: var(--white);
+}
+
+.form-title{
+text-align: center;
+}
+
+ ul.socialaccount_providers{
+    list-style-type: none;
+    margin:auto;
+    padding-left: 0;
+}
+.socialaccount_ballot a{
+    text-decoration: none;
+}
+.socialaccount_ballot {
+    height:40px;
+
+}
+.socialaccount_ballot img{
+    width: 100%;
+    height: 35px;
+    object-fit: cover;
+    box-shadow:var(--shadow);
+    border-radius: 5px;
+}
 /* -------------------------------------------------------------------- footer */
 #footer {
     position: fixed;
@@ -260,6 +316,8 @@ object-fit: cover;
         display: grid;
         grid-template-columns: auto;
     }
+
+
 }
 
 /* medium devices (631px and down) */
@@ -291,7 +349,10 @@ object-fit: cover;
     .social_links a{
         font-size: 20px;
     }
-
+    .user_card{
+        width: 70%;
+        margin: 10% auto;
+    }
 }
 
 

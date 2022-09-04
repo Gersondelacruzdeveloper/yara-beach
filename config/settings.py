@@ -170,6 +170,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))] # new
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # new
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -189,7 +191,7 @@ EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
 
 
 #CKEDITOR_UPLOAD_PATH
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, 'static/images')
 
 CKEDITOR_CONFIGS = {
     'default': {
