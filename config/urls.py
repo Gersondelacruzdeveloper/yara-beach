@@ -23,4 +23,6 @@ urlpatterns = [
     path('rentals/', include('rentals.urls')),
     # accounts for Users
     path('accounts/', include('allauth.urls')),
+    #ckeditor_uploader
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ] 

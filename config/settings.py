@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     "crispy_forms",
     "crispy_bootstrap5",
+    'ckeditor',
+    'ckeditor_uploader',
     # My apps
     'home',
     'excursions',
@@ -185,3 +187,14 @@ EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS")
 EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
 
+
+#CKEDITOR_UPLOAD_PATH
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
