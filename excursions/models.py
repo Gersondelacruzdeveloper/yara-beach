@@ -5,8 +5,12 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
-# Excursion model
+
 class Excursions(models.Model):
+    """
+    Creates a Excursion model containing data about each individual
+    Excursion
+    """
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=201, null=True)
     image = models.ImageField(upload_to='images/excursions/uploads/', null=True)
