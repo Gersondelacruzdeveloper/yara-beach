@@ -17,3 +17,13 @@ class Excursions(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+# Creates all the Excursion fotos
+class ExcursionExtraPhotos(models.Model):
+    excursion = models.ForeignKey(Excursions, null=True, blank=True, on_delete=models.CASCADE)
+    images = models.ImageField(upload_to='excursions/uploads/', null=True)
+    image_name = models.CharField(max_length=201, null=True, blank=True)
+    
+    def __str__(self):
+        return self.image_name
