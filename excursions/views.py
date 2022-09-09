@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Excursions
+from .models import Excursions, ExcursionExtraPhotos
 from .forms import AddExcursionForm
 
 # Create your views here.
@@ -10,13 +10,17 @@ def excursion(request):
     context = {'excursions': excursions}
     return render(request, 'excursions/excursions.html', context)
 
-
 # Show the excursion details
 def excursion_details(request, pk):
-    excursions = Excursions.objects.get(id=pk)
-    context = {'excursions': excursions}
+    excursion = Excursions.objects.get(id=pk)
+    context = {'excursions': excursion}
     return render(request, 'excursions/excursion_details.html', context)
 
+# Add more images to the excursion 
+def excursion_images(request, pk):
+    excursion = Excursions.objects.get(id=pk)
+    context = {'excursions': excursion}
+    return render(request, 'excursions/add_more_photos.html', context)
 
 # Add the excursion
 def add_excursions(request):
