@@ -24,10 +24,15 @@
   body {
     background-color: var(--culture);
     min-height: 400px;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     font-family: var(--font);
   }
 
+  /* -------------------------------------------------------------------- general classes */
+.title{
+    text-align: center;
+    font-size: 2.5rem;
+}
 
 /* -------------------------------------------------------------------- navbar */
 .sear-btn{
@@ -175,6 +180,14 @@ object-fit: cover;
         border-right: 3px solid;
       }
 }
+
+
+/* -------------------------------------------------------------------- forms */
+.add_excursions_form{
+    width: 800px;
+    margin: auto;
+}
+
 
 /* -------------------------------------------------------------------- accounts signup/signin etc */
 

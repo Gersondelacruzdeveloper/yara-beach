@@ -1,7 +1,8 @@
 
+
+// js for home
 const slide = document.getElementsByClassName("slide")
 const heading = document.getElementsByClassName("heading")
-
 /**
  * 
  * @param {*} list take a list and add and remove an active class
@@ -19,7 +20,6 @@ const slideShow =(list)=>{
   }
 }
 
-// Call the slideShow function 
 slideShow(slide)
 slideShow(heading)
 
