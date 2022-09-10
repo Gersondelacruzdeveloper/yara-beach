@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Excursions, ExcursionExtraPhotos
+from .models import Excursions, Photos
 from .forms import AddExcursionForm
 
 # Create your views here.

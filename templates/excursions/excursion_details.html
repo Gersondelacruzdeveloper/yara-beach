@@ -5,8 +5,14 @@
 <section>
     <div class="detail_wrapper">
         <div>
-            <img style="width:100px" src="{{excursions.image.url}}">
+            <img style="width:100px" src="{{excursions.main_image.url}}">
         </div> 
+
+        
+       {% for excursion in excursions.photos.all %}
+       <img style="width:100px" src="{{excursion.images.url}}">
+       {% endfor %}
+        
     </div>
 </section>
 {% endblock content %}

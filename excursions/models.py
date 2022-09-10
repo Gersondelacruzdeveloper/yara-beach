@@ -20,8 +20,8 @@ class Excursions(models.Model):
     
 
 # Creates all the Excursion fotos
-class ExcursionExtraPhotos(models.Model):
-    excursion = models.ForeignKey(Excursions, null=True, blank=True, on_delete=models.CASCADE)
+class Photos(models.Model):
+    excursion = models.ForeignKey(Excursions, null=True, blank=True, on_delete=models.CASCADE, related_name='photos')
     images = models.ImageField(upload_to='excursions/uploads/', null=True)
     image_name = models.CharField(max_length=201, null=True, blank=True)
     
