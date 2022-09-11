@@ -187,6 +187,81 @@ object-fit: cover;
     width: 800px;
     margin: auto;
 }
+/* -------------------------------------------------------------------- detail page */
+.item-detail-and-image-container{
+    width:60%;
+    margin: auto;
+    display:grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    grid-column-gap:100px;
+    padding: 20px;
+}
+
+.detail-title{
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 50px;
+}
+.main-image img{
+    width:500px;
+    height:500px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.detail-price{
+    font-family: sans-serif;
+    font-size: 20px;;
+
+}
+
+.item-detail{
+    padding: 1.5rem;
+    width:420px;
+    height:500px;
+}
+
+.photos{
+	width: 500px;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+    margin-top: 10px;
+}
+.photos img{
+    padding: 5px;
+    border-radius: 10px;
+    opacity: 0.5;
+    object-fit: cover;
+    max-width: 180px;
+	max-height: 100px;
+    cursor: pointer;
+}
+
+.photos-and-icon-wrapper{
+    position: relative;
+}
+#arrow-left{
+    position: absolute;  
+    left: -35px;
+    top:23px;
+    border-radius: 50%;
+	cursor: pointer;
+	transition: .3s;
+    font-size: 30px;
+
+}
+#arrow-right{
+    position: absolute; 
+    right: -35px;
+    top:23px;
+    border-radius: 50%;
+	cursor: pointer;
+	transition: .3s;
+    font-size: 30px;
+}
 
 
 /* -------------------------------------------------------------------- accounts signup/signin etc */
