@@ -9,24 +9,16 @@
             <!-- main image -->
             <div class="image-container">
                 <div class="main-image">
-                    <img src="{{excursions.main_image.url}}" alt="{{excursions.image_name}}">
+                    <img id="expandedImg" src="{{excursions.main_image.url}}" alt="{{excursions.image_name}}">
                 </div>
 
                 <!-- rest of the photos -->
                 <div class="photos-and-icon-wrapper">
                 <i id="arrow-left" class="fa-solid fa-circle-arrow-left"></i>
-                <div class="photos">
+                <div class="photos" id="allphotos">
+                    <img  class="active-image thumbnails" src="{{excursions.main_image.url}}" alt="{{excursions.image_name}}">
                     {% for excursion in excursions.photos.all %}
-                    <img class="thumbnails" style="width:100px" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
-                    {% endfor %}
-                    {% for excursion in excursions.photos.all %}
-                    <img  class="thumbnails"  style="width:100px" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
-                    {% endfor %}
-                    {% for excursion in excursions.photos.all %}
-                    <img  class="thumbnails"  style="width:100px" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
-                    {% endfor %}
-                    {% for excursion in excursions.photos.all %}
-                    <img  class="thumbnails"  style="width:100px" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
+                    <img class="thumbnails" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
                     {% endfor %}
                 </div>
                 <i id="arrow-right" class="fa-solid fa-circle-arrow-right"></i>
