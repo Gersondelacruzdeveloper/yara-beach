@@ -14,14 +14,18 @@
 
                 <!-- rest of the photos -->
                 <div class="photos-and-icon-wrapper">
-                <i id="arrow-left" class="fa-solid fa-circle-arrow-left"></i>
+                    {% if excursions.photos.count > 4%}
+                  <i id="arrow-left" class="fa-solid fa-circle-arrow-left"></i>
+                      {% endif %}
                 <div class="photos" id="allphotos">
                     <img  class="active-image thumbnails" src="{{excursions.main_image.url}}" alt="{{excursions.image_name}}">
                     {% for excursion in excursions.photos.all %}
                     <img class="thumbnails" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
                     {% endfor %}
                 </div>
+                {% if excursions.photos.count > 4%}
                 <i id="arrow-right" class="fa-solid fa-circle-arrow-right"></i>
+                {% endif %}
             </div>
             </div>
             <!-- item details aside -->

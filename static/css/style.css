@@ -572,7 +572,7 @@ ul.socialaccount_providers {
     }
 
     .photos {
-        width: 100%;
+        width: 300px;
     }
 
     .detail-title {
@@ -588,8 +588,5 @@ ul.socialaccount_providers {
         padding: 1.5rem;
         width: auto;
     }
-
-
-
 
 }
