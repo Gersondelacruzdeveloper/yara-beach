@@ -44,7 +44,8 @@
 <body>
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"></i><img src="{% static 'images/Yara-logo.png' %}" alt="Yara name with a palm tree"></a>
+            <a class="navbar-brand" href="#"></i><img src="{% static 'images/Yara-logo.png' %}"
+                    alt="Yara name with a palm tree"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -54,52 +55,57 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <div class="links-container">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-user"></i> Excursions
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=""></i>Sort by newest</a></li>
-                            <li><a class="dropdown-item" href="">Sort by Oldest</a></li>
-                            <li><a class="dropdown-item" href="">Price (low to high)</a></li>
-                            <li><a class="dropdown-item" href="">Price (high to low) </a></li>
-                        </ul>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i>
+                                Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-user"></i> Excursions
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href=""></i>Sort by newest</a></li>
+                                <li><a class="dropdown-item" href="">Sort by Oldest</a></li>
+                                <li><a class="dropdown-item" href="">Price (low to high)</a></li>
+                                <li><a class="dropdown-item" href="">Price (high to low) </a></li>
+                            </ul>
+                        </li>
+                        {% if not user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-user"></i> My account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'account_login' %}"><i
+                                            class="fa-solid fa-user"></i> Sign in</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_signup' %}"><i
+                                            class="fa-solid fa-user-plus"></i> Register Account</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-user"></i> Hi {{user|title}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i
+                                            class="fa-solid fa-user"></i> Logout</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"><i
+                                            class="fa-solid fa-user-plus"></i> Change Password</a></li>
+                                <li><a class="dropdown-item" href="{% url 'form' %}"><i
+                                            class="fa-solid fa-user-plus"></i> Add excursions</a></li>
+                            </ul>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i> Home</a>
-                    </li>
-                    {% if not user.is_authenticated %}
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-user"></i> My account
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'account_login' %}"><i class="fa-solid fa-user"></i>  Sign in</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_signup' %}"><i class="fa-solid fa-user-plus"></i> Register Account</a></li>
-                        </ul>
-                    </li>
-                    {% else %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-user"></i>  Hi {{user|title}}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fa-solid fa-user"></i> Logout</a></li>
-                            <li><a class="dropdown-item" href="{% url 'account_change_password' %}"><i class="fa-solid fa-user-plus"></i> Change Password</a></li>
-                            <li><a class="dropdown-item" href="{% url 'form' %}"><i class="fa-solid fa-user-plus"></i> Add excursions</a></li>
-                        </ul>
-                    </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i> Contact us</a>
+                        </li>
+                    </div>
 
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i> Contact us</a>
-                    </li>
-                 </div>
-                    
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search excursions" aria-label="Search">
@@ -117,35 +123,35 @@
 
     <footer id="footer">
 
-       <!--Copyright-->
-     <div class="footer-copyright">
-        <p>&copy;
-          <script>document.write(new Date().getFullYear())</script> Yara beach
-        </p>
-      </div>
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <p>&copy;
+                <script>document.write(new Date().getFullYear())</script> Yara beach
+            </p>
+        </div>
 
-    </div>
+        </div>
 
 
-    <!--links Icon-->
-    <div class="social-media-links">
-      <div class="social_links">
-        <a aria-label="facebook" rel="noopener" href="https://www.facebook.com/" target="_blank"><i
-            class="fa-brands fa-facebook"></i></a>
-      </div>
-      <div class="social_links">
-        <a aria-label="instagram" rel="noopener" href="https://www.instagram.com/" target="_blank"><i
-            class="fa-brands fa-instagram"></i></a>
-      </div>
-      <div class="social_links">
-        <a aria-label="twitter" rel="noopener" target="_blank" href="https://twitter.com/"><i
-            class="fa-brands fa-twitter"></i></a>
-      </div>
-      <div class="social_links">
-        <a aria-label="tiktok" rel="noopener" target="_blank" href="https://www.tiktok.com/"><i
-            class="fa-brands fa-tiktok"></i></a>
-      </div>
-    </div>
+        <!--links Icon-->
+        <div class="social-media-links">
+            <div class="social_links">
+                <a aria-label="facebook" rel="noopener" href="https://www.facebook.com/" target="_blank"><i
+                        class="fa-brands fa-facebook"></i></a>
+            </div>
+            <div class="social_links">
+                <a aria-label="instagram" rel="noopener" href="https://www.instagram.com/" target="_blank"><i
+                        class="fa-brands fa-instagram"></i></a>
+            </div>
+            <div class="social_links">
+                <a aria-label="twitter" rel="noopener" target="_blank" href="https://twitter.com/"><i
+                        class="fa-brands fa-twitter"></i></a>
+            </div>
+            <div class="social_links">
+                <a aria-label="tiktok" rel="noopener" target="_blank" href="https://www.tiktok.com/"><i
+                        class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
 
     </footer>
 
