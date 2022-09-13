@@ -194,7 +194,7 @@ body {
 
 /* -------------------------------------------------------------------- detail page */
 .item-detail-and-image-container {
-    width: 60%;
+    width: 100%;
     margin: auto;
     display: grid;
     grid-template-columns: auto auto;
@@ -282,6 +282,13 @@ body {
 #arrow-right:hover {
     opacity: 0.5;
 }
+
+.overview{
+width:55%;
+margin: 50px auto;
+text-align:justify;
+}
+
 
 /* -------------------------------------------------------------------- accounts signup/signin etc */
 
@@ -381,6 +388,10 @@ ul.socialaccount_providers {
     .home-banner h2 {
         font-size: 100px;
     }
+    .overview{
+        width:70%;
+    }
+        
 }
 
 /* large devices (tablet, etc 1270px and down) */
