@@ -15,33 +15,34 @@
                 <!-- rest of the photos -->
                 <div class="photos-and-icon-wrapper">
                     {% if excursions.photos.count > 4%}
-                  <i id="arrow-left" class="fa-solid fa-circle-arrow-left"></i>
-                      {% endif %}
-                <div class="photos" id="allphotos">
-                    <img  class="active-image thumbnails" src="{{excursions.main_image.url}}" alt="{{excursions.image_name}}">
-                    {% for excursion in excursions.photos.all %}
-                    <img class="thumbnails" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
-                    {% endfor %}
+                    <i id="arrow-left" class="fa-solid fa-circle-arrow-left"></i>
+                    {% endif %}
+                    <div class="photos" id="allphotos">
+                        <img class="active-image thumbnails" src="{{excursions.main_image.url}}"
+                            alt="{{excursions.image_name}}">
+                        {% for excursion in excursions.photos.all %}
+                        <img class="thumbnails" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
+                        {% endfor %}
+                    </div>
+                    {% if excursions.photos.count > 4%}
+                    <i id="arrow-right" class="fa-solid fa-circle-arrow-right"></i>
+                    {% endif %}
                 </div>
-                {% if excursions.photos.count > 4%}
-                <i id="arrow-right" class="fa-solid fa-circle-arrow-right"></i>
-                {% endif %}
-            </div>
             </div>
             <!-- item details aside -->
             <div class="item-detail card">
                 <form>
-                     <!-- price -->
+                    <!-- price -->
                     <div class="form-row">
                         <div class="detail-price"> <strong>Price:</strong> £{{excursions.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
-                            <!-- date -->
+                        <!-- date -->
                         <div class="form-group mt-3">
                             <label for="date">Select Date and Travellers</label>
                             <input type="date" class="form-control" id="date">
                         </div>
-                            <!-- number of adults -->
+                        <!-- number of adults -->
                         <div class="form-group mt-3">
                             <label for="exampleFormControlSelect1">Select Adult (11-85 years old)</label>
                             <select class="form-control" id="exampleFormControlSelect1">
@@ -52,7 +53,7 @@
                                 <option>5</option>
                             </select>
                         </div>
-                          <!-- number of childrens -->
+                        <!-- number of childrens -->
                         <div class="form-group mt-3">
                             <label for="exampleFormControlSelect1">Select Child (3 - 10 years old)</label>
                             <select class="form-control" id="exampleFormControlSelect1">
@@ -63,12 +64,12 @@
                                 <option>5</option>
                             </select>
                         </div>
-                          <!-- pick up info -->
+                        <!-- pick up info -->
                         <div class="form-group mt-3">
                             <label for="inputCity">Place to be pick up</label>
                             <input type="text" class="form-control" id="inputCity">
                         </div>
-                          <!-- Submit button -->
+                        <!-- Submit button -->
                         <div class="form-group mt-3">
                             <button type="submit" class="user_button btn">Submit</button>
                         </div>
@@ -78,8 +79,77 @@
     </div>
     <h1 class="text-center mt-5">Overview</h1>
     <div class="overview">
-       {{excursions.description|safe}}
+        {{excursions.description|safe}}
+    </div>
+
+    <!-- Reviews -->
+    <h5 class="review-title">Customer reviews: {{excursions.reviews.all.count}}</h5>
+    <hr>
+    <div class="reviews">
+        {% for review in excursions.reviews.all %}
+        <div class="sub_container">
+            <i id="user_circle" class="fas fa-user-circle"></i><span class="user_name"> {{review.user |title }}</span>
+            <div class="card-star">
+                <i class="fa-star {% if review.rating >= 1 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 2 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 3 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 4 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 5 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <strong>{{review.title}}</strong>
+            </div>
+            <p class="date_created"> Commented on {{ review.created }}</p>
+            <p class="review_content">{{review.content }}</p>
+        </div>
+        {% endfor %}
     </div>
 
 </section>
 {% endblock content %}
+
+
+
+<!-- 
+<i class="fa-star {% if review.rating < 1 %}fa-solid{% endif %}"></i>
+<i class="fa-star fa-regular"></i>  -->
+<!-- 
+
+<div class="card-star">
+    {% if review.rating == 1 %}
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    {% elif review.rating == 2%}
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    {% elif review.rating == 3%}
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    {% elif review.rating == 4%}
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    {% elif review.rating == 5%}
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    {% else %}
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    <i class="fa-regular fa-star"></i>
+    {% endif %}
+    <strong>{{review.title}}</strong>
+</div> -->

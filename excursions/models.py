@@ -33,6 +33,7 @@ class Photos(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True,)
     content = models.TextField(null=True, blank=True,)
+    rating = models.IntegerField(null=True, blank=True, default=0)
     excursion = models.ForeignKey(Excursions, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateField(auto_now_add=True)

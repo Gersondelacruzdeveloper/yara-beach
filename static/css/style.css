@@ -158,7 +158,7 @@ body {
 
 .card-star i {
     font-size: 14px;
-    color: var(--orange-pantone)
+    color: var(--orange-pantone);
 }
 
 .card-star span {
@@ -283,12 +283,55 @@ body {
     opacity: 0.5;
 }
 
-.overview{
-width:55%;
-margin: 50px auto;
-text-align:justify;
+.overview {
+    width: 55%;
+    margin: 50px auto;
+    text-align: justify;
 }
 
+/* Review section */
+.review-title {
+    margin-top: 10px;
+    font-family: "chronicle display", Times, "times new roman", serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.reviews {
+    font-family: dinot, sans-serif;
+    font-size: 15px;
+    margin: auto;
+    width: 70%;
+}
+
+.sub_container {
+    margin: 20px;
+}
+
+#user_circle {
+    font-size: 30px;
+}
+
+.user_name{
+    top: -5px;
+    position: relative;
+    color: var(--black);
+}
+
+.date_created {
+    color: rgb(86, 89, 89);
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.review_content {
+    color: rgb(15, 17, 17);
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
 
 /* -------------------------------------------------------------------- accounts signup/signin etc */
 
@@ -388,10 +431,11 @@ ul.socialaccount_providers {
     .home-banner h2 {
         font-size: 100px;
     }
-    .overview{
-        width:70%;
+
+    .overview {
+        width: 70%;
     }
-        
+
 }
 
 /* large devices (tablet, etc 1270px and down) */
@@ -556,6 +600,10 @@ ul.socialaccount_providers {
         width: 70%;
         margin: 10% auto;
     }
+
+    .reviews {
+        width: 90%;
+    }
 }
 
 
@@ -577,6 +625,7 @@ ul.socialaccount_providers {
         grid-column-gap: 0px;
         grid-row-gap: 50px;
     }
+
     .main-image img {
         width: 300px;
         height: 300px;

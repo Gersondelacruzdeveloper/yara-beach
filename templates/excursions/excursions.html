@@ -12,14 +12,20 @@
             <a  href="{% url 'detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
                 alt="{{excursion.image_name}}"> </a> 
             <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
+              <!-- Reviews -->
+            <div class="card-star"> 
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                {% if excursion.reviews.count > 1 or excursion.reviews.count == 0  %}
+                <span> {{excursion.reviews.count}} reviews</span>
+                {% else %}
+                <span> {{excursion.reviews.count}} review</span>
+                {% endif%}
             </div>
+
             <div class="price">
                 £{{excursion.Price}}
             </div>
