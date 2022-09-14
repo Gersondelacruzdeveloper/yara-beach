@@ -27,3 +27,15 @@ class Photos(models.Model):
     
     def __str__(self):
         return self.image_name
+
+
+# Creates excursion review model 
+class Review(models.Model):
+    title = models.CharField(max_length=255, null=True, blank=True,)
+    content = models.TextField(null=True, blank=True,)
+    excursion = models.ForeignKey(Excursions, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
