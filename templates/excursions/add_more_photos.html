@@ -8,29 +8,29 @@
     <form class="add_excursions_form" method="POST" enctype="multipart/form-data" action="{% url 'form' %}">
         {% csrf_token %}
         <div class="form-row">
-		{% csrf_token %}
-          <!-- image -->
-        <div class="col-md-12 mb-3">
-            <label for="image">Add more images:</label>
-            <input type="url" class="form-control" id="image"  multiple name="image" placeholder="Optional">
-            <div class="valid-feedback">
-            <!-- Looks good! -->
+            {% csrf_token %}
+            <!-- image -->
+            <div class="col-md-12 mb-3">
+                <label for="image">Add more images:</label>
+                <input type="url" class="form-control" id="image" multiple name="image" placeholder="Optional">
+                <div class="valid-feedback">
+                    <!-- Looks good! -->
+                </div>
             </div>
-         </div>
-           <!-- Title -->
-        <div class="col-md-12 mb-3">
-            <label for="images_name">Images name*</label>
-            <input type="text" class="form-control" id="images_name" name="images_name" required maxlength="201">
-            <div class="valid-feedback">
-            <!-- Looks good! -->
+            <!-- Title -->
+            <div class="col-md-12 mb-3">
+                <label for="images_name">Images name*</label>
+                <input type="text" class="form-control" id="images_name" name="images_name" required maxlength="201">
+                <div class="valid-feedback">
+                    <!-- Looks good! -->
+                </div>
+            </div>
+            <!-- Add photo button -->
+            <div class="mb-3">
+                <input class="btn user_button" type="submit" value="Add phtotos">
             </div>
         </div>
-         <!-- Add photo button -->
-         <div class="mb-3">
-        <input class="btn user_button" type="submit" value="Add phtotos">
-        </div>
-       </div>
-       <!-- Go back detail page -->
+        <!-- Go back detail page -->
         <a href="" class="btn btn-outline-secondary" role="button" aria-pressed="true">Cancel</a>
     </form>
 </section>

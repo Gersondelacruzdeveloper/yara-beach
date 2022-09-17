@@ -8,15 +8,15 @@
     <form class="add_excursions_form" method="POST" enctype="multipart/form-data" action="{% url 'form' %}">
         {% csrf_token %}
         <div class="form-row">
-		{% csrf_token %}
-		{{form.media}}
-		{{form|crispy}}
-         <!-- Add excursion button -->
-         <div class="mb-3">
-        <input class="btn user_button" type="submit" value="Add Excursion">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+            <!-- Add excursion button -->
+            <div class="mb-3">
+                <input class="btn user_button" type="submit" value="Add Excursion">
+            </div>
         </div>
-       </div>
-       <!-- Go back to all excursion -->
+        <!-- Go back to all excursion -->
         <a href="" class="btn btn-outline-secondary" role="button" aria-pressed="true">Cancel</a>
     </form>
 </section>
