@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Excursions, Photos
+from .models import Excursions, Photos,Review
 from .forms import AddExcursionForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -14,6 +15,18 @@ def excursion(request):
 def excursion_details(request, pk):
     excursion = Excursions.objects.get(id=pk)
     context = {'excursions': excursion}
+
+    # create review 
+    if request.method == 'POST':
+        Review.objects.create(
+            content=request.POST['review-content'],
+            title = request.POST['review-title'],
+            rating = request.POST.get('star', 1),
+            excursion=excursion,
+            user=request.user,
+        )
+        messages.success(request, 'Your review has been published.')
+
     return render(request, 'excursions/excursion_details.html', context)
 
 # Add more images to the excursion 

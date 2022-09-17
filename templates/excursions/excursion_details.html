@@ -85,7 +85,62 @@
     <!-- Reviews -->
     <h5 class="review-title">Customer reviews: {{excursions.reviews.all.count}}</h5>
     <hr>
-    <div class="reviews">
+
+    <!-- flass success message -->
+    <div class="message">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+
+    {% if request.user.is_authenticated %}
+
+    <!-- Review form -->
+    <h5 class="text-center mt-5">Write your reviews</h5>
+
+    <form class="review-form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Review title" name="review-title" required>
+        </div>
+        <div class="mb-3">
+            <textarea required class="form-control" placeholder="Leave a review..." name="review-content"></textarea>
+        </div>
+        <div class="rating-container">
+            <strong>Your Rating</strong>
+            <div class="rating">
+                <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                <label for="star5">☆</label>
+                <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                <label for="star4">☆</label>
+                <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                <label for="star3">☆</label>
+                <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                <label for="star2">☆</label>
+                <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                <label for="star1">☆</label>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <input class="btn user_button_sm" type="submit" value="Submit">
+        </div>
+
+    </form>
+    {% else %}
+    <p class="text-center">Create an account to add a review:</p>
+    <div class="text-center">
+        <a class="btn user_button_sm" href="{% url 'account_signup' %}">Register/Login</a>
+    </div>
+    {% endif %}
+
+    <!-- all reviews reviews -->
+    <div class="reviews mt-5">
         {% for review in excursions.reviews.all %}
         <div class="sub_container">
             <i id="user_circle" class="fas fa-user-circle"></i><span class="user_name"> {{review.user |title }}</span>
@@ -105,51 +160,3 @@
 
 </section>
 {% endblock content %}
-
-
-
-<!-- 
-<i class="fa-star {% if review.rating < 1 %}fa-solid{% endif %}"></i>
-<i class="fa-star fa-regular"></i>  -->
-<!-- 
-
-<div class="card-star">
-    {% if review.rating == 1 %}
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    {% elif review.rating == 2%}
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    {% elif review.rating == 3%}
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    {% elif review.rating == 4%}
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    {% elif review.rating == 5%}
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    <i class="fa-solid fa-star"></i>
-    {% else %}
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    {% endif %}
-    <strong>{{review.title}}</strong>
-</div> -->
