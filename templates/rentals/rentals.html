@@ -9,9 +9,10 @@
     <div class="card-container">
         {% for rental in rentals %}
         <div class="card-wrapper">
-            <a href=""><img src="{{rental.main_image.url}}"
-                    alt="{{rental.image_name}}"> </a>
+            <a href=""><img src="{{rental.main_image.url}}" alt="{{rental.image_name}}"> </a>
             <h5 class="card-title">{{rental.title|slice:":30"|title}}..</h5>
+            <span
+                class="ACCOM_type {% if rental.ACCOM_type == 'Room' %} green {% elif rental.ACCOM_type == 'Apartment' %} blue {% else %} red {% endif %}">{{rental.ACCOM_type}}</span>
             <!-- Reviews -->
             <div class="card-star">
                 <i class="fa-star fa-solid"></i>
