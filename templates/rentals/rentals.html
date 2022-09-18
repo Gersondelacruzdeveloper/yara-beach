@@ -3,152 +3,36 @@
 
 {% block content %}
 
+<section>
+    <h1 class="text-center mt-5"> All Excursions</h1>
 
-    <section>
-        <h1 class="text-center mt-5"> All Rentals</h1>
+    <div class="card-container">
+        {% for rental in rentals %}
+        <div class="card-wrapper">
+            <a href=""><img src="{{rental.main_image.url}}"
+                    alt="{{rental.image_name}}"> </a>
+            <h5 class="card-title">{{rental.title|slice:":30"|title}}..</h5>
+            <!-- Reviews -->
+            <div class="card-star">
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                {% if rental.reviews.count > 1 or rental.reviews.count == 0 %}
+                <span> {{rental.reviews.count}} reviews</span>
+                {% else %}
+                <span> {{rental.reviews.count}} review</span>
+                {% endif%}
+            </div>
 
-        <div class="card-container">
-
-            <div class="card-wrapper">
-            <img src="https://content.r9cdn.net/rimg/kimg/58/48/b4f6c8d34949f9d6.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-               <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-               <div class="card-star">
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <i class="fa-solid fa-star"></i>
-                   <span> 8.5 very good</span>
-               </div>
-               <div class="price">
-                   £320
-               </div>
-           </div>
-
-           <div class="card-wrapper">
-               <img src="https://content.r9cdn.net/rimg/himg/b1/11/59/ice-76561-68478003_3XL-602480.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-                  <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-                  <div class="card-star">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <span> 8.5 very good</span>
-                  </div>
-                  <div class="price">
-                      £320
-                  </div>
-              </div>
-
-              <div class="card-wrapper">
-               <img src="https://content.r9cdn.net/rimg/himg/69/a8/be/arbisoftimages-3214352-Royalton_Bavaro_LR_005-image.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-                  <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-                  <div class="card-star">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <span> 8.5 very good</span>
-                  </div>
-                  <div class="price">
-                      £320
-                  </div>
-              </div>
-
-              <div class="card-wrapper">
-               <img src="https://content.r9cdn.net/rimg/himg/10/a0/17/booking-313415-64680102.jpg_k=5ce3b2673b5e48703db329a46f1b61739c5c4bd4efdfc894b55d53e9b2fa1327_o=-720214.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-                  <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-                  <div class="card-star">
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <span> 8.5 very good</span>
-                  </div>
-                  <div class="price">
-                      £320
-                  </div>
-
-              </div>
-
-            <div class="card-wrapper">
-                <img src="https://content.r9cdn.net/rimg/kimg/58/48/b4f6c8d34949f9d6.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-                   <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-                   <div class="card-star">
-                       <i class="fa-solid fa-star"></i>
-                       <i class="fa-solid fa-star"></i>
-                       <i class="fa-solid fa-star"></i>
-                       <i class="fa-solid fa-star"></i>
-                       <i class="fa-solid fa-star"></i>
-                       <span> 8.5 very good</span>
-                   </div>
-                   <div class="price">
-                       £320
-                   </div>
-               </div>
-    
-               <div class="card-wrapper">
-                   <img src="https://content.r9cdn.net/rimg/himg/b1/11/59/ice-76561-68478003_3XL-602480.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-                      <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-                      <div class="card-star">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <span> 8.5 very good</span>
-                      </div>
-                      <div class="price">
-                          £320
-                      </div>
-                  </div>
-    
-                  <div class="card-wrapper">
-                   <img src="https://content.r9cdn.net/rimg/himg/69/a8/be/arbisoftimages-3214352-Royalton_Bavaro_LR_005-image.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-                      <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-                      <div class="card-star">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <span> 8.5 very good</span>
-                      </div>
-                      <div class="price">
-                          £320
-                      </div>
-                  </div>
-    
-                  <div class="card-wrapper">
-                   <img src="https://content.r9cdn.net/rimg/himg/10/a0/17/booking-313415-64680102.jpg_k=5ce3b2673b5e48703db329a46f1b61739c5c4bd4efdfc894b55d53e9b2fa1327_o=-720214.jpg?width=536&height=402&crop=true" alt="boat-escursion image">
-                      <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-                      <div class="card-star">
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <span> 8.5 very good</span>
-                      </div>
-                      <div class="price">
-                          £320
-                      </div>
-    
-                  </div>
-    
-
-           <div>
+            <div class="price">
+                £{{rental.Price}}
+            </div>
         </div>
-    
-    
-    </section>
 
-
-
-
-
+        {% endfor%}
+        <div>
+</section>
 
 {% endblock content %}
