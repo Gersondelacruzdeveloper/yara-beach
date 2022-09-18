@@ -5,11 +5,11 @@
 
 <section>
     <h1 class="text-center mt-5"> All Excursions</h1>
-
+    
     <div class="card-container">
         {% for excursion in excursions %}
         <div class="card-wrapper">
-            <a href="{% url 'detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
+            <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
                     alt="{{excursion.image_name}}"> </a>
             <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
             <!-- Reviews -->
