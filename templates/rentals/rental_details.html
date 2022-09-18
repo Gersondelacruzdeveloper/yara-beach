@@ -1,0 +1,162 @@
+{% extends 'rentals/rentals_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="detail-container">
+        <h1 class="detail-title">{{rentals.title}}</h1>
+        <div class="item-detail-and-image-container">
+            <!-- main image -->
+            <div class="image-container">
+                <div class="main-image">
+                    <img id="expandedImg" src="{{rentals.main_image.url}}" alt="{{rentals.image_name}}">
+                </div>
+
+                <!-- rest of the photos -->
+                <div class="photos-and-icon-wrapper">
+                    {% if rentals.photos.count > 4%}
+                    <i id="arrow-left" class="fa-solid fa-circle-arrow-left"></i>
+                    {% endif %}
+                    <div class="photos" id="allphotos">
+                        <img class="active-image thumbnails" src="{{rentals.main_image.url}}"
+                            alt="{{rentals.image_name}}">
+                        {% for rental in rentals.photos.all %}
+                        <img class="thumbnails" src="{{rental.images.url}}" alt="{{rental.image_name}}">
+                        {% endfor %}
+                    </div>
+                    {% if rentals.photos.count > 4%}
+                    <i id="arrow-right" class="fa-solid fa-circle-arrow-right"></i>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- item details aside -->
+            <div class="item-detail card">
+                <form>
+                    <!-- price -->
+                    <div class="form-row">
+                        <div class="detail-price"> <strong>Price:</strong> £{{rentals.Price}}</div>
+                        <div>Lowest Price garantee</div>
+                        <hr>
+                        <!-- date -->
+                        <div class="form-group mt-3">
+                            <label for="date">Select Date and Travellers</label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                        <!-- number of adults -->
+                        <div class="form-group mt-3">
+                            <label for="exampleFormControlSelect1">Select Adult (11-85 years old)</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <!-- number of childrens -->
+                        <div class="form-group mt-3">
+                            <label for="exampleFormControlSelect1">Select Child (3 - 10 years old)</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>xs
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <!-- pick up info -->
+                        <div class="form-group mt-3">
+                            <label for="inputCity">Place to be pick up</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <!-- Submit button -->
+                        <div class="form-group mt-3">
+                            <button type="submit" class="user_button btn">Submit</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1 class="text-center mt-5">Overview</h1>
+    <div class="overview">
+        {{rentals.description|safe}}
+    </div>
+
+    <!-- Reviews -->
+    <h5 class="review-title">Customer reviews: {{rentals.reviews.all.count}}</h5>
+    <hr>
+
+    <!-- flass success message -->
+    <div class="message">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+
+    {% if request.user.is_authenticated %}
+
+    <!-- Review form -->
+    <h5 class="text-center mt-5">Write your reviews</h5>
+
+    <form class="review-form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Review title" name="review-title" required>
+        </div>
+        <div class="mb-3">
+            <textarea required class="form-control" placeholder="Leave a review..." name="review-content"></textarea>
+        </div>
+        <div class="rating-container">
+            <strong>Your Rating</strong>
+            <div class="rating">
+                <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                <label for="star5">☆</label>
+                <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                <label for="star4">☆</label>
+                <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                <label for="star3">☆</label>
+                <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                <label for="star2">☆</label>
+                <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                <label for="star1">☆</label>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <input class="btn user_button_sm" type="submit" value="Submit">
+        </div>
+
+    </form>
+    {% else %}
+    <p class="text-center">Create an account to add a review:</p>
+    <div class="text-center">
+        <a class="btn user_button_sm" href="{% url 'account_signup' %}">Register/Login</a>
+    </div>
+    {% endif %}
+
+    <!-- all reviews reviews -->
+    <div class="reviews mt-5">
+        {% for review in rentals.reviews.all %}
+        <div class="sub_container">
+            <i id="user_circle" class="fas fa-user-circle"></i><span class="user_name"> {{review.user |title }}</span>
+            <div class="card-star">
+                <i class="fa-star {% if review.rating >= 1 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 2 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 3 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 4 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 5 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <strong>{{review.title}}</strong>
+            </div>
+            <p class="date_created"> Commented on {{ review.created }}</p>
+            <p class="review_content">{{review.content }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+{% endblock content %}
