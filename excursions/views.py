@@ -78,3 +78,8 @@ def filter_by_price_ascend(request):
     excursions = Excursions.objects.all().order_by('Price')
     contex = {'excursions':excursions}
     return render(request,'excursions/filter_by_price_ascend.html', contex)
+
+def filter_by_price_descend(request):
+    excursions = Excursions.objects.all().order_by('-Price')
+    contex = {'excursions':excursions, }
+    return render(request,'excursions/filter_by_price_Descend.html', contex)
