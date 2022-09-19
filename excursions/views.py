@@ -60,3 +60,9 @@ def input_search_result(request):
         excursions = Excursions.objects.filter(Q(title__icontains=navbar_input) | Q(description__icontains=navbar_input))
     context = {'excursions': excursions, 'navbar_input': navbar_input}
     return render(request,'excursions/input_search_result.html', context )
+
+# filter the newest excursions
+def newest_excursions(request):
+    excursions = Excursions.objects.all().order_by('-date_created')
+    context = {'excursions': excursions}
+    return render(request, 'excursions/newest_excursions.html', context )

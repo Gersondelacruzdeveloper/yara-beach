@@ -7,4 +7,5 @@ urlpatterns = [
     path('add_images/<int:pk>', views.excursion_images, name="add_images"),
     path('form', views.add_excursions, name="form"),
     path('search/', views.input_search_result, name='search_results'),
+    path('newest/', views.newest_excursions, name='newest_result'),
 ]
