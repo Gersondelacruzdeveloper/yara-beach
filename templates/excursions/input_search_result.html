@@ -1,0 +1,51 @@
+{% extends 'excursions/excursions_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section>
+    {% if navbar_input != '' and excursions %}
+    <h2 class="text-center mt-5"> You search for "{{navbar_input|upper}}"</h2>
+    {% elif navbar_input == '' %}
+    <h2 class="text-center mt-5"> All Excursions</h2>
+    {else}
+    <div></div>
+    {% endif %}
+    
+    <div class="card-container">
+        {% for excursion in excursions %}
+        <div class="card-wrapper">
+            <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
+                    alt="{{excursion.image_name}}"> </a>
+            <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
+            <!-- Reviews -->
+            <div class="card-star">
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                {% if excursion.reviews.count > 1 or excursion.reviews.count == 0 %}
+                <span> {{excursion.reviews.count}} reviews</span>
+                {% else %}
+                <span> {{excursion.reviews.count}} review</span>
+                {% endif%}
+            </div>
+
+            <div class="price">
+                £{{excursion.Price}}
+            </div>
+        </div>
+
+        {% empty %}
+        <div class="no-result">
+            <h1> No results for <span class="site-color">{{navbar_input}}</span> </h1>
+            <p>Try checking your spelling or use more general terms</p>
+        </div>
+        {% endfor %}
+        <div>
+
+
+</section>
+
+{% endblock content %}

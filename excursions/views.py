@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Excursions, Photos,Review
 from .forms import AddExcursionForm
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 
@@ -48,3 +49,14 @@ def add_excursions(request):
         
     context = {'form': form}
     return render(request, 'excursions/add_excursions_form.html', context)
+
+
+# Search excursion in app
+def input_search_result(request):
+    excursions = Excursions.objects.all()
+    navbar_input = request.GET.get('navbar')
+    print(navbar_input)
+    if navbar_input:
+        excursions = Excursions.objects.filter(Q(title__icontains=navbar_input) | Q(description__icontains=navbar_input))
+    context = {'excursions': excursions, 'navbar_input': navbar_input}
+    return render(request,'excursions/input_search_result.html', context )

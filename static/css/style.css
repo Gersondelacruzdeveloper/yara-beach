@@ -185,7 +185,6 @@ body {
     background-color: #f44336; 
 }
 
-
 /* ----------------Animation for home*/
 @keyframes typing {
     0% {
@@ -206,6 +205,14 @@ body {
 .add_excursions_form {
     width: 800px;
     margin: auto;
+}
+/* ------------------------------------------------------------------search classes */
+
+.no-result{
+margin-top:100px;
+}
+.site-color{
+    color:var(--orange-pantone)
 }
 
 /* -------------------------------------------------------------------- detail page */

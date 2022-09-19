@@ -59,6 +59,7 @@
                             <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i>
                                 Home</a>
                         </li>
+                        <!-- Sort by -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -85,6 +86,7 @@
                             </ul>
                         </li>
                         {% else %}
+                        <!-- user settings -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -101,14 +103,22 @@
                         </li>
 
                         {% endif %}
+                        <!-- Contacts -->
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i> Contact us</a>
                         </li>
                     </div>
 
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search excursions" aria-label="Search">
+                <!-- Search form -->
+                <form class="d-flex" role="search" method="get" autocomplete="on" action="{% url 'search_results' %}">
+                    {% if navbar_input %}
+                    <input class="form-control me-2" type="search" name="navbar" placeholder="{{navbar_input}}"
+                        aria-label="Search">
+                    {% else %}
+                    <input class="form-control me-2" type="search" name="navbar" placeholder="Search excursions"
+                        aria-label="Search">
+                    {% endif %}
                     <button class="btn sear-btn btn-outline-secondary" type="submit">Search</button>
                 </form>
             </div>
