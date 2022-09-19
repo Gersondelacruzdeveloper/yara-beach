@@ -8,4 +8,5 @@ urlpatterns = [
     path('form', views.add_excursions, name="form"),
     path('search/', views.input_search_result, name='search_results'),
     path('newest/', views.newest_excursions, name='newest_result'),
+    path('oldest', views.oldest_excursions, name='oldest_result'),
 ]

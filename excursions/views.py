@@ -61,8 +61,14 @@ def input_search_result(request):
     context = {'excursions': excursions, 'navbar_input': navbar_input}
     return render(request,'excursions/input_search_result.html', context )
 
-# filter the newest excursions
+# filter from newest to oldest excursions
 def newest_excursions(request):
     excursions = Excursions.objects.all().order_by('-date_created')
     context = {'excursions': excursions}
     return render(request, 'excursions/newest_excursions.html', context )
+
+# filter from oldest to newest excursions
+def oldest_excursions(request):
+    excursions = Excursions.objects.all().order_by('date_created')
+    content = {'excursions': excursions}
+    return render(request, 'excursions/oldest_excursions.html', content )
