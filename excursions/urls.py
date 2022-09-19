@@ -9,4 +9,5 @@ urlpatterns = [
     path('search/', views.input_search_result, name='search_results'),
     path('newest/', views.newest_excursions, name='newest_result'),
     path('oldest', views.oldest_excursions, name='oldest_result'),
+    path('filter_by_ascend/', views.filter_by_price_ascend, name='filter_by_ascend'),
 ]

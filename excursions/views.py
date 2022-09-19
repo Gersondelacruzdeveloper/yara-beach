@@ -72,3 +72,9 @@ def oldest_excursions(request):
     excursions = Excursions.objects.all().order_by('date_created')
     content = {'excursions': excursions}
     return render(request, 'excursions/oldest_excursions.html', content )
+
+# filter excursions from low to high
+def filter_by_price_ascend(request):
+    excursions = Excursions.objects.all().order_by('Price')
+    contex = {'excursions':excursions}
+    return render(request,'excursions/filter_by_price_ascend.html', contex)
