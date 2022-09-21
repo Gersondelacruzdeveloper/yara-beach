@@ -53,3 +53,10 @@ def oldest_rentals(request):
     rentals = Rentals.objects.all().order_by('date_created')
     content = {'rentals': rentals}
     return render(request, 'rentals/oldest_rentals.html', content )
+
+
+# filter rentals from low price to high
+def filter_by_price_ascend(request):
+    rentals = Rentals.objects.all().order_by('Price')
+    contex = {'rentals':rentals}
+    return render(request,'rentals/filter_by_price_ascend.html', contex)
