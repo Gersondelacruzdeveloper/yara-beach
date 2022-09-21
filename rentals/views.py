@@ -31,7 +31,7 @@ def rental_details(request, pk):
     return render(request, 'rentals/rental_details.html', context)
 
 
-# Search excursion in app
+# Search rentals in app
 def input_search_result(request):
     rentals = Rentals.objects.all()
     navbar_input = request.GET.get('navbar')
@@ -39,3 +39,10 @@ def input_search_result(request):
         rentals = Rentals.objects.filter(Q(title__icontains=navbar_input) | Q(description__icontains=navbar_input))
     context = {'rentals': rentals, 'navbar_input': navbar_input}
     return render(request,'rentals/input_search_result.html', context )
+
+
+# filter from newest to oldest rentals
+def newest_rentals(request):
+    rentals = Rentals.objects.all().order_by('-date_created')
+    context = {'rentals': rentals}
+    return render(request, 'rentals/newest_rentals.html', context )
