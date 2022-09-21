@@ -72,3 +72,15 @@ def filter_by_rooms(request):
     rentals = Rentals.objects.filter(ACCOM_type = 'Room')
     contex = {'rentals':rentals}
     return render(request,'rentals/filters.html', contex)
+
+# filter by apartment
+def filter_by_apartments(request):
+    rentals = Rentals.objects.filter(ACCOM_type = 'Apartment')
+    contex = {'rentals':rentals}
+    return render(request,'rentals/filters.html', contex)
+
+# filter by villas
+def filter_by_villas(request):
+    rentals = Rentals.objects.filter(ACCOM_type = 'Villa')
+    contex = {'rentals':rentals}
+    return render(request,'rentals/filters.html', contex)
