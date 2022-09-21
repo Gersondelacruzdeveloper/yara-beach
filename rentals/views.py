@@ -46,3 +46,10 @@ def newest_rentals(request):
     rentals = Rentals.objects.all().order_by('-date_created')
     context = {'rentals': rentals}
     return render(request, 'rentals/newest_rentals.html', context )
+
+
+# filter from oldest to newest rentals
+def oldest_rentals(request):
+    rentals = Rentals.objects.all().order_by('date_created')
+    content = {'rentals': rentals}
+    return render(request, 'rentals/oldest_rentals.html', content )
