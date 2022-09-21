@@ -7,7 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Creates a Rentals model containing data about each individual Rentals
 class Rentals(models.Model):
     CHOICES = (
-       ('House', ('Entire House')),
+       ('Villa', ('Entire Villa')),
        ('Apartment', ('Entire Aparment')),
        ('Room', ('Single Room')),
     )
