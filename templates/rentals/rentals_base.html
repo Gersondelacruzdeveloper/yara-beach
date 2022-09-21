@@ -109,7 +109,7 @@
 
                 </ul>
                 <!-- Search form -->
-                <form class="d-flex" role="search" method="get" autocomplete="on" action="{% url 'search_results' %}">
+                <form class="d-flex" role="search" method="get" autocomplete="on" action="{% url 'rental_search_results' %}">
                     {% if navbar_input %}
                     <input class="form-control me-2" type="search" name="navbar" placeholder="{{navbar_input}}"
                         aria-label="Search">

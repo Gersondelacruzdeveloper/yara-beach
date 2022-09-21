@@ -55,7 +55,6 @@ def add_excursions(request):
 def input_search_result(request):
     excursions = Excursions.objects.all()
     navbar_input = request.GET.get('navbar')
-    print(navbar_input)
     if navbar_input:
         excursions = Excursions.objects.filter(Q(title__icontains=navbar_input) | Q(description__icontains=navbar_input))
     context = {'excursions': excursions, 'navbar_input': navbar_input}
