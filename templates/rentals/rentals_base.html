@@ -44,7 +44,7 @@
 <body>
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"></i><img src="{% static 'images/Yara-logo.png' %}"
+            <a class="navbar-brand" href="{% url 'home' %}"></i><img src="{% static 'images/Yara-logo.png' %}"
                     alt="Yara name with a palm tree"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -59,6 +59,7 @@
                             <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i>
                                 Home</a>
                         </li>
+                         <!-- Sort by -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -86,6 +87,7 @@
                             </ul>
                         </li>
                         {% else %}
+                          <!-- user settings -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -98,16 +100,23 @@
                                             class="fa-solid fa-user-plus"></i> Change Password</a></li>
                             </ul>
                         </li>
-
                         {% endif %}
+                         <!-- Contacts -->
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i> Contact us</a>
                         </li>
                     </div>
 
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search rentals" aria-label="Search">
+                <!-- Search form -->
+                <form class="d-flex" role="search" method="get" autocomplete="on" action="{% url 'search_results' %}">
+                    {% if navbar_input %}
+                    <input class="form-control me-2" type="search" name="navbar" placeholder="{{navbar_input}}"
+                        aria-label="Search">
+                    {% else %}
+                    <input class="form-control me-2" type="search" name="navbar" placeholder="Search excursions"
+                        aria-label="Search">
+                    {% endif %}
                     <button class="btn sear-btn btn-outline-secondary" type="submit">Search</button>
                 </form>
             </div>
