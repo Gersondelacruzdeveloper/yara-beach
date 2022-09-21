@@ -45,24 +45,24 @@ def input_search_result(request):
 def newest_rentals(request):
     rentals = Rentals.objects.all().order_by('-date_created')
     context = {'rentals': rentals}
-    return render(request, 'rentals/newest_rentals.html', context )
+    return render(request, 'rentals/filters.html', context )
 
 
 # filter from oldest to newest rentals
 def oldest_rentals(request):
     rentals = Rentals.objects.all().order_by('date_created')
     content = {'rentals': rentals}
-    return render(request, 'rentals/oldest_rentals.html', content )
+    return render(request, 'rentals/filters.html', content )
 
 
 # filter rentals from low price to high
 def filter_by_price_ascend(request):
     rentals = Rentals.objects.all().order_by('Price')
     contex = {'rentals':rentals}
-    return render(request,'rentals/filter_by_price_ascend.html', contex)
+    return render(request,'rentals/filters.html', contex)
 
 # filter rentals from low price to high
 def filter_by_price_descend(request):
     rentals = Rentals.objects.all().order_by('-Price')
     contex = {'rentals':rentals}
-    return render(request,'rentals/filter.html', contex)
+    return render(request,'rentals/filters.html', contex)

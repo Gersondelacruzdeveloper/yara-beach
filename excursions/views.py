@@ -64,22 +64,23 @@ def input_search_result(request):
 def newest_excursions(request):
     excursions = Excursions.objects.all().order_by('-date_created')
     context = {'excursions': excursions}
-    return render(request, 'excursions/newest_excursions.html', context )
+    return render(request, 'excursions/filters.html', context )
 
 # filter from oldest to newest excursions
 def oldest_excursions(request):
     excursions = Excursions.objects.all().order_by('date_created')
     content = {'excursions': excursions}
-    return render(request, 'excursions/oldest_excursions.html', content )
+    return render(request, 'excursions/filters.html', content )
 
 # filter excursions from low price to high
 def filter_by_price_ascend(request):
     excursions = Excursions.objects.all().order_by('Price')
     contex = {'excursions':excursions}
-    return render(request,'excursions/filter_by_price_ascend.html', contex)
+    return render(request,'excursions/filters.html', contex)
 
 # filter excursions from high price to low
 def filter_by_price_descend(request):
     excursions = Excursions.objects.all().order_by('-Price')
     contex = {'excursions':excursions, }
-    return render(request,'excursions/filter_by_price_Descend.html', contex)
+    return render(request,'excursions/filters.html', contex)
+    
