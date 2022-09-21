@@ -60,3 +60,9 @@ def filter_by_price_ascend(request):
     rentals = Rentals.objects.all().order_by('Price')
     contex = {'rentals':rentals}
     return render(request,'rentals/filter_by_price_ascend.html', contex)
+
+# filter rentals from low price to high
+def filter_by_price_descend(request):
+    rentals = Rentals.objects.all().order_by('-Price')
+    contex = {'rentals':rentals}
+    return render(request,'rentals/filter.html', contex)

@@ -69,13 +69,12 @@
                                 <li><a class="dropdown-item" href="{% url 'newest_rentals_result' %}"></i>Sort by newest</a></li>
                                 <li><a class="dropdown-item" href="{% url 'oldest_rentals_result' %}">Sort by Oldest</a></li>
                                 <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_ascend' %}">Price (low to high)</a></li>
-                                <li><a class="dropdown-item" href="">Price (high to low) </a></li>
+                                <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_descend' %}">Price (high to low) </a></li>
                                 <li><a class="dropdown-item" href="">All Rooms </a></li>
                                 <li><a class="dropdown-item" href="">All Apartments </a></li>
                                 <li><a class="dropdown-item" href="">All Villas</a></li>
                             </ul>
                         </li>
-                        
                         {% if not user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
