@@ -66,3 +66,9 @@ def filter_by_price_descend(request):
     rentals = Rentals.objects.all().order_by('-Price')
     contex = {'rentals':rentals}
     return render(request,'rentals/filters.html', contex)
+
+# filter by rooms
+def filter_by_rooms(request):
+    rentals = Rentals.objects.filter(ACCOM_type = 'Room')
+    contex = {'rentals':rentals}
+    return render(request,'rentals/filters.html', contex)
