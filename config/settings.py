@@ -50,11 +50,13 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     'ckeditor',
     'ckeditor_uploader',
+    'storages',
     # My apps
     'home',
     'excursions',
     'rentals',
     'administrator'
+
 ]
 
 # social acount 
@@ -173,6 +175,10 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+# for static files in production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # new
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -198,3 +204,4 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+
