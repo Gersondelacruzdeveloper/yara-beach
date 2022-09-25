@@ -53,37 +53,55 @@ def newest_rentals(request):
 
 # filter from oldest to newest rentals
 def oldest_rentals(request):
-    rentals = Rentals.objects.all().order_by('date_created')
-    content = {'rentals': rentals}
-    return render(request, 'rentals/filters.html', content )
+    counts = Rentals.objects.all().order_by('date_created').count()
+    p = Paginator(Rentals.objects.all().order_by('date_created'), 1)
+    page = request.GET.get('page')
+    rentals = p.get_page(page)
+    context = {'rentals': rentals, 'counts': counts}
+    return render(request, 'rentals/filters.html', context )
 
 
 # filter rentals from low price to high
 def filter_by_price_ascend(request):
-    rentals = Rentals.objects.all().order_by('Price')
-    contex = {'rentals':rentals}
-    return render(request,'rentals/filters.html', contex)
+    counts = Rentals.objects.all().order_by('Price').count()
+    p = Paginator(Rentals.objects.all().order_by('Price'), 1)
+    page = request.GET.get('page')
+    rentals = p.get_page(page)
+    context = {'rentals': rentals, 'counts': counts}
+    return render(request,'rentals/filters.html', context)
 
 # filter rentals from low price to high
 def filter_by_price_descend(request):
-    rentals = Rentals.objects.all().order_by('-Price')
-    contex = {'rentals':rentals}
-    return render(request,'rentals/filters.html', contex)
+    counts = Rentals.objects.all().order_by('-Price').count()
+    p = Paginator(Rentals.objects.all().order_by('-Price'), 1)
+    page = request.GET.get('page')
+    rentals = p.get_page(page)
+    context = {'rentals': rentals, 'counts': counts}
+    return render(request,'rentals/filters.html', context)
 
 # filter by rooms
 def filter_by_rooms(request):
-    rentals = Rentals.objects.filter(ACCOM_type = 'Room')
-    contex = {'rentals':rentals}
-    return render(request,'rentals/filters.html', contex)
+    counts = Rentals.objects.filter(ACCOM_type = 'Room').count()
+    p = Paginator(Rentals.objects.filter(ACCOM_type = 'Room'), 1)
+    page = request.GET.get('page')
+    rentals = p.get_page(page)
+    context = {'rentals': rentals, 'counts': counts}
+    return render(request,'rentals/filters.html', context)
 
 # filter by apartment
 def filter_by_apartments(request):
-    rentals = Rentals.objects.filter(ACCOM_type = 'Apartment')
-    contex = {'rentals':rentals}
-    return render(request,'rentals/filters.html', contex)
+    counts = Rentals.objects.filter(ACCOM_type = 'Apartment').count()
+    p = Paginator(Rentals.objects.filter(ACCOM_type = 'Apartment'), 1)
+    page = request.GET.get('page')
+    rentals = p.get_page(page)
+    context = {'rentals': rentals, 'counts': counts}
+    return render(request,'rentals/filters.html', context)
 
 # filter by villas
 def filter_by_villas(request):
-    rentals = Rentals.objects.filter(ACCOM_type = 'Villa')
-    contex = {'rentals':rentals}
-    return render(request,'rentals/filters.html', contex)
+    counts = Rentals.objects.filter(ACCOM_type = 'Villa').count()
+    p = Paginator(Rentals.objects.filter(ACCOM_type = 'Villa'), 1)
+    page = request.GET.get('page')
+    rentals = p.get_page(page)
+    context = {'rentals': rentals, 'counts': counts}
+    return render(request,'rentals/filters.html', context)
