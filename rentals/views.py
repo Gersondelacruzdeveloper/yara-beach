@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Rentals,Review
 from django.contrib import messages
 from django.db.models import Q
-
+from django.core.paginator import Paginator
 # Create your views here.
 
 # Show all the rentals
@@ -43,8 +43,11 @@ def input_search_result(request):
 
 # filter from newest to oldest rentals
 def newest_rentals(request):
-    rentals = Rentals.objects.all().order_by('-date_created')
-    context = {'rentals': rentals}
+    counts = Rentals.objects.all().order_by('-date_created').count()
+    p = Paginator(Rentals.objects.all().order_by('-date_created'), 1)
+    page = request.GET.get('page')
+    rentals = p.get_page(page)
+    context = {'rentals': rentals, 'counts': counts}
     return render(request, 'rentals/filters.html', context )
 
 

@@ -9,7 +9,8 @@
     <div class="card-container">
         {% for rental in rentals %}
         <div class="card-wrapper">
-            <a href="{% url 'rental_detail' rental.pk %}"><img src="{{rental.main_image.url}}" alt="{{rental.image_name}}"> </a>
+            <a href="{% url 'rental_detail' rental.pk %}"><img src="{{rental.main_image.url}}"
+                    alt="{{rental.image_name}}"> </a>
             <h5 class="card-title">{{rental.title|slice:":30"|title}}..</h5>
             <span
                 class="ACCOM_type {% if rental.ACCOM_type == 'Room' %} green {% elif rental.ACCOM_type == 'Apartment' %} blue {% else %} red {% endif %}">{{rental.ACCOM_type}}</span>
@@ -31,9 +32,63 @@
                 £{{rental.Price}}
             </div>
         </div>
+        {% endfor%} 
+    </div>
 
-        {% endfor%}
-        <div>
+     <!--Pagination-->
+    {% if counts > 7 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if rentals.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ rentals.previous_page_number }}">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+            </li>
+            {% endif %}
+
+            {% if rentals.number|add:'-4' > 1 %}
+            <li class="page-item"><a class="page-link" href="?page={{ rentals.number|add:'-5' }}">&hellip;</a></li>
+            {% endif %}
+
+            {% for i in rentals.paginator.page_range %}
+            {% if rentals.number == i %}
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">
+                    {{ i }}
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            {% elif i > rentals.number|add:'-5' and i < rentals.number|add:'5' %} <li class="page-item"><a
+                    class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if rentals.paginator.num_pages > rentals.number|add:'4' %}
+                <li class="page-item"><a class="page-link" href="?page={{ rentals.number|add:'5' }}">&hellip;</a></li>
+                {% endif %}
+
+                {% if rentals.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ rentals.next_page_number }}">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
+                </li>
+                {% endif %}
+        </ul>
+    </nav>
+    <!--end of Pagination-->
+    {%endif%}
+
+
+
+
+
+
 </section>
 
 {% endblock content %}
