@@ -29,6 +29,59 @@
             </div>
         </div>
         {% endfor %}
+    </div>
+
+
+     <!--Pagination-->
+    {% if counts > 1 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if excursions.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ excursions.previous_page_number }}">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+            </li>
+            {% endif %}
+
+            {% if excursions.number|add:'-4' > 1 %}
+            <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'-5' }}">&hellip;</a></li>
+            {% endif %}
+
+            {% for i in excursions.paginator.page_range %}
+            {% if excursions.number == i %}
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">
+                    {{ i }}
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            {% elif i > excursions.number|add:'-5' and i < excursions.number|add:'5' %} <li class="page-item"><a
+                    class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
+                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a></li>
+                {% endif %}
+
+                {% if excursions.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ excursions.next_page_number }}">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
+                </li>
+                {% endif %}
+        </ul>
+    </nav>
+    <!--end of Pagination-->
+    {%endif%}
+
+
 
 </section>
 

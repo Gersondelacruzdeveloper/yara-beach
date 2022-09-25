@@ -44,7 +44,7 @@ def input_search_result(request):
 # filter from newest to oldest rentals
 def newest_rentals(request):
     counts = Rentals.objects.all().order_by('-date_created').count()
-    p = Paginator(Rentals.objects.all().order_by('-date_created'), 1)
+    p = Paginator(Rentals.objects.all().order_by('-date_created'), 2)
     page = request.GET.get('page')
     rentals = p.get_page(page)
     context = {'rentals': rentals, 'counts': counts}

@@ -3,6 +3,7 @@ from .models import Excursions, Photos,Review
 from .forms import AddExcursionForm
 from django.contrib import messages
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -62,25 +63,38 @@ def input_search_result(request):
 
 # filter from newest to oldest excursions
 def newest_excursions(request):
-    excursions = Excursions.objects.all().order_by('-date_created')
-    context = {'excursions': excursions}
+    counts = Excursions.objects.all().order_by('-date_created').count()
+    p = Paginator(Excursions.objects.all().order_by('-date_created'), 2)
+    page = request.GET.get('page')
+    excursions = p.get_page(page)
+    context = {'excursions': excursions,'counts': counts}
     return render(request, 'excursions/filters.html', context )
+
 
 # filter from oldest to newest excursions
 def oldest_excursions(request):
-    excursions = Excursions.objects.all().order_by('date_created')
-    content = {'excursions': excursions}
-    return render(request, 'excursions/filters.html', content )
+    counts = Excursions.objects.all().order_by('date_created').count()
+    p = Paginator(Excursions.objects.all().order_by('date_created'), 2)
+    page = request.GET.get('page')
+    excursions = p.get_page(page)
+    context = {'excursions': excursions,'counts': counts}
+    return render(request, 'excursions/filters.html', context )
 
 # filter excursions from low price to high
 def filter_by_price_ascend(request):
-    excursions = Excursions.objects.all().order_by('Price')
-    contex = {'excursions':excursions}
-    return render(request,'excursions/filters.html', contex)
+    counts = Excursions.objects.all().order_by('Price').count()
+    p = Paginator(Excursions.objects.all().order_by('Price'), 2)
+    page = request.GET.get('page')
+    excursions = p.get_page(page)
+    context = {'excursions': excursions,'counts': counts}
+    return render(request,'excursions/filters.html', context)
 
 # filter excursions from high price to low
 def filter_by_price_descend(request):
-    excursions = Excursions.objects.all().order_by('-Price')
-    contex = {'excursions':excursions, }
-    return render(request,'excursions/filters.html', contex)
+    counts = Excursions.objects.all().order_by('-Price').count()
+    p = Paginator(Excursions.objects.all().order_by('-Price'), 2)
+    page = request.GET.get('page')
+    excursions = p.get_page(page)
+    context = {'excursions': excursions,'counts': counts}
+    return render(request,'excursions/filters.html', context)
     
