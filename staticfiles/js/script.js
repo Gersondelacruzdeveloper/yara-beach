@@ -9,8 +9,6 @@ let activeImages = document.getElementsByClassName('active-image')
 let expandedImg = document.getElementById('expandedImg')
 let arrowLeft = document.getElementById('arrow-left');
 let arrowRight = document.getElementById('arrow-right');
-let index = 1
-
 
 /**
  * 
@@ -19,18 +17,23 @@ let index = 1
 
 function slideShow(list) {
   for (let i = 0; i < list.length; i++) {
+    let index = 1
     list[index].classList.add('active')
     setInterval(() => {
       list[index].classList.remove('active')
       index++
-      if (index === list.length) index = 0
-      list[index].classList.add('active')
-    }, 5000)
+      if (index === list.length) index = 0;
+      list[index].classList.add('active');
+    }, 5000);
   }
 }
 
 slideShow(slide)
 slideShow(heading)
+
+
+
+// detail page
 
 //Add event listener to all thumbnails
 for (let i = 0; i < thumbnails.length; i++) {
