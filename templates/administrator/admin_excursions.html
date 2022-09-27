@@ -24,7 +24,7 @@
                 <td>Inactive</td>
                 <td><img src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}" style="width:75px"></td>
                 <td>{{excursion.date_created}}</td>
-                <td>{{excursion.title}}</td>
+                <td>{{excursion.title|slice:":30"|title}}</td>
                 <td>£{{excursion.Price}}</td>
                 <td><a href=""><button class="btn btn-sm btn-primary"><i class="far fa-edit">
                                 Edit</i></button></a> </td>
