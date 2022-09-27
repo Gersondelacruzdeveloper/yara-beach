@@ -65,7 +65,7 @@
                                 Excursions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="fa-solid fa-bed"></i> Rentals</a>
+                            <a class="nav-link" href="{% url 'admin-rental' %}"><i class="fa-solid fa-bed"></i> Rentals</a>
                         </li>
         
                         {% if not user.is_authenticated %}
