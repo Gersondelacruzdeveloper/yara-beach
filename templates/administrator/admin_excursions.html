@@ -21,7 +21,7 @@
 
             {% for excursion in excursions %}
             <tr>
-                <td>Inactive</td>
+                <td>{{excursion.status}}</td>
                 <td><img src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}" style="width:75px"></td>
                 <td>{{excursion.date_created}}</td>
                 <td>{{excursion.title|slice:":30"|title}}</td>

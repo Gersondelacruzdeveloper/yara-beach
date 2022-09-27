@@ -7,6 +7,10 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # Creates a Excursion model containing data about each individual Excursion
 class Excursions(models.Model):
+    CHOICES = (
+       ('Active', ('Active')),
+       ('Inactive', ('Inactive')),
+    )
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=201, null=True)
     Price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
@@ -14,6 +18,7 @@ class Excursions(models.Model):
     image_name = models.CharField(max_length=201, null=True, blank=True)
     description = RichTextUploadingField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
+    status = models.CharField(choices=CHOICES, default='Inactive', max_length=20)
 
     def __str__(self):
         return self.title
