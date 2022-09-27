@@ -48,6 +48,29 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
 }
+/* -------------------------------------------------------------------- Admin section */
+
+.card-admin-wrapper{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 50px;
+    width:80%;
+    margin: 50px auto;
+}
+
+.color-excursion{
+    background-color: #4cb4c7;
+}
+
+.color-rental{
+    background-color: #7abecc;
+}
+
+.color-user{
+    background-color: #7CD1C0;
+    color:white;
+}
+
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 /* Slides */
