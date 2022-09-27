@@ -60,7 +60,13 @@
                             <a class="nav-link" href="{% url 'administrator' %}"> <i class="fa-solid fa-gauge-high"></i>
                                 Dashboard</a>
                         </li>
-  
+                        <li class="nav-item">
+                            <a class="nav-link" href=""> <i class="fa-solid fa-compass"></i>
+                                Excursions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><i class="fa-solid fa-bed"></i> Rentals</a>
+                        </li>
         
                         {% if not user.is_authenticated %}
                         <li class="nav-item dropdown">

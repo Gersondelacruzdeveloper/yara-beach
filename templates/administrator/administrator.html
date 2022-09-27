@@ -4,7 +4,7 @@
 {% block content %}
 
 <section>
-    <h1 class="text-center mt-5"> Administrations</h1>
+    <h1 class="text-center mt-5">Administration</h1>
     <div class="card-admin-wrapper">
           <!-- show Total Users -->
         <div class="card text-center color-user">
@@ -12,13 +12,13 @@
                 <h5 class="card-title text-white">Total Users</h5>
             </div>
             <div class="card-body">
-                <h3 class="card-title text-white">100</h3>
+                <h3 class="card-title text-white">{{total_users}}</h3>
             </div>
         </div>
         <!-- show Total rentals bookings -->
         <div class="card text-center color-rental">
             <div class="card-header">
-                <h5 class="card-title text-white">Total Rentals</h5>
+                <h5 class="card-title text-white">Total Rental bookings</h5>
             </div>
             <div class="card-body">
                 <h3 class="card-title text-white">10</h3>
@@ -27,13 +27,13 @@
             <!-- show Total excursions bookings -->
         <div class="card text-center text-white color-excursion" >
             <div class="card-header">
-                <h5 class="card-title text-white">Total Excursions</h5>
+                <h5 class="card-title text-white">Total Excursions bookings</h5>
             </div>
             <div class="card-body">
                 <h3 class="card-title text-white">5</h3>
             </div>
         </div>
-        
+
     </div>
 
 </section>
