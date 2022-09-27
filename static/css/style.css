@@ -48,29 +48,74 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
 }
+
 /* -------------------------------------------------------------------- Admin section */
 
-.card-admin-wrapper{
+.card-admin-wrapper {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-column-gap: 50px;
-    width:80%;
+    width: 80%;
     margin: 50px auto;
 }
 
-.color-excursion{
+.color-excursion {
     background-color: #4cb4c7;
 }
 
-.color-rental{
+.color-rental {
     background-color: #7abecc;
 }
 
-.color-user{
+.color-user {
     background-color: #7CD1C0;
-    color:white;
+    color: var(--white);
 }
 
+/* Data tables */
+
+
+.data_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:  #7CD1C0;
+    color: var(--white);
+    border: 1px solid var(--culture);
+    padding: 8px;
+}
+
+.data_table {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--white);
+    margin: auto;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.data_table td {
+    font-family: sans-serif;
+    padding: 10px;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table_wrapper tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table_wrapper tr:hover {
+    background-color: #ddd;
+}
+
+.table_wrapper {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+
+}
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 /* Slides */
@@ -189,7 +234,8 @@ body {
     font-family: var(--font);
     font-weight: 600;
 }
-.ACCOM_type{
+
+.ACCOM_type {
     color: white;
     padding: 2px 30px;
     text-align: center;
@@ -197,15 +243,18 @@ body {
     font-size: 16px;
     border-radius: 10px;
 }
-.green{
-    background-color: #4CAF50; 
+
+.green {
+    background-color: #4CAF50;
 }
-.blue{
-    background-color: #008CBA; 
+
+.blue {
+    background-color: #008CBA;
 
 }
-.red{
-    background-color: #f44336; 
+
+.red {
+    background-color: #f44336;
 }
 
 /* ----------------Animation for home*/
@@ -223,9 +272,9 @@ body {
     }
 }
 
-.center{
+.center {
     margin: 100px auto;
-    width:200px;
+    width: 200px;
 }
 
 
@@ -234,13 +283,15 @@ body {
     width: 800px;
     margin: auto;
 }
+
 /* ------------------------------------------------------------------search classes */
 
-.no-result{
-margin-top:100px;
+.no-result {
+    margin-top: 100px;
 }
-.site-color{
-    color:var(--orange-pantone)
+
+.site-color {
+    color: var(--orange-pantone)
 }
 
 /* -------------------------------------------------------------------- detail page */
@@ -363,7 +414,7 @@ margin-top:100px;
     font-size: 30px;
 }
 
-.user_name{
+.user_name {
     top: -5px;
     position: relative;
     color: var(--black);
@@ -378,79 +429,80 @@ margin-top:100px;
 
 .review_content {
     color: rgb(15, 17, 17);
-  font-family: var(--font);
+    font-family: var(--font);
     font-size: 14px;
     margin: 0px;
     padding: 0px;
 }
 
 /* review form */
-.review-form{
-    width:300px;
-    margin:auto;
+.review-form {
+    width: 300px;
+    margin: auto;
 }
 
 .txt-center {
     text-align: center;
-  }
-  .hide {
+}
+
+.hide {
     display: none;
-  }
-  
-  .clear {
+}
+
+.clear {
     float: none;
     clear: both;
-  }
-  
-  .rating {
-      unicode-bidi: bidi-override;
-      direction: rtl;
-      text-align: center;
-      position: relative;
-      float: left;
-      line-height: 23px;
-  }
-  
-  .rating > label {
-      float: right;
-      display: inline;
-      padding: 0;
-      margin: 0;
-      position: relative;
-      width: 1.1em;
-      cursor: pointer;
-      color: var(--orange-pantone);
-      font-size: 25px;
-  }
-  
-  .rating > label:hover,
-  .rating > label:hover ~ label,
-  .rating > input.radio-btn:checked ~ label {
-      color: transparent;
-  }
-  
-  .rating > label:hover:before,
-  .rating > label:hover ~ label:before,
-  .rating > input.radio-btn:checked ~ label:before,
-  .rating > input.radio-btn:checked ~ label:before {
-      content: "\2605";
-      position: absolute;
-      left: 0;
-      color: var(--orange-pantone);
-  }
+}
 
-  .rating-container{
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+    float: left;
+    line-height: 23px;
+}
+
+.rating>label {
+    float: right;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: var(--orange-pantone);
+    font-size: 25px;
+}
+
+.rating>label:hover,
+.rating>label:hover~label,
+.rating>input.radio-btn:checked~label {
+    color: transparent;
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before,
+.rating>input.radio-btn:checked~label:before,
+.rating>input.radio-btn:checked~label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: var(--orange-pantone);
+}
+
+.rating-container {
     display: grid;
     grid-template-columns: auto auto;
-    justify-content:start;
+    justify-content: start;
     grid-column-gap: 10px;
-  }
+}
 
-  .message{
+.message {
     text-align: center;
-    width:30%;
-     margin:auto;
-  }
+    width: 30%;
+    margin: auto;
+}
 
 /* -------------------------------------------------------------------- accounts signup/signin etc */
 
@@ -774,11 +826,11 @@ ul.socialaccount_providers {
         padding: 1.5rem;
         width: auto;
     }
-    
+
     /* review form */
-    .review-form{
-        width:260px;
-        margin:auto;
+    .review-form {
+        width: 260px;
+        margin: auto;
     }
 
 }

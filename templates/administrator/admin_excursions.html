@@ -6,6 +6,36 @@
 <section>
     <h1 class="text-center mt-5">Excursions Admin</h1>
 
+
+    <div class="table_wrapper table-responsive">
+        <table class="data_table">
+            <tr>
+                <th>Status</th>
+                <th>Image</th>
+                <th>Date created</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            {% for excursion in excursions %}
+            <tr>
+                <td>Inactive</td>
+                <td><img src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}" style="width:75px"></td>
+                <td>{{excursion.date_created}}</td>
+                <td>{{excursion.title}}</td>
+                <td>£{{excursion.Price}}</td>
+                <td><a href=""><button class="btn btn-sm btn-primary"><i class="far fa-edit">
+                                Edit</i></button></a> </td>
+                <td><a href=""><button class="btn btn-sm btn-danger "><i class="fas fa-trash-alt"> Delete</i></button></a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
 </section>
 
 {% endblock content %}
