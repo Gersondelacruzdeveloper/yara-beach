@@ -538,7 +538,7 @@ body {
 
 
 
-.btn:hover {
+.my_hover:hover {
     color: var(--white);
     background-color: var(--orange-pantone-lighter);
     border-color: var(--white);
