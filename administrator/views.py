@@ -25,7 +25,7 @@ def admin_rentals(request):
     context = {'rentals': rentals}
     return render(request, 'administrator/admin_rentals.html', context)
 
-# Add the excursion
+# Add excursion
 def add_excursions(request):
     form = ExcursionForm()
     if request.method == 'POST':
@@ -51,3 +51,14 @@ def edit_excursions(request,pk):
         return redirect('admin-excursion')
     context = {'form':form}
     return render(request, 'administrator/edit_excursion.html', context)
+
+# Delete excursion
+def delete_excursions(request, pk):
+    excursion = Excursions.objects.get(id=pk)
+    title = excursion.title
+    if request.method == 'POST':
+        excursion.delete()
+        messages.success(request, 'Excursion deleted Succesfullly')
+        return redirect('admin-excursion')
+    context = {'excursion':excursion,'title':title}
+    return render(request, 'administrator/delete_excursion.html', context)

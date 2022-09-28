@@ -73,13 +73,11 @@ body {
 }
 
 /* Data tables */
-
-
 .data_table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color:  #7CD1C0;
+    background-color: #7CD1C0;
     color: var(--white);
     border: 1px solid var(--culture);
     padding: 8px;
@@ -116,6 +114,16 @@ body {
     border-collapse: collapse;
 
 }
+
+.delete_wraper {
+    width: 50%;
+    margin: 50px auto;
+}
+
+.delete_img {
+    width: 200px;
+}
+
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 /* Slides */
@@ -543,7 +551,8 @@ body {
     background-color: var(--orange-pantone-lighter);
     border-color: var(--white);
 }
-.my_hover:focus{
+
+.my_hover:focus {
     color: var(--white);
     background-color: var(--orange-pantone-lighter);
     border-color: var(--white);
@@ -786,6 +795,11 @@ ul.socialaccount_providers {
 
     .reviews {
         width: 90%;
+    }
+
+    /* admin section */
+    .delete_img {
+        width: 100%;
     }
 }
 
