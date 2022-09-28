@@ -9,7 +9,7 @@ from django.core.paginator import Paginator
 
 # Show all the excursion
 def excursion(request):
-    excursions = Excursions.objects.all()
+    excursions = Excursions.objects.filter(status='Active')
     context = {'excursions': excursions}
     return render(request, 'excursions/excursions.html', context)
 
