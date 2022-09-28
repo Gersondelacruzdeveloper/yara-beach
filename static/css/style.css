@@ -543,6 +543,11 @@ body {
     background-color: var(--orange-pantone-lighter);
     border-color: var(--white);
 }
+.my_hover:focus{
+    color: var(--white);
+    background-color: var(--orange-pantone-lighter);
+    border-color: var(--white);
+}
 
 .form-title {
     text-align: center;
