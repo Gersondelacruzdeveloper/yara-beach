@@ -3,14 +3,14 @@ from django import forms
 from excursions.models import Excursions
 
 # Gets a already made form  and add the new excursion
-class AddExcursionForm(ModelForm):
+class ExcursionForm(ModelForm):
     class Meta:
         model = Excursions
         fields = '__all__'
         exclude = ['user']
 
     def __init__(self, *args, **kwargs):
-        super(AddExcursionForm, self).__init__(*args, **kwargs)
+        super(ExcursionForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': ' Add title'})
         self.fields['Price'].widget.attrs.update(

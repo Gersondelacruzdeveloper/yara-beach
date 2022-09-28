@@ -2,7 +2,7 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from excursions.models import Excursions
 from rentals.models import Rentals
-from .forms import AddExcursionForm
+from .forms import ExcursionForm
 from django.contrib import messages
 
 # Create your views here.
@@ -27,14 +27,27 @@ def admin_rentals(request):
 
 # Add the excursion
 def add_excursions(request):
-    form = AddExcursionForm()
+    form = ExcursionForm()
     if request.method == 'POST':
         user = request.user
         author = Excursions(user=user)
-        form = AddExcursionForm(request.POST, request.FILES, instance=author)
+        form = ExcursionForm(request.POST, request.FILES, instance=author)
         if form.is_valid():
             form.save()
-            messages.success(request, 'A new excursion has been added')
+            messages.success(request, 'Excursion created Succesfullly')
         return redirect('admin-excursion')
     context = {'form': form}
     return render(request, 'administrator/add_excursions.html', context)
+
+# Edit excursion
+def edit_excursions(request,pk):
+    excursion = Excursions.objects.get(id=pk)
+    form = ExcursionForm(instance=excursion)
+    if request.method == 'POST':
+        form = ExcursionForm(request.POST, request.FILES, instance=excursion,)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Excursion edit Succesfullly')
+        return redirect('admin-excursion')
+    context = {'form':form}
+    return render(request, 'administrator/edit_excursion.html', context)
