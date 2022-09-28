@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Excursions, Photos,Review
-from .forms import AddExcursionForm
+from .models import Excursions, Photos, Review
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -36,20 +35,6 @@ def excursion_images(request, pk):
     excursion = Excursions.objects.get(id=pk)
     context = {'excursions': excursion}
     return render(request, 'excursions/add_more_photos.html', context)
-
-# Add the excursion
-def add_excursions(request):
-    form = AddExcursionForm()
-    if request.method == 'POST':
-        user = request.user
-        author = Excursions(user=user)
-        form = AddExcursionForm(request.POST, request.FILES, instance=author)
-        if form.is_valid():
-            form.save()
-        return redirect('excursions')
-        
-    context = {'form': form}
-    return render(request, 'excursions/add_excursions_form.html', context)
 
 
 # Search excursion in app

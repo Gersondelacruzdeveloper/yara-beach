@@ -7,8 +7,21 @@
     <h1 class="text-center mt-5">Excursions Admin</h1>
 
     <div class="text-center mt-5">
-        <button type="button" class="btn user_button_sm my_hover"><i class="fa-solid fa-plus"></i> Add Excursion</button>
+        <a href="{% url 'add_excursion'%}"><button type="button" class="btn user_button_sm my_hover"><i
+                    class="fa-solid fa-plus"></i> Add Excursion</button></a>
     </div>
+
+    <!-- flass success message -->
+    <div class="message mt-1">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
 
     <div class="table_wrapper table-responsive">
         <table class="data_table">
@@ -31,7 +44,8 @@
                 <td>£{{excursion.Price}}</td>
                 <td><a href=""><button class="btn btn-sm btn-primary"><i class="far fa-edit">
                                 Edit</i></button></a> </td>
-                <td><a href=""><button class="btn btn-sm btn-danger "><i class="fas fa-trash-alt"> Delete</i></button></a>
+                <td><a href=""><button class="btn btn-sm btn-danger "><i class="fas fa-trash-alt">
+                                Delete</i></button></a>
                 </td>
             </tr>
             {% endfor %}
