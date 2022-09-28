@@ -54,7 +54,7 @@ def add_excursions(request):
 
 # Search excursion in app
 def input_search_result(request):
-    excursions = Excursions.objects.all()
+    excursions = Excursions.objects.filter(status='Active')
     navbar_input = request.GET.get('navbar')
     if navbar_input:
         excursions = Excursions.objects.filter(Q(title__icontains=navbar_input) | Q(description__icontains=navbar_input))
@@ -63,8 +63,8 @@ def input_search_result(request):
 
 # filter from newest to oldest excursions
 def newest_excursions(request):
-    counts = Excursions.objects.all().order_by('-date_created').count()
-    p = Paginator(Excursions.objects.all().order_by('-date_created'), 2)
+    counts = Excursions.objects.filter(status='Active').order_by('-date_created').count()
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('-date_created'), 2)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
@@ -73,8 +73,8 @@ def newest_excursions(request):
 
 # filter from oldest to newest excursions
 def oldest_excursions(request):
-    counts = Excursions.objects.all().order_by('date_created').count()
-    p = Paginator(Excursions.objects.all().order_by('date_created'), 2)
+    counts = Excursions.objects.filter(status='Active').order_by('date_created').count()
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('date_created'), 2)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
@@ -82,8 +82,8 @@ def oldest_excursions(request):
 
 # filter excursions from low price to high
 def filter_by_price_ascend(request):
-    counts = Excursions.objects.all().order_by('Price').count()
-    p = Paginator(Excursions.objects.all().order_by('Price'), 2)
+    counts = Excursions.objects.filter(status='Active').order_by('Price').count()
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('Price'), 2)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
@@ -91,8 +91,8 @@ def filter_by_price_ascend(request):
 
 # filter excursions from high price to low
 def filter_by_price_descend(request):
-    counts = Excursions.objects.all().order_by('-Price').count()
-    p = Paginator(Excursions.objects.all().order_by('-Price'), 2)
+    counts = Excursions.objects.filter(status='Active').order_by('-Price').count()
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('-Price'), 2)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
