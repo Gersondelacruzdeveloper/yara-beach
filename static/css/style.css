@@ -124,7 +124,7 @@ body {
     width: 200px;
 }
 
-.thumbnail-form{
+.thumbnail-form {
     padding: 5px;
     border-radius: 10px;
     width: 100px;
@@ -135,10 +135,16 @@ body {
     z-index: -1;
 }
 
-.x-delete{
-    color:red;
-    position:absolute;
+.x-delete {
+    color: red;
+    position: absolute;
     background-color: var(--white);
+}
+
+/* admin form */
+.admin-form {
+    width: 800px;
+    margin: auto;
 }
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
@@ -301,12 +307,6 @@ body {
     width: 200px;
 }
 
-
-/* -------------------------------------------------------------------- forms */
-.add_excursions_form {
-    width: 800px;
-    margin: auto;
-}
 
 /* ------------------------------------------------------------------search classes */
 
@@ -728,6 +728,11 @@ ul.socialaccount_providers {
         font-size: 1rem;
     }
 
+    /* admin form */
+    .admin-form {
+        width: 700px;
+    }
+
 
 }
 
@@ -766,6 +771,12 @@ ul.socialaccount_providers {
         padding: 1.5rem;
         width: 400px;
     }
+
+      /* admin form */
+      .admin-form {
+        width: 90%;
+    }
+
 
 }
 

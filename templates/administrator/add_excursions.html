@@ -5,8 +5,7 @@
 
 <section>
     <h1 class="title mt-5">Add Excursion </h1>
-
-    <form class="add_excursions_form" method="POST" enctype="multipart/form-data" action="{% url 'add_excursion' %}">
+    <form class="admin-form" method="POST" enctype="multipart/form-data" action="{% url 'add_excursion' %}">
         {% csrf_token %}
         <div class="form-row">
             {% csrf_token %}
