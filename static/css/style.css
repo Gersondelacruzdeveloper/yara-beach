@@ -124,6 +124,15 @@ body {
     width: 200px;
 }
 
+.thumbnail-form{
+    padding: 5px;
+    border-radius: 10px;
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 /* Slides */

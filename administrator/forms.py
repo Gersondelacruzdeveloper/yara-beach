@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from excursions.models import Excursions
+from excursions.models import Excursions,Photos
 
 # Gets a already made form  and add the new excursion
 class ExcursionForm(ModelForm):
@@ -17,3 +17,10 @@ class ExcursionForm(ModelForm):
             {'class': 'form-control', 'placeholder': 'Add price..'})
         self.fields['image_name'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Add an image name'})
+
+
+# Gets a already made form and add the new excursion photos
+class ExcursionFormPhotos(ModelForm):
+    class Meta:
+        model = Photos
+        fields = ['images']

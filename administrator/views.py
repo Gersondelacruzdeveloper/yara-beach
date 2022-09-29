@@ -1,8 +1,8 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
-from excursions.models import Excursions
+from excursions.models import Excursions,Photos
 from rentals.models import Rentals
-from .forms import ExcursionForm
+from .forms import ExcursionForm, ExcursionFormPhotos
 from django.contrib import messages
 
 # Create your views here.
@@ -39,17 +39,27 @@ def add_excursions(request):
     context = {'form': form}
     return render(request, 'administrator/add_excursions.html', context)
 
-# Edit excursion
+# Edit excursion and add more photos
 def edit_excursions(request,pk):
-    excursion = Excursions.objects.get(id=pk)
-    form = ExcursionForm(instance=excursion)
+    excursions = Excursions.objects.get(id=pk)
+    form = ExcursionForm(instance=excursions)
+    formPhotos = ExcursionFormPhotos()
     if request.method == 'POST':
-        form = ExcursionForm(request.POST, request.FILES, instance=excursion,)
+        form = ExcursionForm(request.POST, request.FILES, instance=excursions)
+        images = request.FILES.getlist('images')
         if form.is_valid():
+            # Loop through all images and save then 
+            for image in images:
+                photo = Photos.objects.create(
+                    excursion=excursions,
+                    image_name = excursions.image_name,
+                    images= image,
+            )
             form.save()
+            photo.save()
             messages.success(request, 'Excursion edit Succesfullly')
         return redirect('admin-excursion')
-    context = {'form':form}
+    context = {'form':form, 'formPhotos':formPhotos, 'excursions':excursions}
     return render(request, 'administrator/edit_excursion.html', context)
 
 # Delete excursion

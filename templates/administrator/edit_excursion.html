@@ -12,6 +12,13 @@
             {% csrf_token %}
             {{form.media}}
             {{form|crispy}}
+            <!-- Bring all photos from the excursion to view in form -->
+            {% for photo in excursions.photos.all %}
+            <img class="thumbnail-form" src="{{photo.images.url}}" alt="{{photo.image_name}}">
+            {% endfor %}
+            <!-- photo forms -->
+            {{formPhotos.media}}
+            {{formPhotos|crispy}}
             <!-- Add excursion button -->
             <div class="mb-3">
                 <input class="btn my_hover user_button_sm" type="submit" value="Edit Excursion">
@@ -22,4 +29,9 @@
             aria-pressed="true">Cancel</a>
     </form>
 </section>
+<script>
+    let img = document.getElementById('id_images')
+    img.setAttribute("multiple", "")
+    console.log('img', img)
+    </script>
 {% endblock content %}
