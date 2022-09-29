@@ -17,7 +17,7 @@ def administrator(request):
 def admin_excursions(request):
     excursions = Excursions.objects.all()
     context = {'excursions': excursions}
-    return render(request, 'administrator/admin_excursions.html', context)
+    return render(request, 'administrator/excursions/admin_excursions.html', context)
 
 # Query all rentals for admin
 def admin_rentals(request):
@@ -37,7 +37,7 @@ def add_excursions(request):
             messages.success(request, 'Excursion created Succesfullly')
         return redirect('admin-excursion')
     context = {'form': form}
-    return render(request, 'administrator/add_excursions.html', context)
+    return render(request, 'administrator/excursions/add_excursions.html', context)
 
 # Edit excursion and add more photos
 def edit_excursions(request,pk):
@@ -61,7 +61,7 @@ def edit_excursions(request,pk):
             messages.success(request, 'Excursion edit Succesfullly')
         return redirect('admin-excursion')
     context = {'form':form, 'formPhotos':formPhotos, 'excursions':excursions}
-    return render(request, 'administrator/edit_excursion.html', context)
+    return render(request, 'administrator/excursions/edit_excursion.html', context)
 
 # Delete excursion
 def delete_excursions(request, pk):
@@ -72,7 +72,7 @@ def delete_excursions(request, pk):
         messages.success(request, 'Excursion deleted Succesfullly')
         return redirect('admin-excursion')
     context = {'excursion':excursion,'title':title}
-    return render(request, 'administrator/delete_excursion.html', context)
+    return render(request, 'administrator/excursions/delete_excursion.html', context)
 
 # Delete excursion photos
 def delete_excursions_photos(request, pk):
@@ -83,4 +83,4 @@ def delete_excursions_photos(request, pk):
         messages.success(request, 'Photo deleted Succesfullly')
         return redirect('edit_excursion', pk=photo.excursion.id)
     context = {'photo':photo}
-    return render(request, 'administrator/delete_excursion_photos.html', context)
+    return render(request, 'administrator/excursions/delete_excursion_photos.html', context)
