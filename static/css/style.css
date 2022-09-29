@@ -131,8 +131,15 @@ body {
     height: 70px;
     object-fit: cover;
     cursor: pointer;
+    position: relative;
+    z-index: -1;
 }
 
+.x-delete{
+    color:red;
+    position:absolute;
+    background-color: var(--white);
+}
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 /* Slides */

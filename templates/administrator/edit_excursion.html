@@ -12,10 +12,26 @@
             {% csrf_token %}
             {{form.media}}
             {{form|crispy}}
+
+            <!-- flass success message -->
+            <div class="message mt-3">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
             <!-- Bring all photos from the excursion to view in form -->
             {% for photo in excursions.photos.all %}
+            <a href="{% url 'delete_excursions_photo'  photo.pk  %}">
+                <i class="fa-solid fa-circle-xmark x-delete"></i>
+            </a>
             <img class="thumbnail-form" src="{{photo.images.url}}" alt="{{photo.image_name}}">
             {% endfor %}
+
             <!-- photo forms -->
             {{formPhotos.media}}
             {{formPhotos|crispy}}
@@ -32,6 +48,7 @@
 <script>
     let img = document.getElementById('id_images')
     img.setAttribute("multiple", "")
+    img.removeAttribute('required')
     console.log('img', img)
-    </script>
+</script>
 {% endblock content %}

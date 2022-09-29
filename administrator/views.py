@@ -48,15 +48,16 @@ def edit_excursions(request,pk):
         form = ExcursionForm(request.POST, request.FILES, instance=excursions)
         images = request.FILES.getlist('images')
         if form.is_valid():
-            # Loop through all images and save then 
-            for image in images:
-                photo = Photos.objects.create(
+            if images:
+                # Loop through all images and save then 
+                for image in images:
+                    photo = Photos.objects.create(
                     excursion=excursions,
                     image_name = excursions.image_name,
                     images= image,
-            )
+                    )
+                    photo.save()
             form.save()
-            photo.save()
             messages.success(request, 'Excursion edit Succesfullly')
         return redirect('admin-excursion')
     context = {'form':form, 'formPhotos':formPhotos, 'excursions':excursions}
@@ -72,3 +73,14 @@ def delete_excursions(request, pk):
         return redirect('admin-excursion')
     context = {'excursion':excursion,'title':title}
     return render(request, 'administrator/delete_excursion.html', context)
+
+# Delete excursion photos
+def delete_excursions_photos(request, pk):
+    photo = Photos.objects.get(id=pk)
+    print('photo.excursion.id',photo.excursion.id)
+    if request.method == 'POST':
+        photo.delete()
+        messages.success(request, 'Photo deleted Succesfullly')
+        return redirect('edit_excursion', pk=photo.excursion.id)
+    context = {'photo':photo}
+    return render(request, 'administrator/delete_excursion_photos.html', context)
