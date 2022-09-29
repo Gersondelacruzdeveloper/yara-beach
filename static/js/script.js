@@ -9,6 +9,8 @@ let activeImages = document.getElementsByClassName('active-image')
 let expandedImg = document.getElementById('expandedImg')
 let arrowLeft = document.getElementById('arrow-left');
 let arrowRight = document.getElementById('arrow-right');
+// Variables edit page
+let upload_img = document.getElementById('id_images')
 
 /**
  * 
@@ -63,4 +65,13 @@ if (arrowRight) {
   arrowRight.addEventListener('click', function () {
     document.getElementById('allphotos').scrollLeft += 50
   })
+}
+
+
+// Make it posible to add multiple images
+if(upload_img){
+  // add multiple image
+  upload_img.setAttribute("multiple", "")
+  // Remove require atribute in order to allow reverse back with no issues
+  upload_img.removeAttribute('required')
 }
