@@ -12,4 +12,5 @@ urlpatterns = [
     #admin Rentals url path
     path('admin-rental', views.admin_rentals, name="admin-rental"),
     path('add_rental', views.add_rentals, name="add_rental"),
+    path('edit_rental/<int:pk>', views.edit_rentals, name="edit_rental"),
 ]

@@ -1,8 +1,9 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
-from excursions.models import Excursions,Photos
+from excursions.models import Excursions, Photos
 from rentals.models import Rentals
-from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm
+from rentals.models import Photos as Rental_photos
+from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
 from django.contrib import messages
 
 # Create your views here.
@@ -33,6 +34,31 @@ def add_rentals(request):
         return redirect('admin-rental')
     context = {'form': form}
     return render(request, 'administrator/rentals/add_rentals.html', context)
+
+# Edit rentals and add more photos
+def edit_rentals(request,pk):
+    rentals = Rentals.objects.get(id=pk)
+    form = RentalForm(instance=rentals)
+    formPhotos = RentalFormPhotos()
+    if request.method == 'POST':
+        form = RentalForm(request.POST, request.FILES, instance=rentals)
+        images = request.FILES.getlist('images')
+        if form.is_valid():
+            if images:
+                # Loop through all images and save then 
+                for image in images:
+                    photo = Rental_photos.objects.create(
+                    rental=rentals,
+                    image_name = rentals.image_name,
+                    images= image,
+                    )
+                    photo.save()
+            form.save()
+            messages.success(request, 'Rental edit Succesfullly')
+        return redirect('admin-rental')
+    context = {'form':form, 'formPhotos':formPhotos, 'rentals':rentals}
+    return render(request, 'administrator/rentals/edit_rental.html', context)
+
 
 
 # All admin excursion functions are from here below

@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from excursions.models import Excursions, Photos
 from rentals.models import Rentals
-from rentals.models import Photos as rental_photos
+from rentals.models import Photos as Rental_photos
 
 # Gets a already made form  and add the new excursion
 class ExcursionForm(ModelForm):
@@ -43,3 +43,10 @@ class RentalForm(ModelForm):
             {'class': 'form-control', 'placeholder': 'Add price..'})
         self.fields['image_name'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Add an image name'})
+
+
+# Gets a already made form and add the new rental photos
+class RentalFormPhotos(ModelForm):
+    class Meta:
+        model = Rental_photos
+        fields = ['images']

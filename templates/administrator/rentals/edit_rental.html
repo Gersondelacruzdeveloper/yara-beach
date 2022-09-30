@@ -1,0 +1,48 @@
+{% extends 'administrator/administrator_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<section>
+    <h1 class="title mt-5">Edit Rental </h1>
+
+    <form class="admin-form" method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <div class="form-row">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+
+            <!-- flass success message -->
+            <div class="message mt-3">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Bring all photos from the excursion to view in form -->
+            {% for photo in rentals.photos.all %}
+            <a href="">
+                <i class="fa-solid fa-circle-xmark x-delete"></i>
+            </a>
+            <img class="thumbnail-form" src="{{photo.images.url}}" alt="{{photo.image_name}}">
+            {% endfor %}
+
+            <!-- photo forms -->
+            {{formPhotos.media}}
+            {{formPhotos|crispy}}
+            <!-- Add excursion button -->
+            <div class="mb-3">
+                <input class="btn my_hover user_button_sm" type="submit" value="Edit Rental">
+            </div>
+        </div>
+        <!-- Go back to all excursion -->
+        <a href="{% url 'admin-rental' %}" class="btn  my_hover btn-outline-secondary" role="button"
+            aria-pressed="true">Cancel</a>
+    </form>
+</section>
+{% endblock content %}
