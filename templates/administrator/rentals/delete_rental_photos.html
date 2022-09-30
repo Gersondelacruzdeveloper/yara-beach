@@ -12,10 +12,10 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-row">
-            <!-- excursion button for delete -->
+            <!-- rental button for delete -->
             <div class="mt-4 text-center">
                 <input class="btn btn-danger" type="submit" value="Delete">
-                <!-- Go back to all excursion -->
+                <!-- Go back to all rentals -->
                 <a href="{% url 'edit_rental' photo.rental.id  %}" class="btn  my_hover btn-outline-secondary" role="button"
                 aria-pressed="true">Cancel</a>
             </div>

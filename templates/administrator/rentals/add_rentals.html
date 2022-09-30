@@ -11,12 +11,12 @@
             {% csrf_token %}
             {{form.media}}
             {{form|crispy}}
-            <!-- Add excursion button -->
+            <!-- Add rentals button -->
             <div class="mb-3">
                 <input class="btn my_hover user_button_sm" type="submit" value="Add Rental">
             </div>
         </div>
-        <!-- Go back to all excursion -->
+        <!-- Go back to all rentals -->
         <a href="{% url 'admin-rental' %}" class="btn  my_hover btn-outline-secondary" role="button"
             aria-pressed="true">Cancel</a>
     </form>

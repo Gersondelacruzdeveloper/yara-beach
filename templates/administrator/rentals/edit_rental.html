@@ -24,7 +24,7 @@
                 {% endif %}
             </div>
 
-            <!-- Bring all photos from the excursion to view in form -->
+            <!-- Bring all photos from the rentals to view in form -->
             {% for photo in rentals.photos.all %}
             <a href="{% url 'delete_rentals_photo' photo.pk %}">
                 <i class="fa-solid fa-circle-xmark x-delete"></i>
@@ -35,12 +35,12 @@
             <!-- photo forms -->
             {{formPhotos.media}}
             {{formPhotos|crispy}}
-            <!-- Add excursion button -->
+            <!-- Add rental button -->
             <div class="mb-3">
                 <input class="btn my_hover user_button_sm" type="submit" value="Edit Rental">
             </div>
         </div>
-        <!-- Go back to all excursion -->
+        <!-- Go back to all rentals -->
         <a href="{% url 'admin-rental' %}" class="btn  my_hover btn-outline-secondary" role="button"
             aria-pressed="true">Cancel</a>
     </form>
