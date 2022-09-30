@@ -69,8 +69,20 @@ def delete_rentals_photos(request, pk):
     context = {'photo':photo}
     return render(request, 'administrator/rentals/delete_rental_photos.html', context)
 
+# Delete rental
+def delete_rentals(request, pk):
+    rental = Rentals.objects.get(id=pk)
+    title = rental.title
+    if request.method == 'POST':
+        rental.delete()
+        messages.success(request, 'Rental deleted Succesfullly')
+        return redirect('admin-rental')
+    context = {'rental':rental,'title':title}
+    return render(request, 'administrator/rentals/delete_rental.html', context)
 
-# All admin excursion functions are from here below
+
+
+# --------------------------------- All admin excursion functions are from here below
 
 # Query all excursions for admin
 def admin_excursions(request):
