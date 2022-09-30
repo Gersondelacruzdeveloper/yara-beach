@@ -13,17 +13,21 @@ def administrator(request):
     context = {'total_users': total_users}
     return render(request, 'administrator/administrator.html', context)
 
-# Query all excursions for admin
-def admin_excursions(request):
-    excursions = Excursions.objects.all()
-    context = {'excursions': excursions}
-    return render(request, 'administrator/excursions/admin_excursions.html', context)
 
 # Query all rentals for admin
 def admin_rentals(request):
     rentals = Rentals.objects.all()
     context = {'rentals': rentals}
     return render(request, 'administrator/rentals/admin_rentals.html', context)
+
+
+# All admin excursion functions are from here below
+
+# Query all excursions for admin
+def admin_excursions(request):
+    excursions = Excursions.objects.all()
+    context = {'excursions': excursions}
+    return render(request, 'administrator/excursions/admin_excursions.html', context)
 
 # Add excursion
 def add_excursions(request):

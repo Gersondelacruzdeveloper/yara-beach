@@ -6,6 +6,53 @@
 <section>
     <h1 class="text-center mt-5">Rentals Admin</h1>
 
+    <div class="text-center mt-5">
+        <a href=""><button type="button" class="btn user_button_sm my_hover"><i
+                    class="fa-solid fa-plus"></i> Add Rental</button></a>
+    </div>
+
+    <!-- flass success message -->
+    <div class="message mt-3">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- Table data -->
+    <div class="table_wrapper table-responsive">
+        <table class="data_table">
+            <tr>
+                <th>Status</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>Date created</th>
+                <th>Title (Links to excursion details)</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            {% for rental in rentals %}
+            <tr>
+                <td>{{rental.status}}</td>
+                <td>{{rental.ACCOM_type}}</td>
+                <td><img src="{{rental.main_image.url}}" alt="{{rental.image_name}}" style="width:75px"></td>
+                <td>{{rental.date_created}}</td>
+                <td><a href="{% url 'rental_detail' rental.pk %}">{{rental.title|slice:":30"|title}}</td></a>
+                <td>£{{rental.Price}}</td>
+                <td><a href=""><button class="btn btn-sm btn-primary"><i class="far fa-edit">
+                                Edit</i></button></a> </td>
+                <td><a href=""><button class="btn btn-sm btn-danger "><i class="fas fa-trash-alt">
+                                Delete</i></button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </section>
 
 {% endblock content %}
