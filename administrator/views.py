@@ -59,6 +59,15 @@ def edit_rentals(request,pk):
     context = {'form':form, 'formPhotos':formPhotos, 'rentals':rentals}
     return render(request, 'administrator/rentals/edit_rental.html', context)
 
+# Delete rental photos
+def delete_rentals_photos(request, pk):
+    photo = Rental_photos.objects.get(id=pk)
+    if request.method == 'POST':
+        photo.delete()
+        messages.success(request, 'Photo deleted Succesfullly')
+        return redirect('edit_rental', pk=photo.rental.id)
+    context = {'photo':photo}
+    return render(request, 'administrator/rentals/delete_rental_photos.html', context)
 
 
 # All admin excursion functions are from here below
@@ -121,7 +130,6 @@ def delete_excursions(request, pk):
 # Delete excursion photos
 def delete_excursions_photos(request, pk):
     photo = Photos.objects.get(id=pk)
-    print('photo.excursion.id',photo.excursion.id)
     if request.method == 'POST':
         photo.delete()
         messages.success(request, 'Photo deleted Succesfullly')

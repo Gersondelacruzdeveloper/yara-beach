@@ -26,7 +26,7 @@
 
             <!-- Bring all photos from the excursion to view in form -->
             {% for photo in rentals.photos.all %}
-            <a href="">
+            <a href="{% url 'delete_rentals_photo' photo.pk %}">
                 <i class="fa-solid fa-circle-xmark x-delete"></i>
             </a>
             <img class="thumbnail-form" src="{{photo.images.url}}" alt="{{photo.image_name}}">
