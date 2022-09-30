@@ -11,6 +11,10 @@ class Rentals(models.Model):
        ('Apartment', ('Entire Aparment')),
        ('Room', ('Single Room')),
     )
+    STATUS_CHOICES = (
+       ('Active', ('Active')),
+       ('Inactive', ('Inactive')),
+    )
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=201, null=True)
     Price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
@@ -19,6 +23,7 @@ class Rentals(models.Model):
     description = RichTextUploadingField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     ACCOM_type = models.CharField(choices=CHOICES, default='Room', max_length=20)
+    status = models.CharField(choices=STATUS_CHOICES, default='Inactive', max_length=20)
 
     def __str__(self):
         return self.title
