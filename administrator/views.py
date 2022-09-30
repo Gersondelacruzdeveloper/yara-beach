@@ -23,7 +23,7 @@ def admin_excursions(request):
 def admin_rentals(request):
     rentals = Rentals.objects.all()
     context = {'rentals': rentals}
-    return render(request, 'administrator/admin_rentals.html', context)
+    return render(request, 'administrator/rentals/admin_rentals.html', context)
 
 # Add excursion
 def add_excursions(request):
