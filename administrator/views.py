@@ -2,7 +2,7 @@ from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from excursions.models import Excursions,Photos
 from rentals.models import Rentals
-from .forms import ExcursionForm, ExcursionFormPhotos
+from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm
 from django.contrib import messages
 
 # Create your views here.
@@ -19,6 +19,20 @@ def admin_rentals(request):
     rentals = Rentals.objects.all()
     context = {'rentals': rentals}
     return render(request, 'administrator/rentals/admin_rentals.html', context)
+
+# Add rentals
+def add_rentals(request):
+    form = RentalForm()
+    if request.method == 'POST':
+        user = request.user
+        author = Rentals(user=user)
+        form = RentalForm(request.POST, request.FILES, instance=author)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Rental created Succesfullly')
+        return redirect('admin-rental')
+    context = {'form': form}
+    return render(request, 'administrator/rentals/add_rentals.html', context)
 
 
 # All admin excursion functions are from here below
