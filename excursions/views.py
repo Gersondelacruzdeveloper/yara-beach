@@ -83,3 +83,7 @@ def filter_by_price_descend(request):
     context = {'excursions': excursions,'counts': counts}
     return render(request,'excursions/filters.html', context)
     
+# cart function
+def cart(request):
+    context = {}
+    return render(request, 'excursions/cart.html', context)
