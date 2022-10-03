@@ -34,166 +34,81 @@
     </div>
 </section>
 
+
+<!-- excursions sections -->
 <section>
     <div class="section-title">
-        <h3> Top Excursions</h3>
+        <h3>Excursions</h3>
         <div class="my-btn">
             <a class="btn my_hover user_button_sm" href="{% url 'excursions' %}">See all escursions >></a>
         </div>
     </div>
-
     <div class="card-container">
+        {% for excursion in excursions %}
         <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/2d.jpg"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
+            <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
+                    alt="{{excursion.image_name}}"> </a>
+            <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
+            <!-- Reviews -->
             <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                {% if excursion.reviews.count > 1 or excursion.reviews.count == 0 %}
+                <span> {{excursion.reviews.count}} reviews</span>
+                {% else %}
+                <span> {{excursion.reviews.count}} review</span>
+                {% endif%}
             </div>
+
             <div class="price">
-                £320
+                £{{excursion.Price}}
             </div>
-        </div>
-        <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/07/71/e5/77.jpg"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-        <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/0b/b6/b0/ce.jpg"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-        <div class="card-wrapper">
-            <img src="https://media.tacdn.com/media/attractions-splice-spp-360x240/06/6f/33/01.jpg"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-        <div>
         </div>
 
-
-
+        {% endfor%}
+    </div>
 </section>
 
+<!-- rental sections -->
 <section>
     <div class="section-title">
-        <h3> Top stays </h3>
+        <h3> Stays </h3>
         <div class="my-btn">
             <a class="btn my_hover user_button_sm" href="{% url 'rentals' %}">See all stays >></a>
         </div>
     </div>
 
     <div class="card-container">
+        {% for rental in rentals %}
         <div class="card-wrapper">
-            <img src="https://content.r9cdn.net/rimg/kimg/58/48/b4f6c8d34949f9d6.jpg?width=536&height=402&crop=true"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
+            <a href="{% url 'rental_detail' rental.pk %}"><img src="{{rental.main_image.url}}"
+                    alt="{{rental.image_name}}"> </a>
+            <h5 class="card-title">{{rental.title|slice:":30"|title}}..</h5>
+            <span
+                class="ACCOM_type {% if rental.ACCOM_type == 'Room' %} green {% elif rental.ACCOM_type == 'Apartment' %} blue {% else %} red {% endif %}">{{rental.ACCOM_type}}</span>
+            <!-- Reviews -->
             <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                <i class="fa-star fa-solid"></i>
+                {% if rental.reviews.count > 1 or rental.reviews.count == 0 %}
+                <span> {{rental.reviews.count}} reviews</span>
+                {% else %}
+                <span> {{rental.reviews.count}} review</span>
+                {% endif%}
             </div>
+
             <div class="price">
-                £320
+                £{{rental.Price}}
             </div>
         </div>
-        <div class="card-wrapper">
-            <img src="https://content.r9cdn.net/rimg/himg/b1/11/59/ice-76561-68478003_3XL-602480.jpg?width=536&height=402&crop=true"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-        <div class="card-wrapper">
-            <img src="https://content.r9cdn.net/rimg/himg/69/a8/be/arbisoftimages-3214352-Royalton_Bavaro_LR_005-image.jpg?width=536&height=402&crop=true"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
-        <div class="card-wrapper">
-            <img src="https://content.r9cdn.net/rimg/himg/10/a0/17/booking-313415-64680102.jpg_k=5ce3b2673b5e48703db329a46f1b61739c5c4bd4efdfc894b55d53e9b2fa1327_o=-720214.jpg?width=536&height=402&crop=true"
-                alt="boat-escursion image">
-            <h5 class="card-title">Paradisus Palma Real Golf ...</h5>
-            <div class="card-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span> 8.5 very good</span>
-            </div>
-            <div class="price">
-                £320
-            </div>
-        </div>
+
+        {% endfor%}
         <div>
-        </div>
-
-
 </section>
-
-
-
-
 {% endblock content %}
