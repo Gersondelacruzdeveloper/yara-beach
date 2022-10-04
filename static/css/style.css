@@ -750,6 +750,52 @@ ul.socialaccount_providers {
     }
 }
 
+/* -------------------------------------------------------------------- email page comfirmation */
+.email_page-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .sub-container {
+    max-width: 800px;
+    height: auto;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  .sub-container p {
+    font-size: 18px;
+    font-family: "noticia text", serif;
+    color: var(--orange-pantone);
+  }
+  
+  .sub-container h1 {
+    font-family: "noticia text", serif;
+    color: var(--orange-pantone);
+  }
+  
+  .btn_email_sent {
+    background-color: var(--orange-pantone);
+    border: none;
+    color: var(--white);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .btn_email_sent:hover {
+    color: var(--white);
+    background-color: var(--orange-pantone-lighter);
+  }
+  
+  .email_page-wrapper {
+    text-decoration: none;
+  }
+
 /* -------------------------------------------------------------------- Media queries */
 
 /* large devices (tablet, etc 1492px and down) */

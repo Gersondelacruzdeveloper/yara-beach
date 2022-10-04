@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from excursions.models import Excursions
 from rentals.models import Rentals
 
@@ -46,4 +46,10 @@ def contact(request):
 
         email.fail_silently = False
         email.send()
+        return redirect('comfirmation')
     return render(request, 'contact.html')
+
+
+# email comfirmation  for user
+def email_comfirmation_page(request):
+    return render(request, 'email_comfirmation.html')

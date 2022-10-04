@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="email_page-wrapper">
+        <div class="sub-container" class="content-block">
+            <h1>Thanks for reaching out!</h1>
+            <p>Your message was successfully sent. I will do my best to get back to you in a timely manner :)</p>
+            <a id="back-btn" class="btn_email_sent" href="{% url 'home' %}">BACK TO HOME PAGE</a>
+        </div>
+    </div>
+</section>
+{% endblock content %}
