@@ -30,4 +30,20 @@ def home(request):
 
 # Contact form
 def contact(request):
+    if request.method == 'POST':
+        template = render_to_string('email_templates.html', {
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'message': request.POST['message'],
+        })
+
+        email = EmailMessage(
+            request.POST['subject'],
+            template,
+            settings.EMAIL_HOST_USER,
+            ['gersondelacruzdeveloper@gmail.com']
+        )
+
+        email.fail_silently = False
+        email.send()
     return render(request, 'contact.html')
