@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="contact_wrapper">
+
+    <h6 class="contact_word">CONTACT</h6>
+
+    <div class="contact_form">
+
+        <p>Looking forward to answering your email</p>
+        <form id="contact-form" method="POST" action="">
+            {% csrf_token %}
+            <input required class="input-field" type="text" name="name" placeholder="Name">
+            <input required class="input-field" type="text" name="subject" placeholder="Subject">
+            <input required class="input-field" type="email" name="email" placeholder="Email">
+            <textarea required class="input-field" name="message" placeholder="Type your message here..."></textarea>
+            <input class="form_btn" id="submit-btn" type="submit" value="Submit">
+        </form>
+    </div>
+</section>
+{% endblock content %}
