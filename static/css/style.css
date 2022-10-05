@@ -176,7 +176,7 @@ body {
 
 .active {
     display: block;
-
+    z-index: -1;
 }
 
 /* cards sections */
