@@ -50,7 +50,7 @@ body {
 }
 /* --------------------------------------------------------------------  404 and 500 error page*/
 
-#error-404-container {
+#error-404-container{
   width: 50%;
   margin: 10% auto;
 }
@@ -70,6 +70,7 @@ body {
   width: auto;
   margin: 50px auto;
   color: var(--white);
+  text-decoration: none;
 }
 
 .links_for_404:hover {

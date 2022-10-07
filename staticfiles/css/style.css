@@ -70,6 +70,7 @@ body {
   width: auto;
   margin: 50px auto;
   color: var(--white);
+  text-decoration: none;
 }
 
 .links_for_404:hover {
