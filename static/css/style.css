@@ -62,7 +62,7 @@ body {
 
 .links_for_404 {
   font-size: 10px;
-  background-color: var(--deep-jungle-green);
+  background-color: var(--orange-pantone);
   padding: 15px 32px;
   font-size: 16px;
   cursor: pointer;
@@ -73,7 +73,7 @@ body {
 }
 
 .links_for_404:hover {
-  background-color: var(--viridian-green);
+  background-color: var(--orange-pantone-lighter);
   color: var(--white);
 }
 
