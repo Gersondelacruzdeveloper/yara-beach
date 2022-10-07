@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="error-404-container">
+    <h1 class="title">Page not found.</h1>
+    <div class="card">
+        <img src="{% static 'images/404.jpg' %}" alt="404 page">
+        <a class="links_for_404" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Back to safety</a>
+    </div>
+</section>
+{% endblock content %}

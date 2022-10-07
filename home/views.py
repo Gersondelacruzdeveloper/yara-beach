@@ -53,3 +53,8 @@ def contact(request):
 # email comfirmation  for user
 def email_comfirmation_page(request):
     return render(request, 'email_comfirmation.html')
+
+
+# if the page does not exist will through a 404 error
+def page_not_found(request, exception):
+    return render(request, '404.html', status=404)
