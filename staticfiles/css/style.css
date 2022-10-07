@@ -926,6 +926,12 @@ ul.socialaccount_providers {
         width: 700px;
     }
 
+ /* 404 error */
+  .card img {
+    width: 100%;
+    margin: auto;
+  }
+
 
 }
 
@@ -992,8 +998,6 @@ ul.socialaccount_providers {
     font-size: 14px;
     font-weight: bold;
   }
-
-
 
 }
 

@@ -177,6 +177,7 @@ body {
 }
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
+
 /* Slides */
 .home-banner h2 {
     font-family: "Qwitcher Grypen", sans-serif;
@@ -925,6 +926,13 @@ ul.socialaccount_providers {
     .admin-form {
         width: 700px;
     }
+
+   /* 404 error */
+  .card img {
+    width: 100%;
+    margin: auto;
+  }
+
 
 
 }
