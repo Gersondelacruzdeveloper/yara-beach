@@ -31,7 +31,8 @@
             </div>
             <!-- item details aside -->
             <div class="item-detail card">
-                <form>
+                <form class="form" action="{% url 'add_to_cart' excursions.id %}" method="POST">
+                    {% csrf_token %}
                     <!-- price -->
                     <div class="form-row">
                         <div class="detail-price"> <strong>Price:</strong> £{{excursions.Price}}</div>
@@ -40,42 +41,49 @@
                         <!-- date -->
                         <div class="form-group mt-3">
                             <label for="date">Select Date and Travellers</label>
-                            <input type="date" class="form-control" id="date">
+                            <input type="date" class="form-control" id="date" name="excursion_date">
                         </div>
                         <!-- number of adults -->
                         <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect1">Select Adult (11-85 years old)</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <label for="id_adult_qty">Adult (11-85 years old)</label>
+                            <input type="number" class="form-control" id="id_adult_qty" name="adult_qty" value="1" min="1" max="99" data-item_id="{{excursions.id}}">
                         </div>
                         <!-- number of childrens -->
                         <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect1">Select Child (3 - 10 years old)</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>xs
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <label for="id_child_qty"> Child (3 - 10 years old)</label>
+                            <input type="number" class="form-control" id="id_child_qty" name="child_qty" value="1" min="1" max="99">
                         </div>
                         <!-- pick up info -->
                         <div class="form-group mt-3">
                             <label for="inputCity">Place to be pick up</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <input type="text" class="form-control" id="inputCity" name="place_pickup">
                         </div>
-                        <!-- Submit button -->
+                         <!-- hidden input to get the url-->
+                        <input type="hidden" name="redirect_url" value="{{request.path}}">
+
+                        <!-- form btn -->
+                        <div class="form_detail_btn">
+                              <!-- go back to keep shopping btn -->
+                        <div class="form-group mt-3">
+                            <a href="{% url 'excursions' %}" class="user_button_sm my_hover btn">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase"> Keep Shopping</span>
+                            </a>
+                        </div>
+                        
+                         <!-- Submit button -->
                         <div class="form-group mt-3">
                             <button type="submit" class="user_button my_hover btn">Add to cart</button>
+                        </div>
+
                         </div>
                 </form>
             </div>
         </div>
+
+
     </div>
     <h1 class="text-center mt-5">Overview</h1>
     <div class="overview">

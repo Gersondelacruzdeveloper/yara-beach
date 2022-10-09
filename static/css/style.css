@@ -403,7 +403,7 @@ body {
 .item-detail {
     padding: 1.5rem;
     width: 420px;
-    height: 500px;
+    height: 540px;
 }
 
 .photos {
@@ -578,6 +578,11 @@ body {
     margin: auto;
 }
 
+
+.form_detail_btn{
+display: grid;
+grid-template-columns: auto auto;
+}
 /* -------------------------------------------------------------------- accounts signup/signin etc */
 
 .user_card {
