@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'excursions',
     'rentals',
     'administrator',
+    'cart'
 
 ]
 
