@@ -320,18 +320,6 @@ body {
 .cart{
     position: relative;
 }
-.cart_quantity{
-    background-color: var(--orange-pantone);
-    width:25px;
-    height:25px;
-    border-radius: 50%;
-    position: absolute;
-    left:15px;
-    top:20px;
-    color:white;
-    line-height: 10px 50px;
-    padding-left: 8px;
-}
 
 
 /* ----------------Animation for home*/

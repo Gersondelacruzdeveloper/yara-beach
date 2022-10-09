@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 
 # return the cart page
 def view_cart(request):
-    return  render(request, 'cart/cart.html')
+    return render(request, 'cart/cart.html')
 
 # Add a quantity of the specified product to the shopping cart
 def add_to_cart(request, item_id):
@@ -14,17 +14,16 @@ def add_to_cart(request, item_id):
     child_qty = int(request.POST.get('child_qty'))
     place_pickup = request.POST.get('place_pickup')
     redirect_url = request.POST.get("redirect_url")
+    price = request.POST.get("price")
     cart = request.session.get('cart', {})
+
     if item_id in list(cart.keys()):
-         cart['adult_qty'] += adult_qty
-         cart['child_qty'] +=  child_qty
-         cart['excursion_date'] = excursion_date
-         cart['place_pickup'] = place_pickup
+        cart[item_id] += {'adult_qty': adult_qty, 'excursion_date': excursion_date,
+                          'child_qty': child_qty, 'place_pickup': place_pickup, 'price': price}
     else:
-         cart['adult_qty'] = adult_qty
-         cart['child_qty'] =  child_qty
-         cart['excursion_date'] = excursion_date
-         cart['place_pickup'] = place_pickup
+        cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
+                         'child_qty': child_qty, 'place_pickup': place_pickup, 'price': price}
+
     request.session['cart'] = cart
     print(request.session['cart'])
     return redirect(redirect_url)
