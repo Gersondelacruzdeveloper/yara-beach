@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from excursions.models import Excursions
-
+# A content processor, vailable in all templates
 def cart_contents(request):
     cart_items = []
     total = 0
