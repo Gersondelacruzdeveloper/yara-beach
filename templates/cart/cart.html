@@ -3,7 +3,7 @@
 
 {% block content %}
 <section>
-    <div class="container mb-2" >
+    <div class="container mb-2">
         <div class="row">
             <div class="col">
                 <hr>
@@ -15,9 +15,62 @@
         <div class="row">
             <div class="col">
                 {% if cart_items %}
-                {% for i in cart_items %}
-                <div class="table-responsive rounded">{{i}}</div>
-                {% endfor %}
+                <div class="card p-3">
+                    <!-- table -->
+                    <table class="table table-sm table-borderless table-responsive rounded table">
+                        <thead class="text-black">
+                            <!-- table head -->
+                            <tr>
+                                <th scope="col">Excursion image</th>
+                                <th scope="col">Date selected</th>
+                                <th scope="col">Adult Qty</th>
+                                <th scope="col">Child Qty</th>
+                                <th scope="col">Place Pick up</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+
+                        <!-- table data -->
+                        {% for item in cart_items %}
+                        <tr>
+                            <td class="cart-humbnail "><img class="rounded" src="{{item.excursion.main_image.url}}"
+                                    alt="{{item.excursion.image_name}}"></td>
+                            <td>{{item.values.excursion_date}}</td>
+                            <td>{{item.values.adult_qty}}</td>
+                            <td>{{item.values.child_qty}}</td>
+                            <td>{{item.values.place_pickup}}</td>
+                            <td>£{{item.values.price}}</td>
+                            <td>£{{item.subTotal | floatformat:2}}</td>
+                        </tr>
+                        {% endfor %}
+                        <!-- cart total -->
+                        <tr>
+                            <td colspan="5" class="pt-5">
+                                <h6><strong>Cart Total: ${{ total|floatformat:2 }}</strong></h6>
+                            </td>
+                        </tr>
+                        <!-- keep shopping and Secure Checkout -->
+                        <tr>
+                            <td colspan="5" class="text-right">
+                                <a href="{% url 'excursions' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="text-uppercase">Keep Shopping</span>
+                                </a>
+                                <a href="" class="btn btn-black rounded-0 btn-lg">
+                                    <span class="text-uppercase">Secure Checkout</span>
+                                    <span class="icon">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <!--if cart empty -->
                 {% else %}
                 <p class="lead mb-5 text-center">Your cart is empty</p>
                 <a href="{% url 'excursions' %}" class="btn btn-outline-black rounded-o">

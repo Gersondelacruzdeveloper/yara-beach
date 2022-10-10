@@ -321,6 +321,12 @@ body {
     position: relative;
 }
 
+.cart-humbnail img{
+    width: 150px;
+    object-fit: scale-down;
+}
+
+
 
 /* ----------------Animation for home*/
 @keyframes typing {

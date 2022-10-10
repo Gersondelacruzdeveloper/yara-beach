@@ -13,10 +13,12 @@ def cart_contents(request):
         total_price_adult = Decimal(value['price']) * value['adult_qty']
         total_price_children = Decimal(value['price']) / 2 * value['child_qty']
         total += total_price_adult + total_price_children
+        subTotal = total_price_adult + total_price_children
         cart_items.append({
             'item_id':id,
             'values': value,
-            'excursion':excursion
+            'excursion':excursion,
+            'subTotal':subTotal
         })
 
     context = {
