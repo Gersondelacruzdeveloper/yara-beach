@@ -19,10 +19,10 @@ def add_to_cart(request, item_id):
 # if the item id is already on the cart then it update it
     if item_id in list(cart.keys()):
         if 'adult_qty' in cart[item_id].keys():
-            cart[item_id]['adult_qty'] += adult_qty
+            cart[item_id]['adult_qty'] = adult_qty
 
         if 'child_qty' in cart[item_id].keys():
-            cart[item_id]['child_qty'] += child_qty
+            cart[item_id]['child_qty'] = child_qty
 
         if 'place_pickup' in cart[item_id].keys():
             cart[item_id]['place_pickup'] = place_pickup
