@@ -12,6 +12,16 @@
                 <hr>
             </div>
         </div>
+        <!-- flass success message -->
+        <div class="message mt-3">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
 
         {% if cart_items %}
         <div class="cart-container">
@@ -45,7 +55,7 @@
                                 <!-- Adult quantity-->
                                 <td>
                                     <input type="number" class="form-control cart-input" name="cart-adult_qty"
-                                        value="{{item.values.adult_qty}}" min="0" max="99">
+                                        value="{{item.values.adult_qty}}" min="1" max="99">
                                 </td>
                                 <!-- Child quantity-->
 
@@ -57,11 +67,12 @@
                                 <td>{{item.values.place_pickup}}</td>
                                 <td>£{{item.values.price}}</td>
                                 <td>£{{item.subTotal | floatformat:2}}</td>
-                                
-                                <td><button type="submit" class="update-cart-btn"><i class="fa-solid fa-pen-to-square"></i>Update</button></td>
+
+                                <td><button type="submit" class="update-cart-btn"><i
+                                            class="fa-solid fa-pen-to-square"></i>Update</button></td>
 
                                 <td><a class="remove-item" data-excursion_id="{{item.item_id}}"> <i
-                                            class="fa-solid fa-rectangle-xmark cart-icon-x"></i> </a></td>
+                                            class="fa-solid fa-rectangle-xmark cart-icon-x"></i></a></td>
 
                                 <!-- hidden input to get the url-->
                                 <input type="hidden" name="redirect_url" value="{{request.path}}">
@@ -108,4 +119,5 @@
 
     </div>
 </section>
+{% include 'excursions/includes/delete_cart_item_script.html' %}
 {% endblock content %}

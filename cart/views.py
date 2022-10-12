@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import HttpResponse, render, redirect
+from django.contrib import messages
 
 # Create your views here.
 
@@ -42,7 +43,7 @@ def add_to_cart(request, item_id):
     return redirect(redirect_url)
 
 
-# Update the child and adult quantity
+# Update the child and adult quantity from cart
 def update_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     adult_qty = request.POST.get('cart-adult_qty')
@@ -56,4 +57,20 @@ def update_cart(request, item_id):
         if 'child_qty' in cart[item_id].keys():
             cart[item_id]['child_qty'] = child_qty
     request.session['cart'] = cart
+    messages.success(request, 'Cart item Updated Succesfullly')
     return redirect(redirect_url)
+
+
+# Remove the item from the shopping cart
+def remove_from_cart(request, item_id):
+    cart = request.session.get('cart', {})
+
+    try:
+        if item_id in list(cart.keys()):
+         cart.pop(item_id)
+         request.session['cart'] = cart
+         messages.success(request, 'Cart item deleted Succesfullly')
+         return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
