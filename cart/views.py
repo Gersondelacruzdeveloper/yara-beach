@@ -40,3 +40,20 @@ def add_to_cart(request, item_id):
     request.session['cart'] = cart
     print(request.session['cart'])
     return redirect(redirect_url)
+
+
+# Update the child and adult quantity
+def update_cart(request, item_id):
+    redirect_url = request.POST.get('redirect_url')
+    adult_qty = request.POST.get('cart-adult_qty')
+    child_qty = request.POST.get('cart-child_qty')
+    cart = request.session.get('cart', {})
+
+    if item_id in list(cart.keys()):
+        if 'adult_qty' in cart[item_id].keys():
+            cart[item_id]['adult_qty'] = adult_qty
+
+        if 'child_qty' in cart[item_id].keys():
+            cart[item_id]['child_qty'] = child_qty
+    request.session['cart'] = cart
+    return redirect(redirect_url)

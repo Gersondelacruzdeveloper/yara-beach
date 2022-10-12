@@ -317,7 +317,8 @@ body {
     background-color: #f44336;
 }
 
-/* ------------------------------------Cart */
+
+/* --------------------------------------------------------------------- Cart */
 .cart{
     position: relative;
 }
@@ -377,6 +378,18 @@ body {
     padding-left:35px;
     display: grid;
     grid-template-columns: auto auto;
+}
+
+.cart-input{
+    width:65px;
+}
+.update-cart-btn{
+    color:var(--orange-pantone);
+    background-color: var(--white);
+    font-size: 10px;
+}
+.update-cart-btn:hover{
+    border: 2px solid var(--orange-pantone);
 }
 
 
