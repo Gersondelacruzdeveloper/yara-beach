@@ -56,7 +56,7 @@
                         <!-- pick up info -->
                         <div class="form-group mt-3">
                             <label for="inputCity">Place to be pick up</label>
-                            <input type="text" class="form-control" id="inputCity" name="place_pickup" required>
+                            <input type="text" class="form-control" id="inputCity" name="place_pickup" maxlength="26" required>
                         </div>
                          <!-- hidden input to get the url-->
                         <input type="hidden" name="redirect_url" value="{{request.path}}">
