@@ -33,13 +33,14 @@ def add_to_cart(request, item_id):
 
         if 'price' in cart[item_id].keys():
             cart[item_id]['price'] = price
+        messages.success(request, 'You already added this item so we just updated')
     else:
         # if the item id is not in  the cart it will add a new one
         cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
                          'child_qty': child_qty, 'place_pickup': place_pickup, 'price': price}
+        messages.success(request, 'Item added to cart Succesfullly')
 
     request.session['cart'] = cart
-    print(request.session['cart'])
     return redirect(redirect_url)
 
 
