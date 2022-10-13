@@ -31,6 +31,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG", default=False)
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,8 +58,8 @@ INSTALLED_APPS = [
     'excursions',
     'rentals',
     'administrator',
-    'cart'
-
+    'cart',
+    'checkout',
 ]
 
 # social acount 
