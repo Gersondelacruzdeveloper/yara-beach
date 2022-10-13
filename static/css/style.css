@@ -327,6 +327,9 @@ body {
 .site-default-color {
     color: var(--orange-pantone)
 }
+.bg-site-color{
+    background-color: var(--orange-pantone);
+}
 
 .cart-item-detail {
     background-color: var(--white);
@@ -405,6 +408,26 @@ body {
 .update-cart-btn:hover {
     border: 2px solid var(--orange-pantone);
 }
+.visa{
+    color:navy;
+}
+.discover{
+    color:orange;
+}
+
+.amex{
+    color:blue;
+}
+
+.mastercard{
+    color:red;
+}
+
+.visa, .discover, .amex, .mastercard{
+    font-size: 35px;
+}
+
+
 
 /* ----------------Animation for home*/
 @keyframes typing {

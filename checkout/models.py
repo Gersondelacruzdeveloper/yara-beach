@@ -18,6 +18,8 @@ class ExcursionOrder(models.Model):
     child_qty =  models.IntegerField(null=False, blank=False)
     excursion_date = models.DateField(null=False, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
+    customer_email = models.EmailField(null=True, blank=True)
+    cellphone_number = models.CharField(max_length=70, null=True, blank=True)
 
     def _generate_order_number(self):
         """

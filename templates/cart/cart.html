@@ -90,7 +90,7 @@
                 <div><strong>Total:</strong> <span class="float-right">£{{total | floatformat:2}}</span></div>
                 <hr>
                 <!-- keep shopping and Secure Checkout -->
-                <a href="" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
+                <a href="{% url 'checkout' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
                     <span class="text-uppercase">Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>
@@ -103,6 +103,14 @@
                     </span>
                     <span class="text-uppercase">Keep Shopping</span>
                 </a>
+
+                <!-- card icons -->
+                <div class="text-center mt-3">
+                    <i class="fa fa-cc-visa visa" ></i>
+                    <i class="fa fa-cc-amex amex"></i>
+                    <i class="fa fa-cc-mastercard mastercard"></i>
+                    <i class="fa fa-cc-discover discover"></i>
+                </div>
             </div>
 
         </div>

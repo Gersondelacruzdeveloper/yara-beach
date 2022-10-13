@@ -5,7 +5,17 @@
 
 <section>
     <h1 class="text-center mt-5"> All Excursions</h1>
-    
+
+    <div class="message mt-3">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
     <div class="card-container">
         {% for excursion in excursions %}
         <div class="card-wrapper">
@@ -34,7 +44,7 @@
         {% endfor%}
     </div>
 
-     <!--Pagination-->
+    <!--Pagination-->
     {% if counts > 8 %}
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
@@ -66,7 +76,8 @@
                 {% endfor %}
 
                 {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
-                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a>
+                </li>
                 {% endif %}
 
                 {% if excursions.has_next %}
