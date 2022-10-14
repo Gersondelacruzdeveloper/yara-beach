@@ -47,8 +47,7 @@
       <!-- card pytments infomation -->
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Contact info</h4>
-        <form class="needs-validation">
-          <div class="row">
+        <form  action="{% url 'cart' %}" method="POST" id="payment-form">
             <div class="col-md-6 mb-3">
               <label for="full_name">Full name *</label>
               <input type="text" class="form-control" id="full_name" placeholder="Ellon Musk" required>
@@ -58,9 +57,7 @@
               <label for="Phone_number">Phone number</label>
               <input type="text" class="form-control" id="Phone_number" placeholder="Phone number" required>
             </div>
-          </div>
           <hr class="mb-4">
-
           <h4 class="mb-3">Payment</h4>
           <div class="row">
             <div class="col-md-12 mb-3">
@@ -70,7 +67,7 @@
               <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
             </div>
           </div>
-          <button class="btn user_button_sm my_hover btn-lg btn-block" type="submit">Pay £{{total|floatformat:2}}</button>
+          <button type="submit" class="btn user_button_sm my_hover btn-lg btn-block" id="submit-button" >Pay £{{total|floatformat:2}}</button>
         </form>
       </div>
     </div>
