@@ -29,8 +29,8 @@ SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
-
+ALLOWED_HOSTS = env.list("ALLOWED_HOST")
+DEPLOYED = env.bool("DEPLOYED")
 
 # Application definition
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic', # new
+    'whitenoise.runserver_nostatic',  # new
     'django.contrib.staticfiles',
     # Third-party apps installed app
     'allauth.socialaccount.providers.google',
@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'checkout',
 ]
 
-# social acount 
+# social acount
 SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -72,7 +72,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
-SOCIALACCOUNT_LOGIN_ON_GET=True
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -91,7 +91,7 @@ SOCIALACCOUNT_PROVIDERS = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # new
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # new
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -112,7 +112,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', #required by allauth
+                'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # cart will be available everywhere
@@ -136,8 +136,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-"default": env.dj_db_url("DATABASE_URL")
+if DEPLOYED:
+    DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+else:
+    DATABASES = {
+    "default": {
+        'ENGINE': env.str("LOCAL_DB_ENGINE"),
+        'NAME': env.str("LOCAL_DB_NAME"),
+        'USER': env.str("LOCAL_DB_USER"),
+        'PASSWORD': env.str("LOCAL_DB_PASSWORD"),
+        'HOST': env.str("LOCAL_DB_HOST"),
+        'PORT': env.str("LOCAL_DB_PORT"),
+    }
 }
 
 
@@ -177,7 +187,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 
@@ -191,12 +201,12 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # For sending emails
 EMAIL_BACKEND = env.str("EMAIL_BACKEND")
 EMAIL_HOST = env.str("EMAIL_HOST")
-EMAIL_PORT = env.int("EMAIL_PORT") 
+EMAIL_PORT = env.int("EMAIL_PORT")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS")
 EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
 
-#CKEDITOR_UPLOAD_PATH
+# CKEDITOR_UPLOAD_PATH
 CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, 'static/images')
 
 CKEDITOR_CONFIGS = {
@@ -208,18 +218,17 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-
-# Amazon s3 bucket configuration
-AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME")
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+if DEPLOYED:
+    # Amazon s3 bucket configuration
+    AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_REGION_NAME = env.str("AWS_S3_REGION_NAME")
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # stripe
 STRIPE_CURRENCY = env.str("STRIPE_CURRENCY")
 STRIPE_PUBLIC_KEY = env.str("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = env.str("STRIPE_SECRET_KEY")
-

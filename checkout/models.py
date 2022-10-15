@@ -4,22 +4,23 @@ import uuid
 
 # Create your models here.
 
-
-# Creates a Excursion model containing data about each individual Excursion
+#Contain all orders related to excursions
 class ExcursionOrder(models.Model):
     excurion_name = models.CharField(max_length=201, null=False, blank=False)
-    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, default='')
     order_number = models.CharField(max_length=32, null=False, blank=False, editable=False)
-    Full_name = models.CharField(max_length=70, null=False, blank=False)
+    full_name = models.CharField(max_length=70, null=False, blank=False)
     image = models.URLField(null=True, blank=True)
-    Price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    subTotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     adult_qty =  models.IntegerField(null=False, blank=False)
     child_qty =  models.IntegerField(null=False, blank=False)
     excursion_date = models.DateField(null=False, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
     customer_email = models.EmailField(null=True, blank=True)
     cellphone_number = models.CharField(max_length=70, null=True, blank=True)
+    place_pickup = models.CharField(max_length=70, null=True, blank=True)
+
 
     def _generate_order_number(self):
         """
