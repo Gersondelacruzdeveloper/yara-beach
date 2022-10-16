@@ -1,12 +1,12 @@
-from locale import currency
-from django.shortcuts import redirect, render
-from django.contrib import messages
-from cart.contexts import cart_contents
-from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
-import stripe
-from .models import ExcursionOrder
-import datetime
+# from locale import currency
+# from django.shortcuts import redirect, render
+# from django.contrib import messages
+# from cart.contexts import cart_contents
+# from django.conf import settings
+# from django.core.mail import EmailMultiAlternatives
+# import stripe
+# from .models import ExcursionOrder
+# import datetime
 # Create your views here.
 
 # # Chekout and process payment
@@ -89,11 +89,11 @@ import datetime
 # Allow the user know that the purchase has been successful
 
 
-def checkout_success(request):
-    user_orders = ExcursionOrder.objects.all().filter(user=request.user)
-    user_orders = user_orders.filter(date_created=datetime.date.today())
-    excursion_total = 0
-    for item in user_orders:
-        excursion_total += item.subtotal
-    context = {'user_orders': user_orders, 'excursion_total': excursion_total}
-    return render(request, 'checkout/success.html', context)
+# def checkout_success(request):
+#     user_orders = ExcursionOrder.objects.all().filter(user=request.user)
+#     user_orders = user_orders.filter(date_created=datetime.date.today())
+#     excursion_total = 0
+#     for item in user_orders:
+#         excursion_total += item.subtotal
+#     context = {'user_orders': user_orders, 'excursion_total': excursion_total}
+#     return render(request, 'checkout/success.html', context)
