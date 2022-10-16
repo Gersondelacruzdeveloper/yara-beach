@@ -12,7 +12,7 @@ class ExcursionOrder(models.Model):
     full_name = models.CharField(max_length=70, null=False, blank=False)
     image = models.URLField(null=True, blank=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    subTotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     adult_qty =  models.IntegerField(null=False, blank=False)
     child_qty =  models.IntegerField(null=False, blank=False)
     excursion_date = models.DateField(null=False, blank=False)

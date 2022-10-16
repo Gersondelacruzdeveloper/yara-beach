@@ -25,7 +25,7 @@ def checkout(request):
                 image=item['excursion'].main_image.url,
                 cellphone_number=request.POST['Phone_number'],
                 price=item['values']['price'],
-                subTotal=item['subTotal'],
+                subtotal=item['subTotal'],
                 adult_qty=item['values']['adult_qty'],
                 child_qty=item['values']['child_qty'],
                 excursion_date=item['values']['excursion_date'],
@@ -43,7 +43,7 @@ def checkout(request):
         subtitle = "<h3>Here are your bookings from today</h3>"
         template += thanks_booking + subtitle
         for item in user_orders:
-            excursion_total += item.subTotal
+            excursion_total += item.subtotal
             template += f"<p><strong>Item Name:</strong>{item.excursion_name[:25].title()}</p>"
             template += f"<img src='{item.image}' alt='{item.excursion_name}' width='100' height='200'><br/>"
             template += f"<strong>Excursion Date:</strong> {item.excursion_date}<br/>"
@@ -52,7 +52,7 @@ def checkout(request):
                 template += f"<strong>Child Quantity:</strong> {item.child_qty}<br/>"
             template += f"<strong>Pick up:</strong> {item.place_pickup} <br/>"
             template += f"<strong>Excursion Booking Number:</strong> {item.order_number} <br/>"
-            template += f"<strong>SubTotal:</strong> {item.subTotal} <hr>"
+            template += f"<strong>SubTotal:</strong> {item.subtotal} <hr>"
         template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> £{excursion_total} <hr>"
         email = EmailMultiAlternatives(
             'From Yara beach',
@@ -94,6 +94,6 @@ def checkout_success(request):
     user_orders = user_orders.filter(date_created=datetime.date.today())
     excursion_total = 0
     for item in user_orders:
-        excursion_total += item.subTotal
+        excursion_total += item.subtotal
     context = {'user_orders': user_orders, 'excursion_total': excursion_total}
     return render(request, 'checkout/success.html', context)
