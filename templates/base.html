@@ -84,15 +84,16 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i
                                             class="fa-solid fa-user"></i> Logout</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"><i
-                                            class="fa-solid fa-user-plus"></i> Change Password</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"> Change Password</a></li>
+                                <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}"> Excursion Bookings</a></li>
                             </ul>
                         </li>
 
                         {% endif %}
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i> Contact</a>
+                            <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
+                                Contact</a>
                         </li>
                     </div>
 

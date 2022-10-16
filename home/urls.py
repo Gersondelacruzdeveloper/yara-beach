@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('contact/', views.contact, name="contact"),
     path('comfirmation/', views.email_comfirmation_page, name="comfirmation"),
-    path('bookings/', views.customer_bookings, name="customer-bookings"),
+    path('bookings/', views.customer_bookings, name="excursion-bookings"),
 ]

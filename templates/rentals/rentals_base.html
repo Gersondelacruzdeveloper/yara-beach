@@ -59,17 +59,21 @@
                             <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i>
                                 Home</a>
                         </li>
-                         <!-- Sort by -->
+                        <!-- Sort by -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-bed"></i> Sort by
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'newest_rentals_result' %}"></i>Sort by newest</a></li>
-                                <li><a class="dropdown-item" href="{% url 'oldest_rentals_result' %}">Sort by Oldest</a></li>
-                                <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_ascend' %}">Price (low to high)</a></li>
-                                <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_descend' %}">Price (high to low) </a></li>
+                                <li><a class="dropdown-item" href="{% url 'newest_rentals_result' %}"></i>Sort by
+                                        newest</a></li>
+                                <li><a class="dropdown-item" href="{% url 'oldest_rentals_result' %}">Sort by Oldest</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_ascend' %}">Price
+                                        (low to high)</a></li>
+                                <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_descend' %}">Price
+                                        (high to low) </a></li>
                                 <li><a class="dropdown-item" href="{% url 'rooms' %}">All Rooms </a></li>
                                 <li><a class="dropdown-item" href="{% url 'apartments' %}">All Apartments </a></li>
                                 <li><a class="dropdown-item" href="{% url 'villas' %}">All Villas</a></li>
@@ -89,7 +93,7 @@
                             </ul>
                         </li>
                         {% else %}
-                          <!-- user settings -->
+                        <!-- user settings -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -98,20 +102,25 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i
                                             class="fa-solid fa-user"></i> Logout</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"><i
-                                            class="fa-solid fa-user-plus"></i> Change Password</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"> Change
+                                        Password</a></li>
+                                <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}"> Excursion
+                                        Bookings</a></li>
+
                             </ul>
                         </li>
                         {% endif %}
-                         <!-- Contacts -->
+                        <!-- Contacts -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i> Contact</a>
+                            <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
+                                Contact</a>
                         </li>
                     </div>
 
                 </ul>
                 <!-- Search form -->
-                <form class="d-flex" role="search" method="get" autocomplete="on" action="{% url 'rental_search_results' %}">
+                <form class="d-flex" role="search" method="get" autocomplete="on"
+                    action="{% url 'rental_search_results' %}">
                     {% if navbar_input %}
                     <input class="form-control me-2" type="search" name="navbar" placeholder="{{navbar_input}}"
                         aria-label="Search">
