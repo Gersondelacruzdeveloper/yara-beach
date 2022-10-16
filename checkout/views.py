@@ -86,9 +86,8 @@
 #     }
 #     return render(request, 'checkout/checkout.html', context)
 
-# Allow the user know that the purchase has been successful
 
-
+# # Allow the user know that the purchase has been successful
 # def checkout_success(request):
 #     user_orders = ExcursionOrder.objects.all().filter(user=request.user)
 #     user_orders = user_orders.filter(date_created=datetime.date.today())
