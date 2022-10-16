@@ -6,7 +6,7 @@ import uuid
 
 #Contain all orders related to excursions
 class ExcursionOrder(models.Model):
-    excursion_name = models.CharField(max_length=201, null=False, blank=False)
+    excursion_name = models.CharField(max_length=300, null=False, blank=False)
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, default='')
     order_number = models.CharField(max_length=32, null=False, blank=False, editable=False)
     full_name = models.CharField(max_length=70, null=False, blank=False)
