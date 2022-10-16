@@ -63,7 +63,8 @@ def checkout(request):
         email.attach_alternative(template, "text/html")
         email.fail_silently = False
         email.send()
-
+        # Empty the cart when payment has been process
+        request.session['cart'] = {}
         return redirect('checkout-success')
     else:
         if not cart:
