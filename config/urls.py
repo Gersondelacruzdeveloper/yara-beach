@@ -25,7 +25,7 @@ urlpatterns = [
     path('rentals/', include('rentals.urls')),
     path('administrator/', include('administrator.urls')),
     path('cart/', include('cart.urls')),
-    path('checkout/', include('checkout.urls')),
+    # path('checkout/', include('checkout.urls')),
     # accounts for Users
     path('accounts/', include('allauth.urls')),
     #ckeditor_uploader

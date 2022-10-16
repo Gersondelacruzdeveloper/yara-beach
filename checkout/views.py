@@ -7,7 +7,7 @@
 # import stripe
 # from .models import ExcursionOrder
 # import datetime
-# Create your views here.
+# # Create your views here.
 
 # # Chekout and process payment
 # def checkout(request):
