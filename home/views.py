@@ -15,20 +15,20 @@ def home(request):
     excursions = Excursions.objects.all()[:4]
     rentals = Rentals.objects.all()[:4]
     context = {'excursions': excursions, 'rentals':rentals}
-    return render(request, 'home.html', context)
+    return render(request, 'home/home.html', context)
 
 # show excursions and rentals in home page
 def home(request):
     excursions = Excursions.objects.all()[:4]
     rentals = Rentals.objects.all()[:4]
     context = {'excursions': excursions, 'rentals':rentals}
-    return render(request, 'home.html', context)
+    return render(request, 'home/home.html', context)
 
 
 # Contact form
 def contact(request):
     if request.method == 'POST':
-        template = render_to_string('email_templates.html', {
+        template = render_to_string('home/email_templates.html', {
             'name': request.POST['name'],
             'email': request.POST['email'],
             'message': request.POST['message'],
@@ -44,14 +44,19 @@ def contact(request):
         email.fail_silently = False
         email.send()
         return redirect('comfirmation')
-    return render(request, 'contact.html')
+    return render(request, 'home/contact.html')
 
 
 # email comfirmation  for user
 def email_comfirmation_page(request):
-    return render(request, 'email_comfirmation.html')
+    return render(request, 'home/email_comfirmation.html')
 
 
 # if the page does not exist will through a 404 error
 def page_not_found(request, exception):
-    return render(request, '404.html', status=404)
+    return render(request, 'home/404.html', status=404)
+
+# Show the customer bookings
+def customer_bookings(request):
+    context = {}
+    return render(request, 'home/customer_booking.html', context)
