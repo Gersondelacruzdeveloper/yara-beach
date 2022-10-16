@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 import uuid
-
 # Create your models here.
 
 #Contain all orders related to excursions
 class ExcursionOrder(models.Model):
-    excurion_name = models.CharField(max_length=201, null=False, blank=False)
+    excursion_name = models.CharField(max_length=201, null=False, blank=False)
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, default='')
     order_number = models.CharField(max_length=32, null=False, blank=False, editable=False)
     full_name = models.CharField(max_length=70, null=False, blank=False)
@@ -16,7 +16,7 @@ class ExcursionOrder(models.Model):
     adult_qty =  models.IntegerField(null=False, blank=False)
     child_qty =  models.IntegerField(null=False, blank=False)
     excursion_date = models.DateField(null=False, blank=False)
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateField(auto_now_add=True)
     customer_email = models.EmailField(null=True, blank=True)
     cellphone_number = models.CharField(max_length=70, null=True, blank=True)
     place_pickup = models.CharField(max_length=70, null=True, blank=True)

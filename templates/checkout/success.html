@@ -1,0 +1,35 @@
+{% extends 'excursions/excursions_base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="payment">
+                    <div class="payment_header">
+                        <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="content">
+                        <h1>Payment Successfull!</h1>
+                        <h4 class="pt-3">Here are your bookings from today</h4>
+                        {% for item in user_orders %}
+                        <div class="p-2">
+                           <small><strong>Excursion Booking Number:</strong> {{item.order_number}}</small>
+                        </div>
+                        {% endfor %}
+
+                        <strong>Amount paid:</strong>
+                        <span>£{{excursion_total | floatformat:2}}</span>
+                        <div class="pt-2">we have sent you an email with all the info</div>
+                        <div class="mt-5">
+                            <a href="{% url 'home' %}">Go to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
