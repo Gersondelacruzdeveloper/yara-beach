@@ -1,5 +1,9 @@
 from django.shortcuts import HttpResponse, render, redirect
 from django.contrib import messages
+from .utils import take_date_from_str, num_of_days
+from datetime import date
+from django.core.exceptions import ValidationError
+from cart.contexts import form_error
 
 
 # ----------------------------------Excursion cart fucntionality 
@@ -84,44 +88,48 @@ def remove_from_cart(request, item_id):
 def view_rental_cart(request):
     return render(request, 'cart/rentals_cart.html')
 
-
 # Add a rental to the shopping cart
 def add_to_cart_rental(request, item_id):
-    check_in = request.POST.get('check-in')
+    check_in = request.POST.get('check_in')
     checkout = request.POST.get('checkout')
-    adult_qty = int(request.POST.get('adult_qty'))
-    child_qty = int(request.POST.get('child_qty'))
     redirect_url = request.POST.get("redirect_url")
-    price = request.POST.get("price")
-    rental_cart = request.session.get('rental_cart', {})
+    if request.method == 'POST':
+        check_in_str = take_date_from_str(check_in)
+        checkout_str = take_date_from_str(checkout)
+        number_of_days = num_of_days(check_in_str, checkout_str)
+        adult_qty = int(request.POST.get('adult_qty'))
+        child_qty = int(request.POST.get('child_qty'))
+        price = request.POST.get("price")
+        rental_cart = request.session.get('rental_cart', {})
+        # check if the date put it is valid date
+        if number_of_days < 1:
+            error = form_error(request)
+            error['cart_error'] = 'You need to select a valid date'
+            return redirect(redirect_url)
+        else:
+            # if the item id is already on the cart then it update it
+            if item_id in list(rental_cart.keys()):
+                if 'check_in' in rental_cart[item_id].keys():
+                    rental_cart[item_id]['check_in'] = check_in
 
-# if the item id is already on the cart then it update it
-    if item_id in list(rental_cart.keys()):
+                if 'checkout' in rental_cart[item_id].keys():
+                    rental_cart[item_id]['checkout'] = checkout
 
-        if 'check_in' in rental_cart[item_id].keys():
-            rental_cart[item_id]['check_in'] = check_in
+                if 'adult_qty' in rental_cart[item_id].keys():
+                    rental_cart[item_id]['adult_qty'] = adult_qty
 
-        if 'checkout' in rental_cart[item_id].keys():
-            rental_cart[item_id]['checkout'] = checkout
+                if 'child_qty' in rental_cart[item_id].keys():
+                    rental_cart[item_id]['child_qty'] = child_qty
 
-        if 'adult_qty' in rental_cart[item_id].keys():
-            rental_cart[item_id]['adult_qty'] = adult_qty
-
-        if 'child_qty' in rental_cart[item_id].keys():
-            rental_cart[item_id]['child_qty'] = child_qty
-
-        if 'price' in rental_cart[item_id].keys():
-            rental_cart[item_id]['price'] = price
-
-        messages.success(
-            request, 'You already added this item so we just updated')
-    else:
-        # if the item id is not in  the cart it will add a new one
-        rental_cart[item_id] = {'check-in': check_in,  'checkout': checkout,
-                         'adult_qty': adult_qty, 'child_qty': child_qty, 'price': price}
-        messages.success(request, 'Item added to cart Succesfullly')
-
-    request.session['rental_cart'] = rental_cart
-    print('rental_cart', rental_cart)
-    return redirect(redirect_url)
+                if 'price' in rental_cart[item_id].keys():
+                    rental_cart[item_id]['price'] = price
+                    messages.success(
+                        request, 'You already added this item so we just updated')
+            else:
+                    # if the item id is not in  the cart it will add a new one
+                    rental_cart[item_id] = {'check_in': check_in, 'checkout': checkout,
+                                    'adult_qty': adult_qty, 'child_qty': child_qty, 'price': price}
+                    messages.success(request, 'Item added to cart Succesfullly')
+            request.session['rental_cart'] = rental_cart
+            return redirect(redirect_url)
  

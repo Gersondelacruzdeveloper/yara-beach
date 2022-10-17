@@ -2,6 +2,8 @@ from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from excursions.models import Excursions
 from rentals.models import Rentals
+from .utils import take_date_from_str, num_of_days
+
 # A content processor, vailable in all templates
 def cart_contents(request):
     cart_items = []
@@ -34,16 +36,32 @@ def rental_cart_contents(request):
     rental_cart_items = []
     rental_cart_total = 0
     rental_cart = request.session.get('rental_cart', {})
-    print('rental_cart', rental_cart)
     for id, value in rental_cart.items():
         rental = get_object_or_404(Rentals, pk=id)
+        check_in = take_date_from_str(value['check_in'])
+        checkout = take_date_from_str(value['checkout'])
+        price = Decimal(value['price'])
+        number_of_days  = num_of_days(check_in, checkout)
+        sub_total = price * number_of_days
+        rental_cart_total += price * number_of_days
+        print('sub_total', sub_total)
+
         rental_cart_items.append({
             'item_id':id,
             'values': value,
             'rental':rental,
+            'sub_total':sub_total,
+            'number_of_days':number_of_days,
         })
     context = {
         'rental_cart_items':rental_cart_items,
         'rental_cart_total':rental_cart_total,
     }
+    return context
+
+
+# Dot not allow the form to be submited the date is not valid
+def form_error(request):
+    cart_error = ''
+    context = {'cart_error':cart_error}
     return context

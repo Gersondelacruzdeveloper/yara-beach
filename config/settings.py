@@ -118,6 +118,7 @@ TEMPLATES = [
                 # cart context proccessors
                 'cart.contexts.cart_contents',
                 'cart.contexts.rental_cart_contents',
+                'cart.contexts.form_error',
             ],
         },
     },
