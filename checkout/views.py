@@ -45,7 +45,7 @@ def checkout(request):
         for item in user_orders:
             excursion_total += item.subtotal
             template += f"<p><strong>Item Name:</strong>{item.excursion_name[:25].title()}</p>"
-            template += f"<img src='{item.image}' alt='{item.excursion_name}' style='object-fit:cover' width='100' height='200'><br/>"
+            template += f"<img src='{item.image}' alt='{item.excursion_name}' style='object-fit:cover' width='200' height='200'><br/>"
             template += f"<strong>Excursion Date:</strong> {item.excursion_date}<br/>"
             template += f"<strong>Adult Quantity:</strong> {item.adult_qty}<br/>"
             if item.child_qty:
