@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from django.core.validators import URLValidator
 import uuid
 # Create your models here.
 
@@ -10,7 +11,7 @@ class ExcursionOrder(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, default='')
     order_number = models.CharField(max_length=32, null=False, blank=False, editable=False)
     full_name = models.CharField(max_length=70, null=False, blank=False)
-    image = models.CharField(max_length=500, null=True, blank=True)
+    image = models.TextField(validators=[URLValidator()], null=True, blank=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     adult_qty =  models.IntegerField(null=False, blank=False)
