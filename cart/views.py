@@ -3,8 +3,6 @@ from django.contrib import messages
 from .utils import take_date_from_str, num_of_days
 from datetime import date
 from django.core.exceptions import ValidationError
-from cart.contexts import form_error
-
 
 # ----------------------------------Excursion cart fucntionality 
 # return the cart page
