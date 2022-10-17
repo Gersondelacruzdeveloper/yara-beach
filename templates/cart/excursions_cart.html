@@ -12,24 +12,6 @@
                 <hr>
             </div>
         </div>
-        <!-- flash messages -->
-        <div class="message mt-3">
-            {% if messages %}
-            {% for message in messages %}
-            {% if message.tags == "success" %}
-            <div class="alert alert-success" role="alert">
-                {{message}}
-            </div>
-            {% else %}
-            <div class="alert alert-danger" role="alert">
-                {{message}}
-            </div>
-            {% endif%}
-            {% endfor %}
-            {% endif %}
-        </div>
-
-
         {% if cart_items %}
         <div class="cart-container">
 
