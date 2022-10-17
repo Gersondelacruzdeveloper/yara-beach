@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from excursions.models import Excursions
 from rentals.models import Rentals
 from .utils import take_date_from_str, num_of_days
+from datetime import date
 
 # A content processor, vailable in all templates
 def cart_contents(request):
@@ -33,6 +34,7 @@ def cart_contents(request):
 
 # A content processor for rental cart
 def rental_cart_contents(request):
+    today = date.today().strftime('%Y-%m-%d')
     rental_cart_items = []
     rental_cart_total = 0
     rental_cart = request.session.get('rental_cart', {})
@@ -56,12 +58,6 @@ def rental_cart_contents(request):
     context = {
         'rental_cart_items':rental_cart_items,
         'rental_cart_total':rental_cart_total,
+        'today':today
     }
-    return context
-
-
-# Dot not allow the form to be submited the date is not valid
-def form_error(request):
-    cart_error = ''
-    context = {'cart_error':cart_error}
     return context

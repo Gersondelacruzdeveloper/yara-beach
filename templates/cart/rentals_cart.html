@@ -29,13 +29,13 @@
             <div class="cart-item-detail table-responsive">
                 <!-- table -->
                 <table class="table">
-                    <thead> 
+                    <thead>
                         <!-- table head -->
                         <tr>
                             <th scope="col">Description</th>
                             <th scope="col">Check-In Date</th>
                             <th scope="col">Checkout Date</th>
-                            <th scope="col">Num of days</th>
+                            <th scope="col">days</th>
                             <th scope="col">Adult Quantity</th>
                             <th scope="col">Child Quantity</th>
                             <th scope="col">Price</th>
@@ -49,22 +49,27 @@
                         <tr>
                             <th><img class="cart-detail-img" src="{{item.rental.main_image.url}}"
                                     alt="{{item.excursion.image_name}}"></th>
-                            <td>{{item.values.check_in}}</td>
-                            <td>{{item.values.checkout}}</td>
-                            <td>{{item.number_of_days}}</td>
                             <!-- form for updating quantity-->
-                            <form method="POST" action="{% url 'cart_update' item.item_id %}">
+                            <form method="POST" action="{% url 'update_rental' item.item_id %}">
                                 {% csrf_token %}
+                                <!-- check-in -->
+                                <td><input type="date" class="form-control" name="check_in"
+                                        value="{{item.values.check_in}}" min="{{today}}"></td>
+                                <!-- checkout -->
+                                <td><input type="date" class="form-control" name="checkout"
+                                        value="{{item.values.checkout}}" min="{{today}}"></td>
+                                <!-- number of days -->
+                                <td>{{item.number_of_days}}</td>
                                 <!-- Adult quantity-->
                                 <td>
                                     <input type="number" class="form-control cart-input" name="cart-adult_qty"
-                                        value="{{item.values.adult_qty}}" min="1" max="99">
+                                        value="{{item.values.adult_qty}}" min="1" max="5">
                                 </td>
                                 <!-- Child quantity-->
 
                                 <td>
                                     <input type="number" class="form-control cart-input" name="cart-child_qty"
-                                        value="{{item.values.child_qty}}" min="0" max="99">
+                                        value="{{item.values.child_qty}}" min="0" max="5">
                                 </td>
 
                                 <td>£{{item.values.price}}</td>
@@ -90,7 +95,8 @@
                 <h3>Summary</h3>
                 <hr>
                 <!-- cart total -->
-                <div><strong>Total:</strong> <span class="float-right">£{{rental_cart_total | floatformat:2}}</span></div>
+                <div><strong>Total:</strong> <span class="float-right">£{{rental_cart_total | floatformat:2}}</span>
+                </div>
                 <hr>
                 <!-- keep shopping and Secure Checkout -->
                 <a href="{% url 'checkout' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">

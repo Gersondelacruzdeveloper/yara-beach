@@ -10,4 +10,5 @@ urlpatterns = [
     # rentals cart path
     path('rental-cart', views.view_rental_cart, name="rental-cart"),
     path('add_rental/<item_id>/',views.add_to_cart_rental, name="add_rental"),
+    path('update_rental/<item_id>/',views.update_rental_cart, name="update_rental"),
 ]

@@ -56,13 +56,13 @@
                         <!-- check-In date -->
                         <div class="form-group mt-3">
                             <label for="check-in">CHECK-IN</label>
-                            <input type="date" class="form-control" id="check-in" name="check_in" required>
+                            <input type="date" class="form-control" id="check-in" name="check_in" min="{{today}}" required>
                         </div>
 
                         <!-- check-In date -->
                         <div class="form-group mt-3">
                             <label for="checkout">CHECKOUT</label>
-                            <input type="date" class="form-control" id="checkout" name="checkout" required>
+                            <input type="date" class="form-control" id="checkout" name="checkout" min="{{today}}" required>
                         </div>
                         <!-- number of adults -->
                         <div class="form-group mt-3">
