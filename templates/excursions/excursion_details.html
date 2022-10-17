@@ -4,16 +4,23 @@
 {% block content %}
 <section>
     <div class="detail-container">
-        <!-- flass success message -->
-        <div class="message">
+        <!-- flash messages -->
+        <div class="message mt-3">
             {% if messages %}
             {% for message in messages %}
+            {% if message.tags == "success" %}
             <div class="alert alert-success" role="alert">
                 {{message}}
             </div>
+            {% else %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+            {% endif%}
             {% endfor %}
             {% endif %}
         </div>
+
 
         <h1 class="detail-title">{{excursions.title}}</h1>
         <div class="item-detail-and-image-container">

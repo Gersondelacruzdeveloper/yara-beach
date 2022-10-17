@@ -12,16 +12,23 @@
                 <hr>
             </div>
         </div>
-        <!-- flass success message -->
+        <!-- flash messages -->
         <div class="message mt-3">
             {% if messages %}
             {% for message in messages %}
+            {% if message.tags == "success" %}
             <div class="alert alert-success" role="alert">
                 {{message}}
             </div>
+            {% else %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+            {% endif%}
             {% endfor %}
             {% endif %}
         </div>
+
 
         {% if cart_items %}
         <div class="cart-container">
@@ -106,7 +113,7 @@
 
                 <!-- card icons -->
                 <div class="text-center mt-3">
-                    <i class="fa fa-cc-visa visa" ></i>
+                    <i class="fa fa-cc-visa visa"></i>
                     <i class="fa fa-cc-amex amex"></i>
                     <i class="fa fa-cc-mastercard mastercard"></i>
                     <i class="fa fa-cc-discover discover"></i>
