@@ -1,11 +1,11 @@
 from django.shortcuts import HttpResponse, render, redirect
 from django.contrib import messages
 
-# Create your views here.
 
+# ----------------------------------Excursion cart fucntionality 
 # return the cart page
-def view_cart(request):
-    return render(request, 'cart/cart.html')
+def view_excursion_cart(request):
+    return render(request, 'cart/excursions_cart.html')
 
 # Add a quantity of the specified product to the shopping cart
 def add_to_cart(request, item_id):
@@ -33,7 +33,8 @@ def add_to_cart(request, item_id):
 
         if 'price' in cart[item_id].keys():
             cart[item_id]['price'] = price
-        messages.success(request, 'You already added this item so we just updated')
+        messages.success(
+            request, 'You already added this item so we just updated')
     else:
         # if the item id is not in  the cart it will add a new one
         cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
@@ -68,10 +69,17 @@ def remove_from_cart(request, item_id):
 
     try:
         if item_id in list(cart.keys()):
-         cart.pop(item_id)
-         request.session['cart'] = cart
-         messages.success(request, 'Cart item deleted Succesfullly')
-         return HttpResponse(status=200)
+            cart.pop(item_id)
+            request.session['cart'] = cart
+            messages.success(request, 'Cart item deleted Succesfullly')
+            return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+# ----------------------------------All reantals cart fucntionality below
+
+# return the cart page
+def view_rental_cart(request):
+    return render(request, 'cart/rentals_cart.html')

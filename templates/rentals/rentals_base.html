@@ -117,6 +117,21 @@
                         </li>
                     </div>
 
+                    <!-- cart -->
+                    <li class="nav-item cart">
+                        <a class="nav-link" href="{% url 'rental-cart' %}">
+                            <button type="button" class="btn my_hover sear-btn btn-outline-secondary position-relative">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                {% if total %}
+                                £{{total | floatformat:2}}
+                                {% else %}
+                                £0.00
+                                {% endif %}
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+
                 </ul>
                 <!-- Search form -->
                 <form class="d-flex" role="search" method="get" autocomplete="on"

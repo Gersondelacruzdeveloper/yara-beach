@@ -34,44 +34,51 @@
                 <form>
                     <!-- price -->
                     <div class="form-row">
-                        <div class="detail-price"> <strong>Price:</strong> £{{rentals.Price}}</div>
+                        <div class="detail-price"> <strong>Night:</strong> £{{rentals.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
-                        <!-- date -->
+                        <!-- check-In date -->
                         <div class="form-group mt-3">
-                            <label for="date">Select Date and Travellers</label>
-                            <input type="date" class="form-control" id="date">
+                            <label for="check-in">CHECK-IN</label>
+                            <input type="date" class="form-control" id="check-in">
+                        </div>
+
+                        <!-- check-In date -->
+                        <div class="form-group mt-3">
+                            <label for="checkout">CHECKOUT</label>
+                            <input type="date" class="form-control" id="checkout">
                         </div>
                         <!-- number of adults -->
                         <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect1">Select Adult (11-85 years old)</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <label for="id_adult_qty">Adult (11-85 years old)</label>
+                            <input type="number" class="form-control" name="adult_qty" value="1" min="1" max="99"
+                                required>
                         </div>
                         <!-- number of childrens -->
                         <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect1">Select Child (3 - 10 years old)</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>xs
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <label for="id_child_qty"> Child (3 - 10 years old)</label>
+                            <input type="number" class="form-control" id="id_child_qty" name="child_qty" value="0"
+                                min="0" max="99">
                         </div>
-                        <!-- pick up info -->
-                        <div class="form-group mt-3">
-                            <label for="inputCity">Place to be pick up</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <!-- Submit button -->
-                        <div class="form-group mt-3">
-                            <button type="submit" class="user_button my_hover btn">Submit</button>
+
+                        <!-- form btn -->
+                        <div class="form_detail_btn">
+                            <!-- go back to keep shopping btn -->
+                            <div class="form-group mt-3 p-2">
+                                <a href="{% url 'rentals' %}" class="user_button  my_hover btn">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="keep-shoping"> Keep Shopping</span>
+                                </a>
+                            </div>
+
+                            <!-- Submit button -->
+                            <div class="form-group mt-3 p-2">
+                                <button type="submit" class="user_button my_hover btn add-cart"><i
+                                        class="fa-solid fa-cart-plus"></i> Add to cart</button>
+                            </div>
+
                         </div>
                 </form>
             </div>
