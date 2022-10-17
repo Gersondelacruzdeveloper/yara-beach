@@ -23,15 +23,18 @@
             {% endif %}
         </div>
 
-        {% if cart_items %}
-        <div class="cart-container">
+        {% if rental_cart_items %}
+        <div>
+            {{rental_cart_items}}
+        </div>
+        <!-- <div class="cart-container">
 
-            <div class="cart-item-detail table-responsive">
+            <div class="cart-item-detail table-responsive"> -->
                 <!-- table -->
-                <table class="table">
-                    <thead>
+                <!-- <table class="table">
+                    <thead> -->
                         <!-- table head -->
-                        <tr>
+                        <!-- <tr>
                             <th scope="col">Description</th>
                             <th scope="col">Excursion Date</th>
                             <th scope="col">Adult Quantity</th>
@@ -41,25 +44,25 @@
                             <th scope="col">Sub-Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> -->
 
                         <!-- looping through items in cart -->
-                        {% for item in cart_items %}
+                        <!-- {% for item in rental_cart_items %}
                         <tr>
                             <th><img class="cart-detail-img" src="{{item.excursion.main_image.url}}"
                                     alt="{{item.excursion.image_name}}"></th>
-                            <td>{{item.values.excursion_date}}</td>
+                            <td>{{item.values.excursion_date}}</td> -->
                             <!-- form for updating quantity-->
-                            <form method="POST" action="{% url 'cart_update' item.item_id %}">
+                            <!-- <form method="POST" action="{% url 'cart_update' item.item_id %}"> -->
                                 {% csrf_token %}
                                 <!-- Adult quantity-->
-                                <td>
+                                <!-- <td>
                                     <input type="number" class="form-control cart-input" name="cart-adult_qty"
                                         value="{{item.values.adult_qty}}" min="1" max="99">
-                                </td>
+                                </td> -->
                                 <!-- Child quantity-->
 
-                                <td>
+                                <!-- <td>
                                     <input type="number" class="form-control cart-input" name="cart-child_qty"
                                         value="{{item.values.child_qty}}" min="0" max="99">
                                 </td>
@@ -72,25 +75,25 @@
                                             class="fa-solid fa-pen-to-square"></i>Update</button></td>
 
                                 <td><a class="remove-item" data-excursion_id="{{item.item_id}}"> <i
-                                            class="fa-solid fa-rectangle-xmark cart-icon-x"></i></a></td>
+                                            class="fa-solid fa-rectangle-xmark cart-icon-x"></i></a></td> -->
 
                                 <!-- hidden input to get the url-->
-                                <input type="hidden" name="redirect_url" value="{{request.path}}">
+                                <!-- <input type="hidden" name="redirect_url" value="{{request.path}}">
                             </form>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
-            <div class="cart-price-summary">
+            <!-- <div class="cart-price-summary">
                 <h3>Summary</h3>
-                <hr>
+                <hr> -->
                 <!-- cart total -->
-                <div><strong>Total:</strong> <span class="float-right">£{{total | floatformat:2}}</span></div>
-                <hr>
+                <!-- <div><strong>Total:</strong> <span class="float-right">£{{total | floatformat:2}}</span></div>
+                <hr> -->
                 <!-- keep shopping and Secure Checkout -->
-                <a href="{% url 'checkout' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
+                <!-- <a href="{% url 'checkout' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
                     <span class="text-uppercase">Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>
@@ -102,18 +105,18 @@
                         <i class="fas fa-chevron-left"></i>
                     </span>
                     <span class="text-uppercase">Keep Shopping</span>
-                </a>
+                </a> -->
 
                 <!-- card icons -->
-                <div class="text-center mt-3">
+                <!-- <div class="text-center mt-3">
                     <i class="fa fa-cc-visa visa" ></i>
                     <i class="fa fa-cc-amex amex"></i>
                     <i class="fa fa-cc-mastercard mastercard"></i>
                     <i class="fa fa-cc-discover discover"></i>
                 </div>
-            </div>
+            </div> -->
 
-        </div>
+        <!-- </div> -->
         <!--if cart empty -->
         {% else %}
         <p class="lead mb-5 text-center">Your cart is empty</p>

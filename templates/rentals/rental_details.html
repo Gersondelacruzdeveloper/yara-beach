@@ -4,6 +4,17 @@
 {% block content %}
 <section>
     <div class="detail-container">
+        <!-- flass success message -->
+        <div class="message">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
         <h1 class="detail-title">{{rentals.title}}</h1>
         <div class="item-detail-and-image-container">
             <!-- main image -->
@@ -31,7 +42,9 @@
             </div>
             <!-- item details aside -->
             <div class="item-detail card">
-                <form>
+                <form class="form" action="{% url 'add_rental' rentals.id %}" method="POST">
+                    {% csrf_token %}
+
                     <!-- price -->
                     <div class="form-row">
                         <div class="detail-price"> <strong>Night:</strong> £{{rentals.Price}}</div>
@@ -40,26 +53,31 @@
                         <!-- check-In date -->
                         <div class="form-group mt-3">
                             <label for="check-in">CHECK-IN</label>
-                            <input type="date" class="form-control" id="check-in">
+                            <input type="date" class="form-control" id="check-in" name="check-in" required>
                         </div>
 
                         <!-- check-In date -->
                         <div class="form-group mt-3">
                             <label for="checkout">CHECKOUT</label>
-                            <input type="date" class="form-control" id="checkout">
+                            <input type="date" class="form-control" id="checkout" name="checkout" required>
                         </div>
                         <!-- number of adults -->
                         <div class="form-group mt-3">
-                            <label for="id_adult_qty">Adult (11-85 years old)</label>
-                            <input type="number" class="form-control" name="adult_qty" value="1" min="1" max="99"
-                                required>
+                            <label for="rental_id_adult_qty">Adult (11-85 years old)</label>
+                            <input type="number" id="rental_id_adult_qty" class="form-control" name="adult_qty"
+                                value="1" min="1" max="99" required>
                         </div>
                         <!-- number of childrens -->
                         <div class="form-group mt-3">
-                            <label for="id_child_qty"> Child (3 - 10 years old)</label>
-                            <input type="number" class="form-control" id="id_child_qty" name="child_qty" value="0"
-                                min="0" max="99">
+                            <label for="rental_id_child_qty"> Child (3 - 10 years old)</label>
+                            <input type="number" id="rental_id_child_qty" class="form-control" id="id_child_qty"
+                                name="child_qty" value="0" min="0" max="99" required>
                         </div>
+
+                        <!-- hidden input to get the url-->
+                        <input type="hidden" name="redirect_url" value="{{request.path}}">
+                        <!-- hidden input for the price-->
+                        <input type="hidden" name="price" value="{{rentals.Price}}">
 
                         <!-- form btn -->
                         <div class="form_detail_btn">
@@ -92,18 +110,6 @@
     <!-- Reviews -->
     <h5 class="review-title">Customer reviews: {{rentals.reviews.all.count}}</h5>
     <hr>
-
-    <!-- flass success message -->
-    <div class="message">
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-success" role="alert">
-            {{message}}
-        </div>
-        {% endfor %}
-        {% endif %}
-    </div>
-
 
     {% if request.user.is_authenticated %}
 
