@@ -13,7 +13,7 @@ class ExcursionOrder(models.Model):
     full_name = models.CharField(max_length=70, null=False, blank=False)
     image = models.TextField(validators=[URLValidator()], null=True, blank=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, default=0)
     adult_qty =  models.IntegerField(null=False, blank=False)
     child_qty =  models.IntegerField(null=False, blank=False)
     excursion_date = models.DateField(null=False, blank=False)
@@ -21,6 +21,7 @@ class ExcursionOrder(models.Model):
     customer_email = models.EmailField(null=True, blank=True)
     cellphone_number = models.CharField(max_length=70, null=True, blank=True)
     place_pickup = models.CharField(max_length=70, null=True, blank=True)
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
 
     def _generate_order_number(self):
