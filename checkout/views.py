@@ -96,3 +96,18 @@ def checkout_success(request):
         excursion_total += item.subtotal
     context = {'user_orders': user_orders, 'excursion_total': excursion_total}
     return render(request, 'checkout/success.html', context)
+
+
+
+
+# Chekout and process payment for rental cart
+def checkout_rental(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    rental_cart = request.session.get('rental_cart', {})
+    print('rental_cart', rental_cart)
+    context = {
+        'stripe_public_key': stripe_public_key,
+        'client_secret': 'client_secret',
+    }
+    return render(request, 'checkout/checkout_rental.html', context)
