@@ -105,7 +105,14 @@ def checkout_rental(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     rental_cart = request.session.get('rental_cart', {})
-    print('rental_cart', rental_cart)
+     # Create the order
+    if request.method == 'POST':
+        print('proccess form')
+    else:
+        if not rental_cart:
+            messages.error(
+                request, "There's nothing in your cart at the moment")
+            return redirect('rentals')
     context = {
         'stripe_public_key': stripe_public_key,
         'client_secret': 'client_secret',
