@@ -1,0 +1,18 @@
+
+<script>
+    // Remove item and reload on click
+    let remove = document.getElementsByClassName('remove-item')
+    for (let i = 0; i < remove.length; i++) {
+        remove[i].addEventListener('click', function () {
+            const item_id = remove[i].dataset.rental_id
+            console.log('item_id', item_id)
+            const csrfToken = "{{ csrf_token }}";
+            let url = `/cart/remove_rental_cart/${item_id}/`
+            let data = { 'csrfmiddlewaretoken': csrfToken, 'item_id': item_id }
+            $.post(url, data)
+                .done(function () {
+                    location.reload();
+                });
+        })
+    }
+</script>

@@ -5,11 +5,11 @@ from datetime import date
 from django.core.exceptions import ValidationError
 
 # ----------------------------------Excursion cart fucntionality 
-# return the cart page
+# return the excursion cart page
 def view_excursion_cart(request):
     return render(request, 'cart/excursions_cart.html')
 
-# Add a quantity of the specified product to the shopping cart
+# Add a quantity of the specified product to the shopping excursion cart
 def add_to_cart(request, item_id):
     excursion_date = request.POST.get('excursion_date')
     adult_qty = int(request.POST.get('adult_qty'))
@@ -19,7 +19,7 @@ def add_to_cart(request, item_id):
     price = request.POST.get("price")
     cart = request.session.get('cart', {})
 
-# if the item id is already on the cart then it update it
+# if the item id is already on the excursion cart then it update it
     if item_id in list(cart.keys()):
         if 'adult_qty' in cart[item_id].keys():
             cart[item_id]['adult_qty'] = adult_qty
@@ -47,7 +47,7 @@ def add_to_cart(request, item_id):
     return redirect(redirect_url)
 
 
-# Update the child and adult quantity from cart
+# Update the child and adult quantity from excursion cart
 def update_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     adult_qty = request.POST.get('cart-adult_qty')
@@ -65,7 +65,7 @@ def update_cart(request, item_id):
     return redirect(redirect_url)
 
 
-# Remove the item from the shopping cart
+# Remove the item from the excursion shopping cart
 def remove_from_cart(request, item_id):
     cart = request.session.get('cart', {})
 
@@ -160,3 +160,19 @@ def update_rental_cart(request, item_id):
         request.session['rental_cart'] = rental_cart
         messages.success(request, 'Cart item Updated Succesfullly')
     return redirect(redirect_url)
+
+
+# Remove the item from the rental shopping cart
+def remove_from_rental_cart(request, item_id):
+    print('item_id', item_id)
+    rental_cart = request.session.get('rental_cart', {})
+    try:
+        if item_id in list(rental_cart.keys()):
+            rental_cart.pop(item_id)
+            request.session['rental_cart'] = rental_cart
+            messages.success(request, 'Cart item deleted Succesfullly')
+            return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
+
