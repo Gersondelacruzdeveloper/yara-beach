@@ -62,6 +62,11 @@ def page_not_found(request, exception):
     return render(request, 'home/404.html', status=404)
 
 
+# The 500 (server error)
+def server_error(request):
+    return render(request, 'home/500.html', status=500)
+
+
 # Show  all the customer bookings
 def customer_bookings(request):
     # Excursion queries

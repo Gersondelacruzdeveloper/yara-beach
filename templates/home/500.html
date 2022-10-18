@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="error-404-container">
+    <h1 class="title">Oops something went wrong</h1>
+    <p class="text-center">Try to refresh the page or feel free to contact us if the problem persist</p>
+    <div class="card">
+        <img src="{% static 'images/500.png' %}" alt="500 error page img">
+        <a class="links_for_404" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Back to safety</a>
+    </div>
+</section>
+{% endblock content %}
