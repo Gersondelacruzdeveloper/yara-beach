@@ -52,6 +52,8 @@ def update_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     adult_qty = request.POST.get('cart-adult_qty')
     child_qty = request.POST.get('cart-child_qty')
+    excursion_date = request.POST.get('excursion_date')
+
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):
@@ -60,6 +62,10 @@ def update_cart(request, item_id):
 
         if 'child_qty' in cart[item_id].keys():
             cart[item_id]['child_qty'] = child_qty
+
+        if 'excursion_date' in cart[item_id].keys():
+            cart[item_id]['excursion_date'] = excursion_date
+
     request.session['cart'] = cart
     messages.success(request, 'Cart item Updated Succesfullly')
     return redirect(redirect_url)
@@ -157,6 +163,7 @@ def update_rental_cart(request, item_id):
 
             if 'checkout' in rental_cart[item_id].keys():
                rental_cart[item_id]['checkout'] = checkout
+
         request.session['rental_cart'] = rental_cart
         messages.success(request, 'Cart item Updated Succesfullly')
     return redirect(redirect_url)

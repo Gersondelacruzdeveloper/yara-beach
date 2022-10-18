@@ -37,10 +37,14 @@
                         <tr>
                             <th><img class="cart-detail-img" src="{{item.excursion.main_image.url}}"
                                     alt="{{item.excursion.image_name}}"></th>
-                            <td>{{item.values.excursion_date}}</td>
+
                             <!-- form for updating quantity-->
                             <form method="POST" action="{% url 'cart_update' item.item_id %}">
                                 {% csrf_token %}
+                                  <!-- excursion date-->
+                              <td><input type="date" class="form-control" name="excursion_date"
+                                value="{{item.values.excursion_date}}" min="{{today}}"></td>
+
                                 <!-- Adult quantity-->
                                 <td>
                                     <input type="number" class="form-control cart-input" name="cart-adult_qty"
