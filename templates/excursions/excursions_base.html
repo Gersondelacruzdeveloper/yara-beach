@@ -102,6 +102,8 @@
                                         Password</a></li>
                                 <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}"> Excursion
                                         Bookings</a></li>
+                                <li><a class="dropdown-item" href="{% url 'rental-bookings' %}"> Rental Bookings</a>
+                                </li>
                             </ul>
                         </li>
 
@@ -142,8 +144,8 @@
             </div>
         </div>
     </nav>
-       <!-- flash messages -->
-       <div class="message mt-3">
+    <!-- flash messages -->
+    <div class="message mt-3">
         {% if messages %}
         {% for message in messages %}
         {% if message.tags == "success" %}
