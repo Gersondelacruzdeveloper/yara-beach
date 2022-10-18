@@ -8,21 +8,12 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import EmailMessage
 from checkout.models import ExcursionOrder, RentalOrder
+from django.contrib.auth.decorators import login_required
 import datetime
 # Create your views here.
 
-# show excursions and rentals in home page
-
-
-def home(request):
-    excursions = Excursions.objects.all()[:4]
-    rentals = Rentals.objects.all()[:4]
-    context = {'excursions': excursions, 'rentals': rentals}
-    return render(request, 'home/home.html', context)
 
 # show excursions and rentals in home page
-
-
 def home(request):
     excursions = Excursions.objects.all()[:4]
     rentals = Rentals.objects.all()[:4]
@@ -68,6 +59,7 @@ def server_error(request):
 
 
 # Show  all the customer bookings
+@login_required(login_url='/accounts/login/')
 def customer_bookings(request):
     # Excursion queries
     user_orders = ExcursionOrder.objects.all().filter(user=request.user)
@@ -87,8 +79,8 @@ def customer_bookings(request):
     return render(request, 'home/customer_booking.html', context)
 
 
-
 # Show  all the customer bookings
+@login_required(login_url='/accounts/login/')
 def customer_rental_bookings(request):
     # rental queries
     user_orders = RentalOrder.objects.all().filter(user=request.user)
@@ -106,4 +98,3 @@ def customer_rental_bookings(request):
                'future_rental_bookings': future_rental_bookings,
                'previous_rental_bookings': previous_rental_bookings}
     return render(request, 'home/customer_rental_booking.html', context)
-
