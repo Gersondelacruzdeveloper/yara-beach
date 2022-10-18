@@ -6,13 +6,13 @@ from rentals.models import Photos as Rental_photos
 from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
 from django.contrib import messages
 from checkout.models import ExcursionOrder, RentalOrder
+from django.contrib.auth.decorators import login_required
 import datetime
 
 # Create your views here.
 
 # Administrator function
-
-
+@login_required(login_url= '/accounts/login/')
 def administrator(request):
     total_users = User.objects.all().count()
     # Excursions queries
@@ -55,6 +55,7 @@ def administrator(request):
 
 
 # Query all rentals for admin
+@login_required(login_url= '/accounts/login/')
 def admin_rentals(request):
     rentals = Rentals.objects.all()
     context = {'rentals': rentals}
@@ -62,7 +63,7 @@ def admin_rentals(request):
 
 # Add rentals
 
-
+@login_required(login_url= '/accounts/login/')
 def add_rentals(request):
     form = RentalForm()
     if request.method == 'POST':
@@ -78,7 +79,7 @@ def add_rentals(request):
 
 # Edit rentals and add more photos
 
-
+@login_required(login_url= '/accounts/login/')
 def edit_rentals(request, pk):
     rentals = Rentals.objects.get(id=pk)
     form = RentalForm(instance=rentals)
@@ -104,7 +105,7 @@ def edit_rentals(request, pk):
 
 # Delete rental photos
 
-
+@login_required(login_url= '/accounts/login/')
 def delete_rentals_photos(request, pk):
     photo = Rental_photos.objects.get(id=pk)
     if request.method == 'POST':
@@ -116,7 +117,7 @@ def delete_rentals_photos(request, pk):
 
 # Delete rental
 
-
+@login_required(login_url= '/accounts/login/')
 def delete_rentals(request, pk):
     rental = Rentals.objects.get(id=pk)
     title = rental.title
@@ -131,14 +132,14 @@ def delete_rentals(request, pk):
 # --------------------------------- All admin excursion functions are from here below
 
 # Query all excursions for admin
+@login_required(login_url= '/accounts/login/')
 def admin_excursions(request):
     excursions = Excursions.objects.all()
     context = {'excursions': excursions}
     return render(request, 'administrator/excursions/admin_excursions.html', context)
 
 # Add excursion
-
-
+@login_required(login_url= '/accounts/login/')
 def add_excursions(request):
     form = ExcursionForm()
     if request.method == 'POST':
@@ -152,9 +153,9 @@ def add_excursions(request):
     context = {'form': form}
     return render(request, 'administrator/excursions/add_excursions.html', context)
 
+
 # Edit excursion and add more photos
-
-
+@login_required(login_url= '/accounts/login/')
 def edit_excursions(request, pk):
     excursions = Excursions.objects.get(id=pk)
     form = ExcursionForm(instance=excursions)
@@ -181,7 +182,7 @@ def edit_excursions(request, pk):
 
 # Delete excursion
 
-
+@login_required(login_url= '/accounts/login/')
 def delete_excursions(request, pk):
     excursion = Excursions.objects.get(id=pk)
     title = excursion.title
@@ -194,7 +195,7 @@ def delete_excursions(request, pk):
 
 # Delete excursion photos
 
-
+@login_required(login_url= '/accounts/login/')
 def delete_excursions_photos(request, pk):
     photo = Photos.objects.get(id=pk)
     if request.method == 'POST':
