@@ -22,7 +22,11 @@
                 <h5 class="card-title text-white">Today Rental bookings</h5>
             </div>
             <div class="card-body">
-                <h3 class="card-title text-white">10</h3>
+                {% if today_rental_bookings %}
+                <h3 class="card-title text-white">{{today_rental_bookings.count}}</h3>
+                {% else %}
+                <h3 class="card-title text-white">0</h3>
+                {% endif %}
             </div>
         </div>
         <!-- show Total excursions bookings -->
@@ -31,8 +35,8 @@
                 <h5 class="card-title text-white">Today Excursions bookings</h5>
             </div>
             <div class="card-body">
-                {% if today_excursion_orders%}
-                <h3 class="card-title text-white">{{today_excursion_orders.count}}</h3>
+                {% if today_excursion_bookings %}
+                <h3 class="card-title text-white">{{today_excursion_bookings.count}} </h3>
                 {%else%}
                 <h3 class="card-title text-white">0</h3>
                 {% endif %}
