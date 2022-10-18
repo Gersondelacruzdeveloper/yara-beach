@@ -12,17 +12,21 @@ import datetime
 # Create your views here.
 
 # show excursions and rentals in home page
+
+
 def home(request):
     excursions = Excursions.objects.all()[:4]
     rentals = Rentals.objects.all()[:4]
-    context = {'excursions': excursions, 'rentals':rentals}
+    context = {'excursions': excursions, 'rentals': rentals}
     return render(request, 'home/home.html', context)
 
 # show excursions and rentals in home page
+
+
 def home(request):
     excursions = Excursions.objects.all()[:4]
     rentals = Rentals.objects.all()[:4]
-    context = {'excursions': excursions, 'rentals':rentals}
+    context = {'excursions': excursions, 'rentals': rentals}
     return render(request, 'home/home.html', context)
 
 
@@ -57,10 +61,29 @@ def email_comfirmation_page(request):
 def page_not_found(request, exception):
     return render(request, 'home/404.html', status=404)
 
-# Show the customer bookings
+
+# Show  all the customer bookings
 def customer_bookings(request):
+    # Excursion queries
     user_orders = ExcursionOrder.objects.all().filter(user=request.user)
-    today_orders = user_orders.filter(date_created=datetime.date.today())
-    previous_orders = user_orders.exclude(date_created=datetime.date.today())
-    context = {'today_orders': today_orders, 'previous_orders':previous_orders}
+    print('user_orders', user_orders)
+    # today bookins
+    today_excursion_bookings = user_orders.filter(
+        excursion_date=datetime.date.today())
+    print('today', today_excursion_bookings)
+    # future bookings
+    future_excursion_bookings = user_orders.filter(
+        excursion_date__gte=datetime.date.today())
+
+    print('future', future_excursion_bookings)
+    # pass bookings
+    previous_excursion_bookings = user_orders.filter(
+        excursion_date__lte=datetime.date.today())
+
+    print('previous', previous_excursion_bookings)
+
+    context = {'today_excursion_bookings': today_excursion_bookings,
+               'future_excursion_bookings': future_excursion_bookings,
+               'previous_excursion_bookings': previous_excursion_bookings}
     return render(request, 'home/customer_booking.html', context)
+

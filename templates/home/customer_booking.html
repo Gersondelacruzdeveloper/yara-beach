@@ -3,12 +3,12 @@
 
 {% block content %}
 <section>
-     {% if today_orders or previous_orders %}
+    {% if today_excursion_bookings or future_excursion_bookings or previous_excursion_bookings %}
 
     <h1 class="text-center mt-5">Your Excursion Bookings</h1>
 
-       <!-- today bookings -->
-       {% if today_orders %}
+    <!-- today bookings -->
+    {% if today_excursion_bookings %}
     <h4 class="text-center mt-5">Today Bookings</h4>
     <div class="table_wrapper table-responsive">
         <table class="data_table">
@@ -25,7 +25,7 @@
                 <th>Total</th>
             </tr>
 
-            {% for order in today_orders %}
+            {% for order in today_excursion_bookings %}
             <tr>
                 <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
                 <td>{{order.excursion_name |slice:":25"|title}}</td>
@@ -36,15 +36,52 @@
                 {% endif %}
                 <td>{{order.place_pickup}}</td>
                 <td>{{order.order_number}}</td>
-                <td>{{order.subTotal}}</td>
+                <td>£{{order.subtotal}}</td>
             </tr>
             {% endfor %}
         </table>
     </div>
     {% endif %}
 
-    <!-- All previous bookings -->
-    {% if previous_orders %}
+    <!-- Future bookings -->
+    {% if future_excursion_bookings %}
+    <h4 class="text-center mt-5">Future Bookings</h4>
+
+    <div class="table_wrapper table-responsive">
+        <table class="data_table">
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Excursion Date</th>
+                <th>Adult Quantity</th>
+                {% if order.child_qty%}
+                <th>Child Quantity</th>
+                {% endif %}
+                <th>Pick up at</th>
+                <th>Bk.Number</th>
+                <th>Total</th>
+            </tr>
+
+            {% for order in future_excursion_bookings %}
+            <tr>
+                <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                <td>{{order.excursion_name |slice:":25"|title}}</td>
+                <td>{{order.excursion_date}}</td>
+                <td>{{order.adult_qty}}</td>
+                {% if order.child_qty%}
+                <td>{{order.child_qty}}</td>
+                {% endif %}
+                <td>{{order.place_pickup}}</td>
+                <td>{{order.order_number}}</td>
+                <td>£{{order.subtotal}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- pass bookings -->
+    {% if previous_excursion_bookings %}
     <h4 class="text-center mt-5">Previous Bookings</h4>
 
     <div class="table_wrapper table-responsive">
@@ -62,7 +99,7 @@
                 <th>Total</th>
             </tr>
 
-            {% for order in previous_orders %}
+            {% for order in previous_excursion_bookings %}
             <tr>
                 <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
                 <td>{{order.excursion_name |slice:":25"|title}}</td>
@@ -73,15 +110,17 @@
                 {% endif %}
                 <td>{{order.place_pickup}}</td>
                 <td>{{order.order_number}}</td>
-                <td>{{order.subTotal}}</td>
+                <td>£{{order.subtotal}}</td>
             </tr>
             {% endfor %}
         </table>
     </div>
     {% endif %}
+
     {% else %}
     <h1 class="text-center mt-5">You do not have any bookings yet</h1>
-    <div class="text-center"><a class="user_button_sm my_hover btn center" href="{% url 'excursions' %}"><i class="fa-solid fa-cart-shopping"></i> Go shopping</a>
+    <div class="text-center"><a class="user_button_sm my_hover btn center" href="{% url 'excursions' %}"><i
+                class="fa-solid fa-cart-shopping"></i> Go shopping</a>
     </div>
     {% endif %}
 </section>
