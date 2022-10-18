@@ -42,128 +42,242 @@
 </section>
 
 <div class="bookings_container">
-    <!-- excursions sections -->
-        <div id="excursion_booking_section">
-            <!-- today excursions bookings admin -->
-            <h4 class="text-center mt-5">Today Excursion Bookings <span
-                    class="badge bg-site-color">{{today_excursion_bookings.count}}</span></h4>
-            <div class="table_wrapper table-responsive">
-                <table class="data_table">
-                    <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Excursion Date</th>
-                        <th>Adult Quantity</th>
-                        <th>Child Quantity</th>
-                        <th>Pick up at</th>
-                        <th>Bk.Number</th>
-                        <th>Mobile Number</th>
-                        <th>Email</th>
-                        <th>Full Name</th>
-                        <th>Total</th>
-                    </tr>
+    <!--------------------------------------------------------- excursions sections -->
+    <div id="excursion_booking_section">
+        <!-- today excursions bookings admin -->
+        <h4 class="text-center mt-5">Today Excursion Bookings <span
+                class="badge bg-site-color">{{today_excursion_bookings.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Excursion Date</th>
+                    <th>Adult Quantity</th>
+                    <th>Child Quantity</th>
+                    <th>Pick up at</th>
+                    <th>Bk.Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Total</th>
+                </tr>
 
-                    {% for order in today_excursion_bookings %}
-                    <tr>
-                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
-                        <td>{{order.excursion_name |slice:":25"|title}}</td>
-                        <td>{{order.excursion_date}}</td>
-                        <td>{{order.adult_qty}}</td>
-                        <td>{{order.child_qty}}</td>
-                        <td>{{order.place_pickup}}</td>
-                        <td>{{order.order_number}}</td>
-                        <td>{{order.cellphone_number}}</td>
-                        <td>{{order.customer_email}}</td>
-                        <td>{{order.full_name}}</td>
-                        <td>£{{order.subtotal}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-
-            <!-- Future excursions bookings -->
-            <h4 class="text-center mt-5">Future Excursion Bookings <span
-                    class="badge bg-site-color">{{future_excursion_bookings.count}}</span></h4>
-            <div class="table_wrapper table-responsive">
-                <table class="data_table">
-                    <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Excursion Date</th>
-                        <th>Adult Quantity</th>
-                        <th>Child Quantity</th>
-                        <th>Pick up at</th>
-                        <th>Bk.Number</th>
-                        <th>Mobile Number</th>
-                        <th>Email</th>
-                        <th>Full Name</th>
-                        <th>Total</th>
-                    </tr>
-
-                    {% for order in future_excursion_bookings %}
-                    <tr>
-                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
-                        <td>{{order.excursion_name |slice:":25"|title}}</td>
-                        <td>{{order.excursion_date}}</td>
-                        <td>{{order.adult_qty}}</td>
-                        <td>{{order.child_qty}}</td>
-                        <td>{{order.place_pickup}}</td>
-                        <td>{{order.order_number}}</td>
-                        <td>{{order.cellphone_number}}</td>
-                        <td>{{order.customer_email}}</td>
-                        <td>{{order.full_name}}</td>
-                        <td>£{{order.subtotal}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-
-
-            <!-- Previous excursions bookings -->
-            <h4 class="text-center mt-5">Previous Excursion Bookings <span
-                    class="badge bg-site-color">{{future_excursion_bookings.count}}</span></h4>
-            <div class="table_wrapper table-responsive">
-                <table class="data_table">
-                    <tr>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Excursion Date</th>
-                        <th>Adult Quantity</th>
-                        <th>Child Quantity</th>
-                        <th>Pick up at</th>
-                        <th>Bk.Number</th>
-                        <th>Mobile Number</th>
-                        <th>Email</th>
-                        <th>Full Name</th>
-                        <th>Total</th>
-                    </tr>
-
-                    {% for order in previous_excursion_bookings %}
-                    <tr>
-                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
-                        <td>{{order.excursion_name |slice:":25"|title}}</td>
-                        <td>{{order.excursion_date}}</td>
-                        <td>{{order.adult_qty}}</td>
-                        <td>{{order.child_qty}}</td>
-                        <td>{{order.place_pickup}}</td>
-                        <td>{{order.order_number}}</td>
-                        <td>{{order.cellphone_number}}</td>
-                        <td>{{order.customer_email}}</td>
-                        <td>{{order.full_name}}</td>
-                        <td>£{{order.subtotal}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-
+                {% for order in today_excursion_bookings %}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                    <td>{{order.excursion_name |slice:":25"|title}}</td>
+                    <td>{{order.excursion_date}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.place_pickup}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
-<hr>
-    <!-- rental section -->
-        <div id="rental_booking_section">
-            <!-- today rentals bookings admin -->
-            <h4 class="text-center mt-5">Today Rentals Bookings <span
-                    class="badge bg-site-color">0</span></h4>
+
+        <!-- Future excursions bookings -->
+        <h4 class="text-center mt-5">Future Excursion Bookings <span
+                class="badge bg-site-color">{{future_excursion_bookings.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Excursion Date</th>
+                    <th>Adult Quantity</th>
+                    <th>Child Quantity</th>
+                    <th>Pick up at</th>
+                    <th>Bk.Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for order in future_excursion_bookings %}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                    <td>{{order.excursion_name |slice:":25"|title}}</td>
+                    <td>{{order.excursion_date}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.place_pickup}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
+
+
+        <!-- Previous excursions bookings -->
+        <h4 class="text-center mt-5">Previous Excursion Bookings <span
+                class="badge bg-site-color">{{previous_excursion_bookings.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Excursion Date</th>
+                    <th>Adult Quantity</th>
+                    <th>Child Quantity</th>
+                    <th>Pick up at</th>
+                    <th>Bk.Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for order in previous_excursion_bookings %}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                    <td>{{order.excursion_name |slice:":25"|title}}</td>
+                    <td>{{order.excursion_date}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.place_pickup}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+    <hr>
+    <!--------------------------------------------------------- rentals sections -->
+    <div id="rental_booking_section">
+        <!-- today excursions bookings admin -->
+        <h4 class="text-center mt-5">Today rental Bookings <span
+                class="badge bg-site-color">{{today_rental_bookings.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Check-In</th>
+                    <th>Checkout</th>
+                    <th>Adult Quantity</th>
+                    <th>Child Quantity</th>
+                    <th>Price</th>
+                    <th>Bk.Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for order in today_rental_bookings %}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.rental_name}}" style="width:75px"></td>
+                    <td>{{order.rental_name |slice:":25"|title}}</td>
+                    <td>{{order.check_in}}</td>
+                    <td>{{order.checkout}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- Future excursions bookings -->
+        <h4 class="text-center mt-5">Future Rental Bookings <span
+                class="badge bg-site-color">{{future_rental_bookings.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Check-In</th>
+                    <th>Checkout</th>
+                    <th>Adult Quantity</th>
+                    <th>Child Quantity</th>
+                    <th>Price</th>
+                    <th>Bk.Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for order in future_rental_bookings %}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.rental_name}}" style="width:75px"></td>
+                    <td>{{order.rental_name |slice:":25"|title}}</td>
+                    <td>{{order.check_in}}</td>
+                    <td>{{order.checkout}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+        <!-- Previous excursions bookings -->
+        <h4 class="text-center mt-5">Previous Rental Bookings <span
+                class="badge bg-site-color">{{previous_rental_bookings.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Check-In</th>
+                    <th>Checkout</th>
+                    <th>Adult Quantity</th>
+                    <th>Child Quantity</th>
+                    <th>Price</th>
+                    <th>Bk.Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for order in previous_rental_bookings%}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.rental_name}}" style="width:75px"></td>
+                    <td>{{order.rental_name |slice:":25"|title}}</td>
+                    <td>{{order.check_in}}</td>
+                    <td>{{order.checkout}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
 
 {% endblock content %}

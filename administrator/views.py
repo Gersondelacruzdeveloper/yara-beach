@@ -5,7 +5,7 @@ from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
 from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
 from django.contrib import messages
-from checkout.models import ExcursionOrder
+from checkout.models import ExcursionOrder, RentalOrder
 import datetime
 
 # Create your views here.
@@ -15,23 +15,42 @@ import datetime
 
 def administrator(request):
     total_users = User.objects.all().count()
-    # Excurisons queries
+    # Excursions queries
     all_excursion_orders = ExcursionOrder.objects.all()
-    # today bookins
+    # Today bookings
     today_excursion_bookings = all_excursion_orders.filter(
         excursion_date=datetime.date.today())
-        # future bookings
+    # Future bookings
     future_excursion_bookings = all_excursion_orders.filter(
         excursion_date__gte=datetime.date.today())
-        # pass bookings
+    # Previous bookings
     previous_excursion_bookings = all_excursion_orders.filter(
         excursion_date__lte=datetime.date.today())
 
+    # All rentals
+    all_excursion_orders = RentalOrder.objects.all()
+    # Today rental booking
+    today_rental_bookings = all_excursion_orders.filter(
+        check_in=datetime.date.today())
+    # Future rental bookings
+    future_rental_bookings = all_excursion_orders.filter(
+        check_in__gte=datetime.date.today())
+    # Previous bookings
+    previous_rental_bookings = all_excursion_orders.filter(
+        check_in__lte=datetime.date.today())
+
     # rentals queries
-    context = {'total_users': total_users, 
-                'today_excursion_bookings': today_excursion_bookings,
-                'future_excursion_bookings': future_excursion_bookings, 
-                'previous_excursion_bookings': previous_excursion_bookings}
+    context = {'total_users': total_users,
+               # excursions
+               'today_excursion_bookings': today_excursion_bookings,
+               'future_excursion_bookings': future_excursion_bookings,
+               'previous_excursion_bookings': previous_excursion_bookings,
+               # rentals
+               'today_rental_bookings': today_rental_bookings,
+               'future_rental_bookings': future_rental_bookings,
+               'previous_rental_bookings': previous_rental_bookings,
+               }
+
     return render(request, 'administrator/administrator.html', context)
 
 
