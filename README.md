@@ -102,6 +102,14 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
 <br>
 
 ---
+
+## UX
+
+Yara Beach sees the need to provide the user with a website where they can find all their needs in one place, e.g., excursions and rentals. On Yara Beach, users are able to book a place to stay in the Dominican Republic as well as excursions before or during their holidays, all on the same platform.
+
+
+<br>
+
 ### Project Goals
 The goals of this project are to:
 - To create a site where users can easily access recipes, create, save, edit, delete and share their own if they decide to.
