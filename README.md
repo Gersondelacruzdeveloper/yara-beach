@@ -125,6 +125,42 @@ The goals of this project are to
 
 ##### back to [top](#table-of-contents)
 
+---
+
+### User Stories
+
+#### Prospective User
+
+I am a future Yarabeach site member  I want to be able to:
+
+- Immediately comprehend the purpose behind the Yarabeach site.
+- Easily see what products are available.
+- Search for specific excursions and rentals filtered by newest, oldest, price range from low to high, and high to low, easily sorted for rental by rental type: room house, villa.
+ - Have a navigation bar where I can directly type in the product I'm looking for and it will immediately appear.
+- I should be able to navigate to different apps easily.
+- If I am in a certain app, I should be able to see the title of the app so I can see where I am.
+- See all related images of excursions or rentals related to the app.
+- See more details once I click on the rentals or excursions.
+- Be able to read a well-documented description of each product.
+- Read excursion or rental reviews.
+- Add products to my shopping cart with ease.
+- Be presented with a constant visual reminder of my shopping cart total and the number of items already added.
+- Be able to edit my shopping cart, increasing or decreasing the number of children and adults going on an excursion or rental, updating the date that has been selected or deleting it altogether, at will.
+- Pay for my items using a secure credit card payment system.
+- I immediately receive visual feedback when my payment has been accepted.
+- Receive a detailed email confirming my purchase and order number so I can easily print it and show it on arrival.
+- Easily locate any social media accounts connected to the site.
+- Navigate through the site with ease.
+- Easily register to become a site member.
+- Easily get in contact with Yarabeach if I have any questions.
+
+
+
+
+
+
+
+
 
 ##  User Experience
 
