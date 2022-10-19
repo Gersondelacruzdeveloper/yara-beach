@@ -89,12 +89,24 @@
                 </div>
                 <hr>
                 <!-- keep shopping and Secure Checkout -->
-                <a href="{% url 'checkout_rental' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'checkout_rental' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
+                >
                     <span class="text-uppercase">Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>
                     </span>
                 </a>
+                {% else %}
+                <a href="{% url 'checkout_rental' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
+                data-bs-toggle="modal" data-bs-target="#rental_cart_Modal"
+                >
+                    <span class="text-uppercase">Secure Checkout</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </a>
+                {% endif %}
 
                 <a href="{% url 'rentals' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
                     <span class="icon">
@@ -123,6 +135,31 @@
             <span class="text-uppercase"> Keep Shopping</span>
         </a>
         {% endif %}
+
+         <!-- Rental cart login modal -->
+         <div class="modal fade" id="rental_cart_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Please Login to continue</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <a href="{% url 'account_login' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
+                        target="_blank"
+                        >
+                            <span class="text-uppercase">Login</span>
+                            <span class="icon">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </section>

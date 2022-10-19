@@ -6,12 +6,14 @@ from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 import stripe
 from .models import ExcursionOrder, RentalOrder
+from django.contrib.auth.decorators import login_required
 import datetime
 # Create your views here.
 
 # Chekout and process payment
 
 
+@login_required(login_url='/accounts/login/')
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -90,6 +92,7 @@ def checkout(request):
 
 
 # Allow the user know that the purchase has been successful
+@login_required(login_url='/accounts/login/')
 def checkout_success(request):
     user_orders = ExcursionOrder.objects.all().filter(user=request.user)
     user_orders = user_orders.filter(date_created=datetime.date.today())
@@ -101,6 +104,7 @@ def checkout_success(request):
 
 
 # Chekout and process payment for rental cart
+@login_required(login_url='/accounts/login/')
 def checkout_rental(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -180,6 +184,7 @@ def checkout_rental(request):
 
 
 # Allow the user know that the purchase has been successful
+@login_required(login_url='/accounts/login/')
 def checkout_rental_success(request):
     user_orders = RentalOrder.objects.all().filter(user=request.user)
     user_orders = user_orders.filter(date_created=datetime.date.today())
@@ -188,4 +193,3 @@ def checkout_rental_success(request):
         rental_total += item.subtotal
     context = {'user_orders': user_orders, 'rental_total': rental_total}
     return render(request, 'checkout/rental_success.html', context)
-    
