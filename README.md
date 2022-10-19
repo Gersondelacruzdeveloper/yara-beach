@@ -221,7 +221,7 @@ As the owner of the Yarabeach website, I would like to:
 - Have easy access to the home customer page and the admin page and vice versa.
 - Provide a detailed email confirming the customer's purchase and order number so they can easily print it and show it on arrival.
 - Provide the user with the search bar where they can type in any product they wish to see.
-
+- Provide a user with a pagination so that they know where they are and if there are more products.
 
 
 ###  Scope Plane
