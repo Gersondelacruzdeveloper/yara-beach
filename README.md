@@ -106,23 +106,28 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
 ## UX
 
 Yara Beach sees the need to provide the user with a website where they can find all their needs in one place, e.g., excursions and rentals. On Yara Beach, users are able to book a place to stay in the Dominican Republic as well as excursions before or during their holidays, all on the same platform.
-
-
 <br>
 
 ### Project Goals
-The goals of this project are to:
-- To create a site where users can easily access recipes, create, save, edit, delete and share their own if they decide to.
--	Make MyOnlineRecipes website to be a reputable website by creating a professional and intuitive interface.
--	Create a website that is visually appealing and fully responsive on all devices and screen sizes.
-- To display information in user-friendly way, contributing to an overall good user experience.
--	Present information about MyOnlineRecipes site so that visitors immediately comprehend what service it provides to its members. 
--	Allow visitors to easily contact the website administrator with any questions.
--	Encourage new members to sign up to the site.
--	Create an interactive website where a community can leave comments on the recipe as long as they have an account and logged in.
--	Store the users’ data so that it is can be accessed when required.
----
+The goals of this project are to
+- Make Yarabeach a global outreach.
+- ability to optimise (time, expenses , human labour, infrastructure, and more) for Yarabeach.
+- We get a higher margin because it is our own platform and we do not have to pay for a percentage, e.g., at Arbnb or Booking.com.
+- ability to catch a customer in its natural habitat and communicate with the customer directly without restriction.
+- Getting international customers
+- personalization of the buying experience,
+- A catalogue of rentals and excursions
+- reviews and ratings for rentals and excursions, which determine what the customer likes and dislikes.
+- Make Yarabeach brand recognition international.
+- Have the visitors contact us for any queries.
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+
 ##  User Experience
+
 
 ### Strategy
 
