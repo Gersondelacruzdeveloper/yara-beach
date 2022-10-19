@@ -1,16 +1,23 @@
 
-<h1 align="center">My Online Recipes</h1>
+<h1 align="center">Yara Beach Excursions and Rentals </h1>
 
-<h2 align="center">Code Institute - Milestone Project 3</h2>
+<h2 align="center">Code Institute - Milestone Project 4</h2>
 
 <img src="./myonlinerecipes/static/documentation/readme-images/main_readme_file_image.png" height="auto" width="100%" alt="Mockup of myonlinerecipe pages when viewed on a desktop, tablet and mobile device."/>
 
-My online recipes website help you to create, save and share your recipes with others. I love cooking, when I was nine years old, I started to write recipes in my school notebook, all the recipes from my beautiful Grandma that in piece rest, I stored them there, as well as others recipes that I encounter on my cooing journey. by the time I was 20 years old, I had realised that I had over 15 school notebooks and accessing all those recipes was a nightmare, flipping pages trying to find these recipes, so now thanks to code Institute I have created this beautiful recipes website that allow me not just save all my recipes but also share it with the world. I do not have to struggle to carry my notebooks anymore when I am travelling because it is all online. I also do not have to struggle to find a recipe that I have saved, as I just need to type the words from the title or the ingredients. and the website will give me all the relevant recipes I have and other recipes other people have shared as well. Also, the beauty of this is that anyone can come to this website and save their recipes free of charge. Furthermore there is a comment section at the bottom of each recipe so people can leave their opinion of what they like and what they do not like about that specific recipe.
+Yara Beach is an e-commerce website. Yara is the actual name of the owner, who is my friend from the beautiful island of the Dominican Republic. During the process of building my portfolios through the Code Institute, I decided that my last project or portfolio would be a real-use website. So I contacted my friend Yara, who has a business called Yara Beach. I told her I'd create a website for her to attract more customers and increase sales. She was so happy to hear that and agreed, so I asked her what it was that she needed the website to have based on her customers' needs. She sells excursions and rentals through Airbnb and Booking.com. She needed a combined website for excursions and rentals, and waala, here we have the Yara Beach website, where she will be able to keep track of her customers when they register and see all the oncoming bookings, e.g., today's bookings, future bookings, and previous bookings for excursions and rentals. Customers will be able to view all their current bookings, previous bookings, and future bookings for both excursions and rentals as well. Customers will be able to leave review ratings and view beautiful product details with many images showcasing the products. The owner will be able to add products, delete products, edit products, and put products on active or inactive status.
 
+This project was mainly created to satisfy the final Milestone Project requirements of the Full
+Stack Web Development Program at the [Code Institute](https://codeinstitute.net/).
+This full-stack website, with its fully-implemented authentication mechanism and
+payment system and control of a centrally-owned dataset, was constructed using
+[HTML5](http://en.wikipedia.org/wiki/HTML5), [CSS3](http://en.wikipedia.org/wiki/CSS),
+[JavaScript](https://en.wikipedia.org/wiki/JavaScript), the JavaScript library
+[jQuery](https://jquery.com/) , [Python](<https://en.wikipedia.org/wiki/Python_(programming_language)>),
+[Django](https://www.djangoproject.com/), [Heroku Postgres](https://www.heroku.com/postgres) database
+and the [Stripe](https://stripe.com/) payment platform.
 
-The project was developed using **HTML5**, **CSS3**, **JavaScript**, **Python**, **Bootstrap**, **Flask**, and utilises a relational database -> **PostgresSQL**.
-
-[Click here to visit the site.](https://myonlinerecipes.herokuapp.com/)
+[Click here to visit the site.](https://yara-beach.herokuapp.com//)
 
 ## Table of contents
 - [Project Goals](#project-goals)
