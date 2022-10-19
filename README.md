@@ -17,7 +17,7 @@ payment system and control of a centrally-owned dataset, was constructed using
 [Django](https://www.djangoproject.com/), [Heroku Postgres](https://www.heroku.com/postgres) database
 and the [Stripe](https://stripe.com/) payment platform.
 
-[Click here to visit the site.](https://yara-beach.herokuapp.com//)
+[Click here to visit the site.](https://yara-beach.herokuapp.com/)
 
 ## Table of contents
 - [Project Goals](#project-goals)
