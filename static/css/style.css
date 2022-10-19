@@ -232,6 +232,10 @@ body {
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 
 /* Slides */
+
+.home-banner{
+    position: relative;
+}
 .home-banner h2 {
     font-family: "Qwitcher Grypen", sans-serif;
     position: absolute;
@@ -242,7 +246,9 @@ body {
     white-space: nowrap;
     overflow: hidden;
     width: 32ch;
-    color: var(--white)
+    color: var(--white);
+    position: absolute;
+    z-index: 5;
 }
 
 .heading {
