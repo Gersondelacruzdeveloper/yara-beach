@@ -42,6 +42,7 @@
 </head>
 
 <body>
+    <!-- home navbar -->
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"></i><img src="{% static 'images/Yara-logo.png' %}"
@@ -52,15 +53,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <div class="links-container">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'excursions' %}"> <i class="fa-solid fa-compass"></i>
+                            <a class="nav-link" href="{% url 'excursions' %}"><i class="fa-solid fa-compass"></i>
                                 Excursions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'rentals' %}"><i class="fa-solid fa-bed"></i> Rentals</a>
+                            <a class="nav-link" href="{% url 'rentals' %}"> <i class="fa-solid fa-bed"></i>
+                                Rentals</a>
                         </li>
                         {% if not user.is_authenticated %}
                         <li class="nav-item dropdown">
@@ -71,8 +72,6 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'account_login' %}"><i
                                             class="fa-solid fa-user"></i> Sign in</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_signup' %}"><i
-                                            class="fa-solid fa-user-plus"></i> Register Account</a></li>
                             </ul>
                         </li>
                         {% else %}
@@ -84,23 +83,27 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i
                                             class="fa-solid fa-user"></i> Logout</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"> Change
-                                        Password</a></li>
-                                <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}"> Excursion
-                                        Bookings</a></li>
-                                <li><a class="dropdown-item" href="{% url 'rental-bookings' %}"> Rental Bookings</a>
-                                </li>
+                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"><i
+                                            class="fa-solid fa-user"></i> Change Password</a></li>
+                                {% if request.user.is_superuser %}
+                                <li><a class="dropdown-item" href="{% url 'administrator' %}"><i
+                                    class="fa-solid fa-toolbox"></i> Admin board</a></li>
+                                {% else %}
+                                <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}">
+                                        <i class="fa-solid fa-book-circle-arrow-up"></i>
+                                        </i>Excursion Bookings</a></li>
+                                <li><a class="dropdown-item" href="{% url 'rental-bookings' %}">
+                                        <i class="fa-solid fa-book-circle-arrow-up"></i>
+                                        </i>Rental Bookings</a></li>
+                                {% endif %}
                             </ul>
                         </li>
 
                         {% endif %}
-
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
-                                Contact</a>
+                            <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i></i> Contact</a>
                         </li>
                     </div>
-
                 </ul>
             </div>
         </div>

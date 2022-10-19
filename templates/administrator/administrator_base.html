@@ -67,7 +67,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'admin-rental' %}"><i class="fa-solid fa-bed"></i> Rentals</a>
                         </li>
-        
                         {% if not user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -93,6 +92,9 @@
 
                         {% endif %}
                     </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i> Customer Home Page</a>
+                    </li>
                 </ul>
             </div>
         </div>
