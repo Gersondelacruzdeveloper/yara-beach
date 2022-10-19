@@ -135,8 +135,9 @@ I am a future Yarabeach site member  I want to be able to:
 
 - Immediately comprehend the purpose behind the Yarabeach site.
 - Easily see what products are available.
-- Search for specific excursions and rentals filtered by newest, oldest, price range from low to high, and high to low, easily sorted for rental by rental type: room house, villa.
- - Have a navigation bar where I can directly type in the product I'm looking for and it will immediately appear.
+- Search for specific excursions and rentals filtered by newest, oldest, price range from low to high, and high to low,
+- easily sorted for rental by rental type: room house, villa.
+- Have a navigation bar where I can directly type in the product I'm looking for and it will immediately appear.
 - I should be able to navigate to different apps easily.
 - If I am in a certain app, I should be able to see the title of the app so I can see where I am.
 - See all related images of excursions or rentals related to the app.
