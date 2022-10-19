@@ -156,10 +156,28 @@ I am a future Yarabeach site member  I want to be able to:
 - Easily get in contact with Yarabeach if I have any questions.
 
 
+#### Existing User
 
-
-
-
+I am an existing Yarabeach site member. I want to be able to:
+- Log in to the site.
+- Navigate through the site with ease.
+- Log out of the site.
+- Reset my password securely.
+- Add items to my shopping cart with ease.
+- Be able to edit my shopping cart, increasing or decreasing the number of children and adults going on an excursion or rental, updating the date that has been selected or deleting it altogether, at will.
+- Purchase my desired products using a secure online payment system.
+- Be presented with a constant visual reminder of my shopping cart total and the number of items already added.
+- Receive a detailed email confirming my purchase and order number so I can easily print it and show it on arrival.
+- View my order history.
+- View my future orders
+- View my order with today's date.
+- Search for specific excursions and rentals filtered by newest, oldest, price range from low to high, and high to low,
+- In the rental app, be able to easily filter by rental type: Room, House, or Villa.
+- Review and rate an excursion or rental previously booked.
+- Navigate with ease through the site.
+- Contact the Yarabeach owner.
+- Read detailed descriptions of excursions and rentals.
+- Have a navigation bar where I can directly type in the product I'm looking for and it will immediately appear.
 
 
 
