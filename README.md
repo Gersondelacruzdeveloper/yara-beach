@@ -19,6 +19,13 @@ and the [Stripe](https://stripe.com/) payment platform.
 
 [Click here to visit the site.](https://yara-beach.herokuapp.com/)
 
+To test the site's checkout process please use the test credit card number provided in
+the [Stripe Documentation](https://stripe.com/docs/testing):
+
+- Card Number: 4242 4242 4242 4242
+- Expiration Date: Any date (e.g. 02/04)
+- CVC: Any three digits
+
 ## Table of contents
 - [Project Goals](#project-goals)
 1. [**User (UX)**](#User-experience)
