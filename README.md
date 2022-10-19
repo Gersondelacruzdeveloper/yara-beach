@@ -179,58 +179,49 @@ I am an existing Yarabeach site member. I want to be able to:
 - Read detailed descriptions of excursions and rentals.
 - Have a navigation bar where I can directly type in the product I'm looking for and it will immediately appear.
 
-
-
-##  User Experience
-
-
-### Strategy
-
-- The User centred Design process started with the creation of the User Stories. these influenced subsequent feature, layout, and design decisions.
-
-#### User Stories
-
-#### Prospective User
-
-As a potential MyOnlineRecipes site user I want to be able to: 
-
-- Immediately comprehend the purpose behind the MyOnlineRecipes site and view some of the recipes.
-- Navigate throughout the site with eases.
-- Easily create an account and sign in to it.
-- Log out of my account once finished on the website.
-- Experience good responsive design, so I can access the site on different devices.
-- Change my password in case somebody else has access to it.
-- Contact the admin.
-- See a variety of recipes for different meals of the day
-- Enjoy stylish, clean design and style that is inline with the subject of the site
-
-#### As a returning or registered user
-
-As a registered user of MyOnlineRecipes site I want to be able to:
-
-- Log into my account.
-- Save private recipes that only I can see.
-- Have the option to share my recipes with other users
-- Create my own recipes.
-- Edit the recipes I have added.
-- Delete the recipes I have added.
-- Have a rich text editor which enable me to writing beatiful content.
-- Contact admin with queries or feedback.
-- Comments on recipes, so I can share my opinion with other users.
-- Find social media links, so I can follow them on different platforms.
-
-
 #### Site Owner
-As the owner of MyOnlineRecipes website I would like to:
 
--	Provide site members with an effective and user-friendly platform where they can read comments written by other members so that they make more informed choices when choosing a recipes to make.
-- Provide site members with the option to share their recipes the others users.
-- Present the commets in a visually appealing format.
-- Provide site members with the ability to search the site for a specific recipes by entering the title or Ingridients into a search box within the site.
-- Provide users with the ability to add general infomation about the recipes if the decide to, these include the recipes author’s name, title, Images, Ingredients, method or step by step process to make the recipes, service size, cooking time, date created, calories, fat, protein, carbohidrates, and salt. most of of the this field will be optional.
-- Provide the user with a beatiful image cover in case they decide not put add an image to the recipes.
-- Provide prospective members with the ability to sign-up easily
--	Provide visible contact details so that all site visitors can contact the site administrator with ease
+As the owner of the Yarabeach website, I would like to:
+- Provide users with an effective and user-friendly platform where they can see what products Yara Beach has to offer.
+- Provide visitors with visually appealing images of the products on offer.
+- Provide visitors with information about the excursions or rentals, such as title, description, price, and a nice form to add to the cart.
+- Provide visitors with excursions or rental images , not just one standard image, and the ability to click and navigate through them.
+- Provide site users with an easy way to add their desired product to their cart.
+- Provide users with a visual representation of their cart total and the number of products already added, visible on all screens in the app.
+- Provide users with an updated total when they add or remove products from their cart.
+- Provide users with an easy-to-use and secure online payment process.
+- Present the reviews and ratings in a visually appealing format.
+- Present how many reviews an item has.
+- Provide the user with the ability to search for specific excursions and rentals filtered by newest, oldest, price range from low to high, and high to low.
+- In the rental app, provide a way to easily filter by rental type: room, house, or villa.
+- Provide prospective members with the ability to sign-up easily.
+- Provide visible contact details so that all site visitors can contact the Yarabeach with ease.
+- Be able to add new excursions or rentals to the website with ease.
+- Be able to edit existing excursions or rentals with ease.
+- Delete or discontinue excursions or rentals that are no longer available, removing their images and information from the website.
+- Be able to activate a product if I want to see it live, or inactive a product for any reason without deleting it.
+- Provide site visitors with the ability to edit the shopping cart, increasing or decreasing the number of children and adults going on an excursion or rental, updating the date that has been selected or deleting it altogether, at will.
+- Be a ble to have an administrator page where I can add excursions or rentals.
+- Be a ble to have an administrator page where I can edit excursions or rentals.
+- Be a ble to have an administrator page where I can delete excursions or rentals.
+- Be able to have an admin dashboard where we can see the total number of users we have
+- Be able to have an admin dashboard where we can see the total number of rental bookings for the day.
+- Be able to have an admin dashboard where we can see the total number of excursion bookings for the day.
+- In the dashboard, be able to have a description of the excursions bookings of the day. so we can prepare for their arrival.
+- In the dashboard, be able to see a description of the rental bookings for the day. so we can prepare for their arrival.
+- In the dashboard,  be able to see the future excursion bookings.
+- In the dashboard,  be able to see the previous excursion bookings.
+- In the dashboard,  be able to see the future rental bookings.
+- In the dashboard,  be able to see the previous rental bookings.
+- In the excursions and rentals admin list, they show a link where we can go directly and see the product.
+- Have a beautiful CKeditor that we can easily add a description of the product to in admin.
+- Have the ability to add and see more images on edit admin.
+- Have the ability to see the status of the product on the excursion and rental list.
+- Have the ability to see the user's contact info like email, full name, phone number, and booking number.
+- Have easy access to the home customer page and the admin page and vice versa.
+- Provide a detailed email confirming the customer's purchase and order number so they can easily print it and show it on arrival.
+- Provide the user with the search bar where they can type in any product they wish to see.
+
 
 
 ###  Scope Plane
