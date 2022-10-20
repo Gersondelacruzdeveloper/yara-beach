@@ -56,6 +56,9 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Contact Page Features](#contact-page-features)
        - [Rental page app features](#rental-page-app-features)
        - [Excursion page app features](#excursion-page-app-features)
+       - [Login page features](#login-page-features)
+       - [Register page feature](#register-page-feature)
+
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
@@ -434,12 +437,19 @@ The excursion page app has a title to let the user know where they are located. 
 
 ---
 
+##### Login page features
+The logging or sign-in page contains an image stating "Sign in with Google." At the bottom of the Google sign-in image is a title saying "sign in with a form". At the bottom of the sign in title form we have 2 fields: one for the user name and another for the password. A radio input with a paragraph saying " remember me". After that, there is a button to submit the form  and below that there are two paragraphs. One says, "Don't have an account? sign up, while the other says "Forgot your password ? Reset Password".
 
-##### Login page 
-The Loging page contains a card with a header title, two fields: one for the password and another one for the username, and a button below with a login text, below the button there is a sentence with the link of sign up and another one with the link to reset the password in case they have forgotten. each input field has a beautiful icon: one is a user icon and the other one is a key icon.
+##### back to [top](#table-of-contents)
 
-##### Sign up page 
-The signup page contains the same as the login page exept that it contains 2 more input fields, which are the email and the comfirmation of the second password, also it has a sentence with a login link,  in case the user already has the credentioal to login. 
+---
+
+##### Register page feature
+The signup page contains a big title saying "Register Account." At the bottom of the title, there are five fields input: two for email and confirming the email, one for username, and two for a password and confirming the password. Then there is a button to submit the form and a paragraph saying "Already have an account? "Sign in."
+
+##### back to [top](#table-of-contents)
+
+---
 
 ##### 404 page
 Once the user navigates to a wrong path inside myonlinerecipes site, it will be redirected to a beautiful image which contains a button to return home, the header of the image saying 404 and a sentence letting the user know that he went to a run URL.
