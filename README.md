@@ -62,8 +62,8 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Cart Page Features](#cart-page-features)
        - [Checkout Page Features](#checkout-page-features)
        - [Checkout Success Page Features](#checkout-success-page-features)
-      
-      
+       - [Change Password page feature](#change-password-page-feature)
+  
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
@@ -490,6 +490,14 @@ The checkout page is divided into 2 parts: A cart to the right with the details 
 ##### Checkout Success Page Features
 
 On the checkout success page, use a cart with the site colour badge at the top and a tick icon. At the button of the badge is a message telling the user that the payment has been successful, the booking number, the total amount paid, and a message telling them to go to email so they can see the order details. and last, a button to go home.
+
+---
+
+##### back to [top](#table-of-contents)
+
+##### Change Password page feature
+
+The change password page has three fields: one is for the current password, two for the new password. a title indicating that it is a change password form and a button to submit the form saying change password.
 
 ---
 
