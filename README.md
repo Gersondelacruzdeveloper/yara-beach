@@ -249,33 +249,55 @@ Yara Beach is not exactly a holiday package because you can not buy rentals and 
 
 ---
 
+### 2 Scope Plane
 
-###  Scope Plane
-
-### **Existing Features**
-
-The key features of the website were developed based on user needs. 
+The key features of the website were developed based on user needs.
 
 Users should be able to do the following on the website:
 
--	Easy navigation by using navigation bar. Nav links are clearly idenfied both on desktop and when sidenav is expanded on smaller devices.
-- Responsive design allowing users to use site across all devices.
-- Site layout is responsive to all media sizes.
-- Users of the site can create an account.
-- Users can login into their existing account.
--	Users can write a recipe comment as long as they are registered.
-- Users can contact the site owner through a contact form
-- Recipes can be created, read, updated and deleted (CRUD) by the users.
-- On the create recipe form, there is a rich text editor which enable users to write beatiful content
-- Users of the site, either logged in or not, can search the recipes either by text input or filtering the ingredients they want the recipe to have.
-- Logged in users have the options to either share their recipes or keep it private by toggle the button (Share ?).
-- Logged in users have access to their profile, and view all the the recipes they have created and also view the recipes that other
- people have decided to share.
-- Recipe information includes the same as describe in the Site Owner e.g: recipes author’s name, title, Images, Ingredients, method or step by step process to make the recipes, service size, cooking time, date created, calories, fat, protein, carbohidrates, and salt.
-- Flash messages appear when users create, edit, delete or update the recipe.
+- Navigate and interact with the site with ease.
+- Ensure the interactivity is intuitive.
+- Ensure the layout and design are responsive to all media sizes.
+- Allow users to create an account, confirm their email address, change their password, -  log in, and log out.
+- Contact the store with any queries.
 - Easily access the site’s social media channels.
-- navigate through pagination on the recipe pages.
-- Change their password securily by email.
+- Be able to type in  search bar any product they wish to see, according to the app.
+- In rentals, users should be able to sort by newest, oldest, price low to high, price high to low, all rooms, all apartments, all villas.
+- In Excursions, users should be able to sort by newest, oldest,price low to high,price high to low, all rooms, all apartments, all villas.
+- The admin user should be able to go from customer page to admin and admin to customer page. 
+- A super user should be allowed to see the admin panel.
+- An authenticated user or an anonymous user should not be allowed to edit, delete, add products, or even go to admin pages.
+- Read a description of the product.
+- - See the reviews and rate the product.
+- Upload a rental review for a rental they themselves purchased through the site.
+- Upload an excursion review for an excursion they themselves purchased through the site.
+- Add an excursion to their cart.
+- Add a rental to their cart.
+- Excursions should be removed from their carts.
+- Take the rentals out of their carts.
+- Update the excursion cart, e.g., excursion date, adult quantity, child quantity, and automatically update the subtotal price and the total.
+- Update the rental cart, e.g., echeck-in,checkout, adult quantity, child quantity, and automatically update the subtotal price and the total.
+- Have the link handy if you want to keep shopping. and a link that sends them to checkout if there are items in the cart.
+- In rental checkout, users should be able to see a detailed view of the item they are about to be charged for. It should contain the following: the title, subtotal, image of the product, check-in, checkout, how many adults and children, rental type, and the total price.
+- In excursion checkout, users should be able to see a detailed view of the item they are about to be charged for. It should contain the following: the title, subtotal, image of the product, excursion date, how many adults and children, rental type, and the total price.
+- Next to the product view details of items, there should be a field to enter the user's contact information and a field for payment. There is also a button with the total to pay and process the payment.
+- Receive immediate visual feedback that their payment has been processed and their order confirmed, containing the order numbers for every item and the amount paid. We also informed them that we had sent an email with all the booking information and a link to go home.
+- Receive an email confirming their order with all the details.
+- In the user's profile, they should then be able to go to excursions bookings or rentals bookings to see their order history.
+- In order's histoy, they should be able to see today's bookings, future bookings, and previous bookings.
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
+
+
+
+
+
+
 
 ### Structure
 
