@@ -88,6 +88,8 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'account_login' %}"><i
                                             class="fa-solid fa-user"></i> Sign in</a></li>
+                                <li><a class="dropdown-item" href="{% url 'account_signup' %}"><i
+                                            class="fa-solid fa-user-plus"></i> Register </a></li>
                             </ul>
                         </li>
                         {% else %}
@@ -103,7 +105,7 @@
                                             class="fa-solid fa-user"></i> Change Password</a></li>
                                 {% if request.user.is_superuser %}
                                 <li><a class="dropdown-item" href="{% url 'administrator' %}"><i
-                                    class="fa-solid fa-toolbox"></i> Admin board</a></li>
+                                            class="fa-solid fa-toolbox"></i> Admin board</a></li>
                                 {% else %}
                                 <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}">
                                         <i class="fa-solid fa-book-circle-arrow-up"></i>
