@@ -313,16 +313,51 @@ The most prominent navigation buttons on the mobile navbar on these sites, visib
 - the **Shopping Cart**. 
 - the **Contact**, which contacts the store with any queries.
 
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
+#### Existing Features
+
+After identifying the needs of the site's users and after visiting other similar sites, the following website design and features were chosen:
+
+##### Favicon
+
+A **website logo as favicon**, displayed on the web browser's tab,
+allows the desktop user to identify the website by sight.
+
+##### back to [top](#table-of-contents)
+---
+
+##### Title
+
+The **Title**, displayed on the web browser's tab at all times,
+contains the business's title.
+
+--- 
+
+##### Navbar
+The navbar contains all the links to navigate through the pages.
+The **home page** navbar contains the **excursions** app link, the **rental** app link, a user dropdown button, and a contact link.
+The **rental** page navbar contains the links back to the **home page**, sort by **dropdown for rentals**, a user dropdown button, contact link, and a search bar with a button to the right.
+The **excursion** page navbar contains the link back to the home app, sort by **dropdown for excursions**, a user dropdown button, a contact link, and a search bar with a button to the right.
 
 
-### Structure
+- The **Account user icon with the user name** opens a dropdown menu with links related to what the user's status is. For instance, anonymous user, authenticated user, and superuser.
 
-### Informational Architecture
+<br>
 
-After identifying the needs of the site's users and after visiting other recipes site and recommendation websites the following website design and features were chosen:
+| Logged-Out User | Logged-In User     | Superuser       |
+| :-------------- | :-------------     | :-----------    |
+| Sign in         |    Logout          | Logout          |
+| Register        | change Password    | change Password |
+|                 | Excursions Bookings| Admin Board     |
+|                 | Rentals Bookings   |                 |
+
 
 ##### Header
-
 The header of the page contains the **NavBar**, the  **Logo**, the following links located to the left: **Home page**, **My Recipes**, **contact**, **Dropdown menu with the name of the user and a list of options to logout or change password**. To the right there is a  search box with a button to search for recipes. The header It is a static element, and is fixed to the top of the page at all times. When the site get 750px down (mobile) the header content change from inline to column.  When the user is not a member the only thing they can see is the Home, Contact, Login Sign Up.
 
 ##### Home 
