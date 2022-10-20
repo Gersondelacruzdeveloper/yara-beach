@@ -48,7 +48,6 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Title](#title)
        - [Navbar](#navbar)
        - [Django Messages](#django-messages)
-       - [Breadcrumbs Navigational Links](#breadcrumbs-navigational-links)
        - [Pagination Links](#pagination-links)
        - [Product and BlogPost Cards](#product-and-blogpost-cards)
        - [Free Delivery Banner](#free-delivery-banner)
@@ -366,6 +365,21 @@ The **excursion** page navbar contains the link back to the home app, sort by **
 **Dajngo message** have been used throughout the site to display
 alert messages to the user, to provide feedback and to assist them in
 achieving their aims. These messages are color-coded using bootstrap alert classes for ease of understanding, in red for error messages, and green for success messages. 
+
+##### back to [top](#table-of-contents)
+
+---
+
+##### Pagination Links
+
+
+**Pagination** has been added to the 'Excursion' and 'Rental' pages because the amount of content on these pages varies greatly from request to request.
+The items returned are broken into discrete pages which can be accessed using the pagination links displayed at the bottom of the subset being displayed. 
+The left-angle character brings the user to the 'previous page'; 
+page numbers allow users to jump to a numbered page; and the right-angle character links to the 'next page' in the series. 
+The number of links rendered has been capped at three, either side of the current page. To make the user's current position explicit, the current page link is styled as bootstrap default pagination with a square blue background and white number.
+
+
 
 ##### Home 
 The Home page display all non-private recipes of the site and it is very responsive when it comes to a different device, it is composed of 5 cards if its a large device like a monitor or computer, and if it is a tablet device it has 3 cards, mini table with 2 cards, mobile of 750px down the home page just display 1 card. each card contains. an image, title, recipe owner name, and a comment sign along with the number of comments that recipe has.
