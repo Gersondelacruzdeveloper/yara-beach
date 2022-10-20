@@ -53,8 +53,9 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Rental Cards](#rental-cards)
        - [Footer](#footer)
        - [Home Page Features](#home-page-features)
-       - [Home Page Features](#home-page-features)
        - [Contact Page Features](#contact-page-features)
+       - [Rental page app features](#rental-page-app-features)
+       - [Excursion page app features](#excursion-page-app-features)
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
@@ -409,11 +410,30 @@ The home page first displays  navigation bar with a beautiful logo of Yara Beac
 At the bottom of the carousel, the home page has two sections full of cards. One section has four card excursions, and at the bottom of the cards there is a button with links directing the users to view all the excursions and potentially book one. In the second section, there is another link, but this time it sends the user to all rentals.
 At the bottom of the page, we found the footer. The page is very responsive when it comes to different devices. It is composed of 4 cards vertically if it's a large device like a monitor or computer, and if it's a tablet device, it has 3 cards. A mini table has 2 cards, and a mobile of 750px down the home page just displays 1 card.
 
+##### back to [top](#table-of-contents)
+
+---
+
 ##### Contact Page Features
 The contact page contains a header title, a sentence encouraging the user to email the administrator, 3 text inputs, and a big textarea. Also, in the right corner, there is a button with the value **submit** continuously **flashing**. The footer is at the button and the navbar is at the top.
 
-##### My Recipes page 
-The My Recipes page which is only available for registered users, contains almost the same layout as the home page, except that on every card there are two buttons one for edit and another one for delete. at top of the page below, the header title,  there is a button with a plus sign where the user can click and add their recipes.
+##### back to [top](#table-of-contents)
+
+---
+
+##### Rental page app features
+The rental page app has a title to let the user know where they are located. At the top of the title, we found the rental navbar containing the all-time visible cart with the current values. On the right-hand side, we found a search bar with a button. The navbar contains a sort by that filters by newest, oldest, price low to high, price high to low, all rooms, all apartments, and all villas. After the title, we have all the cards belonging to rentals. After the cards, we have the pagination and the footer at the bottom.
+
+##### back to [top](#table-of-contents)
+
+---
+##### Excursion page app features
+The excursion page app has a title to let the user know where they are located. At the top of the title, we found the excursion navbar containing the all-time visible cart with the current values. On the right-hand side, we found a search bar with a button. The navbar contains a sort by that filters by newest, oldest, price low to high, and price high to low. After the title, we have all the cards belonging to excursions. After the cards, we have the pagination and the footer at the bottom.
+
+##### back to [top](#table-of-contents)
+
+---
+
 
 ##### Login page 
 The Loging page contains a card with a header title, two fields: one for the password and another one for the username, and a button below with a login text, below the button there is a sentence with the link of sign up and another one with the link to reset the password in case they have forgotten. each input field has a beautiful icon: one is a user icon and the other one is a key icon.
