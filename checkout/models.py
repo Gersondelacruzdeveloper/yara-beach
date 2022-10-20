@@ -59,7 +59,7 @@ class RentalOrder(models.Model):
     date_created = models.DateField(auto_now_add=True)
     customer_email = models.EmailField(null=True, blank=True)
     cellphone_number = models.CharField(max_length=70, null=True, blank=True)
-    rental_type = models.CharField(max_length=70, null=True, blank=True)
+    # rental_type = models.CharField(max_length=70, null=True, blank=True)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
     def _generate_rental_order_number(self):
