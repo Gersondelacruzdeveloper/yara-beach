@@ -225,6 +225,30 @@ As the owner of the Yarabeach website, I would like to:
 - Provide the user with the search bar where they can type in any product they wish to see.
 - Provide a user with a pagination so that they know where they are and if there are more products.
 
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+## User Centered Design
+
+### 1 Strategy Plane
+
+
+The User Stories that we just wrote above were used to maintain a focus on user needs and business goals during the design process.
+
+
+The Yara Beach website is a Business-To-Consumer (B2C) model aiming to provide a beautiful holiday experience, including stays and excursions.
+
+
+Yara Beach is not exactly a holiday package because you can not buy rentals and excursions under just one price. In the meantime, this sounds beautiful and we will use it in the future. I spoke to Yara, the future owner of this website, and this is what she had to say: "Our aim was never to sell excursions at the same time as rentals. We use booking.com and Airbnb to show our catalogue of rentals, but when customers contact us, they always have queries about excursions. They often ask if we sell any excursions like boogies, the famous Sahona island, etc., so we end up contacting a real excursion company and making very good deals with them for our customers, so they can have all the packages we offer. It is important to say that our own customers have been deceived on the beach by people who were selling them fake excursions. They have informed us about this problem, and this is how we came to the conclusion of offering our customers excursions as well before they arrive. so they will not be deceived anymore."
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
 
 ###  Scope Plane
 
