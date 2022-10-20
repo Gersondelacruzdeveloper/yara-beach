@@ -306,12 +306,12 @@ revealed structural commonalities that Yarabeach  would be expected to follow i
 
 The most prominent navigation buttons on the mobile navbar on these sites, visible at all times, were the following:
 - **site logo**, which operates as a **Home Button**,
--the **dropdown menu toggle**, which reveals and hides the other menu items on mobile.
--the **User Profile icon**, allowing users to **login**/**logout** or **access their account**. View all bookings
--the **Search bar** 
--the **Sort by button**, which does all the filters.
--the **Shopping Cart**. 
--the **Contact**, which contacts the store with any queries.
+- the **dropdown menu toggle**, which reveals and hides the other menu items on mobile.
+- the **User Profile icon**, allowing users to **login**/**logout** or **access their account**. View all bookings
+- the **Search bar** 
+- the **Sort by button**, which does all the filters.
+- the **Shopping Cart**. 
+- the **Contact**, which contacts the store with any queries.
 
 
 
