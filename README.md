@@ -47,7 +47,7 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Favicon](#favicon)
        - [Title](#title)
        - [Navbar](#navbar)
-       - [Toast Messages](#toast-messages)
+       - [Django Messages](#django-messages)
        - [Breadcrumbs Navigational Links](#breadcrumbs-navigational-links)
        - [Pagination Links](#pagination-links)
        - [Product and BlogPost Cards](#product-and-blogpost-cards)
