@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import ExcursionOrder, RentalOrder
+from .models import ExcursionOrder, RentalOrders
 admin.site.register(ExcursionOrder)
-admin.site.register(RentalOrder)
+admin.site.register(RentalOrders)
