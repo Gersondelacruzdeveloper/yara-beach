@@ -53,8 +53,9 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Rental Cards](#rental-cards)
        - [Footer](#footer)
        - [Home Page Features](#home-page-features)
+       - [Home Page Features](#home-page-features)
+       - [Contact Page Features](#contact-page-features)
        - [Our Story Page Features](#our-story-page-features)
-       - [Contact Us Page Features](#contact-us-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
        - [Add Product Page Features](#add-product-page-features)
@@ -408,9 +409,8 @@ The home page first displays  navigation bar with a beautiful logo of Yara Beac
 At the bottom of the carousel, the home page has two sections full of cards. One section has four card excursions, and at the bottom of the cards there is a button with links directing the users to view all the excursions and potentially book one. In the second section, there is another link, but this time it sends the user to all rentals.
 At the bottom of the page, we found the footer. The page is very responsive when it comes to different devices. It is composed of 4 cards vertically if it's a large device like a monitor or computer, and if it's a tablet device, it has 3 cards. A mini table has 2 cards, and a mobile of 750px down the home page just displays 1 card.
 
-
-##### Contact page 
-The contact page contains a header title, a sentence encouraging the user to email the administrator, 3 texts input and a big texterea. also in the right corner, the is a button with the value of submit.
+##### Contact Page Features
+The contact page contains a header title, a sentence encouraging the user to email the administrator, 3 text inputs, and a big textarea. Also, in the right corner, there is a button with the value **submit** continuously **flashing**. The footer is at the button and the navbar is at the top.
 
 ##### My Recipes page 
 The My Recipes page which is only available for registered users, contains almost the same layout as the home page, except that on every card there are two buttons one for edit and another one for delete. at top of the page below, the header title,  there is a button with a plus sign where the user can click and add their recipes.
