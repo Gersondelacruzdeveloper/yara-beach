@@ -49,6 +49,8 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Navbar](#navbar)
        - [Django Messages](#django-messages)
        - [Pagination Links](#pagination-links)
+       - [Excursion Cards](#excursion-cards)
+       - [Rental Cards](#rental-cards)
        - [Home Page Features](#home-page-features)
        - [Footer](#footer)
        - [Our Story Page Features](#our-story-page-features)
@@ -382,7 +384,17 @@ The number of links rendered has been capped at three, either side of the curre
 
 ---
 
+##### Excursion Cards
 
+The excursion cards are very modern, with a square round and a border radious around the image. At the button of the image there is the title, which all has the same side. At the button of the title there are stars representing the ratings, with the number of reviews next to it. Finally, at the button of the stars, the price of the excursions.
+
+##### Rental Cards
+
+The rental cards are very modern  with a square round and a border radious around the image. At the button of the image there is the title, which all has the same side. and at the end of the title there is a **badge** showing the type of rental: **Villa**, **Rooms**, or **Apartment** At the button of the badge there are stars representing the ratings, with the number of reviews next to them. Finally, at the button of the stars, the price of the rental.
+
+##### back to [top](#table-of-contents)
+
+---
 ##### Home page features
 
 The home page first displays  navigation bar with a beautiful logo of Yara Beach to the left and all the links to the right. At the bottom of the navbar, there is a carousel presenting different images, and at the same time, it has letters actively with the effect of typing in order to inform the user about Yarara Beach excursions and rentals.
