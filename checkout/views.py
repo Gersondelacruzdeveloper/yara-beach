@@ -5,7 +5,7 @@ from cart.contexts import cart_contents, rental_cart_contents
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 import stripe
-from .models import ExcursionOrder, RentalOrder
+from .models import ExcursionOrder, RentalOrders
 from django.contrib.auth.decorators import login_required
 import datetime
 # Create your views here.
@@ -113,7 +113,7 @@ def checkout_rental(request):
     # Create the order
     if request.method == 'POST':
         for item in current_cart['rental_cart_items']:
-            RentalOrder.objects.create(
+            RentalOrders.objects.create(
                 rental_name=item['rental'].title,
                 user=request.user,
                 full_name=request.POST['full_name'],
@@ -130,7 +130,7 @@ def checkout_rental(request):
                 subtotal=item['sub_total'],
             )
         # send an email with all the info to the user
-        user_orders = RentalOrder.objects.all().filter(user=request.user)
+        user_orders = RentalOrders.objects.all().filter(user=request.user)
         user_orders = user_orders.filter(date_created=datetime.date.today())
         rental_total = 0
         template = ''
@@ -186,7 +186,7 @@ def checkout_rental(request):
 # Allow the user know that the purchase has been successful
 @login_required(login_url='/accounts/login/')
 def checkout_rental_success(request):
-    user_orders = RentalOrder.objects.all().filter(user=request.user)
+    user_orders = RentalOrders.objects.all().filter(user=request.user)
     user_orders = user_orders.filter(date_created=datetime.date.today())
     rental_total = 0
     for item in user_orders:

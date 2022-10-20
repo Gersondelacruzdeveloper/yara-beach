@@ -31,7 +31,7 @@ def administrator(request):
         excursion_date__lte=datetime.date.today())
 
     # All rentals
-    all_excursion_orders = RentalOrder.objects.all()
+    all_excursion_orders = RentalOrders.objects.all()
     # Today rental booking
     today_rental_bookings = all_excursion_orders.filter(
         check_in=datetime.date.today())
