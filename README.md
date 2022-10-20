@@ -3,7 +3,7 @@
 
 <h2 align="center">Code Institute - Milestone Project 4</h2>
 
-<img src="./myonlinerecipes/static/documentation/readme-images/main_readme_file_image.png" height="auto" width="100%" alt="Mockup of myonlinerecipe pages when viewed on a desktop, tablet and mobile device."/>
+![alt text](documentation/readme-images/mockup-yarabeach-image.png "Mockup of Yara Beach website when viewed on a desktop, tablet and mobile device.")
 
 Yara Beach is an e-commerce website. Yara is the actual name of the owner, who is my friend from the beautiful island of the Dominican Republic. During the process of building my portfolios through the Code Institute, I decided that my last project or portfolio would be a real-use website. So I contacted my friend Yara, who has a business called Yara Beach. I told her I'd create a website for her to attract more customers and increase sales. She was so happy to hear that and agreed, so I asked her what it was that she needed the website to have based on her customers' needs. She sells excursions and rentals through Airbnb and Booking.com. She needed a combined website for excursions and rentals, and waala, here we have the Yara Beach website, where she will be able to keep track of her customers when they register and see all the oncoming bookings, e.g., today's bookings, future bookings, and previous bookings for excursions and rentals. Customers will be able to view all their current bookings, previous bookings, and future bookings for both excursions and rentals as well. Customers will be able to leave review ratings and view beautiful product details with many images showcasing the products. The owner will be able to add products, delete products, edit products, and put products on active or inactive status.
 
