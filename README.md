@@ -59,6 +59,8 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Login page features](#login-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
        - [Register page feature](#register-page-feature)
+       - [Cart Page Features](#cart-page-features)
+      
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
@@ -459,9 +461,19 @@ The signup page contains a big title saying "Register Account." At the bottom of
 The **excursion** detail page has the excursion navbar described above, and a big title of the excursion . Then on desktop, it is divided into two sides, one for the images  that is the left side) and the other for a form to the right. Below the image, there are many other images that the user can click to view on the main image. It has arrows that move to the left or the right so the user can see the images that are hidden. The form has the price on the top. Then there are four inputs: one for the date, one for adults with how many adults are going on the excursions, one for how many children are going on the excursions, and one for the location that they want to choose. Then we have 2 buttons: a left-side button that tells the customers that they can keep shopping and the other side button that tells them to add to the cart. At the bottom of the form and images, there is a big title called "Overview," and below you can view the details of the item. The customer reviews are listed below the summary title, along with the number of reviews for the item. There is also the ability to create a new review if it is an authenticated user or to sign up if it is not . The review appears in a nice standard format . The review includes the name of the user who posted the review , the rating of stars given, the date that it was posted and the review.
 
 The **rental** details page is very similar to the excursion page. The only difference is that in rental, the price does not say price but night. We also have the check-in field and checkout field .
+---
+
+##### back to [top](#table-of-contents)
+
+#####  Cart Page Features
+
+The cart page feature has 2 horizontal rule lines and in the middle a big title saying "Shopping Cart" with a cart icon. If the cart is empty, then I display a message saying that the cart is empty. and provide a button to go shopping based on where I am in the app. If I am in a rental, then the link will take me to the rental, and if I am in the excursion app, then it will take me to the excursion app. If the cart is not empty and we are in the excursion app, then we have 2 cards, one to the right, which show the summary and 2 buttons, one to go to checkout and the other one to keep shopping. The cart to the left shows the item details. If it is the excursion app, then it shows the description, excursion date, quantity, pickup, price, and subtotal. with an update button and a delete button. If it is a rental, we have a description, check-in date, checkout, how many days, quantity for adults and quantity for children, price subtotal, and the update button and the delete button. We can also edit all the items in the cart
 
 
 ---
+
+##### back to [top](#table-of-contents)
+
 ##### 404 page
 Once the user navigates to a wrong path inside myonlinerecipes site, it will be redirected to a beautiful image which contains a button to return home, the header of the image saying 404 and a sentence letting the user know that he went to a run URL.
 
