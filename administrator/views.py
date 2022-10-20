@@ -5,7 +5,7 @@ from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
 from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
 from django.contrib import messages
-from checkout.models import ExcursionOrder, RentalOrder
+from checkout.models import ExcursionOrder, RentalOrders
 from django.contrib.auth.decorators import login_required
 import datetime
 
