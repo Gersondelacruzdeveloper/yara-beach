@@ -51,8 +51,8 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Pagination Links](#pagination-links)
        - [Excursion Cards](#excursion-cards)
        - [Rental Cards](#rental-cards)
-       - [Home Page Features](#home-page-features)
        - [Footer](#footer)
+       - [Home Page Features](#home-page-features)
        - [Our Story Page Features](#our-story-page-features)
        - [Contact Us Page Features](#contact-us-page-features)
        - [Products Page Features](#products-page-features)
@@ -395,6 +395,13 @@ The rental cards are very modern  with a square round and a border radious arou
 ##### back to [top](#table-of-contents)
 
 ---
+
+##### footer
+The footer is statically positioned at the bottom of the page. Similar to the header, the footer's content stays in line when the content exceeds the viewport of the device. The footer contains a Facebook link for the site, as well as an Instagram link, a Twitter link, and also a TikiTok link.
+
+##### back to [top](#table-of-contents)
+
+---
 ##### Home page features
 
 The home page first displays  navigation bar with a beautiful logo of Yara Beach to the left and all the links to the right. At the bottom of the navbar, there is a carousel presenting different images, and at the same time, it has letters actively with the effect of typing in order to inform the user about Yarara Beach excursions and rentals.
@@ -417,8 +424,6 @@ The signup page contains the same as the login page exept that it contains 2 mor
 ##### 404 page
 Once the user navigates to a wrong path inside myonlinerecipes site, it will be redirected to a beautiful image which contains a button to return home, the header of the image saying 404 and a sentence letting the user know that he went to a run URL.
 
-##### footer
-The footer is statically positioned at the bottom of the page. Similar to the header, contrary to the header the footer's content stay in line when the content exceeds the viewport of the device. The footer contains a link to the project’s GitHub repository, the facebook  link of the site as well as the instagram link, and  also a link to my personal linkedIn profile.
 
 ### Skeleton
 
