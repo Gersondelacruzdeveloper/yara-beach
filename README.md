@@ -60,6 +60,9 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Product Detail Page Features](#product-detail-page-features)
        - [Register page feature](#register-page-feature)
        - [Cart Page Features](#cart-page-features)
+       - [Checkout Page Features](#checkout-page-features)
+       - [Checkout Success Page Features](#checkout-success-page-features)
+      
       
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
@@ -69,7 +72,6 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Add Product Review Page Features](#add-product-review-page-features)
        - [Edit Product Review Page Features](#edit-product-review-page-features)
        - [Cart Page Features](#cart-page-features)
-       - [Checkout Page Features](#checkout-page-features)
        - [Checkout Success Page Features](#checkout-success-page-features)
        - [My Account Page Features](#my-account-page-features)
        - [Blog Page Features](#blog-page-features)
@@ -473,6 +475,15 @@ The cart page feature has 2 horizontal rule lines and in the middle a big title 
 ---
 
 ##### back to [top](#table-of-contents)
+
+#####  Checkout Page Features
+
+The checkout page is divided into 2 parts: A cart to the right with the details of the item contains the title, number of items, subtotal, image of the item, number of adults, number of children, date of the excusion, and the total price to pay. On the left we have 3 fields: at the top of the left side we have contact information like phone number and full name; below there is the payment input field, coming directly from Stripe; and a button to submit the page. If we are in the rental checkout, then we have the check-in date and checkout date, and the type of rental.
+
+---
+
+##### back to [top](#table-of-contents)
+
 
 ##### 404 page
 Once the user navigates to a wrong path inside myonlinerecipes site, it will be redirected to a beautiful image which contains a button to return home, the header of the image saying 404 and a sentence letting the user know that he went to a run URL.
