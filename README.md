@@ -49,11 +49,8 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Navbar](#navbar)
        - [Django Messages](#django-messages)
        - [Pagination Links](#pagination-links)
-       - [Product and BlogPost Cards](#product-and-blogpost-cards)
-       - [Free Delivery Banner](#free-delivery-banner)
-       - [Newsletter Subscription Form](#newsletter-subscription-form)
-       - [Footer](#footer)
        - [Home Page Features](#home-page-features)
+       - [Footer](#footer)
        - [Our Story Page Features](#our-story-page-features)
        - [Contact Us Page Features](#contact-us-page-features)
        - [Products Page Features](#products-page-features)
@@ -379,10 +376,19 @@ The left-angle character brings the user to the 'previous page'; 
 page numbers allow users to jump to a numbered page; and the right-angle character links to the 'next page' in the series. 
 The number of links rendered has been capped at three, either side of the current page. To make the user's current position explicit, the current page link is styled as bootstrap default pagination with a square blue background and white number.
 
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
 
 
-##### Home 
-The Home page display all non-private recipes of the site and it is very responsive when it comes to a different device, it is composed of 5 cards if its a large device like a monitor or computer, and if it is a tablet device it has 3 cards, mini table with 2 cards, mobile of 750px down the home page just display 1 card. each card contains. an image, title, recipe owner name, and a comment sign along with the number of comments that recipe has.
+##### Home page features
+
+The home page first displays  navigation bar with a beautiful logo of Yara Beach to the left and all the links to the right. At the bottom of the navbar, there is a carousel presenting different images, and at the same time, it has letters actively with the effect of typing in order to inform the user about Yarara Beach excursions and rentals.
+At the bottom of the carousel, the home page has two sections full of cards. One section has four card excursions, and at the bottom of the cards there is a button with links directing the users to view all the excursions and potentially book one. In the second section, there is another link, but this time it sends the user to all rentals.
+At the bottom of the page, we found the footer. The page is very responsive when it comes to different devices. It is composed of 4 cards vertically if it's a large device like a monitor or computer, and if it's a tablet device, it has 3 cards. A mini table has 2 cards, and a mobile of 750px down the home page just displays 1 card.
+
 
 ##### Contact page 
 The contact page contains a header title, a sentence encouraging the user to email the administrator, 3 texts input and a big texterea. also in the right corner, the is a button with the value of submit.
