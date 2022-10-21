@@ -70,9 +70,13 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Administrator Excursion page features](#administrator-excursion-page-features)
        - [Administrator Rental page features](#administrator-rental-page-features)
        - [Administrator add rental page features](#administrator-add-rental-page-features)
+       - [Administrator edit rental page features](#administrator-edit-rental-page-features)
        - [Administrator delete rental page features](#administrator-delete-rental-page-features)
-
-
+       
+       - [Administrator add excursion page features](#administrator-add-rental-page-features)
+       - [Administrator edit excursion page features](#administrator-edit-rental-page-features)
+       - [Administrator delete excursion page features](#administrator-delete-rental-page-features)
+       
 
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
@@ -555,11 +559,25 @@ The Administrator edits the rental page. It has the admin navbar, a h2 title, an
 #####  Administrator delete rental page features
 The administrator deletes  rental page has a card confirming if we really want to delete the item. It has two buttons, one for deleting and another for cancelling the deletion intent.
 
-
 ---
 
 ##### back to [top](#table-of-contents)
 
+#####  Administrator add excursion page features
+
+The Administrator adds the excursion page has the admin navbar, a h2 title, Below there are 6 fields: title field, price field, main image field, image name field, a beautiful full CKeditor, an excursion button to submit the form, and a cancel button to go back to the admin excursion page.
+
+#####  Administrator edit excursion page features
+
+The Administrator edits the excursion page. It has the admin navbar, a h2 title, and 8 fields: title field, price field, main image field with the current field and the chooses image field, image name field, a beautiful full CKeditor, and a status dropdown field. It also has an image field in order to add more images to the excursion, an excursion button to submit it, and a cancel button to go back to the admin excursion page.
+
+#####  Administrator delete excursion page features
+
+The administrator deletes  excursion page has a card confirming if we really want to delete the item. It has two buttons, one for deleting and another for cancelling the deletion intent.
+
+---
+
+##### back to [top](#table-of-contents)
 
 ##### 404 page
 Once the user navigates to a wrong path inside myonlinerecipes site, it will be redirected to a beautiful image which contains a button to return home, the header of the image saying 404 and a sentence letting the user know that he went to a run URL.
