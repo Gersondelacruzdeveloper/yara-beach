@@ -577,14 +577,25 @@ Once the user navigates to a wrong path inside the Yara Beach site, or the user 
 
 
 
+---
 
-### Skeleton
+##### back to [top](#table-of-contents)
 
-The UI wireframing tool, [Balsamiq](https://balsamiq.com/), was used to create wireframes for each page of the game as it would appear on desktop, tablet, and mobile devices.
+### 4 Skeleton Plane
 
-The main content areas were expressed in similar ways to create consistency across the site. A home page featuring the name of the game and a start bottom, a main screen with all cards identical. Top left-hand corner features a flag poll that counts down, top right of the screen shows the game points, a contact page, and a footer, which contains very important information: copy right, LinkedIn link, GitHub link, all of these were included at the bottom of every page to help users navigate through the game efficiently.
+The UI wireframing tool, [Balsamiq](https://balsamiq.com/) was used to create wireframes.
+for each page as they will appear on mobile, tablet, and desktop devices.
+The main content areas on each page were designed for functionality and consistency.
 
-<br>
+The site has been designed to accommodate the growing number of holidaymakers who use mobile devices.
+uses responsive web design. Yara Beach was designed with a mobile-first design.
+beginning with the product design from the mobile end, which has more
+and then expanding its features to create a tablet and desktop version.
+
+
+---
+
+##### back to [top](#table-of-contents)
 
 #### Wireframes
 
