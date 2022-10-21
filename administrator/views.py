@@ -31,15 +31,15 @@ def administrator(request):
         excursion_date__lte=datetime.date.today())
 
     # All rentals
-    all_excursion_orders = AccommodationOrder.objects.all()
+    all_rental_orders = AccommodationOrder.objects.all()
     # Today rental booking
-    today_rental_bookings = all_excursion_orders.filter(
+    today_rental_bookings = all_rental_orders.filter(
         check_in=datetime.date.today())
     # Future rental bookings
-    future_rental_bookings = all_excursion_orders.filter(
+    future_rental_bookings = all_rental_orders.filter(
         check_in__gte=datetime.date.today())
     # Previous bookings
-    previous_rental_bookings = all_excursion_orders.filter(
+    previous_rental_bookings = all_rental_orders.filter(
         check_in__lte=datetime.date.today())
 
     # rentals queries
