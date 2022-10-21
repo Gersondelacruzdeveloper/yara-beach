@@ -69,8 +69,11 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Administrator dashboard page features](#administrator-dashboard-page-features)
        - [Administrator Excursion page features](#administrator-excursion-page-features)
        - [Administrator Rental page features](#administrator-rental-page-features)
-      
-       
+       - [Administrator add rental page features](#administrator-add-rental-page-features)
+       - [Administrator delete rental page features](#administrator-delete-rental-page-features)
+
+
+
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
@@ -539,6 +542,18 @@ The administrator excursion page has the admin navbar, below has the h2 title wi
 #####  Administrator Rental page features
 
 The administrator rental page has the admin navbar. Below it has the h2 title with a button in order to add more rentals. There are tables with the rentals that already exist. Those table buttons contain edit and delete functionality. The table also contains the status of the item, the type of rental, the image, the date created, the title (which links to excursion details), and the price of the excursion. Then we have the footer below.
+
+
+#####  Administrator add rental page features
+
+The Administrator adds the rental page has the admin navbar, a h2 title, Below there are 7 fields: title field, price field, main image field, image name field, a beautiful full CKeditor, ACCOM type field, Status dropdown field, an add rental button, and a cancel button to go back to the admin rental page.
+
+#####  Administrator edit rental page features
+
+The Administrator edits the rental page. It has the admin navbar, a h2 title, and 9 fields: title field, price field, main image field with the current field and the chooses image field, image name field, a beautiful full CKeditor, ACCOM type field, and a status dropdown field. It also has an image field in order to add more images to the rentals, a rental button to submit it, and a cancel button to go back to the admin rental page.
+
+#####  Administrator delete rental page features
+The administrator deletes  rental page has a card confirming if we really want to delete the item. It has two buttons, one for deleting and another for cancelling the deletion intent.
 
 
 ---
