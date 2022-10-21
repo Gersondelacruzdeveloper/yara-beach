@@ -67,7 +67,10 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Cutomer Rental Bookings page features](#customer-rental-bookings-page-features)
        - [Admin navbar](#admin-navbar)
        - [Administrator dashboard page features](#administrator-dashboard-page-features)
-
+       - [Administrator Excursion page features](#administrator-excursion-page-features)
+       - [Administrator Rental page features](#administrator-rental-page-features)
+      
+       
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
@@ -527,6 +530,15 @@ The admin navbar does not have much different from the customer navbar, but the 
 ##### Administrator dashboard page features
 The administrator dashboard page It has an admin navbar, a big title informing the user that the page is the admin,
 Below the title, we have 3 colour cards. The left-side card has the total number of users; the middle one has the total rental bookings for the day; and the right side has the total excursion bookings for the day . Below the colour cards, there can be today's rental and excursion bookings; then we have the excursion and rental future bookings; and last, we have the excursion and rental previous bookings. and on the button we can find the footer.
+
+
+##### Administrator Excursion page features
+
+The administrator excursion page has the admin navbar, below has the h2 title with a button in order to add more excursions. There are tables with the excursions that already exist. Those table buttons contain edit and delete functionality. The table also contains the status of the item, the image, the date created, the title (which links to excursion details), and the price of the excursion. Then we have the footer below.
+
+#####  Administrator Rental page features
+
+The administrator rental page has the admin navbar. Below it has the h2 title with a button in order to add more rentals. There are tables with the rentals that already exist. Those table buttons contain edit and delete functionality. The table also contains the status of the item, the type of rental, the image, the date created, the title (which links to excursion details), and the price of the excursion. Then we have the footer below.
 
 
 ---
