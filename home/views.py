@@ -7,7 +7,7 @@ from rentals.models import Rentals
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.mail import EmailMessage
-from checkout.models import ExcursionOrder, RentalOrders
+from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
 import datetime
 # Create your views here.
@@ -83,7 +83,7 @@ def customer_bookings(request):
 @login_required(login_url='/accounts/login/')
 def customer_rental_bookings(request):
     # rental queries
-    user_orders = RentalOrders.objects.all().filter(user=request.user)
+    user_orders = AccommodationOrder.objects.all().filter(user=request.user)
     # today bookins
     today_rental_bookings = user_orders.filter(
         check_in=datetime.date.today())

@@ -45,7 +45,7 @@ class ExcursionOrder(models.Model):
 
 
 # Contains all orders related to rentals
-class accommodationOrder(models.Model):
+class AccommodationOrder(models.Model):
     rental_name = models.CharField(max_length=300, null=False, blank=False)
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, default='')
     order_number = models.CharField(max_length=32, null=False, blank=False, editable=False)

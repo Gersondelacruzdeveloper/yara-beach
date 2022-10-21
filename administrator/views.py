@@ -5,7 +5,7 @@ from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
 from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
 from django.contrib import messages
-from checkout.models import ExcursionOrder, accommodationOrder
+from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
 import datetime
 
@@ -31,7 +31,7 @@ def administrator(request):
         excursion_date__lte=datetime.date.today())
 
     # All rentals
-    all_excursion_orders = accommodationOrder.objects.all()
+    all_excursion_orders = AccommodationOrder.objects.all()
     # Today rental booking
     today_rental_bookings = all_excursion_orders.filter(
         check_in=datetime.date.today())
