@@ -76,7 +76,6 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Administrator edit excursion page features](#administrator-edit-rental-page-features)
        - [Administrator delete excursion page features](#administrator-delete-rental-page-features)
        - [404 and 500 Page Features](#404-and-500-page-features)
-       - [Authorisation Pages Features](#authorisation-pages-features)
      - [Features Left to Implement](#features-left-to-implement)
    - [4) The Skeleton Plane](#4-skeleton-plane)
      - [Wireframes](#wireframes)
@@ -563,10 +562,20 @@ The administrator deletes  excursion page has a card confirming if we really wa
 ##### 404 and 500 Page Features
 Once the user navigates to a wrong path inside the Yara Beach site, or the user experience a 500 error message it will be redirected to a beautiful image which contains a button to return home safely.
 
-
 ---
 
 ##### back to [top](#table-of-contents)
+
+
+#####  Features Left to Implement
+
+- Add a graph to the administrator so they know how much money they make every month, how much money they made last year, and the next year's predicted revenue.
+- On the home page, he ranks first for excursions and fourth for rentals.
+- On the contact page, add a WhatsApp contact link so customers can contact or message the administrator directly.
+- Give the user the ability to update their profile, e.g., adding images, changing age, etc.
+- Give the admin a separate form so they can add different types of employee users, like editors, other superusers, etc.
+
+
 
 
 ### Skeleton
