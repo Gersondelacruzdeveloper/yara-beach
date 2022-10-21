@@ -599,39 +599,84 @@ and then expanding its features to create a tablet and desktop version.
 
 #### Wireframes
 
-##### Desktop
+- [Home Page](documentation/wireframes/home.png)
+  ![alt text](documentation/wireframes/home.png "Home Page.")
 
-- [Home Page wireframe: ](./myonlinerecipes/static/documentation/wireframes/Home-desktop.png)
+- [Login Page](documentation/wireframes/sign-in.png)
+  ![alt text](documentation/wireframes/sign-in.png "Login Page.")
 
-- [Contact Page wireframe: ](./myonlinerecipes/static/documentation/wireframes/contactpage-desktop.png)
+- [Registration Page](documentation/wireframes/register-account.png)
+  ![alt text](documentation/wireframes/register-account.png "Registration Page.")
 
-- [Login page wireframe: ](./myonlinerecipes/static/documentation/wireframes/loginpage-destop.png)
+- [Contact Page](documentation/wireframes/contact.png)
+  ![alt text](documentation/wireframes/contact.png "Contact Page.")
 
-- [Add Recipes form wireframe: ](./myonlinerecipes/static/documentation/wireframes/Addrecipeform-desktop.png)
+- [Add Rental Page](documentation/wireframes/add-rental.png)
+  ![alt text](documentation/wireframes/add-rental.png "Add Rental Page")
 
-- [My Recipes page wireframe: ](./myonlinerecipes/static/documentation/wireframes/myrecipespage-desktop.png)
+- [Add Excursion Page](documentation/wireframes/add-excursion.png)
+  ![alt text](documentation/wireframes/add-excursion.png "Add Excursion Page")
 
-- [Register account page wireframe: ](./myonlinerecipes/static/documentation/wireframes/Registeraccountpage-desktop.png)
+- [Checkout Page](documentation/wireframes/checkout-page.png)
+  ![alt text](documentation/wireframes/checkout-page.png "Checkout Page")
+
+- [Shoopping Cart Page](documentation/wireframes/shoopping-cart-page.png)
+  ![alt text](documentation/wireframes/shoopping-cart-page.png "Shoopping Cart Page")
+
+- [Comfirm Delete Item Page](documentation/wireframes/comfirm-delete-item.png)
+  ![alt text](documentation/wireframes/comfirm-delete-item.png "Comfirm Delete Item Page")
+
+- [Customer Booking Excursions Page](documentation/wireframes/customer-booking-excursions.png)
+  ![alt text](documentation/wireframes/customer-booking-excursions.png "Customer Booking Excursions Page")
 
 
-##### Tablet
-- [Home Page wireframe: ](./myonlinerecipes/static/documentation/wireframes/Home-tablet.png)
-- [Contact Page wireframe: ](./myonlinerecipes/static/documentation/wireframes/contactpage-tablet.png)
-- [Login page wireframe: ](./myonlinerecipes/static/documentation/wireframes/loginpage-tablet.png)
-- [Add Recipes form wireframe: ](./myonlinerecipes/static/documentation/wireframes/Addrecipeform-tablet.png)
-- [My Recipes page wireframe: ](./myonlinerecipes/static/documentation/wireframes/myrecipespage-tablet.png)
-- [Register account page wireframe: ](./myonlinerecipes/static/documentation/wireframes/Registeraccountpage-tablet.png)
+- [Customer Booking Rental Page](documentation/wireframes/customer-booking-rentals.png)
+  ![alt text](documentation/wireframes/customer-booking-rentals.png "Customer Booking Rental Page")
 
 
-##### Mobile
-- [Home Page wireframe: ](./myonlinerecipes/static/documentation/wireframes/Home-mobile.png)
-- [Contact Page wireframe: ](./myonlinerecipes/static/documentation/wireframes/contactpage-mobile.png)
-- [Login page wireframe: ](./myonlinerecipes/static/documentation/wireframes/loginpage-mobile.png)
-- [Add Recipes form wireframe: ](./myonlinerecipes/static/documentation/wireframes/Addrecipeform-mobile.png)
-- [My Recipes page wireframe: ](./myonlinerecipes/static/documentation/wireframes/myrecipespage-mobile.png)
-- [Register account page wireframe: ](./myonlinerecipes/static/documentation/wireframes/Registeraccountpage-mobile.png)
+- [Dashboard Admin Page](documentation/wireframes/dashboard-admin.png)
+  ![alt text](documentation/wireframes/dashboard-admin.png "Dashboard Admin Page")
+
+- [Dashboard Admin Page](documentation/wireframes/dashboard-admin.png)
+  ![alt text](documentation/wireframes/dashboard-admin.png "Dashboard Admin Page")
+
+- [Dashboard Admin Page](documentation/wireframes/dashboard-admin.png)
+  ![alt text](documentation/wireframes/dashboard-admin.png "Dashboard Admin Page")
+
+- [Edit Excursion Page](documentation/wireframes/edit-excursion.png)
+  ![alt text](documentation/wireframes/edit-excursion.png "Edit Excursion Page")
+
+
+- [Edit Rental Page](documentation/wireframes/edit-rental.png)
+  ![alt text](documentation/wireframes/edit-rental.png "Edit Rental Page")
+
+- [Edit Rental Page](documentation/wireframes/edit-rental.png)
+  ![alt text](documentation/wireframes/edit-rental.png "Edit Rental Page")
+
+- [Excursion Admin Page](documentation/wireframes/excursion-admin.png)
+  ![alt text](documentation/wireframes/excursion-admin.png "Excursion Admin Page")
+
+- [Rental Admin Page](documentation/wireframes/rental-admin.png)
+  ![alt text](documentation/wireframes/rental-admin.png "Rental Admin Page")
+
+- [Success Checkout Page](documentation/wireframes/success-checkout-page.png)
+  ![alt text](documentation/wireframes/success-checkout-page.png "Success Checkout Page")
+
+- [Reset Password Page](documentation/wireframes/reset-password.png)
+  ![alt text](documentation/wireframes/reset-password.png "Reset Password Page")
+
+- [Rental Page](documentation/wireframes/rental.png)
+  ![alt text](documentation/wireframes/rental.png "Rental Page")
+
+
+- [Excursions Page](documentation/wireframes/excursions.png)
+  ![alt text](documentation/wireframes/excursions.png "Excursions Page")
 
 <br>
+
+##### back to [top](#table-of-contents)
+
+---
 
 ### Database
 
