@@ -12,10 +12,13 @@ import datetime
 # Create your views here.
 
 # Administrator function
-@login_required(login_url= '/accounts/login/')
+
+
+@login_required(login_url='/accounts/login/')
 def administrator(request):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     total_users = User.objects.all().count()
     # Excursions queries
@@ -58,10 +61,11 @@ def administrator(request):
 
 
 # Query all rentals for admin
-@login_required(login_url= '/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def admin_rentals(request):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     rentals = Rentals.objects.all()
     context = {'rentals': rentals}
@@ -69,10 +73,12 @@ def admin_rentals(request):
 
 # Add rentals
 
-@login_required(login_url= '/accounts/login/')
+
+@login_required(login_url='/accounts/login/')
 def add_rentals(request):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     form = RentalForm()
     if request.method == 'POST':
@@ -88,10 +94,12 @@ def add_rentals(request):
 
 # Edit rentals and add more photos
 
-@login_required(login_url= '/accounts/login/')
+
+@login_required(login_url='/accounts/login/')
 def edit_rentals(request, pk):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     rentals = Rentals.objects.get(id=pk)
     form = RentalForm(instance=rentals)
@@ -117,10 +125,12 @@ def edit_rentals(request, pk):
 
 # Delete rental photos
 
-@login_required(login_url= '/accounts/login/')
+
+@login_required(login_url='/accounts/login/')
 def delete_rentals_photos(request, pk):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     photo = Rental_photos.objects.get(id=pk)
     if request.method == 'POST':
@@ -132,10 +142,12 @@ def delete_rentals_photos(request, pk):
 
 # Delete rental
 
-@login_required(login_url= '/accounts/login/')
+
+@login_required(login_url='/accounts/login/')
 def delete_rentals(request, pk):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     rental = Rentals.objects.get(id=pk)
     title = rental.title
@@ -150,20 +162,24 @@ def delete_rentals(request, pk):
 # --------------------------------- All admin excursion functions are from here below
 
 # Query all excursions for admin
-@login_required(login_url= '/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def admin_excursions(request):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     excursions = Excursions.objects.all()
     context = {'excursions': excursions}
     return render(request, 'administrator/excursions/admin_excursions.html', context)
 
 # Add excursion
-@login_required(login_url= '/accounts/login/')
+
+
+@login_required(login_url='/accounts/login/')
 def add_excursions(request):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     form = ExcursionForm()
     if request.method == 'POST':
@@ -179,10 +195,11 @@ def add_excursions(request):
 
 
 # Edit excursion and add more photos
-@login_required(login_url= '/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def edit_excursions(request, pk):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     excursions = Excursions.objects.get(id=pk)
     form = ExcursionForm(instance=excursions)
@@ -209,10 +226,12 @@ def edit_excursions(request, pk):
 
 # Delete excursion
 
-@login_required(login_url= '/accounts/login/')
+
+@login_required(login_url='/accounts/login/')
 def delete_excursions(request, pk):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     excursion = Excursions.objects.get(id=pk)
     title = excursion.title
@@ -225,10 +244,12 @@ def delete_excursions(request, pk):
 
 # Delete excursion photos
 
-@login_required(login_url= '/accounts/login/')
+
+@login_required(login_url='/accounts/login/')
 def delete_excursions_photos(request, pk):
     if not request.user.is_superuser:
-        messages.error(request, 'You do not have persmision to access that page')
+        messages.error(
+            request, 'You do not have persmision to access that page')
         return redirect('home')
     photo = Photos.objects.get(id=pk)
     if request.method == 'POST':

@@ -12,7 +12,7 @@
                 <hr>
             </div>
         </div>
-        
+
         {% if rental_cart_items %}
         <div class="cart-container">
 
@@ -90,8 +90,8 @@
                 <hr>
                 <!-- keep shopping and Secure Checkout -->
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'checkout_rental' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
-                >
+                <a href="{% url 'checkout_rental' %}"
+                    class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
                     <span class="text-uppercase">Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>
@@ -99,8 +99,7 @@
                 </a>
                 {% else %}
                 <a href="{% url 'checkout_rental' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
-                data-bs-toggle="modal" data-bs-target="#rental_cart_Modal"
-                >
+                    data-bs-toggle="modal" data-bs-target="#rental_cart_Modal">
                     <span class="text-uppercase">Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>
@@ -136,8 +135,9 @@
         </a>
         {% endif %}
 
-         <!-- Rental cart login modal -->
-         <div class="modal fade" id="rental_cart_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Rental cart login modal -->
+        <div class="modal fade" id="rental_cart_Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -145,9 +145,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <a href="{% url 'account_login' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
-                        target="_blank"
-                        >
+                        <a href="{% url 'account_login' %}"
+                            class="link-side btn my_hover sear-btn btn-outline-secondary mt-3" target="_blank">
                             <span class="text-uppercase">Login</span>
                             <span class="icon">
                                 <i class="fa-solid fa-user"></i>

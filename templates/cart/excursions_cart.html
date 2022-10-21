@@ -85,8 +85,7 @@
                 <!-- keep shopping and Secure Checkout -->
 
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'checkout' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
-                >
+                <a href="{% url 'checkout' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
                     <span class="text-uppercase">Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>
@@ -94,8 +93,7 @@
                 </a>
                 {% else %}
                 <a href="{% url 'checkout' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
-                data-bs-toggle="modal" data-bs-target="#excursion_cart_Modal"
-                >
+                    data-bs-toggle="modal" data-bs-target="#excursion_cart_Modal">
                     <span class="text-uppercase">Secure Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>
@@ -103,7 +101,7 @@
                 </a>
                 {% endif %}
 
-                  <!-- Keep shoping -->
+                <!-- Keep shoping -->
                 <a href="{% url 'excursions' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3">
                     <span class="icon">
                         <i class="fas fa-chevron-left"></i>
@@ -134,7 +132,8 @@
 
 
         <!-- Excursion cart login modal -->
-        <div class="modal fade" id="excursion_cart_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="excursion_cart_Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -142,9 +141,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <a href="{% url 'account_login' %}" class="link-side btn my_hover sear-btn btn-outline-secondary mt-3"
-                        target="_blank"
-                        >
+                        <a href="{% url 'account_login' %}"
+                            class="link-side btn my_hover sear-btn btn-outline-secondary mt-3" target="_blank">
                             <span class="text-uppercase">Login</span>
                             <span class="icon">
                                 <i class="fa-solid fa-user"></i>
