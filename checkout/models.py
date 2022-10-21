@@ -80,3 +80,12 @@ class RentalOrders(models.Model):
 
     def __str__(self):
         return self.order_number
+
+
+# Contains all orders related to rentals
+class myInventions(models.Model):
+    rental_name = models.CharField(max_length=300, null=False, blank=False)
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, default='')
+
+    def __str__(self):
+        return self.rental_name
