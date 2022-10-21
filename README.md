@@ -72,29 +72,10 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Administrator add rental page features](#administrator-add-rental-page-features)
        - [Administrator edit rental page features](#administrator-edit-rental-page-features)
        - [Administrator delete rental page features](#administrator-delete-rental-page-features)
-       
        - [Administrator add excursion page features](#administrator-add-rental-page-features)
        - [Administrator edit excursion page features](#administrator-edit-rental-page-features)
        - [Administrator delete excursion page features](#administrator-delete-rental-page-features)
-       
-
-       - [Our Story Page Features](#our-story-page-features)
-       - [Products Page Features](#products-page-features)
-       - [Product Detail Page Features](#product-detail-page-features)
-       - [Add Product Page Features](#add-product-page-features)
-       - [Edit Product Page Features](#edit-product-page-features)
-       - [Add Product Review Page Features](#add-product-review-page-features)
-       - [Edit Product Review Page Features](#edit-product-review-page-features)
-       - [Cart Page Features](#cart-page-features)
-       - [Checkout Success Page Features](#checkout-success-page-features)
-       - [My Account Page Features](#my-account-page-features)
-       - [Blog Page Features](#blog-page-features)
-       - [BlogPost Page Features](#blogpost-page-features)
-       - [Add BlogPost Page Features](#add-blogpost-page-features)
-       - [Edit BlogPost Page Features](#edit-blogpost-page-features)
-       - [Add BlogComment Page Features](#add-blogpost-comment-page-features)
-       - [Edit BlogComment Page Features](#edit-blogpost-comment-page-features)
-       - [Custom 404 and 500 Page Features](#custom-404-and-500-page-features)
+       - [404 and 500 Page Features](#404-and-500-page-features)
        - [Authorisation Pages Features](#authorisation-pages-features)
      - [Features Left to Implement](#features-left-to-implement)
    - [4) The Skeleton Plane](#4-skeleton-plane)
@@ -579,8 +560,13 @@ The administrator deletes  excursion page has a card confirming if we really wa
 
 ##### back to [top](#table-of-contents)
 
-##### 404 page
-Once the user navigates to a wrong path inside myonlinerecipes site, it will be redirected to a beautiful image which contains a button to return home, the header of the image saying 404 and a sentence letting the user know that he went to a run URL.
+##### 404 and 500 Page Features
+Once the user navigates to a wrong path inside the Yara Beach site, or the user experience a 500 error message it will be redirected to a beautiful image which contains a button to return home safely.
+
+
+---
+
+##### back to [top](#table-of-contents)
 
 
 ### Skeleton
