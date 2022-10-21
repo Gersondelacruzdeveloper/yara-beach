@@ -65,8 +65,8 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
        - [Change Password page feature](#change-password-page-feature)
        - [Customer Excursion Bookings page features](#customer-excursion-bookings-page-features)
        - [Cutomer Rental Bookings page features](#customer-rental-bookings-page-features)
+       - [Administrator dashboard page features](#administrator-dashboard-page-features)
   
-
        - [Our Story Page Features](#our-story-page-features)
        - [Products Page Features](#products-page-features)
        - [Product Detail Page Features](#product-detail-page-features)
@@ -514,6 +514,18 @@ The customer's excursion booking page has 3 main sections. One section is for to
 
 The customer's rental booking page has 3 main sections. One section is for today's bookings, another one is for future bookings, and the last one is for previous bookings. It contains a table with all the details of the rentals.
 
+---
+
+##### back to [top](#table-of-contents)
+
+##### Administrator dashboard page features
+The administrator dashboard page It has an admin navbar, a big title informing the user that the page is the admin,
+Below the title, we have 3 colour cards. The left-side card has the total number of users; the middle one has the total rental bookings for the day; and the right side has the total excursion bookings for the day . Below the colour cards, there can be today's rental and excursion bookings; then we have the excursion and rental future bookings; and last, we have the excursion and rental previous bookings. and on the button we can find the footer.
+
+
+---
+
+##### back to [top](#table-of-contents)
 
 ##### 404 page
 Once the user navigates to a wrong path inside myonlinerecipes site, it will be redirected to a beautiful image which contains a button to return home, the header of the image saying 404 and a sentence letting the user know that he went to a run URL.
