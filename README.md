@@ -678,6 +678,34 @@ and then expanding its features to create a tablet and desktop version.
 
 ---
 
+### 5 Surface Plane
+
+#### Design
+
+The target audience for the Yarabeach website is holidaymakers of all ages. However, the project design is a combination of my own design implemented with the bootstrap framework. The colour makes the website stand out and gives a clear meaning of what the website is about, as it is commonly found on websites related to tropical weather and vacations. Its goal is to be captivating, alluring, and cohesive.To give those families the sense that the holiday is right next door, we have chosen orange because (orange-pantone) the colour is bright and vibrant and fun, bursting with youthfulness, energy, and happiness. They inspire creativity and uplift people's moods.
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
+#### Colour Scheme
+
+![alt text](documentation/readme-images/Yara-beach-colors.png "Yara Beach Main colour palette.")
+
+The **orange pantone** is the main colour of the Yara Beach site. As previously described, the colour is bright and vibrant and fun, bursting with youthfulness, energy, and happiness. They inspire creativity and uplift people's moods. This colour is used in the logo, all the buttons, contact title and paragraph. The second colour most often used on the site is the **culture color**. It is basically a light grey. This colour represents neutrality and balance, and it is used for the body background of the site. The third most used colour is **Gunmetal**. This colour is serious, given the depth of its shades of grey and blue. Gunmetal brings a certain level of authority and timelessness to Yara Beach designs. It is used for the footer and the administrator navbar. The fourth most used colour on the site is the **white colour**, which represents purity, simplicity, and cleanliness. This colour is used as the colour of the test when it is on a button. in the text of the footer and in the table headers.
+
+
+##### back to [top](#table-of-contents)
+
+---
+
+During the development process, this colour palette was extended in order to provide visual contrast and interest, as well as for functional purposes. For example, the colour red was used to draw attention with an error message, as well as the colour green with success messages.
+
+![alt text](documentation/readme-images/yarabeach-second-palettes-colors.png "Yara Beach second colour palette.")
+
+
 ### Database
 
 **MyOnlineRecipes** utilises a relational Database via PostgreSQL for storing **User**, **Recipes** and **Comments** data.
@@ -691,10 +719,6 @@ and then expanding its features to create a tablet and desktop version.
 - Database schema design was created using [DrawSql](https://drawsql.app/), see below.
 ![Database Design](./myonlinerecipes/static/documentation/Database_schama.png)
 
-### Surface
-
-##### Design
-The Project Design is a combination of my own design implemented with the bootstrap framework. The colour helps the website to stand out and give a clear meaning of what the website is about as the colour is usually found in food and nature. Its aim is to be engaging, alluring, and cohesive.
 
 ##### Logo design 
 The logo of the site is located on the left side of the navbar as the bootstrap standard logo, and it is bigger than the others links in order to stand out. and make it recognised by the users.
