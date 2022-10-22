@@ -1540,15 +1540,10 @@ https://codepen.io/denic/pen/GRoOxbM
 - Many thanks to my project mentor [Gurjot Singh](https://www.linkedin.com/in/gurjot-singh-64466b199/) for his help and guidance during the design and build process.
 
 - The [Code Institute](https://codeinstitute.net/) community on [Slack](https://slack.com/intl/en-ie/) for their support.
-- A very special thank you to my wife Theresa for her unfailing patience and support throughout this project.
-- Thank you to my family and my friends who were so willing and helpful when it came to testing the site.
+- A very special thanks to my wife Theresa for her unfailing patience and support throughout this project.
+- Thanks to my family and my friends who were so willing and helpful when it came to testing the site.
 <br>
 
-- [Code Institue](https://codeinstitute.net/) and the very helpful tutors.
-- My project mentor [Gurjot Singh](https://www.linkedin.com/in/gurjot-singh-64466b199/) for his help and guidance during the design and build process. 
-- The [Code Institue](https://codeinstitute.net/) community on [Slack](code-institute-room.slack.com) for their support.
-
-<br>
 
 # Disclaimer
 
