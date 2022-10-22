@@ -1490,18 +1490,50 @@ INSTALLED_APPS = [
 
 ### Content
 
-* All text used throughout the site was written by me.
-* All general development concepts were devised by me.
+The following [Bootstrap](https://getbootstrap.com/) components were used and modified:
 
-### Media
+- [Badge](https://getbootstrap.com/docs/5.2/components/badge/)
 
-* All images for the site were taken from  [jamieoliver](https://www.jamieoliver.com/recipes/)
+- [Card](https://getbootstrap.com/docs/5.2/components/card/)
+
+- [Dropdowns](https://getbootstrap.com/docs/5.2/components/dropdowns/)
+
+- [Modal](https://getbootstrap.com/docs/5.2/components/modal/)
+
+- [Navbar](https://getbootstrap.com/docs/5.2/components/navbar/)
+
+- [Pagination](https://getbootstrap.com/docs/5.2/components/pagination/)
+
+
+The succes page was taken from here [schauhan](schauhan)
+
+http://www.schauhan.in/bootstrap-payment-success-page-templates/
+
+
+#### Excursion and Rental Information and Media
+
+- Excursion information, where available, including the product descriptions and ingredients were provided by the following companies:
+
+- [viator](https://www.viator.com/)
+
+
+- Rental information, where available, including the product descriptions and ingredients were provided by the following companies:
+
+- [airbnb](https://www.airbnb.co.uk/)
+
+*** All images and descriptions taken from the viator and airbnb will be deleted once the project has been accessed..**
+
 
 ## Code
+
+* Typing effect was taken and modified from [codepen](https://codepen.io/denic/pen/GRoOxbM)]
+
+https://codepen.io/denic/pen/GRoOxbM
 
 * HTML/CSS: Implementation and utilisation of Grid CSS layout was assisted by [CSS-Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/).
 ]
 * HTML/CSS: Implementation and utilisation of Grid CSS layout was assisted by [W3school](https://www.w3schools.com/css/css_grid.asp).
+
 
 ---
 
@@ -1515,6 +1547,6 @@ INSTALLED_APPS = [
 
 # Disclaimer
 
-This Portfolio is for educational purposes only.
+This Milestone project is for educational purposes only.
 
 ---
