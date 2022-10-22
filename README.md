@@ -1064,22 +1064,32 @@ python3 manage.py runserver
 
 Before creating the Heroku application:
 
+Before creating the Heroku application:
+
 1. Within your IDE, create a requirements.txt file that contains the applications and dependencies required to run the app using the command:
+
 ```
 pip3 freeze --local > requirements.txt
 ```
+
 2. Create a Procfile, which specifies the commands that are executed by the app on startup:
+
 ```
 echo web: python app.py > Procfile
 ```
+
 3. Add the new files to the staging area in git and then commit the files to the local repository:
+
 ```
 git add -A
 git commit -m "feat: Add requirements.txt file and Procfile."
 ```
+
 4.  Upload the local repository content to the remote repository:
+
 ```
 git push
+```
 
 <br>
 
@@ -1087,38 +1097,224 @@ git push
 1. Navigated to the [Heroku](https://www.heroku.com/) site.
 2. Logged in to the site.
 3. Created a new app on the Heroku website by clicking the "New" button on the dashboard. 
-![alt text](documentation/readme-images/heroku-new-app-button.png "New App button in Heroku.")
+![alt text](documentation/readme-images/heroku-new-app-btn.png "New App button in Heroku.")
 
 <br>
 
 4. Named the Heroku App and set the region to Europe.
 
 5. 'Deploy' was selected from the dashboard of the newly created application.  In the 'Deployment method' section GitHub was selected.
-![alt text](documentation/readme-images/heroku-deploy-to-github.png "Deploy to GitHub in Heroku.")
-
- Making sure that the correct GitHub profile was displayed, myBookOfRecipes repository was entered into the search box.
-
- 7. When found, the button 'Connect' was clicked.
-
-|Key            |Value                  |
-|:--------------|:----------------------|
-|IP	            |0.0.0.0                |
-|PORT           |5000                   |
-|DATABASE_URL	  |Heroku will generate one for you|
-|SECRET_KEY	    |<secret_key>      |
-|MAIL_PASSWORD  |<your_password>   |
-|MAIL_PORT       |587           |
-|MAIL_USERNAME   |<your_email>  |
-|debug           |False
+![alt text](documentation/readme-images/heroku-new-app-form.png "Deploy to GitHub in Heroku.")
 
 <br>
 
 
-9. In the Heroku dashboard within the 'Deploy' tab, the 'Master' branch was selected in the 'Manual Deployment' section.
+5. A new Postgres database was provisioned for the app.  
+   This was located by searching for Postgres in the 'Add-ons' search bar on the 'Resources' tab on Heroku,
+   ![alt text](documentation/readme-images/heroku-resources-tab.png "Heroku Resources tab.")
 
-10. Clicking on the 'Deploy Branch' button successfully deployed the site.
+
+<br>
+
+
+The 'Hobby Dev - Free' plan was chosen for this project.
+
+
+<br>
+![alt text](documentation/readme-images/heroku-postgres-provision-form.png "Postgres provision form on Heroku.")
+
+<br>
+
+
+6. Set up the new database.
+
+- The PostgreSQL database adapter [psycopg2-binary](https://pypi.org/project/psycopg2-binary/)
+  was installed.
+
+```
+pip3 install psycopg2-binary
+```
+
+- The Django utility [dj_database_url](https://pypi.org/project/dj-database-url/) was installed.
+  This utilizes the DATABASE_URL environment variable to configure the Django application, swapping
+  the local database with one managed by a third party (such as Amazon) without changing the app’s code.
+
+```
+pip3 install dj_database_url
+```
+
+- In settings.py [dj_database_url](https://pypi.org/project/dj-database-url/) was imported.  
+  The default database url was commented out and the Postgres database URL was passed to dj_database_url.
+
+```
+{.python3}
+import dj_database_url
+
+DATABASES = {
+        "default": dj_database_url.parse("<your Postrgres database URL>")
+    }
+```
+
+- This url can be located under the 'Config Variables' heading on the 'Settings' tab on Heroku.
+
+
+![alt text](documentation/readme-images/heroku-settings-tab.png "Heroku Settings tab.")
+
+
+
+7. Requirements were updated.  
+   To make sure that Heroku installed all of the app's requirements, these new dependencies
+   were added to the requirements.txt file.
+
+```
+pip3 freeze > requirements.txt
+```
+
+8. Models were migrated to the new Postgres database.
+
+```
+python3 manage.py showmigrations
+python3 manage.py migrate
+```
+
+9. A superuser, with admin rights, was created.
+
+```
+python3 manage.py createsuperuser
+```
+
+
+- An email address, username and password were chosen.
+
+10. Within settings.py the file the new database settings were removed and the original default setting was un-commented.
+
+- This was done so that the database URL did not go into version control.
+  An 'if' 'else' block was added to check whether the side was deployed or not If that is the case, as it is when the app is running on Heroku,
+  DATABASES points to the Postgres database, otherwise, the app connects to SQLite3 or the local posgresQL
+
+```{.python3}
+if DEPLOYED:
+    DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+else:
+    DATABASES = {
+    "default": {
+        'ENGINE': env.str("LOCAL_DB_ENGINE"),
+        'NAME': env.str("LOCAL_DB_NAME"),
+        'USER': env.str("LOCAL_DB_USER"),
+        'PASSWORD': env.str("LOCAL_DB_PASSWORD"),
+        'HOST': env.str("LOCAL_DB_HOST"),
+        'PORT': env.str("LOCAL_DB_PORT"),
+    }
+}
+
+```
+
+11. [Gunicorn](https://gunicorn.org/), the Python WSGI HTTP Server for UNIX, was installed to act as the webserver.
+
+
+```
+pip3 install gunicorn
+```
+
+- This new dependency was added to the requirements.txt file.
+
+```
+pip3 freeze > requirements.txt
+```
+
+
+12. The [Procfile](https://devcenter.heroku.com/articles/procfile) was created in the root directory.  
+    This file specifies the commands that are executed by the app on startup.
+    In this case, create a web dyno which will run [gunicorn](https://gunicorn.org/) and serve the Django app.
+
+```
+web: gunicorn config.wsgi --log-file -
+```
+
+
+13. After logging in to Heroku at the command line Collectstatic was temporarily
+    disabled so that Heroku did not try to collect static files when the app was deployed.
+
+
+```
+heroku login -i
+
+heroku config:set DISABLE_COLLECTSTATIC=1 --app <app name>
+```
+
+14. Within settings.py, the hostname of the Heroku app and the localhost were added
+    to the list of allowed hosts.
+
+
+15. Deployed to Heroku, without any static files.  
+    As the Heroku app had been created on the website rather than at the command line, it was necessary
+    to initialize the Heroku Git Remote first.
+
+
+```
+heroku git:remote -a <app name>
+
+git push heroku master
+```
+
+16. Automatic deployments were set up.
+
+- The 'Deploy' tab was selected on the Heroku dashboard.
+
+- Making sure that the correct GitHub profile was displayed, the Dargan Health Foods repository was entered into the search box.
+
+- When found, the button 'Connect' was clicked.
+- Next, 'Enable Automatic Deploys' was selected to ensure that every time code was pushed to GitHub
+  it would automatically deploy to Heroku as well.
+
+- Within the 'Deployment method' section GitHub was selected.
+  ![alt text](documentation/readme-images/heroku-deploy-connect-to-github.png "Deploy to GitHub in Heroku.")
+
+<br>
+
+
+
+17. The configuration variables were set in Heroku within the local environment.
+
+- Within the 'Settings' tab for the app the button 'Reveal Config Vars' was clicked.
+- The following configuration variables were added (some information has been redacted for security purposes).
+  [Django Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/)
+  was used to generate the secret keys.
+  <br>
+
+| Key                     | Value                                        |
+| :----------------       | :------------------------------------------- |
+| DATABASE_URL            | <YOUR_DATABASE_URL> (Set by Heroku Postgres) |
+| STRIPE_PUBLIC_KEY       | <YOUR_STRIPE_PUBLIC_KEY>                     |
+| STRIPE_SECRET_KEY       | <YOUR_STRIPE_SECRET_KEY>                     |
+| STRIPE_WH_SECRET        | <YOUR_STRIPE_WH_SECRET>                      |
+| SECRET_KEY              | <YOUR_SECRET_KEY>                            |
+| ALLOWED_HOST            | <ALLOWED_HOST_LIST>                          |
+| AWS_ACCESS_KEY_ID       | <AWS_ACCESS_KEY_ID>                          |
+| AWS_S3_REGION_NAME      | <AWS_S3_REGION_NAME>                         |
+| AWS_SECRET_ACCESS_KEY   | <AWS_SECRET_ACCESS_KEY>                      |
+| AWS_STORAGE_BUCKET_NAME | <AWS_STORAGE_BUCKET_NAME>                    |
+| DEBUG                   | FALSE                                        |
+| DEPLOYED                | TRUE                                         |
+| EMAIL_BACKEND           | <EMAIL_BACKEND>                              |
+| EMAIL_HOST              | <EMAIL_HOST>                                 |
+| EMAIL_HOST_PASSWORD     | <EMAIL_HOST_PASSWORD>                        |
+| EMAIL_HOST_USER         | <EMAIL_HOST_USER>                            |
+| EMAIL_PORT              | <EMAIL_PORT>                                 |
+| EMAIL_USE_TLS           | <EMAIL_USE_TLS>                              |
+| STRIPE_CURRENCY         | <STRIPE_CURRENCY>                            |
+| EMAIL_HOST_USER         | <EMAIL_HOST_USER>                            |
+
+<br>
+
+
+<br>
+
+##### back to [top](#table-of-contents)
 
 ---
+
+
 ## Credits
 
 ### Content
