@@ -82,6 +82,7 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
    - [5) The Surface Plane](#5-surface-plane)
      - [Design](#design)
      - [Colour Scheme](#colour-scheme)
+     - [Logo Design](#logo-design)
      - [Icons](#icons)
      - [Typography](#typography)
 3. [**Development**](#development)
@@ -706,6 +707,26 @@ During the development process, this colour palette was extended in order to pro
 ![alt text](documentation/readme-images/yarabeach-second-palettes-colors.png "Yara Beach second colour palette.")
 
 
+##### Logo design
+
+The logo of the site is located on the left side of the navbar in the bootstrap standard place. The logo is the name of the owner with the word beach and a beautiful image of a palm tree. People mostly go to the Dominican Republic because of the beach and its beautiful landscape composed of lots of palm trees, so by incorporating both the name of the beach and palm trees, the customers can understand at a glance that it is about holidays, which also makes the brand well known by its users.
+
+![alt text](documentation/readme-images/Yara-logo.png "Yara beach Logo.")
+
+#### Icons
+Icons were used within the site in order to help the user understand the content more easily.
+They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be self-explanatory.
+
+
+#### Typography
+After an intensive search for the right font, I encountered Montserrat, the most commonly used font for holiday websites. This font I have used to be a company with Georgia and Serif in case Montserrat does not load. I have used this font for the body of the website.
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
 ### Database
 
 **MyOnlineRecipes** utilises a relational Database via PostgreSQL for storing **User**, **Recipes** and **Comments** data.
@@ -719,99 +740,6 @@ During the development process, this colour palette was extended in order to pro
 - Database schema design was created using [DrawSql](https://drawsql.app/), see below.
 ![Database Design](./myonlinerecipes/static/documentation/Database_schama.png)
 
-
-##### Logo design 
-The logo of the site is located on the left side of the navbar as the bootstrap standard logo, and it is bigger than the others links in order to stand out. and make it recognised by the users.
-
-##### Colour Scheme
-The colour scheme for the game was chosen in order to convey excitement, clean and visually appealing site.
-
-![alt text](./myonlinerecipes/static/documentation/readme-images/colour-palette.png "myonlinerecipes' Reviewed colour palette.")
-
-<br>
-
-<sub>*Colour palette created at* [coolors.co](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff).</sub>
-
-- #004b49, Deep jungle green,Psychologically, when humans think of this color, Deep jungle green, they might associate it with being clean, glamorous, elegant, the home, and accessibility.
-     - Used in the navbar and in the footer as it makes a beautiful combination.
-
-- #f2f2f2, Culture color, which is a light grey represent neutrality and balance. 
-   - Used in the background of the website in order to the main content stand out.
-
-- #ffffff, White represents purity or innocence and stands for everything good and right.
-- Use in all the links of the text
-- Used in the Card
-- As main color text
-
-- #626567, Granite Grey, used in the card for the text as it is darker than the Culture colour and makes the text to be more visible.
-
-- #000000, Black color represents evil, darkness, night, and despair. It’s the color used to convey certainty and authority.
-- Used in all header title so the users knows at glance where they are located
-
-
-#### Icons
-Icons were used within the site in order to help the user to understand the content easier. 
-They were taken from [Font Awesome](https://fontawesome.com/) and chosen to be self explanatory.
-
-#### Typography
-After an intensive search for the right font, I encountered Montserrat, the most used font for recipes websites, this font I have used to be a company with Georgia and serif in case Montserrat does not load. I have used this font for the body of the website.
-
-## Existing Features
-
-The project consists of three main pages, and has a 404.html and 500.html error page, login and logout functionality, a response page page for for the contact, myrecipes that is where all the recipes for the user is stored, and the home page. The main pages can be accessed through the navbar.
-
-**Fabicon**
-
-Myonlinerecipes favicon, displayed on the web Brower’s tab, allows the user to identify the website by sight.
- 
-**More Features**
-
-- **myonlinerecipe Logo**: It is the default logo style for boostrap but recognizable across all website.
-
-- **The recipe form Page** and **The edif form Page**: allow the user to craete beatiful recipes, I added a rich ckeditor which help to tape the ingridients and method easier and more beatiful.
-
-- **The Search functionality**: allow the user to search for any recipe in the database except for the recipe that are privat. they are allow to search by method, title and ingridients.
-
-- **Commet section**: allow the user comment on any recipe and even ask questions about the recipe. All users can interact with each other this way and share their experiend with the recipe.
-
-
-**Footer**
-Each page has a fixed footer at the bottom. This provides Facebook, Instagram, Twitter and Tik Tok links as well as a copyright with my name on it.
-
-#### (home) features
-  - In home we can see the all the beatiful recipes, a big heading title so the user understand where it is located and a navbar and footer.
-  - in Navbar we can vizualize the all links in color white and background green. all links contains icons to make the user understand at glance.
-  - Footer contains copyright and links with the same color schema of the navbar.
-
-#### Myrecipe page feature
-  - The same as the home page except that it has:
-  - A edit button, 
-  - Delete button,
-  - Add recipe button bellow the heading title
-
-#### contact.html features
-  - Title encoraging user to send a mesage.
-  - A well structured contact form with 5 fields: name, subject, email, and message with a submit btn at the end.
-
-#### contact-response.html features
-  - Has a positive message comfirming to the user that their message has been sent.
-  - A botton that redirect the user back home if desired.
-
-
-  #### 404.html features
-  - Has a message informing the user that the page they are loking for does not exist.
-  - A botton that redirect the user back home if desired.
-  - A footer with icons and links and navbar
-
-
-  #### 500.html features
-  - Has a message informing the user that something went wrong.
-  - A botton that redirect the user back home if desired.
-  - A footer with icons and links and navbar
-
-
-### Future Feature Considerations
-  - For adding future features I would like to add pagination and a password reset function that send an email to the user and logged them back in where they can set a new password.
 
 
 ## Technologies Used
