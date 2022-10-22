@@ -940,31 +940,40 @@ A detailed description of the testing process and the results achieved can be fo
 ---
 
 ## Deployment
-### How to run this project locally
 
-To run this project on your own Integrated Development Environment ensure that the 
+### Local Deployment
+
+To run this project on your own Integrated Development Environment (IDE) ensure that the
 following are installed on your machine:
 
-- PIP
+- Pipenv
 - Python 3
 - Git
 
-- Download postgresq (Refer to the [postgresq](https://www.postgresql.org/download) for more help.)
+- Download postgresq (Refer to the [postgresq](https://www.postgresql.org/download) for more help.) or just use the default db.sqlite3
+
+Accounts with the following services are also used within this project:
+
+- [Stripe](https://www.stripe.com)
+- [AWS](https://aws.amazon.com/)
+- [Gmail](https://mail.google.com/)
+
 
 <br>
 
 ### To clone the repository:
+
 1. Log in to Github.
 
 2. Navigate to the main page of the repository.
 
 3. Select the Code button from the navigation bar below the repository title.
 
-![alt text](./myonlinerecipes/static/documentation/testing/github-clone-repo.png "Clone or Download Menu in GitHub.")
+![alt text](documentation/readme-images/clone-or-download-menu.png "Clone or Download Menu in GitHub.")
 
 <br>
 
-4. Under the heading Clone select 'HTTPS'
+4. Under the heading Clone select 'HTTPS'.
 
 5. Click the image of a clipboard to the right of the URL in order to copy the address.
 
@@ -974,44 +983,83 @@ following are installed on your machine:
 
 8. Type git clone, space, and then paste the copied URL.
 
+
 ```
-git clone https://github.com/Gersondelacruzdeveloper/myBookOfRecipes.git
+https://github.com/Gersondelacruzdeveloper/yara-beach.git
 ```
+
 9. Press 'Enter' to create the clone.
 
 (Alternative you can select "Download ZIP" from the dropdown menu, extract the zip file to your chosen folder and use your IDE of choice to access it.)
 
 <br>
-11. Within your terminal window install the required dependencines needed to run the application using the following command:
+
+10. Within your terminal window install the required dependencies needed to run the application using the following command:
 
 ```
 $ pip3 install -r requirements.txt
 ```
-12. Initialize virtual environment by typing the following command into the terminal:
-```python
-py -m venv virtual
-```
-14. Within your IDE create a file to hold your environment variables and call it env.py.
-
-
-import os
-os.environ.setdefault("IP", "0.0.0.0" )
-os.environ.setdefault("PORT", "5000" )
-os.environ.setdefault("SECRET_KEY", "SECRET_KEY" )
-os.environ.setdefault("DEBUG", "True" )
-os.environ.setdefault("DATABASE_URL", "YOUR_DATABASE_NAME")
-os.environ.setdefault("DEVELOPMENT", "True" )
-os.environ.setdefault("MAIL_PORT", "587")
-os.environ.setdefault("MAIL_USERNAME", "YOUR_EMAIL" )
-os.environ.setdefault("MAIL_PASSWORD", "YOUR_MAIL_PASSWORD")
-
-15. Add your .env file to your .gitignore file.
-
-16. You will then be able to run the app locally by typing 
-```python
-python run.py
+## or
 
 ```
+$ pipenv install -r requirements.txt
+```
+
+11. Within your IDE create a file to hold your environment variables and call it env.py or set the variables
+    within your IDE settings if that is supported.
+
+
+```
+ALLOWED_HOSTS = env.list("ALLOWED_HOST")
+```
+
+| Key               | Value                        |
+| ----------------- | ---------------------------- |
+| DEBUG             | True                         |
+| DEPLOYED          | False                        |
+| STRIPE_PUBLIC_KEY | <YOUR_STRIPE_PUBLIC_KEY>     |
+| STRIPE_SECRET_KEY | <YOUR_STRIPE_SECRET_KEY>     |
+| ALLOWED_HOSTS     | <ALLOWED_HOSTS>              |
+| SECRET_KEY        | <DJANGO_SECRET_KEY>          |
+| STRIPE_CURRENCY   | <STRIPE_CURRENCY>            |
+
+If using env.py, add it to your .gitignore file to ensure this file is never pushed to GitHub.
+
+
+12. Migrate the models and create the database by typing the following commands into the terminal:
+
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+13. Create a superuser for accessing the Django admin view by typing the following
+    command and then inputting an email address, username and password.
+
+
+```
+python3 manage.py createsuperuser
+```
+
+16. You will then be able to run the app locally by typing
+
+```
+python3 manage.py runserver
+```
+
+
+17. You can access the Admin interface by adding '/admin' to the end of the url
+    and logging in with the credentials of the Superuser that you created.
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
+<br>
+
+
 ## Heroku Deployment
 
 Before creating the Heroku application:
