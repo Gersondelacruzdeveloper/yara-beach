@@ -1314,6 +1314,177 @@ git push heroku master
 
 ---
 
+#### Set Up an Amazon Web Services Account
+
+- Amazon Web Services (AWS) Simple Storage Service (S3) was used to store all of the static
+  files, JavaScript files, CSS files and product images for the site.
+
+19. An account was created on [AWS](aws.amazon.com).
+    This process involved inputting an email, password, username, phone number
+    (for verification purposes) and credit card details (for billing).
+
+20. Once signed in, the S3 Services link was located on the AWS Management Console.
+    ![alt text](documentation/readme-images/aws-management-console.png "AWS Management Console.")
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
+#### Set Up the Simple Storage Service Bucket
+
+21. A new Bucket was created to store the files.
+    ![alt text](documentation/readme-images/aws-create-bucket.png "AWS S3 Create Bucket.")
+
+<br>
+
+- This bucket was named to match the Heroku app name.
+- The closest region was chosen: EU(Ireland) eu-west-1.
+- The 'Block all public access' checkbox was unchecked.
+- The checkbox to acknowledge that the bucket will be public was selected.
+  ![alt text](documentation/readme-images/aws-bucket-public-access-form.png "AWS S3 Bucket Public Access Form.")
+
+<br>
+
+
+22. Once created the **Bucket 'Properties'** were set.
+
+
+- Static Website Hosting was turned on.
+ ![alt text](documentation/readme-images/aws-bucket-properties-static-website-hosting.png "AWS S3 Bucket Static Website Hosting Properties box.")
+
+
+<br>
+
+23. **Bucket 'Permissions'** were set up to allow full access to all resources within the bucket.
+
+- The following Cross Origin Resource Settings (CORS) Configuration was used.
+
+```{.python3}
+[
+    {
+        "AllowedHeaders": [
+            "Authorization"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
+```
+
+
+- A Security Policy was created for the Bucket using the AWS S3 Bucket Policy Generator.
+  ![alt text](documentation/readme-images/aws-bucket-policy-generator.png "AWS S3 Bucket Policy Generator.")
+
+
+
+<br>
+- The Access Control List permission was set for 'Everyone', under the 'Public Access 
+Section'.
+
+
+![alt text](documentation/readme-images/aws-bucket-access-control-list.png "AWS S3 Bucket Access Control List.")
+<br>
+
+
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
+#### Set up an Identity and Access Management (IAM) Group and User
+
+24. AWS Identity and Access Management (IAM) was used to created a User to access
+    the Bucket.
+
+- A new Group called 'manage-dargan-health-foods' was created.
+- A Policy outlining access to the bucket and its contents was created.
+
+```{.python3}
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::yara-beach",
+                "arn:aws:s3:::yara-beach/*"]
+        }
+    ]
+}
+```
+
+
+- The Policy was attached to the Group.
+- A new User with 'Programmatic Access' was created and attached to the Group.
+
+25. The S3 Bucket was connected to Django.
+
+- Within the IDE two new packages were installed.
+
+```
+pip3 install boto3
+
+pip3 install django-storages
+```
+
+- These new dependencies were added to the requirements.txt file.
+
+```
+pip3 freeze > requirements.txt
+```
+
+- [Django-storages](https://django-storages.readthedocs.io/en/latest/) was
+  added to the list of INSTALLED_APPS within settings.py. This collection of
+  custom storage backends for Django includes Amazon S3.
+
+```{.python3}
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
+    # Third-party apps installed app
+    'allauth.socialaccount.providers.google',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    "crispy_forms",
+    "crispy_bootstrap5",
+    'ckeditor',
+    'ckeditor_uploader',
+    'storages',
+    # My apps
+    'home',
+    'excursions',
+    'rentals',
+    'administrator',
+    'cart',
+    'checkout',
+]
+```
+
+27. Media files were added to the S3 Bucket.
+
+
+- Within the Yara beach bucket 2 folders called 'Rental' and 'excursion were create and inside them all the images.
+
+  ![alt text](documentation/readme-images/aws-bucket-s3-create-folder.png "Creating a folder within the S3 bucket.")
+<br>
+
 
 ## Credits
 
