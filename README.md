@@ -96,8 +96,6 @@ the [Stripe Documentation](https://stripe.com/docs/testing):
    - [Heroku Deployment](#heroku-deployment)
      - [AWS](#set-up-an-amazon-web-services-account)
      - [S3](#set-up-the-simple-storage-service-bucket)
-     - [Stripe](#link-stripe-to-heroku)
-     - [Gmail](#set-up-django-emails-using-gmail)
 7. [**Credits**](#credits)
    - [Content](#content)
    - [Media](#media)
