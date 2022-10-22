@@ -741,25 +741,118 @@ Note: The .sqlite3 development database file, was added to the .gitignore file b
 ### Data Schema
 
 
-The following Entity Relationship Diagram, created using [dbdiagram](https://dbdiagram.io/),
+The following Entity Relationship Diagram, created using [drawsql](https://drawsql.app/),
 illustrates the relationships between the models.
 
-![alt text](documentation/readme-images/dargan-health-foods-er-diagram.png "Yara beach DS Diagram.")
+![alt text](documentation/readme-images/data_schema.png "Yara beach DB Diagram.")
 
 ##### back to [top](#table-of-contents)
 
 ---
 
+### Data Models
 
-- The **User** model is composed of 7 columns: username, email, password, date created, the last login of the user and an image of the user. The only field that are quired are title, Ingridients and method and they all have a * at the top. The User model has one to many relationships with the **Recipes** model and **Comments** model which help to access that data and filter it by the user id. by setting one to many relationships we were able to have multiple recipes and comments that belong to just one user.
+The Yara beach website relies on 9 database models and six apps:
 
-- The **Recipes** model is composed of 15 columns, the main id which is set to Primary Key. Furthermore is connected by its id to the **Comments** model. The **Recipes** model has a one to many relationships with the **Comments** which means that a recipe can have many comments.
 
-- The **Comments** model is composed of 7 columns including the id as well. this model does not have one to many relationships with other models but it can easily access to the **User** and **Recipes** model because of its **backref relationship** that points from **User** and **Recipes** to **Comments**
 
-- Database schema design was created using [DrawSql](https://drawsql.app/), see below.
-![Database Design](./myonlinerecipes/static/documentation/Database_schama.png)
+#### User Model
 
+Django User model is a part of Django’s authentication system
+Django.contrib.auth.models.
+Information about its fields, attributes and methods are
+located [here](https://docs.djangoproject.com/en/3.0/ref/contrib/auth/).
+
+| Title         | Key in db  | Data Type     | Type Validation                         |
+| :------------ | :--------- | :------------ | :-------------------------------------- |
+| User ID       | id         | AutoField     | primary_key=True                        |
+| Username      | username   | CharField     | max_length=150, null=False, blank=False |
+| First Name    | first_name | CharField     | max_length=30                           |
+| Last Name     | last_name  | CharField     | max_length=30                           |
+| Email Address | email      | CharField     |                                         |
+| Password      | password   | PasswordField | null=False, blank=False                 |
+
+<br>
+
+
+#### Excursions Model
+
+| Title                   | Key in db               | Data Type    | Type Validation                                             |
+| :---------------------- | :---------------------- | :----------- | :-----------------------------------------------------------|
+| Excursions ID           | id                      | AutoField             | primary_key=True                                   |
+| User                    | user                    | ForeignKey            | [ref: - User.id]                                   |
+| Price                   | price                   | DecimalField          | max_digits=7, decimal_places=2, null=False,        |
+| Main Image              | image                   | ImageField            | max_length=80, null=True, blank=True               |
+| Image Name              | image_name              | CharField             | max_length=201, null=True, blank=True              |
+| Description             | description             | RichTextUploadingField| null=False, blank=False,                           |
+| Date Created            | date_created            | DateTimeField         | auto_now_add=True, null=True                       |
+| Status                  | status                  | CharField             | choices=CHOICES, default='Inactive', max_length=20 |
+
+<br>
+
+
+
+#### Photos Model
+
+| Title                   | Key in db               | Data Type    | Type Validation                                             |
+| :---------------------- | :---------------------- | :----------- | :-----------------------------------------------------------|
+| Photos ID               | id                      | AutoField             | primary_key=True                                   |
+| Excursion               | id                      | ForeignKey            | [ref: - Excursions.id]                             |
+| Main Image              | image                   | ImageField            | max_length=80, null=True, blank=True               |
+| Image Name              | image_name              | CharField             | max_length=201, null=True, blank=True              |
+
+<br>
+
+#### Review Model
+
+| Title                   | Key in db               | Data Type    | Type Validation                                             |
+| :---------------------- | :---------------------- | :----------- | :-----------------------------------------------------------|
+| Review ID               | id                      | AutoField             | primary_key=True                                   |
+| Title                   | title                   | CharField             | max_length=255, null=True, blank=True,             |
+| Rating                  | rating                  | IntegerField          | max_length=80, null=True, blank=True               |
+| Rental                  | id                      | ForeignKey            | [ref: - Rentals.id]                                |
+
+
+#### Rentals Model
+
+| Title                   | Key in db               | Data Type    | Type Validation                                             |
+| :---------------------- | :---------------------- | :----------- | :---------------------------------------------------------- |
+| Rentals ID              | id                      | AutoField             | primary_key=True                                   |
+| User                    | user                    | ForeignKey            | [ref: - User.id]                                   |
+| Price                   | price                   | DecimalField          | max_digits=7, decimal_places=2, null=False,        |
+| Main Image              | image                   | ImageField            | max_length=80, null=True, blank=True               |
+| Image Name              | image_name              | CharField             | max_length=201, null=True, blank=True              |
+| Description             | description             | RichTextUploadingField| null=False, blank=False,                           |
+| Date Created            | date_created            | DateTimeField         | auto_now_add=True, null=True                       |
+| ACCOM Type              |ACCOM_type               | CharField             | choices=CHOICES, default='Room', max_length=20     |
+| Status                  | status                  | CharField             | choices=CHOICES, default='Inactive', max_length=20 |
+
+<br>
+
+#### Photos Model
+
+| Title                   | Key in db               | Data Type    | Type Validation                                             |
+| :---------------------- | :---------------------- | :----------- | :-----------------------------------------------------------|
+| Photos ID               | id                      | AutoField             | primary_key=True                                   |
+| Excursion               | id                      | ForeignKey            | [ref: - Rentals.id]                             |
+| Main Image              | image                   | ImageField            | max_length=80, null=True, blank=True               |
+| Image Name              | image_name              | CharField             | max_length=201, null=True, blank=True              |
+
+<br>
+
+#### Review Model
+
+| Title                   | Key in db               | Data Type    | Type Validation                                             |
+| :---------------------- | :---------------------- | :----------- | :-----------------------------------------------------------|
+| Review ID               | id                      | AutoField             | primary_key=True                                   |
+| Title                   | title                   | CharField             | max_length=255, null=True, blank=True,             |
+| Rating                  | rating                  | IntegerField          | max_length=80, null=True, blank=True               |
+| Rental                  | id                      | ForeignKey            | [ref: - Rentals.id]                                |
+
+
+##### back to [top](#table-of-contents)
+
+---
 
 
 ## Technologies Used
