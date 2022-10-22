@@ -712,6 +712,7 @@ During the development process, this colour palette was extended in order to pro
 The logo of the site is located on the left side of the navbar in the bootstrap standard place. The logo is the name of the owner with the word beach and a beautiful image of a palm tree. People mostly go to the Dominican Republic because of the beach and its beautiful landscape composed of lots of palm trees, so by incorporating both the name of the beach and palm trees, the customers can understand at a glance that it is about holidays, which also makes the brand well known by its users.
 
 ![alt text](documentation/readme-images/Yara-logo.png "Yara beach Logo.")
+<sub>_Created using_ [Adobe Photoshop](https://www.adobe.com/uk/products/photoshop/landpa.html?gclid=CjwKCAjwwL6aBhBlEiwADycBIKPGhQtahSxttLjZVTUJ7djn4sFEDI1p6gUoIk5PJzHRyigcU7Rm-BoCQtcQAvD_BwE&mv=search&mv=search&sdid=GVTYXZY8&ef_id=CjwKCAjwwL6aBhBlEiwADycBIKPGhQtahSxttLjZVTUJ7djn4sFEDI1p6gUoIk5PJzHRyigcU7Rm-BoCQtcQAvD_BwE:G:s&s_kwcid=AL!3085!3!594259336243!e!!g!!adobe%20photoshop!17011954559!138864791987/)</sub>
 
 #### Icons
 Icons were used within the site in order to help the user understand the content more easily.
