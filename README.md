@@ -728,9 +728,28 @@ After an intensive search for the right font, I encountered Montserrat, the most
 
 ---
 
-### Database
+### Development
 
-**MyOnlineRecipes** utilises a relational Database via PostgreSQL for storing **User**, **Recipes** and **Comments** data.
+## Information Architecture
+
+A relational database was used to store the collection of data for this project. [SQLite](https://www.sqlite.org/) was used at the start of development, but I wanted to dig deeper into the tables of the DB, so I decided to go for posgreSQL in local development as well. Then I used Heroku [PostgreSQL] (https://www.postgresql.org/) in production, and a relational database structure was suitable for this project as it allowed multiple tables to be created, with data easily interconnected through the use of foreign keys.
+
+Note: The .sqlite3 development database file, was added to the .gitignore file before the initial commit in order to stop it being pushed to GitHub.
+
+
+
+### Data Schema
+
+
+The following Entity Relationship Diagram, created using [dbdiagram](https://dbdiagram.io/),
+illustrates the relationships between the models.
+
+![alt text](documentation/readme-images/dargan-health-foods-er-diagram.png "Yara beach DS Diagram.")
+
+##### back to [top](#table-of-contents)
+
+---
+
 
 - The **User** model is composed of 7 columns: username, email, password, date created, the last login of the user and an image of the user. The only field that are quired are title, Ingridients and method and they all have a * at the top. The User model has one to many relationships with the **Recipes** model and **Comments** model which help to access that data and filter it by the user id. by setting one to many relationships we were able to have multiple recipes and comments that belong to just one user.
 
