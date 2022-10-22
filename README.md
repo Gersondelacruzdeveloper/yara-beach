@@ -857,40 +857,74 @@ located [here](https://docs.djangoproject.com/en/3.0/ref/contrib/auth/).
 
 ## Technologies Used
 
-- Languages: 
+- Languages:
 
-  * [HTML5](http://en.wikipedia.org/wiki/HTML5). Used to create the structure of the myonlinerecipe website and the custom 404 and 500 pages.
-  * [CSS3](http://en.wikipedia.org/wiki/CSS). Used to add style to the website. 
-  * [JavaScript](https://en.wikipedia.org/wiki/JavaScript). Used to create the dynamic, interactive elements of the website such as the carousel and to call the Google Books API.
-  * [Python](https://en.wikipedia.org/wiki/Python_(programming_language)). Used to create and run the web application.
-  * [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine)). Used to simplify displaying data from the backend of this project smoothly and effectively in html.
+  - [HTML5](http://en.wikipedia.org/wiki/HTML5). Used to create the structure of the Yara Beach website and the custom 404 and 500 pages.
+  - [CSS3](http://en.wikipedia.org/wiki/CSS). Used to add style to the website.
+  - [JavaScript](https://en.wikipedia.org/wiki/JavaScript). Used to create the dynamic, interactive elements of the website such as the Bootstrap accordions.
+  - [Python](<https://en.wikipedia.org/wiki/Python_(programming_language)>). Used to create and run the web application.
 
-- Websites:
-* The project was debugged using [Google Chrome](https://www.google.com/intl/en_uk/chrome/) [Dev Tools](https://developers.google.com/web/tools/chrome-devtools).
-* The project uses [GitHub](https://GitHub.com/) for hosting source code, for utilising git version control, and for hosting the site on GitHub pages.  
-* The project uses [FontAwesome](https://fontawesome.com/) v5.15.1, a free icon-set/toolkit for web development.
-* The project's accessibility was assesed via WebAim's [W.A.V.E](https://wave.webaim.org/) and Google Chrome's [Lighthouse](https://developers.google.com/web/tools/lighthouse).
-* The project's screen-reader accessibility was tested using [Screen Reader for Google Chrome](https://chrome.google.com/webstore/detail/screen-reader-for-google/nddfhonnmhcldcbmhbdldfpkbfpgjoeh/related?hl=en).
-* The project used Toptal's [Colorfilter](https://www.toptal.com/designers/colorfilter/) to assess how colour-blind-friendly the site was.
-* The project's colour contrast ratio was assessed using [Contract-Ratio](https://webaim.org/resources/contrastchecker/)
-* The project's HTML was validated using [W3C HTML Markup Validator](https://validator.w3.org/).
-* The project's CSS was validated using [W3C Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/).
-* The project's wireframes were designed in [Balsamiq](https://balsamiq.com/wireframes/).
-* [Slack](code-institute-room.slack.com). Used during all phases of development and testing to find the answers to questions and the solutions to problems enountered.
-* [Coolors](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff). Used to choose a colour scheme.
-* [pixabay.com](https://pixabay.com/vectors/recipe-label-icon-symbol-spoon-575434/). Used for the icons detail page.
-* [www.freepik.com](https://www.freepik.com/free-vector/404-error-with-person-looking-concept-/). Used image for the 404 error page.
-* [www.freepik.com](https://www.freepik.com/free-vector/404-error-with-person-looking-concept-/). Used image for the 404 error page and 500 internal error.
-* [express.adobe.com](https://express.adobe.com/express-apps/logo-maker/preview). this site it was suposed to be for logo only for a created a imaga that was use for the recipes that does not contain image.
-* [flask-sqlalchemy.palletsprojects.com](https://flask-sqlalchemy.palletsprojects.com/en/2.x/queries/). This site was used for following instruction on how to extract with sqlalchemy queries.
-* [Favicon.io](https://favicon.io/favicon-converter/). used to convert the logo to favicon.
+- Websites
+
+  - [Am I Responsive](http://ami.responsivedesign.is/). Used to create the mock-up image showing the site as it would behave when viewed on desktop, mobile and tablet devices.
+  - [AWS](https://aws.amazon.com/). Amazon Web Services - Simple Storage Service (S3) was used to host the media and static files.
+  - [Code Beautify](https://codebeautify.org/markdown-formatter). Used to format the README.md and TESTING.md markdown files.
+  - [Code Institute](https://codeinstitute.net/). Used to review concepts covered in preceding modules and walk-through projects.
+  - [Coolors](https://coolors.co/ffbe0b-fb5607-ff006e-8338ec-3a86ff). Used to analyse the site logo to isolate the colours within and to construct the colour palette for the site.
+  - [Drawsql](https://drawsql.app/). Used to create the Entity Relationship diagram used in the README.md file.
+  - [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools). Used to test the responsiveness of the site.
+  - [Font Awesome](https://fontawesome.com/). Used to source the free icons that were used for the social media links in the footer and for the profile, home, review, edit, delete, buy, reset, clear and search buttons.
+  - [Google Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools). Used throughout the project to test the responsiveness of elements, to target and apply CSS styles during the design phase and to test the site's performance once built.
+  - [Google Fonts](https://fonts.google.com/). Used to choose and source the font used in the body of the site.
+  - [Github](https://github.com/). Used as a respository for the different versions of the build produced throughout development.
+  - [Gitpod](https://www.gitpod.io/). An online IDE used to build and develop the website.
+  - [Heroku](https://www.heroku.com/). The cloud platform used to host the deployed site.
+  - [jQuery](https://jquery.com/). This JavaScript library was used to traverse the DOM and used for dynamic event handling.
+  - [PEP8online](http://pep8online.com/). Used to check the python files for PEP8 compliance.
+  - [RandomKeyGen](https://randomkeygen.com/). Used to generate the Secret Keys.
+  - [Slack](https://slack.com/intl/en-ie/). Used during development and testing to find the solutions to problems enountered.
+  - [Stack Overflow](https://stackoverflow.com/). Used to search for the answers to problems encountered during the development and testing of the website.
+  - [Stripe](http://www.stripe.com). Payment processing platform used to validate and authenticate payments and, potentially, to receive payments made over the internet.
+  - [TinyPNG](https://tinypng.com/). Used to compress the site logos and background-images to improve performance results.
+  - [Unsplash](https://www.unsplash.com). Used to source the non-product site images.
+  - [Vecteezy](https://www.vecteezy.com). Used for the custom 404 and 500 page backgrounds.
+  - [WebFormatter](https://webformatter.com/). Used to format the CSS, JavaScript and HTML files before submission.
+  - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/). Used to validate the CSS files.
+  - [W3C HTML Validation Service](https://validator.w3.org/). Used to validate the HTML files.
+  - [Adobe Photoshop](https://www.adobe.com/). was used for creating the Yara Beach logo and the hero image for the README.md file.
+
 - Frameworks
-* [Bootstrap Framework](https://getbootstrap.com/). Used to structure the website layout and ensure that it was responsive on all devices.
-* [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework)).  Python web framework used to create the web app.
 
-* [designs.ai](https://designs.ai/colors/color-meanings/midnight-blue). used to check colors combinations to achieve beautiful results.
-- Database
-  * [Postgresql](https://www.postgresql.org/), the relational database. Used to store the users' information, recipe comments and recipe data.
+  - [Bootstrap](https://getbootstrap.com/). Used to structure the website layout and ensure that it was responsive on all devices.
+  - [Django](https://www.djangoproject.com/). Python web framework used to create the web app.
+
+- Databases
+
+  - [SQLite](https://www.sqlite.org/). Used during development to host the collection of data.
+  - [Heroku Postgres](https://www.heroku.com/postgres). Used during production to store the product information, user information, and other data.
+- Apps:
+  - [Balsamiq](https://balsamiq.com/). Used to create the project wireframes.
+  - [Inkscape](https://inkscape.org/). Used to edit the Vecteezy svgs.
+  - [Microsoft Excel](https://www.microsoft.com/en-ie/microsoft-365/excel). Used to create the fixture files and convert them to .csv files. Also used to create the testing spreadsheets.
+  - [Microsoft Excel](https://www.microsoft.com/en-ie/microsoft-365/excel). Used to create the fixture files and convert them to .csv files. Also used to create the testing spreadsheets.
+
+- Other Tools and Libraries:
+  - [Black](https://pypi.org/project/black/). Used to format the python code.
+  - [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). A Python Software Development Kit (SDK) for AWS.
+    Used to provide direct CRUD functionality of AWS resources from the Python scripts.
+  - [Coverage](https://pypi.org/project/coverage/). Used to measure code coverage during automated-test execution.
+  - [Dj_database_url](https://pypi.org/project/dj-database-url/) used to configure the Django application, swapping
+    the local database with one managed by a third party without changing the app’s code.
+  - [Gunicorn](https://gunicorn.org/). Used as a Web Server Gateway Interface (WSGI).
+  - [Pipenv](https://pypi.org/project/pipenv/). Used to install Python packages.
+  - [Pillow](https://pillow.readthedocs.io/en/stable/). Python Imaging Library (PIL), used to add image processing
+    capabilites such as opening, manipulating, and saving images.
+  - [Psycopg2](https://pypi.org/project/psycopg2/). Python PostgreSQL database adapter.
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
 
 ## Testing
 
