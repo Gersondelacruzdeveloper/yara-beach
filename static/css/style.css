@@ -1,3 +1,8 @@
+
+
+/* Gooogle font */
+@import url('https://fonts.googleapis.com/css2?family=Qwitcher Grypen');
+
 /*-------------------------------------------------------------------- Variables */
 
 :root {
@@ -31,6 +36,18 @@ body {
     text-align: center;
     font-size: 2.5rem;
 }
+.nav-link{
+    color: var(--gun-metal)
+}
+
+.nav-link:hover{
+    color: #f6b99f;
+}
+
+.nav-link:focus{
+    color: #f6b99f;
+}
+
 
 /* -------------------------------------------------------------------- navbar */
 .sear-btn {
