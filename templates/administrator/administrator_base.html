@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-<body>
+
 <head>
     <!-- Metas -->
     <meta charset="utf-8">
@@ -38,8 +38,9 @@
     <!-- Local stylesheets -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-    </nav> 
+    </nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"></i><img src="{% static 'images/Yara-logo-white.png' %}"
@@ -62,7 +63,8 @@
                                 Excursions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'admin-rental' %}"><i class="fa-solid fa-bed"></i> Rentals</a>
+                            <a class="nav-link" href="{% url 'admin-rental' %}"><i class="fa-solid fa-bed"></i>
+                                Rentals</a>
                         </li>
                         {% if not user.is_authenticated %}
                         <li class="nav-item dropdown">
@@ -90,7 +92,8 @@
                         {% endif %}
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i> Customer Home Page</a>
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i> Customer
+                            Home Page</a>
                     </li>
                 </ul>
             </div>
