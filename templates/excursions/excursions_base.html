@@ -132,19 +132,16 @@
                         <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
                             Contact</a>
                     </li>
-                    </li>
 
                     <!-- cart -->
                     <li class="nav-item cart">
-                        <a class="nav-link" href="{% url 'excursion-cart' %}">
-                            <button type="button" class="btn my_hover sear-btn btn-outline-secondary position-relative">
+                        <a class="nav-link btn my_hover sear-btn btn-outline-secondary position-relative" href="{% url 'excursion-cart' %}">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 {% if total %}
                                 £{{total | floatformat:2}}
                                 {% else %}
                                 £0.00
                                 {% endif %}
-                            </button>
                         </a>
                     </li>
                 </ul>
