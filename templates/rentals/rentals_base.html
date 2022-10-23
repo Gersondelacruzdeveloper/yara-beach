@@ -109,9 +109,7 @@ blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="{% url 'account_change_password' %}"><i
-                                        class="fa-solid fa-user">
-                                    </i> Change Password</a>
+                                <a class="dropdown-item" href="{% url 'account_change_password' %}"><i class="fa-solid fa-user"> </i> Change Password</a>
                             </li>
 
                             {% if request.user.is_superuser %}
@@ -140,7 +138,6 @@ blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
                         <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
                             Contact</a>
                     </li>
-                    </li>
 
                     <!-- cart -->
                     <li class="nav-item cart">
@@ -153,8 +150,6 @@ blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
                                 {% endif %}
                         </a>
                     </li>
-                </ul>
-
                 </ul>
                 <!-- Search form -->
                 <form class="d-flex" role="search" method="get" autocomplete="on"
@@ -201,9 +196,6 @@ blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
                 <script>document.write(new Date().getFullYear())</script> Yara beach
             </p>
         </div>
-
-        </div>
-
 
         <!--links Icon-->
         <div class="social-media-links">
