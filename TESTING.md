@@ -27,7 +27,48 @@ The Main README documentation can be found under [README.md](README.md)
 [W3C HTML Validation Service](https://validator.w3.org/) was used to validate the HTML code.
 
 Each page was validated by URI or Direct Input.
-![alt text](documentation/readme-images/html-validator-index-results.png "W3C HTML Validator results for the index page, showing no errors.")
+
+### Home page
+
+![alt text](documentation/readme-images/home-html-no-error.png "home pag Validator results, showing no errors.")
+
+### Excursion page
+
+![alt text](documentation/readme-images/excursion-result-html.png "Excursion page showing no errors.")
+
+
+### Contact page
+
+![alt text](documentation/readme-images/contact-html-no-error.png "contact page showing no errors.")
+
+
+### Login page
+
+![alt text](documentation/readme-images/login-html-no-error.png "Login page showing no errors.")
+
+
+### Rental page
+
+![alt text](documentation/readme-images/rental-html-no-error.png "Rental page showing no errors.")
+
+
+### Excursion Cart page
+
+![alt text](documentation/readme-images/excursion-cart-html-no-error.png "Ecursion cart page showing no errors.")
+
+### Excursion Checkout page
+
+![alt text](documentation/readme-images/excursion-cart-html-no-error.png "Ecursion checkout page showing no errors.")
+.png "Ecursion cart page showing no errors.")
+
+
+### Password change page
+
+![alt text](documentation/readme-images/excursion-password-change-no-error.png "Password change page showing no errors.")
+Password change page")
+
+
+
 
 <br>
 
