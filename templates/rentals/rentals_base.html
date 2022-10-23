@@ -42,7 +42,7 @@ blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
 <body>
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"></i><img src="{% static 'images/Yara-logo.png' %}"
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/Yara-logo.png' %}"
                     alt="Yara name with a palm tree"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,76 +52,96 @@ blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <div class="links-container">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i>
-                                Home</a>
-                        </li>
-                        <!-- Sort by -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-filter"></i>Sort by
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'newest_rentals_result' %}"></i>Sort by
-                                        newest</a></li>
-                                <li><a class="dropdown-item" href="{% url 'oldest_rentals_result' %}">Sort by Oldest</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_ascend' %}">Price
-                                        (low to high)</a></li>
-                                <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_descend' %}">Price
-                                        (high to low) </a></li>
-                                <li><a class="dropdown-item" href="{% url 'rooms' %}">All Rooms </a></li>
-                                <li><a class="dropdown-item" href="{% url 'apartments' %}">All Apartments </a></li>
-                                <li><a class="dropdown-item" href="{% url 'villas' %}">All Villas</a></li>
-                            </ul>
-                        </li>
-                        {% if not user.is_authenticated %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-user"></i> My account
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'account_login' %}"><i
-                                            class="fa-solid fa-user"></i> Sign in</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_signup' %}"><i
-                                            class="fa-solid fa-user-plus"></i> Register </a></li>
-                            </ul>
-                        </li>
-                        {% else %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-user"></i> Hi {{user|title}}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'account_logout' %}"><i
-                                            class="fa-solid fa-user"></i> Logout</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}"><i
-                                            class="fa-solid fa-user"></i> Change Password</a></li>
-                                {% if request.user.is_superuser %}
-                                <li><a class="dropdown-item" href="{% url 'administrator' %}"><i
-                                            class="fa-solid fa-toolbox"></i> Admin board</a></li>
-                                {% else %}
-                                <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}">
-                                        <i class="fa-solid fa-book-circle-arrow-up"></i>
-                                        </i>Excursion Bookings</a></li>
-                                <li><a class="dropdown-item" href="{% url 'rental-bookings' %}">
-                                        <i class="fa-solid fa-book-circle-arrow-up"></i>
-                                        </i>Rental Bookings</a></li>
-                                {% endif %}
-                            </ul>
-                        </li>
+                    <li class="links-container">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i>
+                            Home</a>
+                    </li>
+                    <!-- Sort by -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-filter"></i>Sort by
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'newest_rentals_result' %}"></i>Sort by
+                                    newest</a></li>
+                            <li><a class="dropdown-item" href="{% url 'oldest_rentals_result' %}">Sort by Oldest</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_ascend' %}">Price
+                                    (low to high)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_descend' %}">Price
+                                    (high to low) </a></li>
+                            <li><a class="dropdown-item" href="{% url 'rooms' %}">All Rooms </a></li>
+                            <li><a class="dropdown-item" href="{% url 'apartments' %}">All Apartments </a></li>
+                            <li><a class="dropdown-item" href="{% url 'villas' %}">All Villas</a></li>
+                        </ul>
+                    </li>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-user"></i> My account
+                        </a>
 
-                        {% endif %}
-                        <!-- Contacts -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
-                                Contact</a>
-                        </li>
-                    </div>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'account_login' %}"><i
+                                        class="fa-solid fa-user"></i> Sign in</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'account_signup' %}"><i
+                                        class="fa-solid fa-user-plus"></i> Register </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-user"></i> Hi {{user|title}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'account_logout' %}"><i
+                                        class="fa-solid fa-user"></i> Logout</a>
+
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="{% url 'account_change_password' %}"><i
+                                        class="fa-solid fa-user">
+                                    </i> Change Password</a>
+                            </li>
+
+                            {% if request.user.is_superuser %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'administrator' %}"><i
+                                        class="fa-solid fa-toolbox"></i> Admin board</a>
+                            </li>
+                            {% else %}
+
+                            <li>
+                                <a class="dropdown-item" href="{% url 'excursion-bookings' %}"> <i
+                                        class="fa-solid fa-book-circle-arrow-up"></i>
+                                    Excursion Bookings</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'rental-bookings' %}">
+                                    <i class="fa-solid fa-book-circle-arrow-up"></i>
+                                    Rental Bookings</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+
+                    {% endif %}
+                    <!-- Contacts -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
+                            Contact</a>
+                    </li>
+                    </li>
 
                     <!-- cart -->
                     <li class="nav-item cart">
