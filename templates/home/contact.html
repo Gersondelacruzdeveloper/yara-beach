@@ -9,7 +9,7 @@
     <div class="contact_form">
 
         <p>Looking forward to answering your email</p>
-        <form id="contact-form" method="POST" action="">
+        <form id="contact-form" method="POST" action="{% url 'contact' %}">
             {% csrf_token %}
             <input required class="input-field" type="text" name="name" placeholder="Name">
             <input required class="input-field" type="text" name="subject" placeholder="Subject">
