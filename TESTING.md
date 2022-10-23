@@ -4,22 +4,22 @@ The Main README documentation can be found under [README.md](README.md)
 
 # Table of contents
 
-
 - [Code Validation](#code-validation)
   - [HTML](#html)
   - [CSS](#css)
-  - [JavaScript](#javascript)
-  - [Python](#python)
-- [Performance](#performance)
 - [Manual Testing](#manual-testing)
 - [Automated Testing](#automated-testing)
-- [User Story Testing](#user-story-testing)
 - [Responsiveness](#responsiveness)
 - [Bugs](#bugs)
 
 
 <br>
 
+I am so sorry I did not have the time to upload all the images for user story testing, but they all complain. I did not have the time to upload the Javascript and Python testing, but they all complain. If you require the images of the testing, please let me know.
+
+<br>
+
+# Code Validation
 ---
 
 ### **HTML**
@@ -68,17 +68,6 @@ Each page was validated by URI or Direct Input.
 Password change page")
 
 
-
-
-<br>
-
-The following table shows the pages that were checked.
-No errors or warnings remain.
-
-<br>
-
-![alt text](documentation/readme-images/html-validator-pages-tested.png "Table of the site pages tested in the HTML Validator.")
-
 <br>
 
 ##### back to [top](#table-of-contents)
@@ -97,12 +86,46 @@ There were 16 errors, but these errors were not from my CSS File, they were from
 ![alt text](documentation/readme-images/css-pass-screenshoot.png "css error fixed.")
 <br>
 
+
+## Automated Testing
+
+### Checkout 
+![alt text](documentation/readme-images/checkout-test.png "Checkout.")
+<br>
+
+### Rental 
+![alt text](documentation/readme-images/rentals-test.png "Checkout.")
+<br>
+
+### Aadministration 
+![alt text](documentation/readme-images/administration-test.png "Aadministration.")
+<br>
+
+
+### Cart
+![alt text](documentation/readme-images/cart-test.png "cart test.")
+<br>
+
+
+### Excursion 
+![alt text](documentation/readme-images/excursion-test.png "excursion test.")
+<br>
+
+
+### Home 
+![alt text](documentation/readme-images/home-test.png "home test.")
+<br>
+
+### Checkout 
+![alt text](documentation/readme-images/checkout-test.png "checkout test.")
+<br>
+
+
 <br>
 
 ##### back to [top](#table-of-contents)
 
 ---
-
 
 ### Manual Testing
 The Yara Beach website has been tested in the following browsers:
