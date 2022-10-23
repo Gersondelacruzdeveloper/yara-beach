@@ -32,6 +32,19 @@ body {
     font-size: 2.5rem;
 }
 
+.nav-link {
+    color: var(--gun-metal)
+}
+
+.nav-link:hover {
+    color: #f6b99f;
+}
+
+.nav-link:focus {
+    color: #f6b99f;
+}
+
+
 /* -------------------------------------------------------------------- navbar */
 .sear-btn {
     background-color: var(--orange-pantone-lighter);
@@ -233,15 +246,16 @@ body {
 
 /* Slides */
 
-.home-banner{
+.home-banner {
     position: relative;
 }
-.home-banner h2 {
-    font-family: "Qwitcher Grypen", sans-serif;
+
+.home-banner h3 {
+    font-family: Cursive, sans-serif;
     position: absolute;
     bottom: 0px;
     left: 2%;
-    font-size: 120px;
+    font-size: 60px;
     animation: typing 2s steps(18), blink .5s step-end 3 alternate;
     white-space: nowrap;
     overflow: hidden;
@@ -1026,8 +1040,8 @@ textarea::placeholder {
 
 /* large devices (tablet, etc 1492px and down) */
 @media only screen and (max-width: 1492px) {
-    .home-banner h2 {
-        font-size: 100px;
+    .home-banner h3 {
+        font-size: 50px;
     }
 
 
@@ -1069,8 +1083,8 @@ textarea::placeholder {
         height: 300px;
     }
 
-    .home-banner h2 {
-        font-size: 80px;
+    .home-banner h3 {
+        font-size: 40px;
     }
 
     .links-container {
@@ -1091,8 +1105,8 @@ textarea::placeholder {
         grid-template-columns: auto auto;
     }
 
-    .home-banner h2 {
-        font-size: 50px;
+    .home-banner h3 {
+        font-size: 30px;
     }
 
     .home-banner img {
@@ -1211,6 +1225,10 @@ textarea::placeholder {
 
 /* medium devices (631px and down) */
 @media only screen and (max-width: 631px) {
+    .home-banner h3 {
+        font-size: 30px;
+    }
+
     .card-container {
         grid-template-columns: auto;
     }
@@ -1260,8 +1278,8 @@ textarea::placeholder {
 
 /* Small devices (phones, 503px and down) */
 @media only screen and (max-width: 503px) {
-    .home-banner h2 {
-        font-size: 40px;
+    .home-banner h3 {
+        font-size: 30px;
     }
 
     .home-banner img {
@@ -1321,6 +1339,10 @@ textarea::placeholder {
 
     .cart-price-summary {
         width: 100%;
+    }
+
+    .home-banner {
+        font-size: 20px;
     }
 
 
