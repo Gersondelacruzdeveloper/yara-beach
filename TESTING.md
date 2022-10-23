@@ -18,6 +18,28 @@ The Main README documentation can be found under [README.md](README.md)
 - [Bugs](#bugs)
 
 
+
+
+
+### CSS Validation
+
+[W3C CSS Validation Service](https://jigsaw.w3.org/css-validator) was used to validate the style.css file.
+
+There were 16 errors, but these errors were not from my CSS File, they were from bootstrat 5.2(latest) and Google Fonts. So I have to change both of them so the test can pass.
+
+![alt text](documentation/readme-images/css-test-fail-screenshoot.png " css error.")
+
+
+![alt text](documentation/readme-images/css-pass-screenshoot.png "css error fixed.")
+<br>
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
+
+
 ### Manual Testing
 The Yara Beach website has been tested in the following browsers:
 - Chrome Version 85.0.4183.121 
