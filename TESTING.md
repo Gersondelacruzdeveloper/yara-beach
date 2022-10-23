@@ -18,8 +18,31 @@ The Main README documentation can be found under [README.md](README.md)
 - [Bugs](#bugs)
 
 
+<br>
 
+---
 
+### **HTML**
+
+[W3C HTML Validation Service](https://validator.w3.org/) was used to validate the HTML code.
+
+Each page was validated by URI or Direct Input.
+![alt text](documentation/readme-images/html-validator-index-results.png "W3C HTML Validator results for the index page, showing no errors.")
+
+<br>
+
+The following table shows the pages that were checked.
+No errors or warnings remain.
+
+<br>
+
+![alt text](documentation/readme-images/html-validator-pages-tested.png "Table of the site pages tested in the HTML Validator.")
+
+<br>
+
+##### back to [top](#table-of-contents)
+
+---
 
 ### CSS Validation
 
@@ -99,3 +122,7 @@ All functionality for the footer was manualy tested on every page.
 *Ensure users received the nice and tidy message after submitting the form.
 
 <br>
+
+# Bugs
+Because there were issues with the bootstrap cdn 5.2, the latest one. I had to change the CDN for an older one, which might mess up some classes in the navbar and other places.
+
