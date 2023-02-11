@@ -62,8 +62,8 @@ body {
     grid-template-columns: auto auto auto auto;
 }
 
-/* --------------------------------------------------------------------  404 and 500 error page*/
 
+/* --------------------------------------------------------------------  404 and 500 error page*/
 #error-404-container {
     width: 50%;
     margin: 10px auto;
@@ -245,13 +245,12 @@ body {
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 
 /* Slides */
-
 .home-banner {
     position: relative;
 }
 
 .home-banner h3 {
-    font-family: Cursive, sans-serif;
+    font-family: 'Qwitcher Grypen', Cursive, sans-serif;
     position: absolute;
     bottom: 0px;
     left: 2%;
