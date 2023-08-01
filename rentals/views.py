@@ -1,12 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Rentals,Review
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
-# Create your views here.
 
 # Show all the rentals
 def rentals(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').count()
     p = Paginator(Rentals.objects.filter(status='Active'), 8)
     page = request.GET.get('page')
@@ -16,6 +17,8 @@ def rentals(request):
 
 # Show the rental details
 def rental_details(request, pk):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     rental = Rentals.objects.get(id=pk)
     context = {'rentals': rental}
 
@@ -35,6 +38,8 @@ def rental_details(request, pk):
 
 # Search rentals in app
 def input_search_result(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     rentals = Rentals.objects.filter(status='Active')
     navbar_input = request.GET.get('navbar')
     if navbar_input:
@@ -45,6 +50,8 @@ def input_search_result(request):
 
 # filter from newest to oldest rentals
 def newest_rentals(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').order_by('-date_created').count()
     p = Paginator(Rentals.objects.filter(status='Active').order_by('-date_created'), 8)
     page = request.GET.get('page')
@@ -55,6 +62,8 @@ def newest_rentals(request):
 
 # filter from oldest to newest rentals
 def oldest_rentals(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').order_by('date_created').count()
     p = Paginator(Rentals.objects.filter(status='Active').order_by('date_created'), 8)
     page = request.GET.get('page')
@@ -65,6 +74,8 @@ def oldest_rentals(request):
 
 # filter rentals from low price to high
 def filter_by_price_ascend(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').order_by('Price').count()
     p = Paginator(Rentals.objects.filter(status='Active').order_by('Price'), 8)
     page = request.GET.get('page')
@@ -74,6 +85,8 @@ def filter_by_price_ascend(request):
 
 # filter rentals from low price to high
 def filter_by_price_descend(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').order_by('-Price').count()
     p = Paginator(Rentals.objects.filter(status='Active').order_by('-Price'), 8)
     page = request.GET.get('page')
@@ -83,6 +96,8 @@ def filter_by_price_descend(request):
 
 # filter by rooms
 def filter_by_rooms(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').filter(ACCOM_type = 'Room').count()
     p = Paginator(Rentals.objects.filter(ACCOM_type = 'Room'), 8)
     page = request.GET.get('page')
@@ -92,6 +107,8 @@ def filter_by_rooms(request):
 
 # filter by apartment
 def filter_by_apartments(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').filter(ACCOM_type = 'Apartment').count()
     p = Paginator(Rentals.objects.filter(ACCOM_type = 'Apartment'), 8)
     page = request.GET.get('page')
@@ -101,6 +118,8 @@ def filter_by_apartments(request):
 
 # filter by villas
 def filter_by_villas(request):
+    if not request.user.is_superuser:
+        return redirect("excursions")
     counts = Rentals.objects.filter(status='Active').filter(ACCOM_type = 'Villa').count()
     p = Paginator(Rentals.objects.filter(status='Active').filter(ACCOM_type = 'Villa'), 8)
     page = request.GET.get('page')

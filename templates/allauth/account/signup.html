@@ -1,8 +1,8 @@
-{% extends "account/base.html" %}
+{% extends 'excursions/excursions_base.html' %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
-
 {% load i18n %}
+{% load account socialaccount %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
@@ -10,6 +10,21 @@
 <div class="container h-100">
   <div class="d-flex justify-content-center h-100">
     <div class="user_card">
+      {% get_providers as socialaccount_providers %}
+
+      {% if socialaccount_providers %}
+
+      <div class="socialaccount_ballot" >
+        <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %} 
+        </ul>
+      </div>
+
+      <div class="border-top border-bottom my-3 text-center">{% trans 'OR' %}</div>
+
+      {% include "socialaccount/snippets/login_extra.html" %}
+
+      {% endif %}
       <h3 class="form-title">REGISTER ACCOUNT</h3>
       <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}

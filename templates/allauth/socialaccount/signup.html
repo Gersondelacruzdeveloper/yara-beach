@@ -5,6 +5,12 @@
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
+<div class="socialaccount_ballot" >
+  <ul class="socialaccount_providers">
+  {% include "socialaccount/snippets/provider_list.html" with process="login" %} 
+  </ul>
+</div>
+
 {% block content %}
 <div class="container h-100">
   <div class="d-flex justify-content-center h-100">

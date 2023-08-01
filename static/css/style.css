@@ -4,8 +4,8 @@
     --white: #ffffff;
     --black: #212529;
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    --orange-pantone: #f85a15;
-    --orange-pantone-lighter: #f96728;
+    --orange-pantone: #0ec70e;
+    --orange-pantone-lighter: #008000;
     --gun-metal: #212a30;
     --font: sans-serif, "Montserrat", Georgia;
     --culture: #f2f2f2;
@@ -24,6 +24,39 @@ body {
     min-height: 400px;
     margin-bottom: 150px;
     font-family: var(--font)
+}
+
+#logo{
+    border-radius: 50%;
+    position: relative;
+    width:300px;
+    height:300px;
+    top:10px;
+}
+#logo-img{
+width:30px;
+}
+#initial{
+  font-size: 15px;
+  position: absolute;  
+  top: 25px;
+  left:50%;
+  font-weight: bolder;
+  color:white;
+  background-color: var(--orange-pantone);
+  border-radius: 50%;
+  padding: 5px;
+}
+#explore{
+    color:black;
+    font-weight: bolder;
+    font-size: 14px;
+}
+#pc{
+border-radius: 50%;
+color:black;
+font-weight: bolder;
+font-size: 14px;
 }
 
 /* -------------------------------------------------------------------- general classes */

@@ -42,8 +42,7 @@
 <body>
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/Yara-logo.png' %}"
-                    alt="Yara name with a palm tree"></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span id="logo"><pan id="pc">Punta Cana</pan><img id="logo-img" src="{% static 'images/excursions/coconut-tree-copy.png' %}">  <span id="explore"> Explore</span><span id="initial"> PCE</span></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -53,10 +52,6 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="links-container">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i>
-                            Home</a>
-                    </li>
                     <!-- Sort by -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -118,11 +113,11 @@
                             <li><a class="dropdown-item" href="{% url 'excursion-bookings' %}">
                                     <i class="fa-solid fa-book-circle-arrow-up"></i> Excursion Bookings</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a class="dropdown-item" href="{% url 'rental-bookings' %}">
                                     <i class="fa-solid fa-book-circle-arrow-up"></i>
                                     Rental Bookings</a>
-                            </li>
+                            </li> -->
                             {% endif %}
                         </ul>
 
@@ -188,7 +183,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <p>&copy;
-                <script>document.write(new Date().getFullYear())</script> Yara beach
+                <script>document.write(new Date().getFullYear())</script> Punta Cana Explore
             </p>
         </div>
 

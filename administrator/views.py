@@ -13,7 +13,6 @@ import datetime
 
 # Administrator function
 
-
 @login_required(login_url='/accounts/login/')
 def administrator(request):
     if not request.user.is_superuser:
@@ -225,7 +224,6 @@ def edit_excursions(request, pk):
     return render(request, 'administrator/excursions/edit_excursion.html', context)
 
 # Delete excursion
-
 
 @login_required(login_url='/accounts/login/')
 def delete_excursions(request, pk):
