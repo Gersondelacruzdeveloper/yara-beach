@@ -77,6 +77,10 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
+         'APP': {
+            'client_id': env.str("YOUR_GOOGLE_CLIENT_ID"),
+            'secret': env.str("YOUR_GOOGLE_CLIENT_SECRET"),
+        },
         'SCOPE': [
             'profile',
             'email',
@@ -233,4 +237,3 @@ if DEPLOYED:
 STRIPE_CURRENCY = env.str("STRIPE_CURRENCY")
 STRIPE_PUBLIC_KEY = env.str("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = env.str("STRIPE_SECRET_KEY")
-SITE_ID = 1
