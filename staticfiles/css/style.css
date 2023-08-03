@@ -70,11 +70,11 @@ font-size: 14px;
 }
 
 .nav-link:hover {
-    color: #f6b99f;
+    color:var(--orange-pantone-lighter);
 }
 
 .nav-link:focus {
-    color: #f6b99f;
+    color: var(--orange-pantone-lighter);
 }
 
 
