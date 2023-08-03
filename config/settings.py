@@ -138,7 +138,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 if DEPLOYED:
-    DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+    DATABASES = {"default": env.dj_db_url("HEROKU_POSTGRESQL_PURPLE_URL")}
 else:
     DATABASES = {
     "default": {
