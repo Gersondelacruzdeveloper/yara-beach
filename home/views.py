@@ -15,8 +15,7 @@ import datetime
 
 # show excursions and rentals in home page
 def home(request):
-    if not request.user.is_superuser:
-        return redirect("excursions")
+    return redirect("excursions")
     excursions = Excursions.objects.all()[:4]
     rentals = Rentals.objects.all()[:4]
     context = {'excursions': excursions, 'rentals': rentals}

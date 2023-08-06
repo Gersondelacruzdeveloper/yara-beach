@@ -8,15 +8,17 @@ import stripe
 from .models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
 import datetime
+from django.http import JsonResponse
+import json
+import time
+import datetime
 # Create your views here.
-
-# Chekout and process payment
-
 
 @login_required(login_url='/accounts/login/')
 def checkout(request):
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    print('requestbody:', request.body)
+    # data = json.loads(request.body)
+    # print('data:', data)
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
     # Create the order
@@ -25,9 +27,9 @@ def checkout(request):
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
                 user=request.user,
-                full_name=request.POST['full_name'],
+                full_name='quien sabe mi nombre',
                 image=item['excursion'].main_image.url,
-                cellphone_number=request.POST['Phone_number'],
+                cellphone_number='quien sabe mi numero',
                 price=item['values']['price'],
                 subtotal=item['subTotal'],
                 adult_qty=item['values']['adult_qty'],
@@ -42,6 +44,7 @@ def checkout(request):
         user_orders = ExcursionOrder.objects.all().filter(user=request.user)
         user_orders = user_orders.filter(date_created=datetime.date.today())
         excursion_total = 0
+        print('it got here 1')
         template = ''
         thanks_booking = "<h2 style='background-color:#f85a15; padding: 10px;  color:#ffffff;';>Thank you for booking with us</h2><hr>"
         subtitle = "<h3>Here are your bookings from today</h3>"
@@ -59,11 +62,12 @@ def checkout(request):
             template += f"<strong>SubTotal:</strong> {item.subtotal} <hr>"
         template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> £{excursion_total} <hr>"
         email = EmailMultiAlternatives(
-            'From Yara beach',
+            'From Punta cana Explore',
             template,
             settings.EMAIL_HOST_USER,
             [request.user.email]
         )
+        print('it got here 2')
         email.attach_alternative(template, "text/html")
         email.fail_silently = False
         email.send()
@@ -75,20 +79,20 @@ def checkout(request):
             messages.error(
                 request, "There's nothing in your cart at the moment")
             return redirect('excursions')
-
+    
     # process the payment
-    total = current_cart['total']
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY
-    )
-    context = {
-        'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
-    }
-    return render(request, 'checkout/checkout.html', context)
+    # total = current_cart['total']
+    # stripe_total = round(total * 100)
+    # stripe.api_key = stripe_secret_key
+    # intent = stripe.PaymentIntent.create(
+    #     amount=stripe_total,
+    #     currency=settings.STRIPE_CURRENCY
+    # )
+    # context = {
+    #     'stripe_public_key': stripe_public_key,
+    #     'client_secret': intent.client_secret,
+    # }
+    return render(request, 'checkout/checkout.html')
 
 
 # Allow the user know that the purchase has been successful

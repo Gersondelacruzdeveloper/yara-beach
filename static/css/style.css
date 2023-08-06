@@ -25,6 +25,13 @@ body {
     margin-bottom: 150px;
     font-family: var(--font)
 }
+#whatsapp-floating{
+width:50px;
+}
+.whatsap-container{
+    text-align: center;
+    padding: 10px;;
+}
 
 #logo{
     border-radius: 50%;
