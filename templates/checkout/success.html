@@ -30,6 +30,36 @@
             </div>
         </div>
     </div>
+  <!-- Add the script to the head or body of your HTML template -->
+<!-- Add the script to the head or body of your HTML template -->
+<script>
+    function refreshPageOnce() {
+      // Check if the 'refreshed' flag is set in sessionStorage
+      if (!sessionStorage.getItem('refreshed')) {
+        // If not set, wait for 2 seconds (2000 milliseconds)
+        setTimeout(function() {
+          // Reload the page
+          location.reload();
+        }, 2000);
+  
+        // Set the 'refreshed' flag in sessionStorage to indicate that the page has been refreshed
+        sessionStorage.setItem('refreshed', true);
+  
+        console.log("done");
+      } else {
+        // If the 'refreshed' flag is already set, remove it from sessionStorage
+        // This will allow the page to be refreshed again if redirected
+        sessionStorage.removeItem('refreshed');
+      }
+    }
+    
+    window.onload = function() {
+      // Call the refreshPageOnce function when the page loads
+      refreshPageOnce();
+    };
+  </script>
+  
+  
 </section>
 
 {% endblock content %}

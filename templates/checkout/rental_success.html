@@ -30,6 +30,21 @@
             </div>
         </div>
     </div>
+    <!-- Add the script to the head or body of your HTML template -->
+<script>
+    function refreshPageOnce() {
+      // Wait for 2 seconds (2000 milliseconds)
+      setTimeout(function() {
+        // Reload the page
+        location.reload();
+      }, 2000);
+    }
+
+    window.onload = function() {
+      // Call the refreshPageOnce function when the page loads
+      refreshPageOnce();
+    };
+  </script>
 </section>
 
 {% endblock content %}
