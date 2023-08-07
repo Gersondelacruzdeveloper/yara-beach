@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 import random
 import string
+from decimal import Decimal
 
 
 # Create your models here.
@@ -64,7 +65,11 @@ class Reference(models.Model):
     account_number = models.CharField(max_length=255, blank=True, null=True, help_text="The bank account number.")
     cedula = models.CharField(max_length=30, blank=True, null=True, help_text="Cedula")
     bank_acount_type = models.CharField(choices=CHOICES, default='cuenta corriente ', max_length=20)
+    paid_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0, help_text="The amount of money that has been paid since the account started.")
+    due_to_pay_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0, help_text="The amount that needs to be paid after 3 days.")
+    has_due_payment = models.BooleanField(default=False, help_text="Indicates whether there is a due payment or not.")
     created = models.DateField(auto_now_add=True, help_text="The date when the reference was created.")
+
 
     def __str__(self):
         return self.reference_number
@@ -85,7 +90,3 @@ class Reference(models.Model):
             reference_number = ''.join(random.choice(characters) for _ in range(length))
 
         return reference_number
-
-
-
-

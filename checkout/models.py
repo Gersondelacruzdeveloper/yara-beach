@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from datetime import date
 from django.core.validators import URLValidator
 import uuid
+from django.core.exceptions import ObjectDoesNotExist
+from decimal import Decimal
+from excursions.models import Reference
 # Create your models here.
 
 # Contains all orders related to excursions
@@ -40,8 +43,20 @@ class ExcursionOrder(models.Model):
 
         super().save(*args, **kwargs)
 
+        # Update amounts in the Reference class
+        try:
+            reference = Reference.objects.get(reference_number=self.reference)
+            reference.paid_amount += Decimal('10')
+            # will need to delete the due_to_pay_amount manually for now
+            reference.due_to_pay_amount += Decimal('10')
+            reference.save()
+        except ObjectDoesNotExist:
+            # If the reference does not exist, you may handle it according to your requirements
+            pass
+
     def __str__(self):
         return self.order_number
+
 
 
 # Contains all orders related to rentals

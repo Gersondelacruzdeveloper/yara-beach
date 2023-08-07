@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
 from .forms import ReferenceForm
+from decimal import Decimal
 # Create your views here.
 
 # Show all the excursion
