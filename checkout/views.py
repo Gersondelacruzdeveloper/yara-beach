@@ -16,20 +16,21 @@ import datetime
 
 @login_required(login_url='/accounts/login/')
 def checkout(request):
-    print('requestbody:', request.body)
-    # data = json.loads(request.body)
+    # print('requestbody:', request.body)
     # print('data:', data)
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
     # Create the order
     if request.method == 'POST':
+        data = json.loads(request.body)
+        print('full name:',data['full_name'])
         for item in current_cart['cart_items']:
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
                 user=request.user,
-                full_name='quien sabe mi nombre',
+                full_name=data['full_name'],
                 image=item['excursion'].main_image.url,
-                cellphone_number='quien sabe mi numero',
+                cellphone_number= data['phone_number'],
                 price=item['values']['price'],
                 subtotal=item['subTotal'],
                 adult_qty=item['values']['adult_qty'],
@@ -37,7 +38,8 @@ def checkout(request):
                 excursion_date=item['values']['excursion_date'],
                 customer_email=request.user.email,
                 place_pickup=item['values']['place_pickup'],
-                date_created=datetime.date.today()
+                date_created=datetime.date.today(),
+                reference = data['reference'],
             )
 
         # send an email with all the info to the user

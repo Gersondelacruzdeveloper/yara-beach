@@ -22,7 +22,7 @@ class ExcursionOrder(models.Model):
     cellphone_number = models.CharField(max_length=70, null=True, blank=True)
     place_pickup = models.CharField(max_length=70, null=True, blank=True)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-
+    reference = models.CharField(max_length=6, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """
