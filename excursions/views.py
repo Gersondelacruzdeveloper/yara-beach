@@ -3,7 +3,7 @@ from .models import Excursions, Photos, Review
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
-
+from .forms import ReferenceForm
 # Create your views here.
 
 # Show all the excursion
@@ -90,3 +90,17 @@ def filter_by_price_descend(request):
 def cart(request):
     context = {}
     return render(request, 'excursions/cart.html', context)
+
+
+def create_reference(request):
+    if request.method == 'POST':
+        form = ReferenceForm(request.POST)
+        if form.is_valid():
+            reference = form.save()
+            return redirect('success_page', reference_number=reference.reference_number)
+    else:
+        form = ReferenceForm()
+    return render(request, 'excursions/reference_form.html', {'form': form})
+
+def success_page(request, reference_number):
+    return render(request, 'excursions/success_page.html', {'reference_number': reference_number})

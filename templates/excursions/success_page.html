@@ -1,0 +1,15 @@
+
+{% extends 'excursions/excursions_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="width:80%; margin:auto; margin-top: 2%;">
+<h1 class="text-center">Success</h1>
+<p>Tu número de referencia es: <span class="badge rounded-pill bg-success">{{ reference_number }}</span></p>
+<p>Este número, <span class="badge rounded-pill bg-success">{{ reference_number }}</span>, lo vas a necesitar cada vez que recomiendes una excursión, ya que a través de este número te pagamos. No lo pierdas.
+</p>
+</div>
+{% endblock content %}
+   
+

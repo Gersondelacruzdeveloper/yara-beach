@@ -911,7 +911,7 @@ ul.socialaccount_providers {
     box-shadow: var(--shadow);
     color: var(--white);
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns:  auto;
 }
 
 .footer-copyright {
@@ -920,7 +920,7 @@ ul.socialaccount_providers {
 
 .social-media-links {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     justify-content: center;
     column-gap: 10px;
 }

@@ -11,4 +11,6 @@ urlpatterns = [
     path('filter_by_ascend/', views.filter_by_price_ascend, name='filter_by_ascend'),
     path('filter_by_descend/', views.filter_by_price_descend, name='filter_by_descend'),
     path('cart/', views.cart, name='cart'),
+    path('reference/', views.create_reference, name='reference'),
+    path('success/<str:reference_number>/', views.success_page, name='success_page'),
 ]
