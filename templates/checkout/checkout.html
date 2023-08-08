@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-6 mb-3">
               <label for="reference">Reference Code (Optional)</label>
-              <input type="text" class="form-control" id="reference" name="reference"
+              <input onchange="getReference()"  type="text" class="form-control" id="reference" name="reference"
                 placeholder="Reference code" maxlength="6">
             </div>
           </div>
@@ -103,6 +103,11 @@
               paypalBtnId.style.display = 'block'
              }
            }
+
+          function getReference(this){
+            console.log()
+          }
+
           </script>
           <!-- </button> -->
         </form>
