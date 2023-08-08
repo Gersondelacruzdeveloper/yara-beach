@@ -134,7 +134,7 @@
 
                     <!-- cart -->
                     <li class="nav-item cart">
-                        <a class="nav-link btn my_hover sear-btn btn-outline-secondary position-relative" href="{% url 'excursion-cart' %}">
+                        <a  style="color:white"class="nav-link btn my_hover sear-btn btn-outline-secondary position-relative" href="{% url 'excursion-cart' %}">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 {% if total %}
                                 £{{total | floatformat:2}}
@@ -210,9 +210,10 @@
                 <a aria-label="tiktok" rel="noopener" target="_blank" href="https://www.tiktok.com/"><i
                         class="fa-brands fa-tiktok"></i></a>
             </div>
-            <div class="referecia" style="color:white">
-                <a aria-label="tiktok" rel="reference" target="_blank" href="{% url 'reference' %}">Referencia</a>
-            </div>
+        </div>
+
+        <div class="referecia" style="color:white">
+            <a aria-label="tiktok" rel="reference" target="_blank" href="{% url 'reference' %}">Referencia</a>
         </div>
 
     </footer>
