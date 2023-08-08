@@ -911,7 +911,7 @@ ul.socialaccount_providers {
     box-shadow: var(--shadow);
     color: var(--white);
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns:  auto;
 }
 
 .footer-copyright {
@@ -920,13 +920,17 @@ ul.socialaccount_providers {
 
 .social-media-links {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     justify-content: center;
     column-gap: 10px;
 }
 
 .social_links a {
     color: white;
+}
+.referecia{
+    display: grid;
+justify-content: center;
 }
 
 /* -------------------------------------------------------------------- Contact page */
@@ -1193,7 +1197,9 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 780px) {
-
+    #footer {
+        height: 100px;
+    }
     /* --detail page */
     .main-image img {
         width: 400px;
@@ -1279,21 +1285,7 @@ textarea::placeholder {
     .btn {
         font-size: 15px;
     }
-
-    #footer {
-        height: 50px;
-        grid-template-columns: auto auto;
-    }
-
-    .footer-copyright {
-        margin: auto;
-        line-height: 50px;
-    }
-
-    .social-media-links {
-        column-gap: 15px;
-        line-height: 50px;
-    }
+    
 
     .social_links a {
         font-size: 20px;
@@ -1383,7 +1375,4 @@ textarea::placeholder {
     .home-banner {
         font-size: 20px;
     }
-
-
-
 }
