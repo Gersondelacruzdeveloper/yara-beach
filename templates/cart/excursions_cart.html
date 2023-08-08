@@ -57,7 +57,7 @@
                                         value="{{item.values.child_qty}}" min="0" max="99">
                                 </td>
 
-                                <td>{{item.values.place_pickup}}</td>
+                                <td>{{item.values.place_pickup | slice:":26"|title}}</td>
                                 <td>£{{item.values.price}}</td>
                                 <td>£{{item.subTotal | floatformat:2}}</td>
 
