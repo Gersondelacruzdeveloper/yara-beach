@@ -37,7 +37,7 @@ def excursion(request):
 def excursion_details(request, pk):
     excursion = Excursions.objects.get(id=pk)
     context = {'excursions': excursion}
-    make_barcode()
+    # make_barcode()
 
     # create review 
     if request.method == 'POST':
