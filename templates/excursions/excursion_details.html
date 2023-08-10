@@ -35,7 +35,7 @@
                     {% csrf_token %}
                     <!-- price -->
                     <div class="form-row">
-                        <div class="detail-price"> <strong>Price:</strong> £{{excursions.Price}}</div>
+                        <div class="detail-price"> <strong>Price:</strong> ${{excursions.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
                         <!-- date -->
@@ -66,7 +66,7 @@
                         <input type="hidden" name="redirect_url" value="{{request.path}}">
                         <!-- hidden input for the price-->
                         <input type="hidden" name="price" value="{{excursions.Price}}">
-
+                        
                         <!-- form btn -->
                         <div class="form_detail_btn">
                             <!-- go back to keep shopping btn -->

@@ -20,6 +20,7 @@ django-storages = "*"
 boto3 = "*"
 stripe = "*"
 coverage = "*"
+qrcode = "*"
 
 [dev-packages]
 

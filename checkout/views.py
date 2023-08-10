@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from cart.contexts import cart_contents, rental_cart_contents
 from django.conf import settings
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 import stripe
 from .models import ExcursionOrder, AccommodationOrder
@@ -12,10 +13,12 @@ from django.http import JsonResponse
 import json
 import time
 import datetime
+
 # Create your views here.
 
 @login_required(login_url='/accounts/login/')
 def checkout(request):
+    paypal_client_id = settings.PAYPAL_CLIENT_ID
     # print('requestbody:', request.body)
     # print('data:', data)
     cart = request.session.get('cart', {})
@@ -94,7 +97,8 @@ def checkout(request):
     #     'stripe_public_key': stripe_public_key,
     #     'client_secret': intent.client_secret,
     # }
-    return render(request, 'checkout/checkout.html')
+    context ={'paypal_client_id': paypal_client_id}
+    return render(request, 'checkout/checkout.html', context)
 
 
 # Allow the user know that the purchase has been successful
