@@ -5,22 +5,22 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from .forms import ReferenceForm
 from decimal import Decimal
-import qrcode
+# import qrcode
 # Create your views here.
-def make_barcode():
-    website_url = "https://www.puntacana-explore.com/excursions/"  # Replace with your actual website URL
+# def make_barcode():
+#     website_url = "https://www.puntacana-explore.com/excursions/"  # Replace with your actual website URL
 
-    qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=10,
-        border=4,
-     )
-    qr.add_data(website_url)
-    qr.make(fit=True)
+#     qr = qrcode.QRCode(
+#         version=1,
+#         error_correction=qrcode.constants.ERROR_CORRECT_L,
+#         box_size=10,
+#         border=4,
+#      )
+#     qr.add_data(website_url)
+#     qr.make(fit=True)
 
-    img = qr.make_image(fill_color="black", back_color="white")
-    img.save("website_qrcode.png")  # Save the QR code as an image
+#     img = qr.make_image(fill_color="black", back_color="white")
+#     img.save("website_qrcode.png")  # Save the QR code as an image
 
 
 
@@ -38,7 +38,7 @@ def excursion_details(request, pk):
     excursion = Excursions.objects.get(id=pk)
     context = {'excursions': excursion}
     make_barcode()
-    
+
     # create review 
     if request.method == 'POST':
         Review.objects.create(
