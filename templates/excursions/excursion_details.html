@@ -41,7 +41,7 @@
                         <!-- date -->
                         <div class="form-group mt-3">
                             <label for="date">Select Date and Travellers</label>
-                            <input type="date" class="form-control" id="date" name="excursion_date" min="{{today}}"
+                            <input type="datetime-local" class="form-control" id="date" name="excursion_date" min="{{today}}"
                                 required>
                         </div>
                         <!-- number of adults -->
@@ -66,7 +66,7 @@
                         <input type="hidden" name="redirect_url" value="{{request.path}}">
                         <!-- hidden input for the price-->
                         <input type="hidden" name="price" value="{{excursions.Price}}">
-                        
+
                         <!-- form btn -->
                         <div class="form_detail_btn">
                             <!-- go back to keep shopping btn -->

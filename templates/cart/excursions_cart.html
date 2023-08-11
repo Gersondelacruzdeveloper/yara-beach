@@ -22,7 +22,7 @@
                         <!-- table head -->
                         <tr>
                             <th scope="col">Description</th>
-                            <th scope="col">Excursion Date</th>
+                            <th scope="col">Date and Time</th>
                             <th scope="col">Adult Quantity</th>
                             <th scope="col">Child Quantity</th>
                             <th scope="col">Pick up</th>
@@ -42,7 +42,7 @@
                             <form method="POST" action="{% url 'cart_update' item.item_id %}">
                                 {% csrf_token %}
                                 <!-- excursion date-->
-                                <td><input type="date" class="form-control" name="excursion_date"
+                                <td><input type="datetime-local" class="form-control" name="excursion_date"
                                         value="{{item.values.excursion_date}}" min="{{today}}"></td>
 
                                 <!-- Adult quantity-->
