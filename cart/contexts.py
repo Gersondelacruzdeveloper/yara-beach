@@ -14,14 +14,17 @@ def cart_contents(request):
 
     for id, value in cart.items():
         excursion = get_object_or_404(Excursions, pk=id)
+        is_transfer =  excursion.is_transfer
         total_price_adult = Decimal(value['price']) * int(value['adult_qty'])
         total_price_children = Decimal(value['price']) / 2 * int(value['child_qty'])
         total += total_price_adult + total_price_children
         subTotal = total_price_adult + total_price_children
+
         cart_items.append({
             'item_id':id,
             'values': value,
             'excursion':excursion,
+            'is_transfer':is_transfer,
             'subTotal':subTotal
         })
     context = {

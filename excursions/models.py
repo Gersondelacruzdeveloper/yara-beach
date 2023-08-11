@@ -25,6 +25,7 @@ class Excursions(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(
         choices=CHOICES, default='Inactive', max_length=20)
+    is_transfer = models.BooleanField(default=False)  # Boolean field for transfer
 
     def __str__(self):
         return self.title
@@ -107,7 +108,6 @@ class Reference(models.Model):
                                        for _ in range(length))
 
         return reference_number
-
 
 # This to collect the person info in order to sell and add the excursions
 class Company(models.Model):

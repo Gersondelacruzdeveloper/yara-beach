@@ -41,9 +41,15 @@
                             <!-- form for updating quantity-->
                             <form method="POST" action="{% url 'cart_update' item.item_id %}">
                                 {% csrf_token %}
+                            
                                 <!-- excursion date-->
+                                {% if item.is_transfer %}
                                 <td><input type="datetime-local" class="form-control" name="excursion_date"
                                         value="{{item.values.excursion_date}}" min="{{today}}"></td>
+                                {% else %}
+                                <td><input type="date" class="form-control" name="excursion_date"
+                                    value="{{item.values.excursion_date}}" min="{{today}}"></td>
+                                {% endif%}
 
                                 <!-- Adult quantity-->
                                 <td>
@@ -61,8 +67,7 @@
                                 <td>£{{item.values.price}}</td>
                                 <td>£{{item.subTotal | floatformat:2}}</td>
 
-                                <td><button type="submit" class="update-cart-btn"><i
-                                            class="fa-solid fa-pen-to-square"></i>Update</button></td>
+                                <td><button type="submit" class="update-cart-btn nav-link btn my_hover sear-btn btn-outline-secondary position-relative">Update</button></td>
 
                                 <td><a class="remove-item" data-excursion_id="{{item.item_id}}"> <i
                                             class="fa-solid fa-rectangle-xmark cart-icon-x"></i></a></td>

@@ -38,12 +38,22 @@
                         <div class="detail-price"> <strong>Price:</strong> ${{excursions.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
+                        {% if excursions.is_transfer%}
+                        <!-- date  and time-->
+                        <div class="form-group mt-3">
+                            <label for="date">Select Date and Travellers</label>
+                            <input type="datetime-local" class="form-control" id="date" name="excursion_date"
+                                min="{{today}}" required>
+                        </div>
+                        {% else %}
                         <!-- date -->
                         <div class="form-group mt-3">
                             <label for="date">Select Date and Travellers</label>
-                            <input type="datetime-local" class="form-control" id="date" name="excursion_date" min="{{today}}"
+                            <input type="date" class="form-control" id="date" name="excursion_date" min="{{today}}"
                                 required>
                         </div>
+                        {% endif %}
+
                         <!-- number of adults -->
                         <div class="form-group mt-3">
                             <label for="id_adult_qty">Adult (11-85 years old)</label>
@@ -58,10 +68,17 @@
                         </div>
                         <!-- pick up info -->
                         <div class="form-group mt-3">
-                            <label for="inputCity">Place to be pick up</label>
-                            <input type="text" class="form-control" id="inputCity" name="place_pickup"
-                                required>
+                            <label for="inputCity">Manual pick up Location</label>
+                            <input type="text" class="form-control" id="inputCity" name="place_pickup" required>
                         </div>
+                        <!-- <div class="form-group mt-3">
+                            <label for="inputCity">Auto Pick up location</label>
+                            <div class="input-group">
+                                <input onclick="getLocation()" type="button" class="form-control" id="locationButton"
+                                    name="location" value="Get My Location">
+                            </div>
+                        </div> -->
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.238432416923!2d-68.37336401812402!3d18.563286322864528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ea892172ce48f89%3A0x957aa624da170f8c!2sPunta%20Cana%20International%20Airport!5e0!3m2!1sen!2sdo!4v1691787965270!5m2!1sen!2sdo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                         <!-- hidden input to get the url-->
                         <input type="hidden" name="redirect_url" value="{{request.path}}">
                         <!-- hidden input for the price-->
@@ -161,6 +178,64 @@
         </div>
         {% endfor %}
     </div>
+    <!-- <script src="{% static 'js/UserLocation.js' %}"></script> -->
 
 </section>
+<script>
+// function getLocation() {
+//       if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition, showError);
+//       } else {
+//         alert("Geolocation is not supported by this browser.");
+//       }
+    
+//     function showPosition(position) {
+//       var latitude = position.coords.latitude;
+//       var longitude = position.coords.longitude;
+//       console.log(latitude,longitude)
+//       initMap(latitude, longitude)
+//     }
+    
+//     function showError(error) {
+//       switch (error.code) {
+//         case error.PERMISSION_DENIED:
+//           alert("User denied Geolocation. You can manually enter your location.");
+//           break;
+//         case error.POSITION_UNAVAILABLE:
+//           alert("Location information is unavailable. Please try again later.");
+//           break;
+//         case error.TIMEOUT:
+//           alert("The request to get location timed out. Please try again.");
+//           break;
+//         case error.UNKNOWN_ERROR:
+//           alert("An unknown error occurred while trying to get your location.");
+//           break;
+//       }
+//     }
+    
+//         console.log('my location')
+//     }
+    
+</script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+<script>
+    function initMap(latitude, longitude) {
+    
+      const location = { lat: latitude, lng: longitude };
+    
+      let map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
+        zoom: 14 // Adjust the zoom level as needed
+      });
+    
+      let marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: 'Location'
+      });
+      alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+    }
+
+    </script> -->
+    
 {% endblock content %}
