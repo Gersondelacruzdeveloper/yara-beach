@@ -5,33 +5,35 @@
 
 <section>
     <h1 class="text-center mt-5"> All Excursions</h1>
-    <div class="card-container">
-        {% for excursion in excursions %}
-        <div class="card-wrapper">
-            <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
-                    alt="{{excursion.image_name}}"> </a>
-            <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
-            <!-- Reviews -->
-            <div class="card-star">
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                {% if excursion.reviews.count > 1 or excursion.reviews.count == 0 %}
-                <span> {{excursion.reviews.count}} reviews</span>
-                {% else %}
-                <span> {{excursion.reviews.count}} review</span>
-                {% endif%}
+    <section>
+        <div class="card-container mt-5">
+            {% for excursion in excursions %}
+            <div class="card-wrapper">
+                <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
+                        alt="{{excursion.image_name}}"> </a>
+                <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
+                <!-- Reviews -->
+                <div class="card-star">
+                    <i class="fa-star fa-solid"></i>
+                    <i class="fa-star fa-solid"></i>
+                    <i class="fa-star fa-solid"></i>
+                    <i class="fa-star fa-solid"></i>
+                    <i class="fa-star fa-solid"></i>
+                    {% if excursion.reviews.count > 1 or excursion.reviews.count == 0 %}
+                    <span> {{excursion.reviews.count}} reviews</span>
+                    {% else %}
+                    <span> {{excursion.reviews.count}} review</span>
+                    {% endif%}
+                </div>
+    
+                <div class="price">
+                    ${{excursion.Price}}
+                </div>
             </div>
-
-            <div class="price">
-                ${{excursion.Price}}
-            </div>
+            {% endfor %}
         </div>
-
-        {% endfor%}
-    </div>
+    
+    
 
     <!--Pagination-->
     {% if counts > 8 %}
@@ -81,7 +83,7 @@
         </ul>
     </nav>
     <!--end of Pagination-->
-    {%endif%}
+    {% endif %}
 
 </section>
 
