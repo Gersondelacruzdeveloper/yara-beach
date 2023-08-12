@@ -28,9 +28,10 @@ from decimal import Decimal
 def excursion(request):
     counts = Excursions.objects.filter(status='Active').count()
     p = Paginator(Excursions.objects.filter(status='Active'), 8)
+    klk = 'this is gerson'
     page = request.GET.get('page')
     excursions = p.get_page(page)
-    context = {'excursions': excursions,'counts': counts}
+    context = {'excursions': excursions,'counts': counts, 'klk':klk}
     return render(request, 'excursions/excursions.html', context)
 
 # Show the excursion details
