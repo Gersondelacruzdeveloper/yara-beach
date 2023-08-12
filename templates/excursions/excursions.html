@@ -7,7 +7,6 @@
     <h1 class="text-center mt-5"> All Excursions</h1>
     <section>
         <div class="card-container mt-5">
-            {{klk}}
             {% for excursion in excursions %}
             <div class="card-wrapper">
                 <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
