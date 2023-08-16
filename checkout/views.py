@@ -7,33 +7,63 @@ from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 import stripe
 from .models import ExcursionOrder, AccommodationOrder
+from excursions.models import Reference
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import JsonResponse
 import json
 import time
 import datetime
-
+from decimal import Decimal, ROUND_HALF_UP
 # Create your views here.
+from decimal import Decimal
 
-@login_required(login_url='/accounts/login/')
+
+def apply_discount_code(request):
+    discount_amount = 5
+    cart = request.session.get('cart', {})
+    new_total = 0.00
+    checkout_cart = request.session.get('checkout_cart', {})
+    total_discount = 0
+    reference_applied = False
+    if request.method == 'POST':
+        discount_reference = request.POST.get('reference')
+        extracted_reference = Reference.objects.filter(reference_number=discount_reference)
+        if extracted_reference and not reference_applied:
+            checkout_cart['discount_applied'] = True
+            reference_applied = True  
+            for id, value in cart.items():
+                total_adult = int(value['adult_qty'])
+                total_discount += total_adult * discount_amount
+            if checkout_cart['total']:
+                new_total = Decimal(checkout_cart['total']) - Decimal(total_discount)
+                messages.success(request, 'Discount has been applied')    
+        else:
+            messages.error(request, '"The discount code is invalid. Please check the spelling.')
+    checkout_cart['total_discount'] = total_discount
+    request.session['cart_total'] = str(new_total)
+    return redirect('checkout')
+
+@login_required(login_url='/accounts/login/' )
 def checkout(request):
+    checkout_cart = request.session.get('checkout_cart', {})
+    total_discount =  Decimal(checkout_cart['total_discount'])
+    new_total = Decimal(checkout_cart['total']) - total_discount
+    discount_applied = checkout_cart['discount_applied']
     paypal_client_id = settings.PAYPAL_CLIENT_ID
-    # print('requestbody:', request.body)
-    # print('data:', data)
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
     # Create the order
     if request.method == 'POST':
         data = json.loads(request.body)
-        print('full name:',data['full_name'])
+
         for item in current_cart['cart_items']:
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
                 user=request.user,
                 full_name=data['full_name'],
                 image=item['excursion'].main_image.url,
-                cellphone_number= data['phone_number'],
+                cellphone_number=data['phone_number'],
                 price=item['values']['price'],
                 subtotal=item['subTotal'],
                 adult_qty=item['values']['adult_qty'],
@@ -42,14 +72,13 @@ def checkout(request):
                 customer_email=request.user.email,
                 place_pickup=item['values']['place_pickup'],
                 date_created=datetime.date.today(),
-                reference = data['reference'],
+                reference=data['reference'],
             )
 
         # send an email with all the info to the user
         user_orders = ExcursionOrder.objects.all().filter(user=request.user)
         user_orders = user_orders.filter(date_created=datetime.date.today())
         excursion_total = 0
-        print('it got here 1')
         template = ''
         thanks_booking = "<h2 style='background-color:#f85a15; padding: 10px;  color:#ffffff;';>Thank you for booking with us</h2><hr>"
         subtitle = "<h3>Here are your bookings from today</h3>"
@@ -72,7 +101,6 @@ def checkout(request):
             settings.EMAIL_HOST_USER,
             [request.user.email]
         )
-        print('it got here 2')
         email.attach_alternative(template, "text/html")
         email.fail_silently = False
         email.send()
@@ -84,20 +112,12 @@ def checkout(request):
             messages.error(
                 request, "There's nothing in your cart at the moment")
             return redirect('excursions')
-    
-    # process the payment
-    # total = current_cart['total']
-    # stripe_total = round(total * 100)
-    # stripe.api_key = stripe_secret_key
-    # intent = stripe.PaymentIntent.create(
-    #     amount=stripe_total,
-    #     currency=settings.STRIPE_CURRENCY
-    # )
-    # context = {
-    #     'stripe_public_key': stripe_public_key,
-    #     'client_secret': intent.client_secret,
-    # }
-    context ={'paypal_client_id': paypal_client_id}
+
+    context = {'paypal_client_id': paypal_client_id,
+               'new_total': new_total,'total_discount': 
+               total_discount, 'discount_applied':discount_applied
+
+               }
     return render(request, 'checkout/checkout.html', context)
 
 

@@ -7,6 +7,11 @@ from django.core.exceptions import ValidationError
 # ----------------------------------Excursion cart fucntionality 
 # return the excursion cart page
 def view_excursion_cart(request):
+    # Get the previous page from the session, defaulting to an empty string
+    previous_page = request.session.get('previous_page', '')
+    # Store the current page's URL in the session
+    request.session['previous_page'] = request.get_full_path()
+    print('previous_page', previous_page)
     return render(request, 'cart/excursions_cart.html')
 
 # Add a quantity of the specified product to the shopping excursion cart
@@ -53,7 +58,6 @@ def update_cart(request, item_id):
     adult_qty = request.POST.get('cart-adult_qty')
     child_qty = request.POST.get('cart-child_qty')
     excursion_date = request.POST.get('excursion_date')
-
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):

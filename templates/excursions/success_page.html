@@ -7,8 +7,17 @@
 <div style="width:80%; margin:auto; margin-top: 2%;">
 <h1 class="text-center">Success</h1>
 <p>Tu número de referencia es: <span class="badge rounded-pill bg-success">{{ reference_number }}</span></p>
-<p>Este número, <span class="badge rounded-pill bg-success">{{ reference_number }}</span>, lo vas a necesitar cada vez que recomiendes una excursión, ya que a través de este número te pagamos. No lo pierdas.
+<p>Este número  <span class="badge rounded-pill bg-success">{{ reference_number }}</span> es tu pasaporte hacia recompensas emocionantes. Será tu compañero fiel en cada recomendación de excursiones, ya que a través de él, tus ganancias fluyen directamente. ¡Guárdalo con cariño! Además, podrás imprimir estos elegantes volantes, que se transformarán en códigos de descuento para tus apreciados clientes. ¡Una oportunidad que no querrás perder!</p>
+
+<div style="position: relative;" class="dicount_to_print_container">
 </p>
+<div style="position: absolute; top:10px; left:50%;">
+    <h3 style="color:white">Discount code</h3>
+    <P style="font-size: 50px;"> <span class="badge rounded-pill bg-success">{{ reference_number }}</P>
+    <p style="color:white; text-align: justify; width:300px;">Scan the barcode first, and then apply the discount code prior to finalizing your checkout..</p>
+</div>
+    <img src="{% static 'images/excursions/Descuento.png' %}" alt="Italian Trulli">
+</div>
 </div>
 {% endblock content %}
    

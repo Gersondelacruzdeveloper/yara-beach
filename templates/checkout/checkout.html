@@ -34,13 +34,27 @@
               </div>
             </div>
 
-            <span class="text-muted">£{{item.subTotal | floatformat:2}}</span>
+            <span class="text-muted">${{item.subTotal | floatformat:2}}</span>
           </li>
           {% endfor %}
           <li class="list-group-item d-flex justify-content-between">
-            <span>Total (GB)</span>
-            <strong>£{{total | floatformat:2}}</strong>
+            <span>Total (US)</span>
+            <strong>${{total | floatformat:2}}</strong>
           </li>
+
+          {% if total_discount != 0%}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Discount</span>
+            <strong>${{total_discount | floatformat:2}}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Final Total (US)</span>
+            <strong>${{new_total | floatformat:2}}</strong>
+          </li>
+          {% endif%}
+  
+
+          <!-- session_discount -->
           <!-- card icons -->
           <div class="text-center list-group-item ">
             <i class="fa fa-cc-visa visa"></i>
@@ -49,30 +63,40 @@
             <i class="fa fa-cc-discover discover"></i>
           </div>
         </ul>
+        {% if discount_applied == False %}
+        <!-- form for updating quantity-->
+      <form method="POST" action="{% url 'apply_discount' %}">
+        {% csrf_token %}
+        <div class="col-md-6 mb-3 list-group-item">
+          <label for="reference">Discount Code</label>
+          <input type="text" class="form-control" id="reference" name="reference" placeholder="Discount Code"
+            maxlength="6" required>
+        </div>
+        <div class="col-md-6 mb-3 list-group-item">
+          <label for="apply">Apply Discount Code</label>
+          <button id="apply" class=" form-control btn my_hover btn-outline-secondary">Apply</button>
+        </div>
+    </div>
+    </form>
+    {% endif %}
       </div>
 
-      <!-- card pytments infomation -->
-      <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Contact info</h4>
-        <form action=" " method="POST" id="payment-form">
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="full_name">Full name *</label>
-              <input onchange="myFunction()" type="text" class="form-control" id="full_name" name="full_name"
-                placeholder="Full Name" required>
-            </div>
+    <!-- card pytments infomation -->
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Contact info</h4>
+      <form action=" " method="POST" id="payment-form">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="full_name">Full name *</label>
+            <input onchange="myFunction()" type="text" class="form-control" id="full_name" name="full_name"
+              placeholder="Full Name">
+          </div>
 
-            <div class="col-md-6 mb-3">
-              <label for="Phone_number">Phone number</label>
-              <input onchange="myFunction()" type="text" class="form-control" id="Phone_number" name="Phone_number"
-                placeholder="Phone number" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="reference">Reference Code (Optional)</label>
-              <input onchange="getReference()"  type="text" class="form-control" id="reference" name="reference"
-                placeholder="Reference code" maxlength="6">
-            </div>
+          <div class="col-md-6 mb-3">
+            <label for="Phone_number">Phone number</label>
+            <input onchange="myFunction()" type="text" class="form-control" id="Phone_number" name="Phone_number"
+              placeholder="Phone number">
           </div>
           <hr class="mb-4">
           <h4 class="mb-3">Payment</h4>
@@ -96,23 +120,18 @@
             let functionCallCount = 0;
             const full_name = document.getElementById('full_name').value;
             const phone_number = document.getElementById('Phone_number').value;
-            function myFunction(){
-             functionCallCount++
-             if(functionCallCount == 2){
-              continues.style.display = "none"
-              paypalBtnId.style.display = 'block'
-             }
-           }
-
-          function getReference(this){
-            console.log()
-          }
-
+            function myFunction() {
+              functionCallCount++
+              if (functionCallCount == 2) {
+                continues.style.display = "none"
+                paypalBtnId.style.display = 'block'
+              }
+            }
           </script>
           <!-- </button> -->
-        </form>
-      </div>
+      </form>
     </div>
+  </div>
   </div>
   {{ stripe_public_key|json_script:"id_stripe_public_key" }}
   {{ client_secret|json_script:"id_client_secret" }}
@@ -130,11 +149,11 @@
     <title> PayPal Checkout Integration | Server Demo </title>
   </head>
   <!-- Include the PayPal JavaScript SDK -->
-  <script
-    src="https://www.paypal.com/sdk/js?client-id={{paypal_client_id}}&currency=USD"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id={{paypal_client_id}}&currency=USD"></script>
 
   <!-- create token -->
   <script>
+
     function getCookie(name) {
       var cookieValue = null;
       if (document.cookie && document.cookie !== '') {
@@ -151,7 +170,7 @@
       return cookieValue;
     }
     const csrftoken = getCookie('csrftoken');
-    const total = '{{total | floatformat:2}}'
+    const total = '{{new_total | floatformat:2}}'
     const user = '{{user}}'
     const home_url = "{% url 'checkout-success' %}"
 
@@ -166,7 +185,7 @@
           'Content-type': 'application/json',
           'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify({ 'user': user, 'full_name': full_name, 'phone_number': phone_number, 'reference':reference})
+        body: JSON.stringify({ 'user': user, 'full_name': full_name, 'phone_number': phone_number, 'reference': reference, })
       })
       console.log(user)
         .then(response => {
@@ -211,6 +230,7 @@
       }
 
     }).render('#paypal-button-container');
+
   </script>
 </section>
 

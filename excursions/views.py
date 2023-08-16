@@ -23,7 +23,6 @@ from decimal import Decimal
 #     img.save("website_qrcode.png")  # Save the QR code as an image
 
 
-
 # Show all the excursion
 def excursion(request):
     counts = Excursions.objects.filter(status='Active').count()

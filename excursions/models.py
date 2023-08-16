@@ -86,6 +86,11 @@ class Reference(models.Model):
         default=False, help_text="Indicates whether there is a due payment or not.")
     created = models.DateField(
         auto_now_add=True, help_text="The date when the reference was created.")
+      # New Fields
+    phone_number = models.CharField(
+        max_length=20, blank=True, null=True, help_text="Phone number of the account holder.")
+    email = models.EmailField(
+        max_length=255, blank=True, null=True, help_text="Email address of the account holder.")
 
     def __str__(self):
         return self.reference_number

@@ -135,6 +135,27 @@ font-size: 14px;
 
 /* -------------------------------------------------------------------- successful payment page */
 
+/* ------------------------------------------------discount print */
+#dicount_to_print_container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    border: 2px solid red;
+    width:900px;
+    position: relative;
+}
+.childre_printer_container{
+    width: 100%;
+}
+
+.content{
+font-size: 10px;
+bottom: 50px;
+}
+.img_container img{
+    object-fit: contain;
+    width:300px;
+}
+
 
 .payment_header {
     background-color: var(--orange-pantone);
