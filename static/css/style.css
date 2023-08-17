@@ -139,21 +139,33 @@ font-size: 14px;
 #dicount_to_print_container{
     display: grid;
     grid-template-columns: auto auto auto;
-    border: 2px solid red;
     width:900px;
     position: relative;
 }
 .childre_printer_container{
     width: 100%;
 }
+.subcontainer{
+    color:white;
+    width: 30%;
+    padding: 20px;
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    left:50%;
+}
 
 .content{
-font-size: 10px;
-bottom: 50px;
+font-size: 5%;
+bottom: 10%;
 }
-.img_container img{
-    object-fit: contain;
-    width:300px;
+#img_container{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 
@@ -1165,6 +1177,12 @@ textarea::placeholder {
 
 /* medium devices (988px and down) */
 @media only screen and (max-width: 988px) {
+    .subcontainer{
+        width: 65%;
+        padding: 5px;
+        left: 35%;
+    }
+
     .card-container {
         grid-template-columns: auto auto;
     }
@@ -1330,6 +1348,9 @@ textarea::placeholder {
 
 /* Small devices (phones, 503px and down) */
 @media only screen and (max-width: 503px) {
+    .subcontainer p,h3{
+        font-size: 15px;
+    }
     .home-banner h3 {
         font-size: 30px;
     }
@@ -1396,4 +1417,8 @@ textarea::placeholder {
     .home-banner {
         font-size: 20px;
     }
+    .subcontainer p,h3{
+        font-size: 10px;
+    }
+
 }

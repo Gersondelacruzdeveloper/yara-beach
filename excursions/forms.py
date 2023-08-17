@@ -4,4 +4,5 @@ from .models import Reference
 class ReferenceForm(forms.ModelForm):
     class Meta:
         model = Reference
-        fields = ['full_name', 'bank_name','account_number', 'bank_acount_type', 'cedula']
+        fields = '__all__'
+        exclude = ['user', 'has_due_payment', 'due_to_pay_amount', 'paid_amount','reference_number']

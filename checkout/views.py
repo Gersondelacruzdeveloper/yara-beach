@@ -42,10 +42,13 @@ def apply_discount_code(request):
             messages.error(request, '"The discount code is invalid. Please check the spelling.')
     checkout_cart['total_discount'] = total_discount
     request.session['cart_total'] = str(new_total)
+    request.session['checkout_cart'] = checkout_cart
     return redirect('checkout')
 
 @login_required(login_url='/accounts/login/' )
 def checkout(request):
+    print('json data->',request.body)
+    print('here 0')
     checkout_cart = request.session.get('checkout_cart', {})
     total_discount =  Decimal(checkout_cart['total_discount'])
     new_total = Decimal(checkout_cart['total']) - total_discount
@@ -53,10 +56,11 @@ def checkout(request):
     paypal_client_id = settings.PAYPAL_CLIENT_ID
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
-    # Create the order
+    print('here 1')
+    # Create the orders
     if request.method == 'POST':
         data = json.loads(request.body)
-
+        print('here 2')
         for item in current_cart['cart_items']:
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
@@ -74,6 +78,7 @@ def checkout(request):
                 date_created=datetime.date.today(),
                 reference=data['reference'],
             )
+        print('here 3')
 
         # send an email with all the info to the user
         user_orders = ExcursionOrder.objects.all().filter(user=request.user)
@@ -104,8 +109,10 @@ def checkout(request):
         email.attach_alternative(template, "text/html")
         email.fail_silently = False
         email.send()
+        print('here 4')
         # Empty the cart when payment has been process
         request.session['cart'] = {}
+        print('here 5')
         return redirect('checkout-success')
     else:
         if not cart:
@@ -118,6 +125,7 @@ def checkout(request):
                total_discount, 'discount_applied':discount_applied
 
                }
+    print('last bit')
     return render(request, 'checkout/checkout.html', context)
 
 

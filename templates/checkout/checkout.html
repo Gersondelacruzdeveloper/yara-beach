@@ -90,13 +90,13 @@
           <div class="col-md-6 mb-3">
             <label for="full_name">Full name *</label>
             <input onchange="myFunction()" type="text" class="form-control" id="full_name" name="full_name"
-              placeholder="Full Name">
+              placeholder="Full Name" required>
           </div>
 
           <div class="col-md-6 mb-3">
             <label for="Phone_number">Phone number</label>
             <input onchange="myFunction()" type="text" class="form-control" id="Phone_number" name="Phone_number"
-              placeholder="Phone number">
+              placeholder="Phone number" required>
           </div>
           <hr class="mb-4">
           <h4 class="mb-3">Payment</h4>
@@ -127,17 +127,14 @@
                 paypalBtnId.style.display = 'block'
               }
             }
+      
           </script>
           <!-- </button> -->
       </form>
     </div>
   </div>
   </div>
-  {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-  {{ client_secret|json_script:"id_client_secret" }}
-  <!-- stripe -->
-  <script src="https://js.stripe.com/v3/"></script>
-  <script src="{% static 'js/stripe_elements.js' %}"></script>
+
 
   <!DOCTYPE html>
   <html lang="en">
@@ -173,11 +170,16 @@
     const total = '{{new_total | floatformat:2}}'
     const user = '{{user}}'
     const home_url = "{% url 'checkout-success' %}"
+    console.log('user', user)
+    console.log('total', total)
+    
+
 
     function makepayment() {
       const full_name = document.getElementById('full_name').value;
       const phone_number = document.getElementById('Phone_number').value;
       const reference = document.getElementById('reference').value
+      console.log('this is the referene inside payment', reference)
       const url = "{% url 'checkout' %}";
       fetch(url, {
         method: 'POST',
