@@ -25,6 +25,17 @@ body {
     margin-bottom: 150px;
     font-family: var(--font)
 }
+
+
+/*------------------------------------------------------------------------ dispaly base  */
+.display_on_phone{
+    display: none;
+}
+
+
+
+/* -----------------------------other */
+
 #whatsapp-floating{
 width:50px;
 }
@@ -1178,7 +1189,26 @@ textarea::placeholder {
 }
 
 /* medium devices (988px and down) */
-@media only screen and (max-width: 988px) {
+@media only screen and (max-width: 991px) {
+    #phone_search_container{
+        display: grid;
+        grid-template-columns: auto;
+        justify-items: center;
+        width: 100%;
+        margin-top: 15%;
+        }
+        #search_input{
+        width: 95%;
+        }
+
+    .display_on_phone{
+        display: block;
+    }
+    .display_on_computer{
+        display: none;
+    }
+
+
     .subcontainer{
         width: 65%;
         padding: 5px;
