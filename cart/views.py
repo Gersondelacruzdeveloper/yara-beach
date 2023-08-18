@@ -12,6 +12,8 @@ def view_excursion_cart(request):
     # Store the current page's URL in the session
     request.session['previous_page'] = request.get_full_path()
     print('previous_page', previous_page)
+    #   next_url = request.get_full_path()
+    #     return redirect(f'/accounts/login/?next={next_url}')
     return render(request, 'cart/excursions_cart.html')
 
 # Add a quantity of the specified product to the shopping excursion cart

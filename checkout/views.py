@@ -47,6 +47,7 @@ def apply_discount_code(request):
 
 @login_required(login_url='/accounts/login/' )
 def checkout(request):
+    # Rest of your existing code
     print('json data->',request.body)
     print('here 0')
     checkout_cart = request.session.get('checkout_cart', {})
@@ -116,8 +117,6 @@ def checkout(request):
         return redirect('checkout-success')
     else:
         if not cart:
-            messages.error(
-                request, "There's nothing in your cart at the moment")
             return redirect('excursions')
 
     context = {'paypal_client_id': paypal_client_id,

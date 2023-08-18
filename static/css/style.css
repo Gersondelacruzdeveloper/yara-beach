@@ -27,11 +27,13 @@ body {
 }
 
 
-/*------------------------------------------------------------------------ dispaly base  */
+/*------------------------------------------------------------------------ dispaly 
+
+
+*/
 .display_on_phone{
     display: none;
 }
-
 
 
 /* -----------------------------other */
@@ -170,7 +172,7 @@ font-size: 14px;
 }
 
 .content{
-font-size: 5%;
+font-size: 15px;
 bottom: 10%;
 }
 #img_container{
@@ -1264,8 +1266,6 @@ textarea::placeholder {
         width: 100%;
         margin: auto;
     }
-
-
 
 }
 iframe {
