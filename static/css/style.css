@@ -167,7 +167,9 @@ bottom: 10%;
     height: auto;
     margin-bottom: 20px;
 }
-
+.reference_code{
+    font-size: 50px;
+}
 
 .payment_header {
     background-color: var(--orange-pantone);
@@ -1182,7 +1184,9 @@ textarea::placeholder {
         padding: 5px;
         left: 35%;
     }
-
+    .reference_code{
+        font-size: 25px;
+    }
     .card-container {
         grid-template-columns: auto auto;
     }
@@ -1417,8 +1421,11 @@ textarea::placeholder {
     .home-banner {
         font-size: 20px;
     }
-    .subcontainer p,h3{
+    .subcontainer p, h3{
         font-size: 10px;
+    }
+    .reference_code{
+        font-size: 25px;
     }
 
 }
