@@ -1313,6 +1313,10 @@ textarea::placeholder {
 
 /* medium devices (631px and down) */
 @media only screen and (max-width: 631px) {
+    .subcontainer span{
+        font-size: 30px;
+    }
+
     .home-banner h3 {
         font-size: 30px;
     }
@@ -1347,6 +1351,12 @@ textarea::placeholder {
     .delete_img {
         width: 100%;
     }
+    #img_container{
+        margin-bottom: 50px;
+        height: 200px;
+        object-fit:fill;
+    }
+
 }
 
 
@@ -1400,7 +1410,7 @@ textarea::placeholder {
         width: 260px;
         margin: auto;
     }
-
+  
 }
 
 /* very Small devices (phones, 373px and down) */
@@ -1424,8 +1434,9 @@ textarea::placeholder {
     .subcontainer p, h3{
         font-size: 10px;
     }
-    .reference_code{
+    .subcontainer span{
         font-size: 25px;
     }
+
 
 }
