@@ -63,7 +63,7 @@
             <i class="fa fa-cc-discover discover"></i>
           </div>
         </ul>
-        {% if discount_applied == False %}
+
         <!-- form for updating quantity-->
       <form method="POST" action="{% url 'apply_discount' %}">
         {% csrf_token %}
@@ -78,7 +78,6 @@
         </div>
     </div>
     </form>
-    {% endif %}
       </div>
 
     <!-- card pytments infomation -->
@@ -100,16 +99,6 @@
           </div>
           <hr class="mb-4">
           <h4 class="mb-3">Payment</h4>
-          <!-- <div class="row"> -->
-          <!-- <div class="col-md-12 mb-3"> -->
-          <!-- A Stripe card element will go here -->
-          <!-- <div class="mb-3" id="card-element"></div> -->
-          <!-- Used to display form errors -->
-          <!-- <div class="mb-3 text-danger" id="card-errors" role="alert"></div> -->
-          <!-- </div> -->
-          <!-- </div> -->
-          <!-- <button type="submit" class="btn user_button_sm my_hover btn-lg btn-block" id="submit-button">Pay -->
-          <!-- Set up a container element for the button -->
           <div id="paypal-button-container"></div>
           <button id="continue" class="btn my_hover btn-outline-secondary">Continue</button>
           <script>
@@ -174,8 +163,8 @@
     console.log('total', total)
     
 
-
     function makepayment() {
+      console.log('checkers csrftoken', csrftoken)
       const full_name = document.getElementById('full_name').value;
       const phone_number = document.getElementById('Phone_number').value;
       const reference = document.getElementById('reference').value
@@ -190,20 +179,7 @@
         body: JSON.stringify({ 'user': user, 'full_name': full_name, 'phone_number': phone_number, 'reference': reference, })
       })
       console.log(user)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          // Handle the JSON data returned by the server here
-          console.log(data);
-        })
-        .catch(error => {
-          // Handle any error that occurred during the fetch request here
-          console.error('Error:', error);
-        });
+      console.log('payment prcess alreay')
     }
 
     // Render the PayPal button into #paypal-button-container
@@ -223,11 +199,10 @@
       // Finalize the transaction
       onApprove: function (data, actions) {
         return actions.order.capture().then(function (details) {
-          // Show a success message to the buyer
-          window.location.href = home_url;
+          //Show a success message to the buyer
           makepayment()
-          // window.location.href = home_url;
-          // alert('Transaction completed by ' + details.payer.name.given_name + '!'
+           window.location.href = home_url;
+          alert('Transaction completed by ' + details.payer.name.given_name + '!')
         });
       }
 
