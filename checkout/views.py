@@ -54,11 +54,10 @@ def checkout(request):
     paypal_client_id = settings.PAYPAL_CLIENT_ID
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
-    print('here 1')
+
     # Create the orders
     if request.method == 'POST':
         data = json.loads(request.body)
-        print('here 2')
         for item in current_cart['cart_items']:
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
@@ -75,6 +74,7 @@ def checkout(request):
                 place_pickup=item['values']['place_pickup'],
                 date_created=datetime.date.today(),
                 reference=data['reference'],
+                time_selected = item['values']['selected_time'],
             )
 
         # send an email with all the info to the user
@@ -90,6 +90,9 @@ def checkout(request):
             template += f"<p><strong>Item Name:</strong>{item.excursion_name[:25].title()}</p>"
             template += f"<img src='{item.image}' alt='{item.excursion_name}' style='object-fit:cover' width='200' height='200'><br/>"
             template += f"<strong>Excursion Date:</strong> {item.excursion_date}<br/>"
+            print('here 1')
+            template += f"<strong>Excursion Time:</strong> {item.time_selected}<br/>"
+            print('here 2')
             template += f"<strong>Adult Quantity:</strong> {item.adult_qty}<br/>"
             if item.child_qty:
                 template += f"<strong>Child Quantity:</strong> {item.child_qty}<br/>"

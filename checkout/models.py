@@ -26,6 +26,7 @@ class ExcursionOrder(models.Model):
     place_pickup = models.CharField(max_length=70, null=True, blank=True)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     reference = models.CharField(max_length=6, null=False, blank=False, default='')
+    time_selected = models.CharField(max_length=200, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """

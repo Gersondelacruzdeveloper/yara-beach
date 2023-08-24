@@ -3,6 +3,7 @@ from django.contrib import messages
 from .utils import take_date_from_str, num_of_days
 from datetime import date
 from django.core.exceptions import ValidationError
+from excursions.models import Excursions
 
 # ----------------------------------Excursion cart fucntionality 
 # return the excursion cart page
@@ -19,12 +20,14 @@ def view_excursion_cart(request):
 # Add a quantity of the specified product to the shopping excursion cart
 def add_to_cart(request, item_id):
     excursion_date = request.POST.get('excursion_date')
+    selected_time = request.POST.get('selected_time')
     adult_qty = int(request.POST.get('adult_qty'))
     child_qty = int(request.POST.get('child_qty'))
     place_pickup = request.POST.get('place_pickup')
     redirect_url = request.POST.get("redirect_url")
     price = request.POST.get("price")
     cart = request.session.get('cart', {})
+    print('selected_time cart->>', selected_time)
 
 # if the item id is already on the excursion cart then it update it
     if item_id in list(cart.keys()):
@@ -40,6 +43,9 @@ def add_to_cart(request, item_id):
         if 'excursion_date' in cart[item_id].keys():
             cart[item_id]['excursion_date'] = excursion_date
 
+        if 'selected_time' in cart[item_id].keys():
+            cart[item_id]['selected_time'] = selected_time
+
         if 'price' in cart[item_id].keys():
             cart[item_id]['price'] = price
         messages.success(
@@ -47,7 +53,7 @@ def add_to_cart(request, item_id):
     else:
         # if the item id is not in  the cart it will add a new one
         cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
-                         'child_qty': child_qty, 'place_pickup': place_pickup, 'price': price}
+                         'child_qty': child_qty, 'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time}
         messages.success(request, 'Item added to cart Succesfullly')
 
     request.session['cart'] = cart
@@ -60,6 +66,7 @@ def update_cart(request, item_id):
     adult_qty = request.POST.get('cart-adult_qty')
     child_qty = request.POST.get('cart-child_qty')
     excursion_date = request.POST.get('excursion_date')
+    
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):

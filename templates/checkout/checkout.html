@@ -32,8 +32,10 @@
               <div clas="pt-2">
                 Date: {{item.values.excursion_date}}
               </div>
+              <div clas="pt-3">
+                Time: {{item.values.selected_time}}
+              </div>
             </div>
-
             <span class="text-muted">${{item.subTotal | floatformat:2}}</span>
           </li>
           {% endfor %}

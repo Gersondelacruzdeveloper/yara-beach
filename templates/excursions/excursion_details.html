@@ -1,5 +1,6 @@
 {% extends 'excursions/excursions_base.html' %}
 {% load static %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng&libraries=places"></script>
 
 {% block content %}
 <section>
@@ -38,21 +39,21 @@
                         <div class="detail-price"> <strong>Price:</strong> ${{excursions.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
-                        {% if excursions.is_transfer%}
-                        <!-- date  and time-->
-                        <div class="form-group mt-3">
-                            <label for="date">Select Date and Travellers</label>
-                            <input type="datetime-local" class="form-control" id="date" name="excursion_date"
-                                min="{{today}}" required>
-                        </div>
-                        {% else %}
+
                         <!-- date -->
                         <div class="form-group mt-3">
                             <label for="date">Select Date and Travellers</label>
                             <input type="date" class="form-control" id="date" name="excursion_date" min="{{today}}"
                                 required>
                         </div>
-                        {% endif %}
+                        
+                        <!-- Times availables -->
+                        <select name="selected_time" class="form-select mt-3" required>
+                            <option value="">Select a time</option>
+                            {% for time in time_available %}
+                                <option value="{{ time.start_time }}" class="form-control" >{{ time.start_time }}</option>
+                            {% endfor %}
+                        </select>
 
                         <!-- number of adults -->
                         <div class="form-group mt-3">
@@ -71,6 +72,8 @@
                             <label for="inputCity">Manual pick up Location</label>
                             <input type="text" class="form-control" id="inputCity" name="place_pickup" required>
                         </div>
+                        <!-- <ul id="hotelList"></ul> -->
+
                         <!-- <div class="form-group mt-3">
                             <label for="inputCity">Auto Pick up location</label>
                             <div class="input-group">
@@ -179,9 +182,35 @@
         {% endfor %}
     </div>
     <!-- <script src="{% static 'js/UserLocation.js' %}"></script> -->
-
 </section>
+<!-- <script>
+    // Replace 'YOUR_API_KEY' with your actual Google API key
+    const apiKey = 'AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng';
+
+    // URL for the Google Places API
+    const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.5820109,-68.4054728&radius=5000&type=lodging&key=AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng`;
+
+    console.log('apiUrl', apiUrl)
+    // Fetch data from the API
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const hotelList = document.getElementById('hotelList');
+        data.results.forEach(result => {
+          const hotelName = result.name;
+          const listItem = document.createElement('li');
+          listItem.textContent = hotelName;
+          hotelList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  </script> -->
 <script>
+    
+    // Initialize the Places API with your API key
+    
 // function getLocation() {
 //       if (navigator.geolocation) {
 //         navigator.geolocation.getCurrentPosition(showPosition, showError);

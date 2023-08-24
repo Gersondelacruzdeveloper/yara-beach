@@ -22,7 +22,8 @@
                         <!-- table head -->
                         <tr>
                             <th scope="col">Description</th>
-                            <th scope="col">Date and Time</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
                             <th scope="col">Adult Quantity</th>
                             <th scope="col">Child Quantity</th>
                             <th scope="col">Pick up</th>
@@ -43,13 +44,13 @@
                                 {% csrf_token %}
                             
                                 <!-- excursion date-->
-                                {% if item.is_transfer %}
-                                <td><input type="datetime-local" class="form-control" name="excursion_date"
-                                        value="{{item.values.excursion_date}}" min="{{today}}"></td>
-                                {% else %}
                                 <td><input type="date" class="form-control" name="excursion_date"
                                     value="{{item.values.excursion_date}}" min="{{today}}"></td>
-                                {% endif%}
+
+                             <!-- Times availables -->
+                                
+                                <td><input type="text" class="form-control" name="selected_time"
+                                        value="{{item.values.selected_time}}" readonly></td>
 
                                 <!-- Adult quantity-->
                                 <td>
@@ -64,8 +65,8 @@
                                 </td>
 
                                 <td>{{item.values.place_pickup | slice:":26"|title}}...</td>
-                                <td>£{{item.values.price}}</td>
-                                <td>£{{item.subTotal | floatformat:2}}</td>
+                                <td>${{item.values.price}}</td>
+                                <td>${{item.subTotal | floatformat:2}}</td>
 
                                 <td><button type="submit" class="update-cart-btn nav-link btn my_hover sear-btn btn-outline-secondary position-relative">Update</button></td>
 
@@ -85,7 +86,7 @@
                 <h3>Summary</h3>
                 <hr>
                 <!-- cart total -->
-                <div><strong>Total:</strong> <span class="float-right">£{{total | floatformat:2}}</span></div>
+                <div><strong>Total:</strong> <span class="float-right">${{total | floatformat:2}}</span></div>
                 <hr>
                 <!-- keep shopping and Secure Checkout -->
 

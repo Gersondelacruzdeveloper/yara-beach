@@ -7,6 +7,11 @@ from decimal import Decimal
 
 
 # Create your models here.
+class AvailableTime(models.Model):
+    start_time = models.CharField(max_length=201, null=True, blank=True)
+
+    def __str__(self):
+        return self.start_time
 
 # Creates a Excursion model containing data about each individual Excursion
 class Excursions(models.Model):
@@ -26,6 +31,7 @@ class Excursions(models.Model):
     status = models.CharField(
         choices=CHOICES, default='Inactive', max_length=20)
     is_transfer = models.BooleanField(default=False)  # Boolean field for transfer
+    available_times = models.ManyToManyField(AvailableTime)
 
     def __str__(self):
         return self.title

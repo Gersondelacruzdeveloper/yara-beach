@@ -35,7 +35,8 @@ def excursion(request):
 # Show the excursion details
 def excursion_details(request, pk):
     excursion = Excursions.objects.get(id=pk)
-    context = {'excursions': excursion}
+    time_available = excursion.available_times.all()
+    context = {'excursions': excursion,'time_available':time_available}
     # make_barcode()
 
     # create review 
