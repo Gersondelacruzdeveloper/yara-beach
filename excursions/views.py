@@ -123,3 +123,9 @@ def create_reference(request):
 
 def success_page(request, reference_number):
     return render(request, 'excursions/success_page.html', {'reference_number': reference_number})
+
+def cancel_excursion(request, pk):
+    new = 'calceled'
+    print('new', new, pk)
+    context= {'new':new}
+    return redirect('excursion-bookings')

@@ -54,6 +54,7 @@
                 <th>Pick up at</th>
                 <th>Bk.Number</th>
                 <th>Total</th>
+                <!-- <th>Cancel</th> -->
             </tr>
 
             {% for order in future_excursion_bookings %}
@@ -66,6 +67,7 @@
                 <td>{{order.place_pickup}}</td>
                 <td>{{order.order_number}}</td>
                 <td>£{{order.subtotal}}</td>
+                <!-- <td><a href="{% url 'cancel_excursion' order.pk %}"><button class="btn btn-sm btn-primary"><i class="fa-solid fa-ban"></i> -->
             </tr>
             {% endfor %}
         </table>

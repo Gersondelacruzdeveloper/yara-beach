@@ -10,6 +10,7 @@ from django.core.mail import EmailMessage
 from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
 import datetime
+from datetime import date, timedelta
 # Create your views here.
 
 
@@ -67,12 +68,15 @@ def customer_bookings(request):
     # today bookins
     today_excursion_bookings = user_orders.filter(
         excursion_date=datetime.date.today())
-    # future bookings
+    
+    # future bookings (excluding today)
     future_excursion_bookings = user_orders.filter(
-        excursion_date__gte=datetime.date.today())
+        excursion_date__gt=datetime.date.today())
+    # Past bookings
+
     # pass bookings
     previous_excursion_bookings = user_orders.filter(
-        excursion_date__lte=datetime.date.today())
+        excursion_date__lt=datetime.date.today())
 
     context = {'today_excursion_bookings': today_excursion_bookings,
                'future_excursion_bookings': future_excursion_bookings,

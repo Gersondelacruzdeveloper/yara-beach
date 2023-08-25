@@ -27,10 +27,10 @@ def administrator(request):
         excursion_date=datetime.date.today())
     # Future bookings
     future_excursion_bookings = all_excursion_orders.filter(
-        excursion_date__gte=datetime.date.today())
+        excursion_date__gt=datetime.date.today())
     # Previous bookings
     previous_excursion_bookings = all_excursion_orders.filter(
-        excursion_date__lte=datetime.date.today())
+        excursion_date__lt=datetime.date.today())
 
     # All rentals
     all_rental_orders = AccommodationOrder.objects.all()
