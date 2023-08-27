@@ -115,7 +115,15 @@
     <h1 class="text-center mt-5">Overview</h1>
     <div class="overview">
         {{excursions.description|safe}}
+       <!-- Add a draggable element -->
+       <div class="whatsap-container">
+        <p clas="text-center mt-5">To cancel your booking, please send a WhatsApp message to our support team at 👇 In your message, include the text "cancel" along with your booking number.</p>
+        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone=447541147634"
+            target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"> 
+            Connect via WhatsApp</a>
+        </div>
     </div>
+
 
     <!-- Reviews -->
     <h5 class="review-title">Customer reviews: {{excursions.reviews.all.count}}</h5>
