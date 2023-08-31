@@ -42,6 +42,21 @@
                 {% endif %}
             </div>
         </div>
+        <div class="card text-center text-white color-excursion">
+            <!-- show tomorow excursions bookings -->
+            <div class="card text-center text-white color-excursion">
+               <div class="card-header">
+                   <h5 class="card-title text-white">Tomorrow Excursions bookings</h5>
+               </div>
+               <div class="card-body">
+                   {% if tomorow_excursion_bookings %}
+                   <h3 class="card-title text-white">{{tomorow_excursion_bookings.count}} </h3>
+                   {%else%}
+                   <h3 class="card-title text-white">0</h3>
+                   {% endif %}
+               </div>
+           </div>
+   </div>
     </div>
 </section>
 
