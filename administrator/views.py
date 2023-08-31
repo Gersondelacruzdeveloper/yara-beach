@@ -8,7 +8,7 @@ from django.contrib import messages
 from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
 import datetime
-
+from datetime import date, timedelta
 # Create your views here.
 
 # Administrator function
@@ -25,6 +25,10 @@ def administrator(request):
     # Today bookings
     today_excursion_bookings = all_excursion_orders.filter(
         excursion_date=datetime.date.today())
+    # tomorow bookings
+    tomorow_excursion_bookings = all_excursion_orders.filter(
+        excursion_date=datetime.date.today() + timedelta(days=1))
+
     # Future bookings
     future_excursion_bookings = all_excursion_orders.filter(
         excursion_date__gt=datetime.date.today())
@@ -50,6 +54,7 @@ def administrator(request):
                'today_excursion_bookings': today_excursion_bookings,
                'future_excursion_bookings': future_excursion_bookings,
                'previous_excursion_bookings': previous_excursion_bookings,
+               'tomorow_excursion_bookings':tomorow_excursion_bookings,
                # rentals
                'today_rental_bookings': today_rental_bookings,
                'future_rental_bookings': future_rental_bookings,

@@ -85,6 +85,49 @@
             </table>
         </div>
 
+        <!-- tomorow excursions bookings -->
+        <h4 class="text-center mt-5">Tomorow Excursion Bookings <span
+                class="badge bg-site-color">{{tomorow_excursion_bookings.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Excursion Date</th>
+                    <th>Adult Quantity</th>
+                    <th>Child Quantity</th>
+                    <th>Pick up at</th>
+                    <th>Bk.Number</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for order in tomorow_excursion_bookings %}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                    <td>{{order.excursion_name |slice:":25"|title}}</td>
+                    <td>{{order.excursion_date}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.place_pickup}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>
+                        <div class="whatsap-container">
+                            <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{order.cellphone_number}}"
+                                target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+                            </div>
+                        </td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
         <!-- Future excursions bookings -->
         <h4 class="text-center mt-5">Future Excursion Bookings <span
                 class="badge bg-site-color">{{future_excursion_bookings.count}}</span></h4>
@@ -163,7 +206,7 @@
     </div>
     <hr>
     <!--------------------------------------------------------- rentals sections -->
-      <!-- today excursions bookings admin -->
+    <!-- today excursions bookings admin -->
     <!-- <div id="rental_booking_section">
         <h4 class="text-center mt-5">Today rental Bookings <span
                 class="badge bg-site-color">{{today_rental_bookings.count}}</span></h4>
@@ -203,8 +246,8 @@
             </table>
         </div> -->
 
-        <!-- Future Rental Bookings-->
-        <!-- <h4 class="text-center mt-5">Future Rental Bookings <span
+    <!-- Future Rental Bookings-->
+    <!-- <h4 class="text-center mt-5">Future Rental Bookings <span
                 class="badge bg-site-color">{{future_rental_bookings.count}}</span></h4>
         <div class="table_wrapper table-responsive">
             <table class="data_table">
@@ -243,8 +286,8 @@
         </div>
 
  -->
-        <!-- Previous Rental Bookings -->
-        <!-- <h4 class="text-center mt-5">Previous Rental Bookings <span
+    <!-- Previous Rental Bookings -->
+    <!-- <h4 class="text-center mt-5">Previous Rental Bookings <span
                 class="badge bg-site-color">{{previous_rental_bookings.count}}</span></h4>
         <div class="table_wrapper table-responsive">
             <table class="data_table">
