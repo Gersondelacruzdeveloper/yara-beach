@@ -128,4 +128,4 @@ def cancel_excursion(request, pk):
     new = 'calceled'
     print('new', new, pk)
     context= {'new':new}
-    return redirect('excursion-bookings')
+    return 

@@ -30,10 +30,12 @@ def apply_discount_code(request):
         discount_reference = request.POST.get('reference')
         extracted_reference = Reference.objects.filter(reference_number=discount_reference)
         if extracted_reference and not reference_applied:
+            checkout_cart['reference'] = str(discount_reference)
             checkout_cart['discount_applied'] = True
             reference_applied = True  
             for id, value in cart.items():
                 total_adult = int(value['adult_qty'])
+                checkout_cart['total_adult'] = int(total_adult)
                 total_discount += total_adult * discount_amount
             if checkout_cart['total']:
                 new_total = Decimal(checkout_cart['total']) - Decimal(total_discount)
@@ -54,10 +56,13 @@ def checkout(request):
     paypal_client_id = settings.PAYPAL_CLIENT_ID
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
-
     # Create the orders
     if request.method == 'POST':
+        # print('checkout_cart', checkout_cart)
         data = json.loads(request.body)
+        reference = checkout_cart['reference']
+        extracted_reference = Reference.objects.filter(reference_number=reference)
+        # Add the item in the database
         for item in current_cart['cart_items']:
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
@@ -73,7 +78,7 @@ def checkout(request):
                 customer_email=request.user.email,
                 place_pickup=item['values']['place_pickup'],
                 date_created=datetime.date.today(),
-                reference=data['reference'],
+                reference= reference,
                 time_selected = item['values']['selected_time'],
             )
 
@@ -104,11 +109,32 @@ def checkout(request):
             'From Punta cana Explore',
             template,
             settings.EMAIL_HOST_USER,
-            [request.user.email]
+            [request.user.email,'puntacanaexploregt@gmail.com']
         )
         email.attach_alternative(template, "text/html")
         email.fail_silently = False
         email.send()
+        # send email for the seller imforming that the sell has gone throgh
+        template_for_seller = ''
+        for e in extracted_reference:
+            e.due_to_pay_amount += checkout_cart['total_adult'] * 10
+            e.paid_amount += checkout_cart['total_adult'] * 10
+            e.save() 
+            template_for_seller += f"<h2 style='background-color:#f85a15; padding: 10px;  color:#ffffff;';>¡Felicidades, {e.full_name}!</h2><hr>"
+            template_for_seller += f"<p>Queríamos informarte que has ganado ${e.due_to_pay_amount} por la venta exitosa de excursión. Tu arduo trabajo está dando frutos.</p>"
+            template_for_seller += f"<p>El dinero estará en tu cuenta ******{e.account_number[-4:]} en menos de 4 días, a menos que el cliente cancele la reserva.</p>"
+            template_for_seller += f"<p>¡Sigue así!</p>"
+            template_for_seller += f"<p>Saludos</p>"
+            template_for_seller += f"<p>Punta Cana Explore</p>"
+            email = EmailMultiAlternatives(
+            'From Punta cana Explore for sellers',
+            template_for_seller,
+            settings.EMAIL_HOST_USER,
+            [e.email]
+            )
+            email.attach_alternative(template_for_seller, "text/html")
+            email.fail_silently = False
+            email.send()
         # Empty the cart when payment has been process
         request.session['cart'] = {}
         return redirect('checkout-success')
@@ -121,7 +147,6 @@ def checkout(request):
                total_discount, 'discount_applied':discount_applied
 
                }
-    print('last bit')
     return render(request, 'checkout/checkout.html', context)
 
 
