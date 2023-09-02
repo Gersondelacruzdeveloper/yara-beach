@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from excursions.models import Excursions, Photos
+from excursions.models import Excursions, Photos, Reference
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
 from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
@@ -62,6 +62,37 @@ def administrator(request):
                }
 
     return render(request, 'administrator/administrator.html', context)
+
+
+@login_required(login_url='/accounts/login/')
+def administrator_seller(request):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    all_sellers = Reference.objects.all()
+    sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
+    
+    context = {'all_sellers': all_sellers, 'sellers_to_be_pay': sellers_to_be_pay}
+    return render(request, 'administrator/seller.html', context)
+
+@login_required(login_url='/accounts/login/')
+def paid_seller(request, pk):
+    seller = Reference.objects.get(id=pk)
+    seller_name = seller.full_name
+    Seller_reference =seller.reference_number
+    seller_du_amount = seller.due_to_pay_amount
+    context = {'pk': pk, 'seller_name': seller_name, 'Seller_reference':Seller_reference, 'seller_du_amount':seller_du_amount}
+    return render(request, 'administrator/excursions/seller_comfirm.html', context)
+
+# Make the seller du amount back to 0
+@login_required(login_url='/accounts/login/')
+def seller_due_zero(request, pk):
+    seller = Reference.objects.get(id=pk)
+    if request.method == "POST":
+        seller.due_to_pay_amount = 0.00
+        seller.save()
+        return redirect('seller')
 
 
 # Query all rentals for admin

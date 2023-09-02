@@ -1,0 +1,77 @@
+{% extends 'administrator/administrator_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- header and card section -->
+<section>
+    <h1 class="text-center mt-5">Administration for sellers</h1>
+    <div class="card-admin-wrapper_seller">
+        <!-- show Total Users -->
+        <div class="card text-center color-user">
+            <div class="card-header">
+                <h5 class="card-title text-white">Total Sellers</h5>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title text-white">{{all_sellers.count}}</h3>
+            </div>
+        </div>
+        <div class="card text-center color-user">
+            <div class="card-header">
+                <h5 class="card-title text-white">Total Sellers to be pay</h5>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title text-white">{{sellers_to_be_pay.count}}</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="bookings_container">
+    <!--------------------------------------------------------- excursions sections -->
+    <div id="excursion_booking_section">
+        <!-- today excursions bookings admin -->
+        <h4 class="text-center mt-5">Seller to be pay <span
+                class="badge bg-site-color">{{sellers_to_be_pay.count}}</span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Bank Name</th>
+                    <th>Reference Number</th>
+                    <th>Account Number</th>
+                    <th>Cedula</th>
+                    <th>Bank Acount Type</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Due to pay amount</th>
+                    <th></th>
+                </tr>
+
+                {% for seller in sellers_to_be_pay %}
+                <tr>
+                    <td>{{seller.full_name}}</td>
+                    <td>{{seller.bank_name}}</td>
+                    <td>{{seller.reference_number}}</td>
+                    <td>{{seller.account_number}}</td>
+                    <td>{{seller.cedula}}</td>
+                    <td>{{seller.bank_acount_type}}</td>
+                    <td>{{seller.phone_number}}</td>
+                    <td>{{seller.email}}</td>
+                    <td>${{seller.due_to_pay_amount}}</td>
+                    <td><a href="{% url 'paid_seller' seller.pk %}"><button class="btn btn-sm btn-danger"><i class="fa-solid fa-money-bill">
+                            paid</i></button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        </div>
+
+
+
+
+</div>
+
+{% endblock content %}

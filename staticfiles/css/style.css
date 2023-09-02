@@ -241,6 +241,13 @@ bottom: 10%;
     width: 80%;
     margin: 50px auto;
 }
+.card-admin-wrapper_seller{
+    display: grid;
+    grid-template-columns: auto auto ;
+    grid-column-gap: 50px;
+    width: 80%;
+    margin: 50px auto;
+}
 
 .color-excursion {
     background-color: #4cb4c7;

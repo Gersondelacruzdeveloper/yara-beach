@@ -1,0 +1,27 @@
+{% extends 'administrator/administrator_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<section>
+<div class="delete_wraper card p-5">
+    <h4 class="text-center">Have you already made a payment to this seller?</h4>
+    <h5 class="text-center mt-4">Name: <span style="color:green">{{seller_name}}</span></h5>
+    <h6 class="text-center mt-4">Reference: <span style="color:green">{{Seller_reference}}</span></h6>
+    <h6 class="text-center mt-4">Amount: <span style="color:green">${{seller_du_amount}}</span></h6>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'seller_due_zero' pk %}">
+        {% csrf_token %}
+        <div class="form-row">
+            <!-- excursion button for delete -->
+            <div class="mt-4 text-center">
+                <input class="btn btn-danger" type="submit" value="comfirm">
+                <!-- Go back to all excursion -->
+                <a href="{% url 'seller'%}" class="btn  my_hover btn-outline-secondary" role="button"
+                aria-pressed="true">Cancel</a>
+            </div>
+        </div>
+    </form>
+  </div>
+</section>
+{% endblock content %}
