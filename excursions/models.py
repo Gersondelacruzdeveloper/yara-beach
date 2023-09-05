@@ -12,6 +12,12 @@ class AvailableTime(models.Model):
 
     def __str__(self):
         return self.start_time
+    
+class DayOfWeek(models.Model):
+    day_number = models.IntegerField(unique=True)
+
+    def __str__(self):
+        return str(self.day_number)
 
 # Creates a Excursion model containing data about each individual Excursion
 class Excursions(models.Model):
@@ -32,6 +38,8 @@ class Excursions(models.Model):
         choices=CHOICES, default='Inactive', max_length=20)
     is_transfer = models.BooleanField(default=False)  # Boolean field for transfer
     available_times = models.ManyToManyField(AvailableTime)
+    unavailable_days = models.ManyToManyField('DayOfWeek', related_name='excursions', blank=True)
+
 
     def __str__(self):
         return self.title
@@ -99,7 +107,7 @@ class Reference(models.Model):
         max_length=255, blank=True, null=True, help_text="Email address of the account holder.")
 
     def __str__(self):
-        return self.reference_number
+        return self.full_name
 
     def save(self, *args, **kwargs):
         if not self.reference_number:

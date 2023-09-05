@@ -36,7 +36,12 @@ def excursion(request):
 def excursion_details(request, pk):
     excursion = Excursions.objects.get(id=pk)
     time_available = excursion.available_times.all()
-    context = {'excursions': excursion,'time_available':time_available}
+    unavailable_days = excursion.unavailable_days.all()
+    unavailableDay = []
+    for i in unavailable_days:
+        unavailableDay.append(i.day_number)
+    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay}
+
     # make_barcode()
 
     # create review 

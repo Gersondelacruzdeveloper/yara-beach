@@ -1,11 +1,13 @@
 {% extends 'excursions/excursions_base.html' %}
 {% load static %}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng&libraries=places"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng&libraries=places"></script>
+
 
 {% block content %}
 <section>
     <div class="detail-container">
-        <h1 class="detail-title">{{excursions.title}}</h1>
+        <h1 class="detail-title">{{excursions.title}} {{unavailableDay}}</h1>
         <div class="item-detail-and-image-container">
             <!-- main image -->
             <div class="image-container">
@@ -43,15 +45,16 @@
                         <!-- date -->
                         <div class="form-group mt-3">
                             <label for="date">Select Date and Travellers</label>
-                            <input type="date" class="form-control" id="date" name="excursion_date" min="{{today}}"
+                            <input type="text" class="form-control" id="date" name="excursion_date" min="{{today}}"
+                            value="Select Date"
                                 required>
                         </div>
-                        
+
                         <!-- Times availables -->
                         <select name="selected_time" class="form-select mt-3" required>
                             <option value="">Select a time</option>
                             {% for time in time_available %}
-                                <option value="{{ time.start_time }}" class="form-control" >{{ time.start_time }}</option>
+                            <option value="{{ time.start_time }}" class="form-control">{{ time.start_time }}</option>
                             {% endfor %}
                         </select>
 
@@ -115,12 +118,14 @@
     <h1 class="text-center mt-5">Overview</h1>
     <div class="overview">
         {{excursions.description|safe}}
-       <!-- Add a draggable element -->
-       <div class="whatsap-container">
-        <p clas="text-center mt-5">To cancel your booking, please send a WhatsApp message to our support team at 👇 In your message, include the text "cancel" along with your booking number.</p>
-        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone=447541147634"
-            target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"> 
-            Connect via WhatsApp</a>
+        <!-- Add a draggable element -->
+        <div class="whatsap-container">
+            <p clas="text-center mt-5">To cancel your booking, please send a WhatsApp message to our support team at 👇
+                In your message, include the text "cancel" along with your booking number.</p>
+            <a aria-label="Whatsapp" rel="noopener" rel="whatsapp"
+                href="https://api.whatsapp.com/send?phone=447541147634" target="_blank"><img id="whatsapp-floating"
+                    class="text-center" src="{% static 'images/excursions/whatsapp.png'%}">
+                Connect via WhatsApp</a>
         </div>
     </div>
 
@@ -189,90 +194,29 @@
         </div>
         {% endfor %}
     </div>
-    <!-- <script src="{% static 'js/UserLocation.js' %}"></script> -->
 </section>
-<!-- <script>
-    // Replace 'YOUR_API_KEY' with your actual Google API key
-    const apiKey = 'AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng';
+  <script>
+    $(function() {
+      // Define an array of days to disable (0 = Sunday, 1 = Monday, etc.)
+      var disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
+      console.log('disabledDays', disabledDays)
 
-    // URL for the Google Places API
-    const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.5820109,-68.4054728&radius=5000&type=lodging&key=AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng`;
+      $("#date").datepicker({
+        beforeShowDay: function(date) {
+          var day = date.getDay(); // Get the day of the week (0 - 6)
+          // Disable days specified in the array
+          return [disabledDays.indexOf(day) === -1, ""]; // [disable/enable, CSS class]
+        }
+      });
+    $(function() {
+      $("#date").datepicker({
+        showAnim: "drop" // Apply the "drop" effect permanently
+      });
+    });
 
-    console.log('apiUrl', apiUrl)
-    // Fetch data from the API
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        const hotelList = document.getElementById('hotelList');
-        data.results.forEach(result => {
-          const hotelName = result.name;
-          const listItem = document.createElement('li');
-          listItem.textContent = hotelName;
-          hotelList.appendChild(listItem);
-        });
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  </script> -->
-<script>
-    
-    // Initialize the Places API with your API key
-    
-// function getLocation() {
-//       if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPosition, showError);
-//       } else {
-//         alert("Geolocation is not supported by this browser.");
-//       }
-    
-//     function showPosition(position) {
-//       var latitude = position.coords.latitude;
-//       var longitude = position.coords.longitude;
-//       console.log(latitude,longitude)
-//       initMap(latitude, longitude)
-//     }
-    
-//     function showError(error) {
-//       switch (error.code) {
-//         case error.PERMISSION_DENIED:
-//           alert("User denied Geolocation. You can manually enter your location.");
-//           break;
-//         case error.POSITION_UNAVAILABLE:
-//           alert("Location information is unavailable. Please try again later.");
-//           break;
-//         case error.TIMEOUT:
-//           alert("The request to get location timed out. Please try again.");
-//           break;
-//         case error.UNKNOWN_ERROR:
-//           alert("An unknown error occurred while trying to get your location.");
-//           break;
-//       }
-//     }
-    
-//         console.log('my location')
-//     }
-    
-</script>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-<script>
-    function initMap(latitude, longitude) {
-    
-      const location = { lat: latitude, lng: longitude };
-    
-      let map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 14 // Adjust the zoom level as needed
-      });
-    
-      let marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        title: 'Location'
-      });
-      alert("Latitude: " + latitude + "\nLongitude: " + longitude);
-    }
+    });
+  </script>
+ 
 
-    </script> -->
-    
+
 {% endblock content %}
