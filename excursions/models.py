@@ -65,8 +65,8 @@ class Review(models.Model):
 
 class Reference(models.Model):
     CHOICES = (
-        ('CC', ('Cuenta corriente ')),
-        ('CA', ('Cuenta de ahorro')),
+        ('cc', ('Cuenta corriente ')),
+        ('ca', ('Cuenta de ahorro')),
     )
 
     """
@@ -109,7 +109,7 @@ class Reference(models.Model):
     def generate_unique_reference_number(self):
         # Generate a random 6-digit alphanumeric reference number
         length = 6
-        characters = string.ascii_letters + string.digits
+        characters = string.ascii_lowercase + string.digits
         reference_number = ''.join(random.choice(characters)
                                    for _ in range(length))
 
@@ -119,6 +119,7 @@ class Reference(models.Model):
                                        for _ in range(length))
 
         return reference_number
+
 
 # This to collect the person info in order to sell and add the excursions
 class Company(models.Model):

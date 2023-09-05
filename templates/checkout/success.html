@@ -20,7 +20,7 @@
                         {% endfor %}
 
                         <strong>Amount paid:</strong>
-                        <span>£{{excursion_total | floatformat:2}}</span>
+                        <span>${{excursion_total | floatformat:2}}</span>
                         <div class="pt-2">We have sent you an email with all the booking information</div>
                         <div class="mt-5">
                             <a href="{% url 'home' %}">Go to Home</a>
