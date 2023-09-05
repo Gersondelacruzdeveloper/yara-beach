@@ -195,27 +195,24 @@
         {% endfor %}
     </div>
 </section>
-  <script>
-    $(function() {
-      // Define an array of days to disable (0 = Sunday, 1 = Monday, etc.)
-      var disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
-      console.log('disabledDays', disabledDays)
+<script>
+$(function() {
+    // Get the current date
+    var currentDate = new Date();
 
-      $("#date").datepicker({
-        beforeShowDay: function(date) {
-          var day = date.getDay(); // Get the day of the week (0 - 6)
-          // Disable days specified in the array
-          return [disabledDays.indexOf(day) === -1, ""]; // [disable/enable, CSS class]
-        }
-      });
-    $(function() {
-      $("#date").datepicker({
-        showAnim: "drop" // Apply the "drop" effect permanently
-      });
-    });
+    // Define an array of days to disable (0 = Sunday, 1 = Monday, etc.)
+    var disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
 
+    $("#date").datepicker({
+      beforeShowDay: function(date) {
+        var day = date.getDay(); // Get the day of the week (0 - 6)
+        // Disable days specified in the array
+        return [disabledDays.indexOf(day) === -1 && date >= currentDate, ""]; // [disable/enable, CSS class]
+      },
+      showAnim: "drop" // Apply the "drop" effect permanently
     });
-  </script>
+  });
+</script>
  
 
 
