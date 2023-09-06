@@ -19,7 +19,12 @@ def cart_contents(request):
         excursion = get_object_or_404(Excursions, pk=id)
         is_transfer =  excursion.is_transfer
         total_price_adult = Decimal(value['price']) * int(value['adult_qty'])
-        total_price_children = Decimal(value['price']) / 2 * int(value['child_qty'])
+        total_price_children = 0
+        if value['child_qty']:
+            try:
+                total_price_children = Decimal(value['price']) / 2 * int(value['child_qty'])
+            except ValueError:
+                print("An error occur in our system please try again later")
         total += Decimal(total_price_adult + total_price_children)
         subTotal = total_price_adult + total_price_children
  
