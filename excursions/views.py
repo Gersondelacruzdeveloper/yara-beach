@@ -46,7 +46,7 @@ def excursion_details(request, pk):
     unavailableDay = []
     for i in unavailable_days:
         unavailableDay.append(i.day_number)
-    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay,'page_visit':page_visit}
+    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay}
 
     # make_barcode()
 
