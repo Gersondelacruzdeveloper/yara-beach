@@ -5,6 +5,8 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from .forms import ReferenceForm
 from decimal import Decimal
+from django.shortcuts import render, get_object_or_404
+
 # import qrcode
 # Create your views here.
 # def make_barcode():
@@ -21,6 +23,10 @@ from decimal import Decimal
 
 #     img = qr.make_image(fill_color="black", back_color="white")
 #     img.save("website_qrcode.png")  # Save the QR code as an image
+
+
+from django.shortcuts import render
+from .models import PageVisit
 
 
 # Show all the excursion
@@ -40,7 +46,7 @@ def excursion_details(request, pk):
     unavailableDay = []
     for i in unavailable_days:
         unavailableDay.append(i.day_number)
-    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay}
+    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay,'page_visit':page_visit}
 
     # make_barcode()
 

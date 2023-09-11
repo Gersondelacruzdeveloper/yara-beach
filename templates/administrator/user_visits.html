@@ -1,0 +1,29 @@
+{% extends 'administrator/administrator_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- header and card section -->
+<section>
+    <h1 class="text-center mt-5">Page views</h1>
+    <div id="excursion_booking_section">
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>URL</th>
+                    <th>Visit Count</th>
+                  
+                </tr>
+
+                {% for p in user_visits %}
+                <tr>
+                    <td>{{p.page_url}}</td>
+                    <td>{{p.visit_count}}</td>
+        
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+</section>
+
+{% endblock content %}

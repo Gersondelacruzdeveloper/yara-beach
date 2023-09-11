@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from excursions.models import Excursions, Photos, Reference
+from excursions.models import Excursions, Photos, Reference,PageVisit
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
 from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
@@ -10,6 +10,10 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from datetime import date, timedelta
 # Create your views here.
+def pageVisit(request):
+      user_visits = PageVisit.objects.all()
+      context = {'user_visits':user_visits}
+      return render(request, 'administrator/user_visits.html', context)
 
 # Administrator function
 

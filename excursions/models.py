@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 import random
 import string
@@ -142,4 +143,17 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PageVisit(models.Model):
+    page_url = models.CharField(max_length=255)
+    visit_datetime = models.DateTimeField(auto_now_add=True)
+    visit_count = models.IntegerField(default=0)  # Total visit count
+
+    def __str__(self):
+        return self.page_url
+
+    def get_absolute_url(self):
+        return reverse('page_visit_detail', args=[str(self.id)])
+
 

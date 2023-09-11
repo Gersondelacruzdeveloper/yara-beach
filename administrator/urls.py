@@ -18,4 +18,5 @@ urlpatterns = [
     path('seller', views.administrator_seller, name="seller"),
     path('paid_seller/<int:pk>', views.paid_seller, name="paid_seller"),
     path('seller_due_zero/<int:pk>', views.seller_due_zero, name="seller_due_zero"),
+    path('pageVisit/', views.pageVisit, name="pageVisit"),
 ]
