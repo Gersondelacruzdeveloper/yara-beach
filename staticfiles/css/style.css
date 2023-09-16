@@ -1133,7 +1133,9 @@ textarea::placeholder {
 .email_page-wrapper {
     text-decoration: none;
 }
-
+.subcontainer span{
+    font-size: 30px;
+}
 /* -------------------------------------------------------------------- Media queries */
 
 /* large devices (tablet, etc 1492px and down) */
@@ -1219,10 +1221,11 @@ textarea::placeholder {
 
 
     .subcontainer{
-        width: 65%;
+        width: 100%;
         padding: 5px;
         left: 35%;
     }
+
     .reference_code{
         font-size: 25px;
     }
