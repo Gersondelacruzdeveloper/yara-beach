@@ -45,11 +45,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span id="logo">
-                    <pan id="pc">Punta Cana</pan><img id="logo-img"
-                        src="{% static 'images/excursions/coconut-tree-copy.png' %}"> <span id="explore">
-                        Explore</span><span id="initial"> PCE</span>
-                </span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/excursions/Logo.png' %}"
+                alt="Yara name with a palm tree"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -231,7 +228,7 @@
         {% for message in messages %}
         {% if message.tags == "success" %}
         <div class="alert alert-success" role="alert">
-            {{message}}
+            {{ message|safe }}
         </div>
         {% else %}
         <div class="alert alert-danger" role="alert">

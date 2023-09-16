@@ -4,6 +4,7 @@ from .utils import take_date_from_str, num_of_days
 from datetime import date
 from django.core.exceptions import ValidationError
 from excursions.models import Excursions
+from django.urls import reverse
 
 # ----------------------------------Excursion cart fucntionality 
 # return the excursion cart page
@@ -54,8 +55,12 @@ def add_to_cart(request, item_id):
         # if the item id is not in  the cart it will add a new one
         cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
                          'child_qty': child_qty, 'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time}
-        messages.success(request, 'Item added to cart Succesfullly')
+        
 
+    cart_url = reverse('excursion-cart')  # Replace 'cart' with the name of your cart view
+    # Create the success message with a link
+    success_message = f'Item added to cart Successfully! <a href="{cart_url}"><i class="fa-solid fa-cart-shopping site-default-color"></i> Go to cart</a>'
+    messages.success(request, success_message)
     request.session['cart'] = cart
     return redirect(redirect_url)
 
