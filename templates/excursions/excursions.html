@@ -4,6 +4,7 @@
 {% block content %}
 
 <section>
+
     <h1 class="text-center mt-5">Embark on Unforgettable Excursions</h1>
     <section>
         <div class="card-container mt-5">
@@ -28,6 +29,10 @@
     
                 <div class="price">
                     ${{excursion.Price}}
+                </div>
+                <div class="button_card">
+                    <a href="{% url 'excursion_detail' excursion.pk %}" class="button">Book Now</a>
+                    <a href="{% url 'excursion_detail' excursion.pk %}" class="button">Learn More</a>
                 </div>
             </div>
             {% endfor %}

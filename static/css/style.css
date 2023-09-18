@@ -4,8 +4,8 @@
     --white: #ffffff;
     --black: #212529;
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    --orange-pantone: #0ec70e;
-    --orange-pantone-lighter: #008000;
+    --Yellow: #FBB900;
+    --Yellow_lighter: #FEDF00;
     --gun-metal: #212a30;
     --font: sans-serif, "Montserrat", Georgia;
     --culture: #f2f2f2;
@@ -26,7 +26,10 @@ body {
     font-family: var(--font)
 }
 
-
+a{
+    text-decoration: none; /* Remove underline from anchor tags */
+    color: var(--black);
+}
 /*------------------------------------------------------------------------ dispaly 
 
 
@@ -63,7 +66,7 @@ width:30px;
   left:50%;
   font-weight: bolder;
   color:white;
-  background-color: var(--orange-pantone);
+  background-color: var(--Yellow);
   border-radius: 50%;
   padding: 5px;
 }
@@ -90,17 +93,17 @@ font-size: 14px;
 }
 
 .nav-link:hover {
-    color:var(--orange-pantone-lighter);
+    color:var(--Yellow_lighter);
 }
 
 .nav-link:focus {
-    color: var(--orange-pantone-lighter);
+    color: var(--Yellow_lighter);
 }
 
 
 /* -------------------------------------------------------------------- navbar */
 .sear-btn {
-    background-color: var(--orange-pantone-lighter);
+    background-color: var(--Yellow_lighter);
     color: var(--white);
     border: transparent;
 }
@@ -129,7 +132,7 @@ font-size: 14px;
 
 .links_for_404 {
     font-size: 10px;
-    background-color: var(--orange-pantone);
+    background-color: var(--Yellow);
     padding: 15px 32px;
     font-size: 16px;
     cursor: pointer;
@@ -141,7 +144,7 @@ font-size: 14px;
 }
 
 .links_for_404:hover {
-    background-color: var(--orange-pantone-lighter);
+    background-color: var(--Yellow_lighter);
     color: var(--white);
 }
 
@@ -185,7 +188,7 @@ bottom: 10%;
 }
 
 .payment_header {
-    background-color: var(--orange-pantone);
+    background-color: var(--Yellow);
     padding: 20px;
     border-radius: 20px 20px 0px 0px;
 }
@@ -339,6 +342,30 @@ bottom: 10%;
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
 
+
+.button_card {
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+ .button {
+    padding: 10px 20px;
+    background-color: #fbb900;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    color:var(--black)
+}
+
 /* Slides */
 .home-banner {
     position: relative;
@@ -396,11 +423,11 @@ bottom: 10%;
 .btn-outline-secondary:hover,
 .btn-outline-secondary:active,
 .btn-outline-secondary:visited {
-    background-color: var(--orange-pantone) !important;
+    background-color: var(--Yellow) !important;
 }
 
 .btn-outline-secondary {
-    border: 2px solid var(--orange-pantone);
+    border: 2px solid var(--Yellow);
     font-family: var(--font);
 }
 
@@ -452,7 +479,7 @@ bottom: 10%;
 
 .card-star i {
     font-size: 14px;
-    color: var(--orange-pantone);
+    color: var(--Yellow);
 }
 
 .card-star span {
@@ -491,11 +518,11 @@ bottom: 10%;
 }
 
 .site-default-color {
-    color: var(--orange-pantone)
+    color: var(--Yellow)
 }
 
 .bg-site-color {
-    background-color: var(--orange-pantone);
+    background-color: var(--Yellow);
 }
 
 .cart-item-detail {
@@ -529,7 +556,7 @@ bottom: 10%;
 }
 
 .cart-default-color {
-    color: var(--orange-pantone);
+    color: var(--Yellow);
     font-size: 20px;
 }
 
@@ -567,13 +594,13 @@ bottom: 10%;
 }
 
 .update-cart-btn {
-    color: var(--orange-pantone);
+    color: var(--Yellow);
     background-color: var(--white);
     font-size: 10px;
 }
 
 .update-cart-btn:hover {
-    border: 2px solid var(--orange-pantone);
+    border: 2px solid var(--Yellow);
 }
 
 .visa {
@@ -664,7 +691,7 @@ bottom: 10%;
 }
 
 .site-color {
-    color: var(--orange-pantone)
+    color: var(--Yellow)
 }
 
 /* -------------------------------------------------------------------- detail page */
@@ -748,7 +775,7 @@ bottom: 10%;
 
 .active-image {
     opacity: 1;
-    border: 2px solid var(--orange-pantone);
+    border: 2px solid var(--Yellow);
 }
 
 #arrow-left:hover,
@@ -842,7 +869,7 @@ bottom: 10%;
     position: relative;
     width: 1.1em;
     cursor: pointer;
-    color: var(--orange-pantone);
+    color: var(--Yellow);
     font-size: 25px;
 }
 
@@ -859,7 +886,7 @@ bottom: 10%;
     content: "\2605";
     position: absolute;
     left: 0;
-    color: var(--orange-pantone);
+    color: var(--Yellow);
 }
 
 .rating-container {
@@ -904,12 +931,12 @@ bottom: 10%;
 
 .user_button {
     width: 100%;
-    background-color: var(--orange-pantone);
+    background-color: var(--Yellow);
     color: var(--white)
 }
 
 .user_button_sm {
-    background-color: var(--orange-pantone);
+    background-color: var(--Yellow);
     color: var(--white)
 }
 
@@ -917,13 +944,13 @@ bottom: 10%;
 
 .my_hover:hover {
     color: var(--white);
-    background-color: var(--orange-pantone-lighter);
+    background-color: var(--Yellow_lighter);
     border-color: var(--white);
 }
 
 .my_hover:focus {
     color: var(--white);
-    background-color: var(--orange-pantone-lighter);
+    background-color: var(--Yellow_lighter);
     border-color: var(--white);
 }
 
@@ -1005,13 +1032,13 @@ justify-content: center;
 .contact_word {
     font-size: 80px;
     font-family: "noticia text", serif;
-    color: var(--orange-pantone-lighter);
+    color: var(--black);
     text-align: center;
     margin-top: 100px;
 }
 
 .contact_form p {
-    color: var(--orange-pantone);
+    color: var(--Yellow);
     text-align: center;
 }
 
@@ -1073,7 +1100,7 @@ textarea::placeholder {
 }
 
 .form_btn:hover {
-    color: var(--orange-pantone);
+    color: var(--Yellow);
     cursor: pointer;
 }
 
@@ -1084,7 +1111,7 @@ textarea::placeholder {
     }
 
     100% {
-        color: var(--orange-pantone);
+        color: var(--Yellow);
     }
 }
 
@@ -1106,16 +1133,16 @@ textarea::placeholder {
 .sub-container p {
     font-size: 18px;
     font-family: "noticia text", serif;
-    color: var(--orange-pantone);
+    color: var(--Yellow);
 }
 
 .sub-container h1 {
     font-family: "noticia text", serif;
-    color: var(--orange-pantone);
+    color: var(--Yellow);
 }
 
 .btn_email_sent {
-    background-color: var(--orange-pantone);
+    background-color: var(--Yellow);
     border: none;
     color: var(--white);
     padding: 15px 32px;
@@ -1127,7 +1154,7 @@ textarea::placeholder {
 
 .btn_email_sent:hover {
     color: var(--white);
-    background-color: var(--orange-pantone-lighter);
+    background-color: var(--Yellow_lighter);
 }
 
 .email_page-wrapper {
