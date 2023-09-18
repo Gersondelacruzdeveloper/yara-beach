@@ -341,7 +341,31 @@ bottom: 10%;
 }
 
 /* -------------------------------------------------------------------- home /excursion / rentals card */
+.image-container{
+    position: relative;
+}
+.img_icon1,.img_icon2,.img_icon3{
+    position: absolute;
 
+}
+  .img_icon1 {
+    bottom: 90px; /* Adjust the top position as needed */
+    left: 25px; /* Adjust the left position as needed */
+    
+  }
+
+  .img_icon2 {
+    bottom: 60px; /* Adjust the top position as needed */
+    left: 25px; /* Adjust the left position as needed */
+  }
+
+  .img_icon3 {
+    bottom: 30px; /* Adjust the top position as needed */
+    left: 25px; /* Adjust the left position as needed */
+  }
+
+
+  
 
 .button_card {
     width: 300px;

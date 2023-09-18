@@ -7,8 +7,23 @@
     <div class="card-container mt-5">
         {% for excursion in excursions %}
         <div class="card-wrapper">
-            <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
-                    alt="{{excursion.image_name}}"> </a>
+            <div class="image-container">
+                <a class="position-relative" href="{% url 'excursion_detail' excursion.pk %}"><img
+                        src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}">
+                </a>
+                {% if excursion.duration_time%}
+                <span class="img_icon1 badge rounded-pill bg-warning text-dark">
+                    <i class="fa-solid fa-hourglass-start"></i> {{excursion.duration_time}} hours</span>
+                {% endif %}
+                {% if excursion.tour_guide%}
+                <span class="img_icon2 badge rounded-pill bg-warning text-dark">
+                    <i class="fa-solid fa-user"></i> Tour Guide</span>
+                {% endif %}
+                {% if excursion.transportation%}
+                <span class="img_icon3  badge rounded-pill bg-warning text-dark">
+                    <i class="fa-solid fa-van-shuttle"></i> Transportation</span>
+                {% endif %}
+            </div>
             <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
             <!-- Reviews -->
             <div class="card-star">
@@ -32,11 +47,11 @@
                 <a href="{% url 'excursion_detail' excursion.pk %}" class="button">Learn More</a>
             </div>
         </div>
-        {% endfor %}
+         {% endfor %}
     </div>
 
 
-     <!--Pagination-->
+    <!--Pagination-->
     {% if counts > 8 %}
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
@@ -68,7 +83,8 @@
                 {% endfor %}
 
                 {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
-                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a>
+                </li>
                 {% endif %}
 
                 {% if excursions.has_next %}

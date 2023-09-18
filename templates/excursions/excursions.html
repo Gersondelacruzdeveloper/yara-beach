@@ -10,8 +10,24 @@
         <div class="card-container mt-5">
             {% for excursion in excursions %}
             <div class="card-wrapper">
-                <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
-                        alt="{{excursion.image_name}}"> </a>
+                <div class="image-container">
+                <a class="position-relative" href="{% url 'excursion_detail' excursion.pk %}"><img
+                        src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}">
+                </a>
+                {% if excursion.duration_time%}
+                <span class="img_icon1 badge rounded-pill bg-warning text-dark">
+                <i class="fa-solid fa-hourglass-start"></i> {{excursion.duration_time}} hours</span>
+                {% endif %}
+                {% if excursion.tour_guide%}
+            <span class="img_icon2 badge rounded-pill bg-warning text-dark">
+                <i class="fa-solid fa-user"></i> Tour Guide</span> 
+                {% endif %}
+                {% if excursion.transportation%}
+            <span class="img_icon3  badge rounded-pill bg-warning text-dark"
+                >
+              <i class="fa-solid fa-van-shuttle"></i> Transportation</span>
+              {% endif %}
+             </div>
                 <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
                 <!-- Reviews -->
                 <div class="card-star">
@@ -26,7 +42,7 @@
                     <span> {{excursion.reviews.count}} review</span>
                     {% endif%}
                 </div>
-    
+
                 <div class="price">
                     ${{excursion.Price}}
                 </div>
@@ -37,59 +53,60 @@
             </div>
             {% endfor %}
         </div>
-    
-    
 
-    <!--Pagination-->
-    {% if counts > 8 %}
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            {% if excursions.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ excursions.previous_page_number }}">Previous</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <div class="page-link" tabindex="-1" aria-disabled="true">Previous</div>
-            </li>
-            {% endif %}
 
-            {% if excursions.number|add:'-4' > 1 %}
-            <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'-5' }}">&hellip;</a></li>
-            {% endif %}
 
-            {% for i in excursions.paginator.page_range %}
-            {% if excursions.number == i %}
-            <li class="page-item active" aria-current="page">
-                <span class="page-link">
-                    {{ i }}
-                    <span class="sr-only">(current)</span>
-                </span>
-            </li>
-            {% elif i > excursions.number|add:'-5' and i < excursions.number|add:'5' %} <li class="page-item"><a
-                    class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-                {% endfor %}
-
-                {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
-                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a>
-                </li>
-                {% endif %}
-
-                {% if excursions.has_next %}
+        <!--Pagination-->
+        {% if counts > 8 %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if excursions.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ excursions.next_page_number }}">Next</a>
+                    <a class="page-link" href="?page={{ excursions.previous_page_number }}">Previous</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
-                    <div class="page-link" tabindex="-1" aria-disabled="true">Next</div>
+                    <div class="page-link" tabindex="-1" aria-disabled="true">Previous</div>
                 </li>
                 {% endif %}
-        </ul>
-    </nav>
-    <!--end of Pagination-->
-    {% endif %}
 
-</section>
+                {% if excursions.number|add:'-4' > 1 %}
+                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'-5' }}">&hellip;</a>
+                </li>
+                {% endif %}
 
-{% endblock content %}
+                {% for i in excursions.paginator.page_range %}
+                {% if excursions.number == i %}
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">
+                        {{ i }}
+                        <span class="sr-only">(current)</span>
+                    </span>
+                </li>
+                {% elif i > excursions.number|add:'-5' and i < excursions.number|add:'5' %} <li class="page-item"><a
+                        class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
+                    <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a>
+                    </li>
+                    {% endif %}
+
+                    {% if excursions.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ excursions.next_page_number }}">Next</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <div class="page-link" tabindex="-1" aria-disabled="true">Next</div>
+                    </li>
+                    {% endif %}
+            </ul>
+        </nav>
+        <!--end of Pagination-->
+        {% endif %}
+
+    </section>
+
+    {% endblock content %}

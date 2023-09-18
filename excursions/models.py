@@ -40,6 +40,9 @@ class Excursions(models.Model):
     is_transfer = models.BooleanField(default=False)  # Boolean field for transfer
     available_times = models.ManyToManyField(AvailableTime)
     unavailable_days = models.ManyToManyField('DayOfWeek', related_name='excursions', blank=True)
+    duration_time = models.IntegerField(null=True, blank=True, default=0)
+    tour_guide = models.BooleanField(default=False)  # Boolean field for transfer
+    transportation = models.BooleanField(default=False)  # Boolean field for transfer
 
 
     def __str__(self):

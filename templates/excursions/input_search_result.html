@@ -15,8 +15,23 @@
     <div class="card-container">
         {% for excursion in excursions %}
         <div class="card-wrapper">
-            <a href="{% url 'excursion_detail' excursion.pk %}"><img src="{{excursion.main_image.url}}"
-                    alt="{{excursion.image_name}}"> </a>
+            <div class="image-container">
+                <a class="position-relative" href="{% url 'excursion_detail' excursion.pk %}"><img
+                        src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}">
+                </a>
+                {% if excursion.duration_time%}
+                <span class="img_icon1 badge rounded-pill bg-warning text-dark">
+                    <i class="fa-solid fa-hourglass-start"></i> {{excursion.duration_time}} hours</span>
+                {% endif %}
+                {% if excursion.tour_guide%}
+                <span class="img_icon2 badge rounded-pill bg-warning text-dark">
+                    <i class="fa-solid fa-user"></i> Tour Guide</span>
+                {% endif %}
+                {% if excursion.transportation%}
+                <span class="img_icon3  badge rounded-pill bg-warning text-dark">
+                    <i class="fa-solid fa-van-shuttle"></i> Transportation</span>
+                {% endif %}
+            </div>
             <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
             <!-- Reviews -->
             <div class="card-star">
