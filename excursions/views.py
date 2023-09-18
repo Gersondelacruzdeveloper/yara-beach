@@ -32,7 +32,7 @@ from .models import PageVisit
 # Show all the excursion
 def excursion(request):
     counts = Excursions.objects.filter(status='Active').count()
-    p = Paginator(Excursions.objects.filter(status='Active'), 8)
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('Price'), 8)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
