@@ -24,6 +24,7 @@ def add_to_cart(request, item_id):
     selected_time = request.POST.get('selected_time')
     adult_qty = int(request.POST.get('adult_qty'))
     child_qty = int(request.POST.get('child_qty'))
+    infant_qty = int(request.POST.get('infant_qty'))
     place_pickup = request.POST.get('place_pickup')
     redirect_url = request.POST.get("redirect_url")
     price = request.POST.get("price")
@@ -37,6 +38,10 @@ def add_to_cart(request, item_id):
 
         if 'child_qty' in cart[item_id].keys():
             cart[item_id]['child_qty'] = child_qty
+
+        if 'infant_qty' in cart[item_id].keys():
+            cart[item_id]['infant_qty'] = child_qty
+
 
         if 'place_pickup' in cart[item_id].keys():
             cart[item_id]['place_pickup'] = place_pickup
@@ -54,7 +59,7 @@ def add_to_cart(request, item_id):
     else:
         # if the item id is not in  the cart it will add a new one
         cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
-                         'child_qty': child_qty, 'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time}
+                         'child_qty': child_qty, 'infant_qty':infant_qty,'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time}
         
 
     cart_url = reverse('excursion-cart')  # Replace 'cart' with the name of your cart view
@@ -70,8 +75,8 @@ def update_cart(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     adult_qty = request.POST.get('cart-adult_qty')
     child_qty = request.POST.get('cart-child_qty')
+    infant_qty = request.POST.get('cart-infant_qty')
     excursion_date = request.POST.get('excursion_date')
-    
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):
@@ -80,6 +85,9 @@ def update_cart(request, item_id):
 
         if 'child_qty' in cart[item_id].keys():
             cart[item_id]['child_qty'] = child_qty
+        
+        if 'infant_qty' in cart[item_id].keys():
+            cart[item_id]['infant_qty'] = infant_qty
 
         if 'excursion_date' in cart[item_id].keys():
             cart[item_id]['excursion_date'] = excursion_date

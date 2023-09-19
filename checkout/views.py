@@ -61,9 +61,11 @@ def checkout(request):
         # print('checkout_cart', checkout_cart)
         data = json.loads(request.body)
         reference = checkout_cart['reference']
-        extracted_reference = Reference.objects.filter(reference_number=reference)
+        if reference:
+            extracted_reference = Reference.objects.filter(reference_number=reference)
         # Add the item in the database
         for item in current_cart['cart_items']:
+
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
                 user=request.user,
@@ -74,6 +76,7 @@ def checkout(request):
                 subtotal=item['subTotal'],
                 adult_qty=item['values']['adult_qty'],
                 child_qty=item['values']['child_qty'],
+                infant_qty = item['values']['infant_qty'],
                 excursion_date=item['values']['excursion_date'],
                 customer_email=request.user.email,
                 place_pickup=item['values']['place_pickup'],
@@ -81,7 +84,6 @@ def checkout(request):
                 reference= reference,
                 time_selected = item['values']['selected_time'],
             )
-
         # send an email with all the info to the user
         user_orders = ExcursionOrder.objects.all().filter(user=request.user)
         user_orders = user_orders.filter(date_created=datetime.date.today())
@@ -101,6 +103,8 @@ def checkout(request):
             template += f"<strong>Adult Quantity:</strong> {item.adult_qty}<br/>"
             if item.child_qty:
                 template += f"<strong>Child Quantity:</strong> {item.child_qty}<br/>"
+            if item.infant_qty:
+                template += f"<strong>Child Quantity:</strong> {item.infant_qty}<br/>"
             template += f"<strong>Pick up:</strong> {item.place_pickup} <br/>"
             template += f"<strong>Excursion Booking Number:</strong> {item.order_number} <br/>"
             template += f"<strong>SubTotal:</strong> {item.subtotal} <hr>"

@@ -26,6 +26,7 @@
                             <th scope="col">Time</th>
                             <th scope="col">Adult Quantity</th>
                             <th scope="col">Child Quantity</th>
+                            <th scope="col">Infant Quantity</th>
                             <th scope="col">Pick up</th>
                             <th scope="col">Price</th>
                             <th scope="col">Sub-Total</th>
@@ -63,6 +64,11 @@
                                     <input type="number" class="form-control cart-input" name="cart-child_qty"
                                         value="{{item.values.child_qty}}" min="0" max="99">
                                 </td>
+                                <td>
+                                    <input type="number" class="form-control cart-input" name="cart-infant_qty"
+                                        value="{{item.values.infant_qty}}" min="0" max="99">
+                                </td>
+
 
                                 <td>{{item.values.place_pickup | slice:":26"|title}}...</td>
                                 <td>${{item.values.price}}</td>
