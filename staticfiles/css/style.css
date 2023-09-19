@@ -12,6 +12,15 @@
 }
 
 /* -------------------------------------------------------------------- Resets */
+.draggable {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    cursor: grab;
+    z-index: 10;
+}
 
 * {
     padding: 0;
