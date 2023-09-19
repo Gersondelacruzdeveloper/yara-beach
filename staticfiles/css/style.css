@@ -13,11 +13,11 @@
 
 /* -------------------------------------------------------------------- Resets */
 .draggable {
-    position: absolute;
+    position: fixed;
     width: 100px;
     height: 100px;
     text-align: center;
-    line-height: 100px;
+    line-height: 200px;
     cursor: grab;
     z-index: 10;
 }
