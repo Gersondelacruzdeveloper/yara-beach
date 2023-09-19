@@ -16,7 +16,8 @@ def cart_contents(request):
     checkout_cart['discount_applied'] = False
 
     for id, value in cart.items():
-        excursion = get_object_or_404(Excursions, pk=id)
+        if id:
+         excursion = get_object_or_404(Excursions, pk=id)
         is_transfer =  excursion.is_transfer
         total_price_adult = Decimal(value['price']) * int(value['adult_qty'])
         total_price_children = 0
