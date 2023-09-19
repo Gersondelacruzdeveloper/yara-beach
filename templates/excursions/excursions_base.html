@@ -239,6 +239,11 @@
         {% endif %}
     </div>
 
+    <div class="whatsap-container draggable" id="draggableElement">
+        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone=447541147634"
+            target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+        </div>
+
     <main>
         {% block content %}
         <!-- Main Content -->
@@ -293,6 +298,7 @@
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
     <!-- Local Javascript -->
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/dragable_whatsapp.js' %}"></script>
 </body>
 
 </html>
