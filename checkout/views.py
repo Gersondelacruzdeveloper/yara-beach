@@ -107,7 +107,7 @@ def checkout(request):
             template += f"<strong>Pick up:</strong> {item.place_pickup} <br/>"
             template += f"<strong>Excursion Booking Number:</strong> {item.order_number} <br/>"
             template += f"<strong>SubTotal:</strong> {item.subtotal} <hr>"
-        template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> £{excursion_total} <hr>"
+        template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> ${excursion_total} <hr>"
         email = EmailMultiAlternatives(
             'From Punta cana Explore',
             template,
