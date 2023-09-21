@@ -20,7 +20,7 @@ class ExcursionOrder(models.Model):
     adult_qty =  models.IntegerField(null=False, blank=False)
     child_qty =  models.IntegerField(null=False, blank=False)
     infant_qty =  models.IntegerField(null=False, blank=False, default=0)
-    excursion_date = models.CharField(max_length=200, null=False, blank=False, default='')
+    excursion_date = models.DateField(null=False, blank=False, default='')
     date_created = models.DateField(auto_now_add=True)
     customer_email = models.EmailField(null=True, blank=True)
     cellphone_number = models.CharField(max_length=70, null=True, blank=True)

@@ -102,6 +102,13 @@
             <input onchange="myFunction()" type="text" class="form-control" id="Phone_number" name="Phone_number"
               placeholder="Phone number" required>
           </div>
+          {% if not request.user.is_authenticated %}
+          <div class="col-md-12 mb-3">
+            <label for="email">Email</label>
+            <input onchange="myFunction()" type="text" class="form-control" id="email" name="email"
+              placeholder="Email" required>
+          </div>
+          {%endif%}
           <hr class="mb-4">
           <h4 class="mb-3">Payment</h4>
           <div id="paypal-button-container"></div>
@@ -114,11 +121,21 @@
             let functionCallCount = 0;
             const full_name = document.getElementById('full_name').value;
             const phone_number = document.getElementById('Phone_number').value;
+            const email = document.getElementById('email')?.value;
+            const get_user = '{{request.user}}'
             function myFunction() {
               functionCallCount++
-              if (functionCallCount == 2) {
+              if(get_user != 'AnonymousUser'){
+                if (functionCallCount == 2) {
                 continues.style.display = "none"
                 paypalBtnId.style.display = 'block'
+              }
+              }else{
+                if (functionCallCount == 3) {
+                continues.style.display = "none"
+                paypalBtnId.style.display = 'block'
+              }
+
               }
             }
       
@@ -173,6 +190,7 @@
       const full_name = document.getElementById('full_name').value;
       const phone_number = document.getElementById('Phone_number').value;
       const reference = document.getElementById('reference').value
+      const email = document.getElementById('email')?.value
       console.log('this is the referene inside payment', reference)
       const url = "{% url 'checkout' %}";
       fetch(url, {
@@ -181,7 +199,7 @@
           'Content-type': 'application/json',
           'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify({ 'user': user, 'full_name': full_name, 'phone_number': phone_number, 'reference': reference, })
+        body: JSON.stringify({ 'user': user, 'full_name': full_name, 'phone_number': phone_number, 'reference': reference,'email':email })
       })
       console.log(user)
       console.log('payment prcess alreay')

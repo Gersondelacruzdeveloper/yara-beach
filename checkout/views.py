@@ -13,10 +13,9 @@ import datetime
 from django.http import JsonResponse
 import json
 import time
-import datetime
 from decimal import Decimal, ROUND_HALF_UP
 # Create your views here.
-from decimal import Decimal
+from datetime import datetime as newTime
 
 
 def apply_discount_code(request):
@@ -47,7 +46,7 @@ def apply_discount_code(request):
     request.session['checkout_cart'] = checkout_cart
     return redirect('checkout')
 
-@login_required(login_url='/accounts/login/' )
+# @login_required(login_url='/accounts/login/' )
 def checkout(request):
     checkout_cart = request.session.get('checkout_cart', {})
     total_discount =  Decimal(checkout_cart['total_discount'])
@@ -60,14 +59,29 @@ def checkout(request):
     if request.method == 'POST':
         # print('checkout_cart', checkout_cart)
         data = json.loads(request.body)
-        reference = checkout_cart['reference']
-        extracted_reference = Reference.objects.filter(reference_number=reference) or ''
-        # Add the item in the database
-        for item in current_cart['cart_items']:
+        print('email', data)
 
+        reference = checkout_cart.get('reference', '')
+        extracted_reference = Reference.objects.filter(reference_number=reference)
+        # Add the item in the database
+        if request.user.is_authenticated:
+            user  = request.user
+            guest_email = request.user.email
+        else:
+            user = None
+            guest_email = data['email']
+
+        for item in current_cart['cart_items']:
+            date_str = item['values']['excursion_date']
+            input_format = "%m/%d/%Y"  # Specify the input format
+            # Parse the input date string into a datetime object
+            date_obj = newTime.strptime(date_str, input_format)
+            # Convert the datetime object to the Django date format (YYYY-MM-DD)
+            django_date_str = date_obj.strftime("%Y-%m-%d")
+    
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
-                user=request.user,
+                user=user,
                 full_name=data['full_name'],
                 image=item['excursion'].main_image.url,
                 cellphone_number=data['phone_number'],
@@ -76,15 +90,18 @@ def checkout(request):
                 adult_qty=item['values']['adult_qty'],
                 child_qty=item['values']['child_qty'],
                 infant_qty = item['values']['infant_qty'],
-                excursion_date=item['values']['excursion_date'],
-                customer_email=request.user.email,
+                excursion_date=django_date_str,
+                customer_email=guest_email,
                 place_pickup=item['values']['place_pickup'],
                 date_created=datetime.date.today(),
                 reference=reference,
                 time_selected = item['values']['selected_time'],
             )
         # send an email with all the info to the user
-        user_orders = ExcursionOrder.objects.all().filter(user=request.user)
+        if request.user.is_authenticated:
+            user_orders = ExcursionOrder.objects.all().filter(user=request.user)
+        else:
+            user_orders = ExcursionOrder.objects.all().filter(customer_email=guest_email)
         user_orders = user_orders.filter(date_created=datetime.date.today())
         excursion_total = 0
         template = ''
@@ -108,11 +125,13 @@ def checkout(request):
             template += f"<strong>Excursion Booking Number:</strong> {item.order_number} <br/>"
             template += f"<strong>SubTotal:</strong> {item.subtotal} <hr>"
         template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> ${excursion_total} <hr>"
+        
+
         email = EmailMultiAlternatives(
             'From Punta cana Explore',
             template,
             settings.EMAIL_HOST_USER,
-            [request.user.email,'puntacanaexploregt@gmail.com']
+            [guest_email,'puntacanaexploregt@gmail.com', ]
         )
         email.attach_alternative(template, "text/html")
         email.fail_silently = False
@@ -145,7 +164,7 @@ def checkout(request):
     else:
         if not cart:
             return redirect('excursions')
-
+        
     context = {'paypal_client_id': paypal_client_id,
                'new_total': new_total,'total_discount': 
                total_discount, 'discount_applied':discount_applied
@@ -155,19 +174,23 @@ def checkout(request):
 
 
 # Allow the user know that the purchase has been successful
-@login_required(login_url='/accounts/login/')
 def checkout_success(request):
-    user_orders = ExcursionOrder.objects.all().filter(user=request.user)
-    user_orders = user_orders.filter(date_created=datetime.date.today())
-    excursion_total = 0
-    for item in user_orders:
-        excursion_total += item.subtotal
+     # Get the current user
+    if request.user.is_authenticated:
+        user = request.user 
+        user_orders = ExcursionOrder.objects.all().filter(user=user)
+        user_orders = user_orders.filter(date_created=datetime.date.today())
+        excursion_total = sum(item.subtotal for item in user_orders)
+    else:
+        user_orders = []
+         # An empty list for anonymous users
+        excursion_total = 0
     context = {'user_orders': user_orders, 'excursion_total': excursion_total}
     return render(request, 'checkout/success.html', context)
 
 
 # Chekout and process payment for rental cart
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def checkout_rental(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -178,7 +201,7 @@ def checkout_rental(request):
         for item in current_cart['rental_cart_items']:
             AccommodationOrder.objects.create(
                 rental_name=item['rental'].title,
-                user=request.user,
+                # user=request.user,
                 full_name=request.POST['full_name'],
                 image=item['rental'].main_image.url,
                 price=item['values']['price'],

@@ -12,15 +12,16 @@
                     </div>
                     <div class="content">
                         <h1>Payment Successfull!</h1>
+                        {% if request.user.is_authenticated%}
                         <h4 class="pt-3">Here are your bookings from today</h4>
                         {% for item in user_orders %}
                         <div class="p-2">
                             <small><strong>Excursion Booking Number:</strong> {{item.order_number}}</small>
                         </div>
                         {% endfor %}
-
                         <strong>Amount paid:</strong>
                         <span>${{excursion_total | floatformat:2}}</span>
+                        {% endif%}
                         <div class="pt-2">We have sent you an email with all the booking information</div>
                         <div class="mt-5">
                             <a href="{% url 'home' %}">Go to Home</a>
