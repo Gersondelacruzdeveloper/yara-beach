@@ -36,23 +36,12 @@ def excursion(request):
     p = Paginator(Excursions.objects.filter(status='Active').order_by('Price'), 8)
     page = request.GET.get('page')
     excursions = p.get_page(page)
-
     context = {'excursions': excursions,'counts': counts}
     return render(request, 'excursions/excursions.html', context)
 
 # Show the excursion details
 def excursion_details(request, slug):
-    duplicates = Excursions.objects.values('slug').annotate(count=Count('slug')).filter(count__gt=1)
-    # Loop through duplicates and update them
-    for duplicate in duplicates:
-        excursions = Excursions.objects.filter(slug=duplicate['slug'])
-        for i, excursion in enumerate(excursions):
-            # Update the slug to make it unique
-            excursion.slug = f"{duplicate['slug']}-{i+1}"
-            excursion.save()
-
-    # normal
-    excursion = Excursions.objects.get(id=pk)
+    excursion = get_object_or_404(Excursions, slug=slug)
     time_available = excursion.available_times.all()
     unavailable_days = excursion.unavailable_days.all()
     unavailableDay = []
