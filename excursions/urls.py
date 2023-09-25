@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.excursion, name="excursions"),
-    path('detail/<int:pk>', views.excursion_details, name="excursion_detail"),
+    path('detail/<slug:slug>', views.excursion_details, name="excursion_detail"),
     path('add_images/<int:pk>', views.excursion_images, name="add_images"),
     path('search/', views.input_search_result, name='excursion_search_results'),
     path('newest/', views.newest_excursions, name='newest_result'),
@@ -14,5 +14,4 @@ urlpatterns = [
     path('reference/', views.create_reference, name='reference'),
     path('success/<str:reference_number>/', views.success_page, name='success_page'),
     path('cancel_excursion/<int:pk>', views.cancel_excursion, name="cancel_excursion"),
-
 ]

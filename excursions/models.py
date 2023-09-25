@@ -7,6 +7,7 @@ import string
 from decimal import Decimal
 # New slug field
 from django.utils.text import slugify
+from django.db.models import Count
 
 
 
@@ -52,6 +53,7 @@ class Excursions(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.title
