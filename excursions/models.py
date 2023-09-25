@@ -5,6 +5,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 import random
 import string
 from decimal import Decimal
+# New slug field
+from django.utils.text import slugify
+
 
 
 # Create your models here.
@@ -43,7 +46,12 @@ class Excursions(models.Model):
     duration_time = models.IntegerField(null=True, blank=True, default=0)
     tour_guide = models.BooleanField(default=False)  # Boolean field for transfer
     transportation = models.BooleanField(default=False)  # Boolean field for transfer
+    slug = models.SlugField(unique=True, blank=True)
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
