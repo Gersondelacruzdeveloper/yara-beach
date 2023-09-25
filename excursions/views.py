@@ -6,8 +6,6 @@ from django.core.paginator import Paginator
 from .forms import ReferenceForm
 from decimal import Decimal
 from django.shortcuts import render, get_object_or_404
-from django.utils.text import slugify
-from django.db.models import Count
 
 # import qrcode
 # Create your views here.
@@ -33,27 +31,16 @@ from .models import PageVisit
 
 # Show all the excursion
 def excursion(request):
- # Find records with duplicate slugs
     counts = Excursions.objects.filter(status='Active').count()
     p = Paginator(Excursions.objects.filter(status='Active').order_by('Price'), 8)
     page = request.GET.get('page')
     excursions = p.get_page(page)
-
-  # Loop through duplicates and update them
-    duplicates = Excursions.objects.values('slug').annotate(count=Count('slug')).filter(count__gt=1)
-    print('duplicates', duplicates)
-    for duplicate in duplicates:
-        excursions = Excursions.objects.filter(slug=duplicate['slug'])
-        for i, excursion in enumerate(excursions):
-            # Update the slug to make it unique
-            excursion.slug = f"{duplicate['slug']}-{i+1}"
-            excursion.save()
     context = {'excursions': excursions,'counts': counts}
     return render(request, 'excursions/excursions.html', context)
 
 # Show the excursion details
-def excursion_details(request, slug):
-    excursion = get_object_or_404(Excursions, slug=slug)
+def excursion_details(request, pk):
+    excursion = Excursions.objects.get(id=pk)
     time_available = excursion.available_times.all()
     unavailable_days = excursion.unavailable_days.all()
     unavailableDay = []

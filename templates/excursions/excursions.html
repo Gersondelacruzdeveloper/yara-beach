@@ -14,7 +14,7 @@
             {% for excursion in excursions %}
             <div class="card-wrapper">
                 <div class="image-container">
-                <a class="position-relative" href="{% url 'excursion_detail' excursion.slug %}"><img
+                <a class="position-relative" href="{% url 'excursion_detail' excursion.pk %}"><img
                         src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}">
                 </a>
                 {% if excursion.duration_time%}
@@ -50,8 +50,8 @@
                     ${{excursion.Price}}
                 </div>
                 <div class="button_card">
-                    <a href="{% url 'excursion_detail' excursion.slug %}" class="btn button my_hover sear-btn btn-outline-secondary">Book Now</a>
-                    <a href="{% url 'excursion_detail' excursion.slug %}" class="btn button my_hover sear-btn btn-outline-secondary">Learn More</a>
+                    <a href="{% url 'excursion_detail' excursion.pk %}" class="btn button my_hover sear-btn btn-outline-secondary">Book Now</a>
+                    <a href="{% url 'excursion_detail' excursion.pk %}" class="btn button my_hover sear-btn btn-outline-secondary">Learn More</a>
                 </div>
             </div>
             {% endfor %}
