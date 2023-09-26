@@ -170,3 +170,4 @@ class PageVisit(models.Model):
         return reverse('page_visit_detail', args=[str(self.id)])
 
 
+
