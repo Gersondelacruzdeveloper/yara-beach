@@ -50,8 +50,8 @@ class Excursions(models.Model):
     slugy = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
+        if not self.slugy:
+            self.slugy = slugify(self.title)
         super().save(*args, **kwargs)
 
 
