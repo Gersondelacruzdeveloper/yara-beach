@@ -40,8 +40,8 @@ def excursion(request):
     return render(request, 'excursions/excursions.html', context)
 
 # Show the excursion details
-def excursion_details(request, pk):
-    excursion = Excursions.objects.get(id=pk)
+def excursion_details(request, slugy):
+    excursion = get_object_or_404(Excursions, slugy=slugy)
     time_available = excursion.available_times.all()
     unavailable_days = excursion.unavailable_days.all()
     unavailableDay = []
