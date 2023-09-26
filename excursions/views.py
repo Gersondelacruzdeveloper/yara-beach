@@ -28,6 +28,7 @@ from django.db.models import Count
 
 from django.shortcuts import render
 from .models import PageVisit
+import platform
 
 
 # Show all the excursion
@@ -37,6 +38,47 @@ def excursion(request):
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
+
+    # Get the operating system name
+    os_name = platform.system()
+
+    # Get the version of the operating system
+    os_version = platform.version()
+
+    # Get the machine type (e.g., 'x86_64')
+    machine_type = platform.machine()
+
+    # Get the processor type
+    processor_type = platform.processor()
+
+    # Get the network hostname
+    hostname = platform.node()
+
+    # Get the Python version
+    python_version = platform.python_version()
+
+    # Get the architecture (e.g., 32-bit or 64-bit)
+    architecture = platform.architecture()
+
+    # Get the libc version (Linux only)
+    libc_version = platform.libc_ver()
+
+    # Get the system's release version
+    release_version = platform.release()
+
+
+    # Print the information
+    print("System Information:")
+    print(f"  Operating System: {os_name}")
+    print(f"  OS Version: {os_version}")
+    print(f"  Machine Type: {machine_type}")
+    print(f"  Processor Type: {processor_type}")
+    print(f"  Hostname: {hostname}")
+    print(f"  Python Version: {python_version}")
+    print(f"  Architecture: {architecture[0]} {architecture[1]}")
+    print(f"  Libc Version (Linux only): {libc_version[0]} {libc_version[1]}")
+    print(f"  Release Version: {release_version}")
+
     return render(request, 'excursions/excursions.html', context)
 
 # Show the excursion details
