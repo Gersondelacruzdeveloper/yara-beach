@@ -47,7 +47,7 @@ class Excursions(models.Model):
     duration_time = models.IntegerField(null=True, blank=True, default=0)
     tour_guide = models.BooleanField(default=False)  # Boolean field for transfer
     transportation = models.BooleanField(default=False)  # Boolean field for transfer
-    # slug = models.SlugField(unique=True, blank=True, null=True)
+    slugy = models.SlugField(unique=False, blank=True)
 
     # def save(self, *args, **kwargs):
     #     if not self.slug:
