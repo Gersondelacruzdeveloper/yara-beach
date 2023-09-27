@@ -19,4 +19,10 @@ urlpatterns = [
     path('paid_seller/<int:pk>', views.paid_seller, name="paid_seller"),
     path('seller_due_zero/<int:pk>', views.seller_due_zero, name="seller_due_zero"),
     path('pageVisit/', views.pageVisit, name="pageVisit"),
+    path('create_auto_sellers/', views.create_auto_sellers, name="create_auto_sellers"),
+    path('search_sellers/', views.search_sellers, name='search_sellers'),
+    path('edit_seller/<int:pk>', views.edit_seller, name="edit_seller"),
+    path('delete_seller/<int:pk>', views.delete_seller, name="delete_seller"),
+
+
 ]

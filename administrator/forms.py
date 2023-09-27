@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from excursions.models import Excursions, Photos
+from excursions.models import Excursions, Photos,Reference
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
 
@@ -50,3 +50,10 @@ class RentalFormPhotos(ModelForm):
     class Meta:
         model = Rental_photos
         fields = ['images']
+
+
+# Gets a already made form and add the new rental photos
+class SellerForm(ModelForm):
+    class Meta:
+        model = Reference
+        fields = '__all__'

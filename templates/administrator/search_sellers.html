@@ -108,6 +108,7 @@
                             Sellers</a></button></li>
             </ul>
         </div>
+
         <div class="table_wrapper table-responsive">
             <table class="data_table">
                 <tr>
@@ -123,7 +124,7 @@
                     <th></th>
                 </tr>
 
-                {% for seller in all_sellers %}
+                {% for seller in sellers %}
                 <tr>
                     <td>{{seller.full_name}}</td>
                     <td>{{seller.bank_name}}</td>

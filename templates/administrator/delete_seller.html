@@ -1,0 +1,23 @@
+{% extends 'administrator/administrator_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<section>
+<div class="delete_wraper card p-5">
+    <h4 class="text-center">Are you sure you want to delete {{seller.full_name|slice:":20"|title}}</h4>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            <!-- excursion button for delete -->
+            <div class="mt-4 text-center">
+                <input class="btn btn-danger" type="submit" value="Delete">
+                <!-- Go back to all excursion -->
+                <a href="{% url 'seller' %}" class="btn  my_hover btn-outline-secondary" role="button"
+                aria-pressed="true">Cancel</a>
+            </div>
+        </div>
+    </form>
+  </div>
+</section>
+{% endblock content %}

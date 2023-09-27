@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 from excursions.models import Excursions, Photos, Reference,PageVisit
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
-from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos
+from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos,SellerForm
 from django.contrib import messages
 from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
 import datetime
 from datetime import date, timedelta
+from django.db.models import Q
 # Create your views here.
 def pageVisit(request):
       user_visits = PageVisit.objects.all()
@@ -97,7 +98,74 @@ def seller_due_zero(request, pk):
         seller.due_to_pay_amount = 0.00
         seller.save()
         return redirect('seller')
+    
 
+@login_required(login_url='/accounts/login/')
+def create_auto_sellers(request):
+    # Check if the user is a superuser
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access that page')
+        return redirect('home')
+
+    if request.method == 'POST':
+        quantity = int(request.POST.get("generate_quantity_sellers"))
+
+        for i in range(1, quantity):
+            seller_name = f'automated seller {i}'
+
+            # Check if the seller name already exists
+            if not Reference.objects.filter(full_name=seller_name).exists():
+                seller = Reference(full_name=seller_name)
+                seller.save()
+
+        messages.success(request, 'Your sellers have been created.')
+        return redirect('seller')
+          
+# US Search in CRM with input
+def search_sellers(request):
+    sellers = Reference.objects.all()
+    sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
+    all_sellers = Reference.objects.all()
+    seller_search_input = request.GET.get('seller_search_input')
+    if seller_search_input:
+        sellers = Reference.objects.filter(Q(full_name__icontains=seller_search_input) | Q(reference_number__icontains=seller_search_input) | Q(email__icontains=seller_search_input) | Q(phone_number__icontains=seller_search_input) | Q(
+            cedula__icontains=seller_search_input) | Q(account_number__icontains=seller_search_input))
+    context = {'sellers': sellers, 'seller_search_input': seller_search_input, 'sellers_to_be_pay':sellers_to_be_pay, 'all_sellers':all_sellers}
+    return render(request, 'administrator/search_sellers.html', context)
+
+# Edit seller and add more photos
+@login_required(login_url='/accounts/login/')
+def edit_seller(request, pk):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    seller = Reference.objects.get(id=pk)
+    form = SellerForm(instance=seller)
+    if request.method == 'POST':
+        form = SellerForm(request.POST,  instance=seller)
+        form.save()
+        messages.success(request, 'Seller edit Succesfullly')
+        return redirect('seller')
+    context = {'form': form,'seller': seller}
+    return render(request, 'administrator/edit_seller.html', context)
+
+# Delete excursion
+
+@login_required(login_url='/accounts/login/')
+def delete_seller(request, pk):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    seller = Reference.objects.get(id=pk)
+    name = Reference.full_name
+    if request.method == 'POST':
+        seller.delete()
+        messages.success(request, 'seller deleted Succesfullly')
+        return redirect('seller')
+    context = {'seller': seller, 'seller_name': name}
+    return render(request, 'administrator/delete_seller.html', context)
 
 # Query all rentals for admin
 @login_required(login_url='/accounts/login/')
@@ -164,7 +232,6 @@ def edit_rentals(request, pk):
 
 # Delete rental photos
 
-
 @login_required(login_url='/accounts/login/')
 def delete_rentals_photos(request, pk):
     if not request.user.is_superuser:
@@ -180,8 +247,6 @@ def delete_rentals_photos(request, pk):
     return render(request, 'administrator/rentals/delete_rental_photos.html', context)
 
 # Delete rental
-
-
 @login_required(login_url='/accounts/login/')
 def delete_rentals(request, pk):
     if not request.user.is_superuser:
