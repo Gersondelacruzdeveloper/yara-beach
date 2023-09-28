@@ -48,6 +48,7 @@ class Excursions(models.Model):
     tour_guide = models.BooleanField(default=False)  # Boolean field for transfer
     transportation = models.BooleanField(default=False)  # Boolean field for transfer
     slugy = models.SlugField(unique=True, blank=True)
+    group =  models.BooleanField(default=False)  # Boolean field for group
 
     def save(self, *args, **kwargs):
         if not self.slugy:
