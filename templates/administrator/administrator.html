@@ -16,6 +16,7 @@
                 <h3 class="card-title text-white">{{total_users}}</h3>
             </div>
         </div>
+
         <!-- show Total rentals bookings -->
         <!-- <div class="card text-center color-rental">
             <div class="card-header">
@@ -30,6 +31,7 @@
             </div>
         </div> -->
         <!-- show Total excursions bookings -->
+
         <div class="card text-center text-white color-excursion">
             <div class="card-header">
                 <h5 class="card-title text-white">Today Excursions bookings</h5>
@@ -58,6 +60,17 @@
            </div>
    </div>
     </div>
+
+    {% if request.user.is_superuser%}
+    <h2 class="text-center mt-5">For admin only</h2>
+    <form class="review-form" action="{% url 'generate_users' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mt-3">
+            <input class="btn user_button_sm mt-3" type="texterea" name="usernames" placeholder="Add user names" required>
+            <input class="btn user_button_sm mt-3" type="submit" value="Generate users">
+        </div>
+    </form>
+    {%endif%}
 </section>
 
 <div class="bookings_container">

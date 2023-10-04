@@ -7,6 +7,12 @@ from .forms import ReferenceForm
 from decimal import Decimal
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
+from django.contrib.auth.models import User
+from datetime import timedelta, datetime
+import random
+from datetime import timedelta, datetime
+
+
 
 # import qrcode
 # Create your views here.
@@ -63,8 +69,64 @@ def excursion_details(request, slugy):
             user=request.user,
         )
         messages.success(request, 'Your review has been published.')
-
+    
     return render(request, 'excursions/excursion_details.html', context)
+
+
+# generate reviews
+def generate_reviews(request, pk):
+    if request.user.is_superuser and request.method == 'POST':
+        excursion = get_object_or_404(Excursions, id=pk)
+        reviews_content = request.POST.get('reviews_content')
+        if reviews_content is not None:
+            reviews = [item.strip() for item in reviews_content.split('*')]
+            users = User.objects.filter(last_name='generated')
+
+            for review in reviews:
+                # Set a character limit for the title
+                max_title_length = 50
+                if len(review) > max_title_length:
+                    # Find the last space character within the limit
+                    last_space_index = review.rfind(' ', 0, max_title_length)
+                    if last_space_index != -1:
+                        title = review[:last_space_index]
+                    else:
+                        # If no space character found, just truncate at the character limit
+                        title = review[:max_title_length]
+                else:
+                    title = review
+
+                content = review
+                rating = 5
+
+                # Generate a random past date within the last 30 days
+                today = datetime.now()
+                past_date = today - timedelta(days=random.randint(1, 30))
+
+                # Shuffle the list of users to select a random user who hasn't posted yet
+                unused_users = [user for user in users if not Review.objects.filter(title=title, user=user).exists()]
+                if unused_users:
+                    selected_user = random.choice(unused_users)
+                    Review.objects.create(rating=rating, title=title, content=content, excursion=excursion, user=selected_user, created=past_date)
+
+        return redirect('home')
+
+
+
+
+   # if not Review.objects.filter(title=title).exists():
+    #             password = username + username
+    #             email = f"{username}@example.com"
+    #             User.objects.create_user(username=username, password=password, email=email, last_name='generated')
+    #     messages.success(request, 'Users have been created')
+    # list_of_users = []
+    # for i in users:
+    #     list_of_users.append(i)
+    # print('list_of_users', list_of_users)
+    # if not Review.objects.filter(title=title).exists():
+    #     reviews = Review(tile=title[i],content=reviews_content[i], rating=5, excursion=excursion, user=user[i])
+    #     reviews.save()
+
 
 # Add more images to the excursion 
 def excursion_images(request, pk):

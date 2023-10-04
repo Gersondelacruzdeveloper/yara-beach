@@ -12,7 +12,6 @@
             {% csrf_token %}
             {{form.media}}
             {{form|crispy}}
-
             <!-- flass success message -->
             <div class="message mt-3">
                 {% if messages %}
@@ -23,7 +22,6 @@
                 {% endfor %}
                 {% endif %}
             </div>
-
             <!-- Bring all photos from the excursion to view in form -->
             {% for photo in excursions.photos.all %}
             <a href="{% url 'delete_excursions_photo'  photo.pk  %}">

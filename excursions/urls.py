@@ -14,4 +14,5 @@ urlpatterns = [
     path('reference/', views.create_reference, name='reference'),
     path('success/<str:reference_number>/', views.success_page, name='success_page'),
     path('cancel_excursion/<int:pk>', views.cancel_excursion, name="cancel_excursion"),
+    path('generate_reviews/<int:pk>', views.generate_reviews, name="generate_reviews"),
 ]

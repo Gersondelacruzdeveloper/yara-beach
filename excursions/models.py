@@ -8,6 +8,7 @@ from decimal import Decimal
 # New slug field
 from django.utils.text import slugify
 from django.db.models import Count
+from django.utils import timezone  # Import timezone module
 
 
 
@@ -80,7 +81,12 @@ class Review(models.Model):
         Excursions, on_delete=models.CASCADE, null=True, blank=True, related_name='reviews')
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
-    created = models.DateField(auto_now_add=True)
+    created = models.DateField(default=None, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.created:
+            self.created = timezone.now()
+        super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

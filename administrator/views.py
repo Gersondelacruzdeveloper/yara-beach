@@ -17,15 +17,15 @@ def pageVisit(request):
       return render(request, 'administrator/user_visits.html', context)
 
 # Administrator function
-
 @login_required(login_url='/accounts/login/')
 def administrator(request):
     if not request.user.is_superuser:
         messages.error(
             request, 'You do not have persmision to access that page')
         return redirect('home')
+
     total_users = User.objects.all().count()
-    # Excursions queries
+    # Excursions queriess
     all_excursion_orders = ExcursionOrder.objects.all()
     # Today bookings
     today_excursion_bookings = all_excursion_orders.filter(
@@ -52,6 +52,7 @@ def administrator(request):
     # Previous bookings
     previous_rental_bookings = all_rental_orders.filter(
         check_in__lte=datetime.date.today())
+    
 
     # rentals queries
     context = {'total_users': total_users,
@@ -68,6 +69,21 @@ def administrator(request):
 
     return render(request, 'administrator/administrator.html', context)
 
+# create fake users
+@login_required(login_url='/accounts/login/')
+def generate_users(request):
+    if request.method == "POST":
+        fake_username = request.POST.get('usernames')
+        if fake_username:
+            usernames = [item.strip() for item in fake_username.split(',')]
+            for username in usernames:
+                if not User.objects.filter(username=username).exists():
+                    password = username + username
+                    email = f"{username}@example.com"
+                    User.objects.create_user(username=username, password=password, email=email, last_name='generated')
+            messages.success(request, 'Users have been created')
+    return redirect('administrator')
+
 
 @login_required(login_url='/accounts/login/')
 def administrator_seller(request):
@@ -75,7 +91,7 @@ def administrator_seller(request):
         messages.error(
             request, 'You do not have persmision to access that page')
         return redirect('home')
-    all_sellers = Reference.objects.all()
+    all_sellers = Reference.objects.all().order_by()
     sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
     
     context = {'all_sellers': all_sellers, 'sellers_to_be_pay': sellers_to_be_pay}

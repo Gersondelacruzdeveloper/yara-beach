@@ -23,6 +23,6 @@ urlpatterns = [
     path('search_sellers/', views.search_sellers, name='search_sellers'),
     path('edit_seller/<int:pk>', views.edit_seller, name="edit_seller"),
     path('delete_seller/<int:pk>', views.delete_seller, name="delete_seller"),
-
+    path('generate_users', views.generate_users, name="generate_users"),
 
 ]
