@@ -12,7 +12,6 @@ from datetime import date, timedelta
 from django.db.models import Q
 # Create your views here.
 def pageVisit(request):
-      PageVisit.objects.all().delete()
       user_visits = PageVisit.objects.all()
       context = {'user_visits':user_visits}
       return render(request, 'administrator/user_visits.html', context)
@@ -92,6 +91,8 @@ def administrator_seller(request):
         messages.error(
             request, 'You do not have persmision to access that page')
         return redirect('home')
+    automated_seller = Reference.objects.filter(full_name='automated seller')
+    automated_seller.delete()
     all_sellers = Reference.objects.all().order_by()
     sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
     
