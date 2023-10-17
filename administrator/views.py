@@ -12,6 +12,7 @@ from datetime import date, timedelta
 from django.db.models import Q
 # Create your views here.
 def pageVisit(request):
+      PageVisit.objects.all().delete()
       user_visits = PageVisit.objects.all()
       context = {'user_visits':user_visits}
       return render(request, 'administrator/user_visits.html', context)
