@@ -169,7 +169,6 @@ class PageVisit(models.Model):
     page_url = models.CharField(max_length=255)
     visit_datetime = models.DateTimeField(auto_now_add=True)
     visit_count = models.IntegerField(default=0)  # Total visit count
-    System_info = models.TextField(max_length=600, default='')
 
     def __str__(self):
         return self.page_url

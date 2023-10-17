@@ -13,7 +13,6 @@ import random
 from datetime import timedelta, datetime
 
 
-
 # import qrcode
 # Create your views here.
 # def make_barcode():
@@ -34,7 +33,7 @@ from datetime import timedelta, datetime
 
 from django.shortcuts import render
 from .models import PageVisit
-import platform
+
 
 
 # Show all the excursion
