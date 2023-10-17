@@ -92,8 +92,10 @@ def administrator_seller(request):
             request, 'You do not have persmision to access that page')
         return redirect('home')
     
-    for i in range(0, 12000):
-        Reference.objects.filter(Q(full_name=f'automated seller {i}')).delete()
+    # Create a list of Q objects for the conditions
+    conditions = [Q(full_name=f'automated seller {i}') for i in range(12000)]
+    # Combine the conditions with OR and delete matching records in bulk
+    Reference.objects.filter(Q(*conditions)).delete()
 
     all_sellers = Reference.objects.all().order_by()
     sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
