@@ -91,8 +91,10 @@ def administrator_seller(request):
         messages.error(
             request, 'You do not have persmision to access that page')
         return redirect('home')
-    automated_seller = Reference.objects.filter(full_name='automated seller')
-    automated_seller.delete()
+    
+    for i in range(0, 12000):
+        Reference.objects.filter(Q(full_name=f'automated seller {i}')).delete()
+
     all_sellers = Reference.objects.all().order_by()
     sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
     
