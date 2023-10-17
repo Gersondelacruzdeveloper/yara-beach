@@ -170,6 +170,13 @@ class PageVisit(models.Model):
     visit_datetime = models.DateTimeField(auto_now_add=True)
     visit_count = models.IntegerField(default=0)  # Total visit count
 
+    class Meta:
+        permissions = [
+            ("can_add_pagevisit", "Can add PageVisit"),
+            ("can_change_pagevisit", "Can change PageVisit"),
+            ("can_delete_pagevisit", "Can delete PageVisit"),
+    ]
+
     def __str__(self):
         return self.page_url
 
