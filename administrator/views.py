@@ -92,8 +92,8 @@ def administrator_seller(request):
             request, 'You do not have persmision to access that page')
         return redirect('home')
     # count = []
-    for i in range(12535, -1, -1):
-        Reference.objects.filter(Q(full_name=f"automated seller {i}")).delete()
+    # for i in range(12535, -1, -1):
+    #     Reference.objects.filter(Q(full_name=f"automated seller {i}")).delete()
         # count.append(i)
     # print('count->', count)
 
