@@ -91,15 +91,14 @@ def administrator_seller(request):
         messages.error(
             request, 'You do not have persmision to access that page')
         return redirect('home')
-    
-    # Create a list of Q objects for the conditions
-    conditions = [Q(full_name=f'automated seller {i}') for i in range(12000)]
-    # Combine the conditions with OR and delete matching records in bulk
-    Reference.objects.filter(Q(*conditions)).delete()
+    # count = []
+    for i in range(12535, -1, -1):
+        Reference.objects.filter(Q(full_name=f"automated seller {i}")).delete()
+        # count.append(i)
+    # print('count->', count)
 
     all_sellers = Reference.objects.all().order_by()
     sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
-    
     context = {'all_sellers': all_sellers, 'sellers_to_be_pay': sellers_to_be_pay}
     return render(request, 'administrator/seller.html', context)
 
