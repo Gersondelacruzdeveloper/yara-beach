@@ -9,4 +9,5 @@ urlpatterns = [
     path('bookings/', views.customer_bookings, name="excursion-bookings"),
     # rental bookings
     path('bookings_rental/', views.customer_rental_bookings, name="rental-bookings"),
+    path('task/', views.task, name="task"),
 ]

@@ -13,6 +13,14 @@ import datetime
 from datetime import date, timedelta
 # Create your views here.
 
+def task(request):
+    url =''
+    if settings.DEPLOYED:
+        url = 'https://www.puntacana-explore.com/api/'
+    else:
+        url = 'http://127.0.0.1:8000/api/'
+        context = {'url':url}
+    return render(request, 'api/task.html', context)
 
 # show excursions and rentals in home page
 def home(request):
@@ -103,3 +111,4 @@ def customer_rental_bookings(request):
                'future_rental_bookings': future_rental_bookings,
                'previous_rental_bookings': previous_rental_bookings}
     return render(request, 'home/customer_rental_booking.html', context)
+

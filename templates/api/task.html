@@ -1,0 +1,31 @@
+{% extends 'excursions/excursions_base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="text-center">
+    <div id="todo_container">
+        <h4 id="h4_title" class="text-center mt-5">My To-Do List</h4>
+            <div class="table_wrapper table-responsive">
+                <table class="data_table" id="task_list_data">
+                    <tr>
+                        <th>Completed</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Created_at</th>
+                        <th>Updated_at</th>
+                        <th>Deadline</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </table>
+            </div>
+    
+    </div>
+</section>
+<script>
+    let siteUrl = '{{url}}'
+    console.log(siteUrl)
+    const userId = '{{request.user.id}}'
+</script>
+<script type="module" src="{% static 'js/api/Task.js' %}"></script>
+{% endblock content %}
