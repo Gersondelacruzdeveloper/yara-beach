@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     'administrator',
     'cart',
     'checkout',
+    'api',
+    'rest_framework',
 ]
 
 # social acount
@@ -105,7 +107,6 @@ MIDDLEWARE = [
     'excursions.middleware.PageVisitMiddleware',
     # 'allauth.account.middleware.AccountMiddleware',
 ]
-
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
