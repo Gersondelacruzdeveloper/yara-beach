@@ -1,2 +1,2 @@
-import {fetchTaskList} from './functions/fetchTaskList.JS'
+import {fetchTaskList} from './functions/fetchTaskList.js'
 fetchTaskList(userId);
