@@ -14,13 +14,19 @@ from datetime import date, timedelta
 # Create your views here.
 
 def task(request):
-    url =''
+    url = ''
+    context = {}  # Define the context as an empty dictionary
+    
     if settings.DEPLOYED:
         url = 'https://www.puntacana-explore.com/api/'
     else:
         url = 'http://127.0.0.1:8000/api/'
-        context = {'url':url}
+    
+    # Update the 'url' key in the context dictionary
+    context['url'] = url
+    
     return render(request, 'api/task.html', context)
+
 
 # show excursions and rentals in home page
 def home(request):
