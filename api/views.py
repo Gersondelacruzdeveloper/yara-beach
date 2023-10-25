@@ -13,17 +13,9 @@ from django.shortcuts import get_object_or_404
 @api_view(['GET'])
 def apiOverview(request):
 	api_urls = {
+        'Api overview': 'api',
 		'Task List for users':'api/task-list/?user_id="userId',
-		'Message':'message/',
-		'Group Mssage/':'api/group-message/',
-		'call/':'api/call/',
-		'voice-recognition':'api/voice-recognition/',
-        'Face Recognition':'api/face-recognition',
-        'Atatus':'api/status',
-        'Status Media':'api/status-media',
-        'screen Sharing session':'api/screen-sharing-session',
-        'Streamingn Session/':'api/streaming_session/',
-        'connected_users/':'api/connected_users/'
+		'Update Task':'api/task/<int:task_id>',
 		}
 	return Response(api_urls)
 
@@ -51,3 +43,35 @@ def task_list(request):
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+
+# all the models query here together
+@api_view(['POST'])
+def add_task(request):
+    if request.method == "POST":
+        data = request.data
+        serializer = TaskSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Task created successfully.", "data": serializer.data}, status=status.HTTP_201_CREATED)
+        print('data', serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+# update the task
+@api_view(['PUT'])
+def update_task(request, task_id):
+    if request.method == 'PUT':
+        try:
+            task = Task.objects.get(pk=task_id)
+        except Task.DoesNotExist:
+            return Response({'error': 'Task does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+        # You can add further checks here to ensure the task belongs to the user if needed
+
+        # Update the task with the new data
+        serializer = TaskSerializer(task, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Task updated successfully', 'data': serializer.data}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
