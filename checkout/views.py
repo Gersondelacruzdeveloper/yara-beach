@@ -19,9 +19,9 @@ from datetime import datetime as newTime
 
 
 def apply_discount_code(request):
-    discount_percentage = 20
+    discount_percentage = Decimal(settings.DISCOUNT_PERCENTAGE)
     new_total = 0.00
-    total_discount = settings.DISCOUNT_PERCENTAGE
+    total_discount = 0
     checkout_cart = request.session.get('checkout_cart', {})
     reference_applied = False
     if request.method == 'POST':
