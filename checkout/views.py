@@ -3,7 +3,6 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from cart.contexts import cart_contents, rental_cart_contents
 from django.conf import settings
-from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 import stripe
 from .models import ExcursionOrder, AccommodationOrder
@@ -22,7 +21,7 @@ from datetime import datetime as newTime
 def apply_discount_code(request):
     discount_percentage = 20
     new_total = 0.00
-    total_discount = 0
+    total_discount = settings.DISCOUNT_PERCENTAGE
     checkout_cart = request.session.get('checkout_cart', {})
     reference_applied = False
     if request.method == 'POST':
