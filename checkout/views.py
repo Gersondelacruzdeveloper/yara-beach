@@ -20,11 +20,10 @@ from datetime import datetime as newTime
 
 
 def apply_discount_code(request):
-    discount_amount = 5
-    cart = request.session.get('cart', {})
+    discount_percentage = 20
     new_total = 0.00
-    checkout_cart = request.session.get('checkout_cart', {})
     total_discount = 0
+    checkout_cart = request.session.get('checkout_cart', {})
     reference_applied = False
     if request.method == 'POST':
         discount_reference = request.POST.get('reference')
@@ -32,20 +31,23 @@ def apply_discount_code(request):
         if extracted_reference and not reference_applied:
             checkout_cart['reference'] = str(discount_reference)
             checkout_cart['discount_applied'] = True
-            reference_applied = True  
-            for id, value in cart.items():
-                total_adult = int(value['adult_qty'])
-                checkout_cart['total_adult'] = int(total_adult)
-                total_discount += total_adult * discount_amount
+            reference_applied = True 
+
             if checkout_cart['total']:
+                original_total = Decimal(checkout_cart['total'])
+                total_discount = (original_total * discount_percentage / 100)
                 new_total = Decimal(checkout_cart['total']) - Decimal(total_discount)
                 messages.success(request, 'Discount has been applied')    
         else: 
             messages.error(request, 'The discount code is invalid. Please check the spelling.')
-    checkout_cart['total_discount'] = total_discount
+    checkout_cart['total_discount'] = str(total_discount)
     request.session['cart_total'] = str(new_total)
     request.session['checkout_cart'] = checkout_cart
     return redirect('checkout')
+
+
+
+
 
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
