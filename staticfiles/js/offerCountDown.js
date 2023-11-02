@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     discountBadge.textContent = '20% OFF';
 
     const productCodeElement = document.querySelector('.product-code');
-    productCodeElement.textContent = 'Product Code: del506';
+    productCodeElement.textContent = 'Discount Code: del506';
 
     const countdownElement = document.getElementById('countdown');
 
