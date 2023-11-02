@@ -24,21 +24,23 @@
                     alt="{{item.excursion.image_name}}"></small>
               </div>
               {% if item.values.adult_qty %}
-              <div class="pt-2">Adult: {{item.values.adult_qty}}</div>
+              <div class="pt-2"><i class="fa-solid fa-user"></i> Adult: {{item.values.adult_qty}}</div>
               {% endif%}
 
               {% if item.values.child_qty %}
-              <div class="pt-2">Child: {{item.values.child_qty}}</div>
+              <div class="pt-2"> <i class="fa-solid fa-child"></i> Child: {{item.values.child_qty}}</div>
               {% endif%}
-              {% if item.values.child_qty %}
-              <div class="pt-2">Infant: {{item.values.infant_qty}}</div>
+              {% if item.values.infant_qty %}
+              <i class="fa-solid fa-baby-carriage"></i> <div class="pt-2">Infant: {{item.values.infant_qty}}</div>
               {% endif%}
               <div clas="pt-2">
-                Date: {{item.values.excursion_date}}
+                <i class="fa-solid fa-calendar-days"></i> Date: {{item.values.excursion_date}}
               </div>
               <div clas="pt-3">
-                Time: {{item.values.selected_time}}
+                <i class="fa-solid fa-clock"></i> Time: {{item.values.selected_time}}
               </div>
+              <div class="pt-2">
+                 <p><i class="fa-solid fa-circle-check" style="color:green;"></i> Free Cancellation</p>
             </div>
             <span class="text-muted">${{item.subTotal | floatformat:2}}</span>
           </li>
@@ -46,6 +48,7 @@
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (US)</span>
             <strong>${{total | floatformat:2}}</strong>
+            <p style="color: green">All taxes and fees included</p>
           </li>
 
           {% if total_discount != 0%}
@@ -75,7 +78,7 @@
         {% csrf_token %}
         <div class="col-md-6 mb-3 list-group-item">
           <label for="reference">Discount Code</label>
-          <input type="text" class="form-control" id="reference" name="reference" placeholder="Discount Code"
+          <input type="text" class="form-control" id="reference" name="reference" placeholder="Enter Promo code"
             maxlength="6" required>
         </div>
         <div class="col-md-6 mb-3 list-group-item">
@@ -88,7 +91,8 @@
 
     <!-- card pytments infomation -->
     <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">Contact info</h4>
+      <h4 class="mb-3">Provide your personal information</h4>
+      <p style="color:green;"><i class="fa-solid fa-lock"></i> Checkout is fast and secure</p>
       <form action=" " method="POST" id="payment-form">
         {% csrf_token %}
         <div class="row">
@@ -114,6 +118,7 @@
           <h4 class="mb-3">Payment</h4>
           <div id="paypal-button-container"></div>
           <button id="continue" class="btn my_hover btn-outline-secondary">Continue</button>
+          <p class="p-3"><i class="fa-solid fa-circle-check" style="color:green;"></i> Free Cancellation</p>
           <script>
             let continues = document.getElementById('continue')
             let paypalBtnId = document.getElementById('paypal-button-container')
