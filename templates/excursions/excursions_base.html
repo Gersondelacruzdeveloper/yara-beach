@@ -245,6 +245,11 @@
             target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
         </div>
 
+        <div class="product">
+            <div class="discount-badge">20% OFF</div>
+            <p class="product-code">Product Code: del506</p>
+            <div id="countdown"></div>
+        </div>
     <main>
         {% block content %}
         <!-- Main Content -->
@@ -300,6 +305,7 @@
     <!-- Local Javascript -->
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/dragable_whatsapp.js' %}"></script>
+    <script src="{% static 'js/offerCountDown.js' %}"></script>
 </body>
 
 </html>

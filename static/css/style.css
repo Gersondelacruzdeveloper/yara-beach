@@ -440,7 +440,7 @@ bottom: 10%;
     display: grid;
     grid-template-columns: auto auto;
     width: 90%;
-    margin: 10px auto;
+    margin: 2px auto;
     justify-content: space-around;
     align-items: center;
 }
@@ -466,7 +466,7 @@ bottom: 10%;
 
 .card-container {
     width: 90%;
-    margin: 10px auto;
+    margin: 2px auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: center;
@@ -1639,3 +1639,34 @@ iframe {
 
 }
 
+.product {
+    width: 300px;
+    padding: 5px;
+    border: 2px solid #ccc;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.discount-badge {
+    background-color: #FF5733;
+    color: white;
+    font-size: 24px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.product-code {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+#countdown {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 5px;
+}
