@@ -3,8 +3,10 @@ from django.shortcuts import get_object_or_404
 from excursions.models import Excursions
 from rentals.models import Rentals
 from .utils import take_date_from_str, num_of_days
-from datetime import date
 from django.http import Http404
+from datetime import date, timedelta
+
+
 # A content processor, vailable in all templates
 
 def cart_contents(request):
@@ -15,6 +17,13 @@ def cart_contents(request):
     checkout_cart = request.session.get('checkout_cart', {})
     checkout_cart['total_discount'] = str(Decimal(0.00))
     checkout_cart['discount_applied'] = False
+
+    # for selcting tomorow excursions only
+    today = date.today()
+    # Calculate tomorrow's date
+    tomorrow = today + timedelta(days=2)
+    # Format the date as a string in the desired format
+    tomorrow_str = tomorrow.strftime('%Y-%m-%d')
 
     for id, value in cart.items():
         try:
@@ -46,6 +55,7 @@ def cart_contents(request):
         'cart_items': cart_items,
         'product_count': product_count,
         'total': total,
+        'tomorrow_str':tomorrow_str
     }
     checkout_cart['total'] = str(total)
     request.session['checkout_cart'] = checkout_cart
@@ -55,7 +65,6 @@ def cart_contents(request):
 
 # A content processor for rental cart
 def rental_cart_contents(request):
-    today = date.today().strftime('%Y-%m-%d')
     rental_cart_items = []
     rental_cart_total = 0
     rental_cart = request.session.get('rental_cart', {})
@@ -79,6 +88,5 @@ def rental_cart_contents(request):
     context = {
         'rental_cart_items':rental_cart_items,
         'rental_cart_total':rental_cart_total,
-        'today':today
     }
     return context

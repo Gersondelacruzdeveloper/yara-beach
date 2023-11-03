@@ -46,8 +46,8 @@
 
                         <!-- date -->
                         <div class="form-group mt-3">
-                            <label for="date">Select Date and Travellers</label>
-                            <input type="text" class="form-control" id="date" name="excursion_date" min="{{today}}"
+                            <label for="date">Select Date and Travellers {{tomorrow_str}}</label>
+                            <input type="text" class="form-control" id="date" name="excursion_date" min="{{tomorrow_str}}"
                             value="Select Date"
                                 required>
                         </div>
@@ -221,24 +221,9 @@
     </div>
 </section>
 <script>
-$(function() {
-    // Get the current date
-    var currentDate = new Date();
-
-    // Define an array of days to disable (0 = Sunday, 1 = Monday, etc.)
-    var disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
-
-    $("#date").datepicker({
-      beforeShowDay: function(date) {
-        var day = date.getDay(); // Get the day of the week (0 - 6)
-        // Disable days specified in the array
-        return [disabledDays.indexOf(day) === -1 && date >= currentDate, ""]; // [disable/enable, CSS class]
-      },
-      showAnim: "drop" // Apply the "drop" effect permanently
-    });
-  });
+var tomorrowDate = new Date('{{tomorrow_str}}'); // Tomorrow's date
+  // Define an array of days to disable (0 = Sunday, 1 = Monday, etc.)
+var disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
 </script>
- 
-
-
+<script src="{% static 'js/calender.js' %}"></script>
 {% endblock content %}
