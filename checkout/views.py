@@ -47,7 +47,6 @@ def apply_discount_code(request):
 
 
 
-
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
     checkout_cart = request.session.get('checkout_cart', {})
@@ -81,12 +80,14 @@ def checkout(request):
 
         for item in current_cart['cart_items']:
             date_str = item['values']['excursion_date']
-            input_format = "%m/%d/%Y"  # Specify the input format
-            # Parse the input date string into a datetime object
-            date_obj = newTime.strptime(date_str, input_format)
-            # Convert the datetime object to the Django date format (YYYY-MM-DD)
-            django_date_str = date_obj.strftime("%Y-%m-%d")
-    
+            parsed_date = newTime.strptime(date_str, '%A, %d %B')
+            # Get the current year
+            current_year = newTime.now().year
+            parsed_date = parsed_date.replace(year=current_year)
+            # Format the date as "YYYY-MM-DD"
+            formatted_date = parsed_date.strftime('%Y-%m-%d')
+            print('formatted_date->', formatted_date)
+
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
                 user=user,
@@ -98,7 +99,7 @@ def checkout(request):
                 adult_qty=item['values']['adult_qty'],
                 child_qty=item['values']['child_qty'],
                 infant_qty = item['values']['infant_qty'],
-                excursion_date=django_date_str,
+                excursion_date=formatted_date,
                 customer_email=guest_email,
                 place_pickup=item['values']['place_pickup'],
                 date_created=datetime.date.today(),
