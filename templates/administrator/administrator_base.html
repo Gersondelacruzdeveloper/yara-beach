@@ -43,7 +43,11 @@
     </nav>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span id="logo"><pan id="pc" style="color: white;">Punta Cana</pan><img id="logo-img" src="{% static 'images/excursions/coconut-tree-copy.png' %}">  <span id="explore"style="color: white;"> Explore</span><span id="initial"> PCE</span></span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span id="logo">
+                    <pan id="pc" style="color: white;">Punta Cana</pan><img id="logo-img"
+                        src="{% static 'images/excursions/coconut-tree-copy.png' %}"> <span id="explore"
+                        style="color: white;"> Explore</span><span id="initial"> PCE</span>
+                </span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -53,10 +57,20 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="links-container">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'administrator' %}"> <i class="fa-solid fa-gauge-high"></i>
-                            Dashboard</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-book"></i> Dashboard
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'administrator' %}"> 
+                                <i class="fa-solid fa-book"></i> Bookings</a></li>
+                            <li><a class="dropdown-item" href="{% url 'company_bookings' %}"> <i class="fa-solid fa-table"></i> Companies Bookings</a></li>
+                        </ul>
                     </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'admin-excursion' %}"> <i class="fa-solid fa-compass"></i>
                             Excursions</a>
@@ -64,12 +78,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'seller' %}"> <i class="fa-solid fa-compass"></i>
                             Sellers</a>
-    
-                    <!-- <li class="nav-item">
+
+                        <!-- <li class="nav-item">
                         <a class="nav-link" href="{% url 'admin-rental' %}"><i class="fa-solid fa-bed"></i>
                             Rentals</a>
                     </li> -->
-                    {% if not user.is_authenticated %}
+                        {% if not user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -99,7 +113,8 @@
                             Home Page</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'pageVisit' %}"><i class="fa-solid fa-house-user"></i></i> pageVisit</a>
+                        <a class="nav-link" href="{% url 'pageVisit' %}"><i class="fa-solid fa-house-user"></i></i>
+                            pageVisit</a>
                     </li>
 
                 </ul>

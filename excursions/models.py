@@ -25,6 +25,13 @@ class DayOfWeek(models.Model):
     def __str__(self):
         return str(self.day_number)
 
+# Create your models here.
+class Excurasion_category(models.Model):
+    category = models.CharField(max_length=201, null=True, blank=True)
+
+    def __str__(self):
+        return self.category
+
 # Creates a Excursion model containing data about each individual Excursion
 class Excursions(models.Model):
     CHOICES = (
@@ -50,6 +57,9 @@ class Excursions(models.Model):
     transportation = models.BooleanField(default=False)  # Boolean field for transfer
     slugy = models.SlugField(unique=True, blank=True)
     group =  models.BooleanField(default=False)  # Boolean field for group
+    category = models.ManyToManyField('Excurasion_category', related_name='Excurasion_category', blank=True, null=True)
+    company_Price = models.DecimalField(
+        max_digits=7, decimal_places=2, null=False, blank=False, default=0)
 
     def save(self, *args, **kwargs):
         if not self.slugy:

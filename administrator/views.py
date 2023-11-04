@@ -10,6 +10,18 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from datetime import date, timedelta
 from django.db.models import Q
+
+
+# this function 
+# make sure to get everything for the companys 
+# to be ready to collect the customer and what we have to pay.
+def company_bookings(request):
+    # Excursions queriess
+    context = {}
+    return render(request, 'administrator/company_bookings.html', context)
+
+
+
 # Create your views here.
 def pageVisit(request):
       user_visits = PageVisit.objects.all()

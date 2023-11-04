@@ -24,5 +24,6 @@ urlpatterns = [
     path('edit_seller/<int:pk>', views.edit_seller, name="edit_seller"),
     path('delete_seller/<int:pk>', views.delete_seller, name="delete_seller"),
     path('generate_users', views.generate_users, name="generate_users"),
+    path('company_bookings', views.company_bookings, name="company_bookings"),
 
 ]
