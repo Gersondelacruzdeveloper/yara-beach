@@ -17,6 +17,8 @@ from django.db.models import Q
 # to be ready to collect the customer and what we have to pay.
 def company_bookings(request):
     # Excursions queriess
+    # santo_domingo = ExcursionOrder.objects.filter(category="Santo Domingo")
+    # print(santo_domingo)
     context = {}
     return render(request, 'administrator/company_bookings.html', context)
 

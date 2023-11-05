@@ -46,10 +46,11 @@ def apply_discount_code(request):
 
 
 
-
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
     checkout_cart = request.session.get('checkout_cart', {})
+    cart = request.session.get('cart', {})
+
     if 'total_discount' in checkout_cart:
         total_discount = Decimal(checkout_cart['total_discount'])
     else:
@@ -86,7 +87,6 @@ def checkout(request):
             parsed_date = parsed_date.replace(year=current_year)
             # Format the date as "YYYY-MM-DD"
             formatted_date = parsed_date.strftime('%Y-%m-%d')
-            print('formatted_date->', formatted_date)
 
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
@@ -105,6 +105,7 @@ def checkout(request):
                 date_created=datetime.date.today(),
                 reference=reference,
                 time_selected = item['values']['selected_time'],
+                excursion_id = int(item['excursion'].id),
             )
         # send an email with all the info to the user
         send_booking_email(request, guest_email)

@@ -57,6 +57,7 @@ def add_to_cart(request, item_id):
 
         if 'price' in cart[item_id].keys():
             cart[item_id]['price'] = price
+
         messages.success(
             request, 'You already added this item so we just updated')
     else:
