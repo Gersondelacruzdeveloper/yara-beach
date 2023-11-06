@@ -1,6 +1,6 @@
 {% extends 'administrator/administrator_base.html' %}
-{% load static %}
 
+{% load static %}
 {% block content %}
 
 <!-- header and card section -->
@@ -10,7 +10,9 @@
 <div class="bookings_container">
     <!--------------------------------------------------------- excursions sections -->
     <div id="excursion_booking_section">
-        <!-- today excursions bookings admin -->
+        <!--------------------------------------------------------------------------------------------- Santo domingo bookings -->
+
+        {% if Santo_domingo_bookings %}
         <h4 class="text-center mt-5">Santo Domingo Tour<span
                 class="badge bg-site-color"></span></h4>
         <div class="table_wrapper table-responsive">
@@ -29,24 +31,256 @@
                     <th>Total</th>
                 </tr>
 
-                <!-- {% for order in today_excursion_bookings %}
+                {% for order in Santo_domingo_bookings %}
                 <tr>
                     <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
                     <td>{{order.excursion_name |slice:":25"|title}}</td>
                     <td>{{order.excursion_date}}</td>
+                    <td>{{order.place_pickup}}</td>
                     <td>{{order.adult_qty}}</td>
                     <td>{{order.child_qty}}</td>
-                    <td>{{order.place_pickup}}</td>
                     <td>{{order.order_number}}</td>
                     <td>{{order.cellphone_number}}</td>
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
                 </tr>
-                {% endfor %} -->
+                {% endfor %}
             </table>
         </div>
+        {% endif%}
+              <!--------------------------------------------------------------------------------------------- Saona bookings -->
+             {% if saona_bookings %}
+            <h4 class="text-center mt-5">Saona tour<span
+                    class="badge bg-site-color"></span></h4>
+            <div class="table_wrapper table-responsive">
+                <table class="data_table">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Titulo</th>
+                        <th>Dia de Excursion</th>
+                        <th>Alojamiento en</th>
+                        <th>Cantidad Adulto</th>
+                        <th>Cantidad Niños</th>
+                        <th>Numero Reserva</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Nombre completo</th>
+                        <th>Total</th>
+                    </tr>
+    
+                    {% for order in saona_bookings %}
+                    <tr>
+                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                        <td>{{order.excursion_name |slice:":25"|title}}</td>
+                        <td>{{order.excursion_date}}</td>
+                        <td>{{order.place_pickup}}</td>
+                        <td>{{order.adult_qty}}</td>
+                        <td>{{order.child_qty}}</td>
+                        <td>{{order.order_number}}</td>
+                        <td>{{order.cellphone_number}}</td>
+                        <td>{{order.customer_email}}</td>
+                        <td>{{order.full_name}}</td>
+                        <td>£{{order.subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>    
+            {% endif %}
+        <!--------------------------------------------------------------------------------------------- samana bookings -->
 
+            {% if samana_bookings %}
+            <h4 class="text-center mt-5">Samana tour<span
+                    class="badge bg-site-color"></span></h4>
+            <div class="table_wrapper table-responsive">
+                <table class="data_table">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Titulo</th>
+                        <th>Dia de Excursion</th>
+                        <th>Alojamiento en</th>
+                        <th>Cantidad Adulto</th>
+                        <th>Cantidad Niños</th>
+                        <th>Numero Reserva</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Nombre completo</th>
+                        <th>Total</th>
+                    </tr>
+    
+                    {% for order in samana_bookings %}
+                    <tr>
+                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                        <td>{{order.excursion_name |slice:":25"|title}}</td>
+                        <td>{{order.excursion_date}}</td>
+                        <td>{{order.place_pickup}}</td>
+                        <td>{{order.adult_qty}}</td>
+                        <td>{{order.child_qty}}</td>
+                        <td>{{order.order_number}}</td>
+                        <td>{{order.cellphone_number}}</td>
+                        <td>{{order.customer_email}}</td>
+                        <td>{{order.full_name}}</td>
+                        <td>£{{order.subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>    
+            {% endif %}
+            <!--------------------------------------------------------------------------------------------- Haitises bookings -->
+
+            {% if haitises_bookings %}
+            <h4 class="text-center mt-5">Haitises tour<span
+                    class="badge bg-site-color"></span></h4>
+            <div class="table_wrapper table-responsive">
+                <table class="data_table">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Titulo</th>
+                        <th>Dia de Excursion</th>
+                        <th>Alojamiento en</th>
+                        <th>Cantidad Adulto</th>
+                        <th>Cantidad Niños</th>
+                        <th>Numero Reserva</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Nombre completo</th>
+                        <th>Total</th>
+                    </tr>
+    
+                    {% for order in haitises_bookings %}
+                    <tr>
+                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                        <td>{{order.excursion_name |slice:":25"|title}}</td>
+                        <td>{{order.excursion_date}}</td>
+                        <td>{{order.place_pickup}}</td>
+                        <td>{{order.adult_qty}}</td>
+                        <td>{{order.child_qty}}</td>
+                        <td>{{order.order_number}}</td>
+                        <td>{{order.cellphone_number}}</td>
+                        <td>{{order.customer_email}}</td>
+                        <td>{{order.full_name}}</td>
+                        <td>£{{order.subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>    
+            {% endif %}
+            <!--------------------------------------------------------------------------------------------- Horse bookings -->
+
+            {% if horse_bookings %}
+            <h4 class="text-center mt-5">Haitises tour<span
+                    class="badge bg-site-color"></span></h4>
+            <div class="table_wrapper table-responsive">
+                <table class="data_table">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Titulo</th>
+                        <th>Dia de Excursion</th>
+                        <th>Alojamiento en</th>
+                        <th>Cantidad Adulto</th>
+                        <th>Cantidad Niños</th>
+                        <th>Numero Reserva</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Nombre completo</th>
+                        <th>Total</th>
+                    </tr>
+    
+                    {% for order in horse_bookings %}
+                    <tr>
+                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                        <td>{{order.excursion_name |slice:":25"|title}}</td>
+                        <td>{{order.excursion_date}}</td>
+                        <td>{{order.place_pickup}}</td>
+                        <td>{{order.adult_qty}}</td>
+                        <td>{{order.child_qty}}</td>
+                        <td>{{order.order_number}}</td>
+                        <td>{{order.cellphone_number}}</td>
+                        <td>{{order.customer_email}}</td>
+                        <td>{{order.full_name}}</td>
+                        <td>£{{order.subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>    
+            {% endif %}
+
+            <!--------------------------------------------------------------------------------------------- catalina bookings -->
+            {% if catalina_bookings %}
+            <h4 class="text-center mt-5">Haitises tour<span
+                    class="badge bg-site-color"></span></h4>
+            <div class="table_wrapper table-responsive">
+                <table class="data_table">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Titulo</th>
+                        <th>Dia de Excursion</th>
+                        <th>Alojamiento en</th>
+                        <th>Cantidad Adulto</th>
+                        <th>Cantidad Niños</th>
+                        <th>Numero Reserva</th>
+                        <th>Celular</th>
+                        <th>Correo</th>
+                        <th>Nombre completo</th>
+                        <th>Total</th>
+                    </tr>
+    
+                    {% for order in catalina_bookings %}
+                    <tr>
+                        <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                        <td>{{order.excursion_name |slice:":25"|title}}</td>
+                        <td>{{order.excursion_date}}</td>
+                        <td>{{order.place_pickup}}</td>
+                        <td>{{order.adult_qty}}</td>
+                        <td>{{order.child_qty}}</td>
+                        <td>{{order.order_number}}</td>
+                        <td>{{order.cellphone_number}}</td>
+                        <td>{{order.customer_email}}</td>
+                        <td>{{order.full_name}}</td>
+                        <td>£{{order.subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>    
+            {% endif %}
+        <!--------------------------------------------------------------------------------------------- buggie bookings -->
+        {% if buggie_bookings %}
+        <h4 class="text-center mt-5">Haitises tour<span
+                class="badge bg-site-color"></span></h4>
+        <div class="table_wrapper table-responsive">
+            <table class="data_table">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Titulo</th>
+                    <th>Dia de Excursion</th>
+                    <th>Alojamiento en</th>
+                    <th>Cantidad Adulto</th>
+                    <th>Cantidad Niños</th>
+                    <th>Numero Reserva</th>
+                    <th>Celular</th>
+                    <th>Correo</th>
+                    <th>Nombre completo</th>
+                    <th>Total</th>
+                </tr>
+
+                {% for order in buggie_bookings %}
+                <tr>
+                    <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
+                    <td>{{order.excursion_name |slice:":25"|title}}</td>
+                    <td>{{order.excursion_date}}</td>
+                    <td>{{order.place_pickup}}</td>
+                    <td>{{order.adult_qty}}</td>
+                    <td>{{order.child_qty}}</td>
+                    <td>{{order.order_number}}</td>
+                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.customer_email}}</td>
+                    <td>{{order.full_name}}</td>
+                    <td>£{{order.subtotal}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>    
+        {% endif %}
     </div>
     <hr>
 </div>

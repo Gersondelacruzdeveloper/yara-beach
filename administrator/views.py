@@ -10,18 +10,31 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from datetime import date, timedelta
 from django.db.models import Q
+from .utils import filter_category
 
 
 # this function 
 # make sure to get everything for the companys 
 # to be ready to collect the customer and what we have to pay.
 def company_bookings(request):
-    # Excursions queriess
-    # santo_domingo = ExcursionOrder.objects.filter(category="Santo Domingo")
-    # print(santo_domingo)
-    context = {}
-    return render(request, 'administrator/company_bookings.html', context)
+   Santo_domingo_bookings =  filter_category('Santo Domingo')
+   saona_bookings =  filter_category('saona')
+   samana_bookings =  filter_category('samana')
+   haitises_bookings =  filter_category('haitises')
+   horse_bookings =  filter_category('horse')
+   catalina_bookings =  filter_category('catalina')
+   buggie_bookings =  filter_category('buggie')
 
+   context = {
+       'Santo_domingo_bookings': Santo_domingo_bookings,
+       'saona_bookings': saona_bookings,
+       'samana_bookings':samana_bookings,
+       'haitises_bookings':haitises_bookings,
+       'horse_bookings':horse_bookings,
+       'catalina_bookings':catalina_bookings,
+       'buggie_bookings':buggie_bookings,
+       }
+   return render(request, 'administrator/company_bookings.html', context)
 
 
 # Create your views here.
@@ -396,3 +409,18 @@ def delete_excursions_photos(request, pk):
         return redirect('edit_excursion', pk=photo.excursion.id)
     context = {'photo': photo}
     return render(request, 'administrator/excursions/delete_excursion_photos.html', context)
+
+
+
+#    Santo_domingo = Excursions.objects.filter(category__category='Santo Domingo')
+
+#     Santo_domingo_orders = []
+#     # look through the orders from santo domingo
+#     for santo_domingo_excursion in Santo_domingo:
+#          # Filter ExcursionOrder instances with excursion_id matching Santo Domingo IDs
+#         excursion_orders = ExcursionOrder.objects.get(excursion_id=santo_domingo_excursion.id)
+#         Santo_domingo_orders.append(excursion_orders)
+
+#     for i in Santo_domingo_orders:
+#             for j in Santo_domingo_orders[i]:
+#                 print(j)
