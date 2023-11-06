@@ -44,6 +44,13 @@
 </head>
 
 <body>
+        <!-- discount code -->
+        <div class="product">
+            <span class="discount-badge">20% OFF</span>
+            <span class="product-code">Discount Code: del506</span>
+            <span id="countdown"></span>
+        </div>
+
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/excursions/Logo.png' %}"
@@ -244,12 +251,6 @@
     <div class="whatsap-container draggable" id="draggableElement">
         <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone=447541147634"
             target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
-        </div>
-    <!-- discount code -->
-        <div class="product">
-            <div class="discount-badge">20% OFF</div>
-            <p class="product-code">Discount Code: del506</p>
-            <div id="countdown"></div>
         </div>
     <main>
         {% block content %}
