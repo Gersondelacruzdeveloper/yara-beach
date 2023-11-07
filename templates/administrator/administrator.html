@@ -17,21 +17,7 @@
             </div>
         </div>
 
-        <!-- show Total rentals bookings -->
-        <!-- <div class="card text-center color-rental">
-            <div class="card-header">
-                <h5 class="card-title text-white">Today Rental bookings</h5>
-            </div>
-            <div class="card-body">
-                {% if today_rental_bookings %}
-                <h3 class="card-title text-white">{{today_rental_bookings.count}}</h3>
-                {% else %}
-                <h3 class="card-title text-white">0</h3>
-                {% endif %}
-            </div>
-        </div> -->
-        <!-- show Total excursions bookings -->
-
+        <!------------------------------------------------------------------------------ today bookings -->
         <div class="card text-center text-white color-excursion">
             <div class="card-header">
                 <h5 class="card-title text-white">Today Excursions bookings</h5>
@@ -74,7 +60,8 @@
 </section>
 
 <div class="bookings_container">
-    <!--------------------------------------------------------- excursions sections -->
+        <!------------------------------------------------------------------------------ today bookings -->
+    {% if today_excursion_bookings %}
     <div id="excursion_booking_section">
         <!-- today excursions bookings admin -->
         <h4 class="text-center mt-5">Today Excursion Bookings <span
@@ -112,8 +99,9 @@
                 {% endfor %}
             </table>
         </div>
-
-        <!-- tomorow excursions bookings -->
+        {% endif %}
+        <!------------------------------------------------------------------------------ Tomorow bookings -->
+        {% if tomorow_excursion_bookings %}
         <h4 class="text-center mt-5">Tomorow Excursion Bookings <span
                 class="badge bg-site-color">{{tomorow_excursion_bookings.count}}</span></h4>
         <div class="table_wrapper table-responsive">
@@ -154,9 +142,10 @@
                 {% endfor %}
             </table>
         </div>
+        {% endif %}
 
-
-        <!-- Future excursions bookings -->
+        <!------------------------------------------------------------------------------ Future bookings -->
+        {% if future_excursion_bookings %}
         <h4 class="text-center mt-5">Future Excursion Bookings <span
                 class="badge bg-site-color">{{future_excursion_bookings.count}}</span></h4>
         <div class="table_wrapper table-responsive">
@@ -192,9 +181,10 @@
                 {% endfor %}
             </table>
         </div>
+        {% endif %}
 
-
-        <!-- Previous excursions bookings -->
+        <!------------------------------------------------------------------------------ past bookings -->
+        {% if previous_excursion_bookings %}
         <h4 class="text-center mt-5">Previous Excursion Bookings <span
                 class="badge bg-site-color">{{previous_excursion_bookings.count}}</span></h4>
         <div class="table_wrapper table-responsive">
@@ -233,6 +223,7 @@
 
     </div>
     <hr>
+    {% endif %}
     <!--------------------------------------------------------- rentals sections -->
     <!-- today excursions bookings admin -->
     <!-- <div id="rental_booking_section">
