@@ -1669,3 +1669,18 @@ iframe {
     font-weight: bold;
     margin-top: 5px;
 }
+
+/* for the card plastic */
+.dicount_on_card_badge{
+    position: absolute;
+    left: 400px;
+    top:30px;
+    width:150px;
+}
+
+.members_only_text{
+color: white;
+position: absolute;
+top:150px;
+left:450px;
+}
