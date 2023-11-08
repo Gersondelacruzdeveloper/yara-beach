@@ -60,6 +60,7 @@ class Excursions(models.Model):
     category = models.ManyToManyField('Excurasion_category', related_name='Excurasion_category', blank=True, null=True)
     company_Price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
+    video_id = models.TextField(null=True, blank=True, max_length=201, default='')
 
     def save(self, *args, **kwargs):
         if not self.slugy:

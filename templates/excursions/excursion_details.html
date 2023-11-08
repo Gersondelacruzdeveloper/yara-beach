@@ -36,11 +36,14 @@
             </div>
             <!-- item details aside -->
             <div class="item-detail card">
+                {% if excursions.video_id %}
+                <iframe width="auto" height="300px" src="https://www.youtube.com/embed/{{excursions.video_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                {% endif%}
                 <form class="form" action="{% url 'add_to_cart' excursions.id %}" method="POST">
                     {% csrf_token %}
                     <!-- price -->
                     <div class="form-row">
-                        <div class="detail-price"> <strong>Price:</strong> ${{excursions.Price}}</div>
+                        <div class="detail-price pt-3"> <strong>Price:</strong> ${{excursions.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
 
