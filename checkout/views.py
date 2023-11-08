@@ -49,7 +49,7 @@ def apply_discount_code(request):
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
     checkout_cart = request.session.get('checkout_cart', {})
-    print('checkout_cart--->>>', checkout_cart)
+    # if the checkout total is 0 then go home
     if checkout_cart['total'] == '0':
         return redirect('home')
     

@@ -40,7 +40,7 @@
                 <td>{{excursion.status}}</td>
                 <td><img src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}" style="width:75px"></td>
                 <td>{{excursion.date_created}}</td>
-                <td><a href="{% url 'excursion_detail' excursion.pk %}" target="_blank">{{excursion.title|slice:":30"|title}}</td></a>
+                <td><a href="{% url 'excursion_detail' excursion.slugy %}" target="_blank">{{excursion.title|slice:":30"|title}}</td></a>
                 <td>£{{excursion.Price}}</td>
                 <td><a href="{% url 'edit_excursion'  excursion.pk  %}"><button class="btn btn-sm btn-primary"><i class="far fa-edit">
                                 Edit</i></button></a> </td>
