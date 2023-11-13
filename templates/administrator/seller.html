@@ -62,7 +62,10 @@
                     <td>{{seller.account_number}}</td>
                     <td>{{seller.cedula}}</td>
                     <td>{{seller.bank_acount_type}}</td>
-                    <td>{{seller.phone_number}}</td>
+                    <td>{{seller.phone_number}}
+                        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{seller.phone_number}}"
+                        target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+                    </td>
                     <td>{{seller.email}}</td>
                     <td>${{seller.due_to_pay_amount}}</td>
                     <td><a href="{% url 'paid_seller' seller.pk %}"><button class="btn btn-sm btn-danger"><i
@@ -131,7 +134,10 @@
                     <td>{{seller.account_number}}</td>
                     <td>{{seller.cedula}}</td>
                     <td>{{seller.bank_acount_type}}</td>
-                    <td>{{seller.phone_number}}</td>
+                    <td>{{seller.phone_number}}
+                        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{seller.phone_number}}"
+                        target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+                    </td>
                     <td>{{seller.email}}</td>
                     <td><a href="{% url 'edit_seller'  seller.pk  %}"><button class="btn btn-sm btn-primary"><i
                                     class="far fa-edit">
