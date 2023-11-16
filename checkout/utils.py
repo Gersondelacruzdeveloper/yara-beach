@@ -38,7 +38,7 @@ def send_booking_email(request, guest_email=None):
         'From Punta Cana Explore',
         template,
         settings.EMAIL_HOST_USER,
-        [guest_email, 'puntacanaexploregt@gmail.com']
+        [guest_email, 'puntacanadiscovery@gmail.com', 'qapuntacana@gmail.com']
     )
     email.attach_alternative(template, "text/html")
     email.fail_silently = False
