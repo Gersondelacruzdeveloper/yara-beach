@@ -32,12 +32,16 @@ body {
     background-color: var(--culture);
     min-height: 400px;
     margin-bottom: 150px;
-    font-family: var(--font)
+    font-family: var(--font);
+    font-family:'sans-serif';
 }
 
 a{
     text-decoration: none; /* Remove underline from anchor tags */
     color: var(--black);
+}
+.icon i{
+    color:white;
 }
 /*------------------------------------------------------------------------ dispaly 
 
@@ -46,6 +50,9 @@ a{
 .display_on_phone{
     display: none;
 }
+
+
+
 
 
 /* -----------------------------other */
@@ -127,7 +134,37 @@ font-size: 14px;
     grid-template-columns: auto auto auto auto;
 }
 
+/* hover for links  */
+.underline-btn {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+  }
 
+  .underline-btn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--Yellow); /* Set the line color */
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .underline-btn:hover {
+    cursor: pointer;
+  }
+
+  .underline-btn:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 /* --------------------------------------------------------------------  404 and 500 error page*/
 #error-404-container {
     width: 50%;
@@ -383,7 +420,7 @@ bottom: 10%;
     justify-content: space-between;
 }
 
- .button {
+ /* .button {
     padding: 10px 20px;
     background-color: #fbb900;
     color: var(--black);
@@ -396,7 +433,7 @@ bottom: 10%;
 .button:hover {
     transform: scale(1.1);
     color:var(--black)
-}
+} */
 
 /* Slides */
 .home-banner {
@@ -706,6 +743,7 @@ bottom: 10%;
 
 .stripe-style-input::placeholder {
     color: #aab7c4;
+
 }
 
 
@@ -1290,6 +1328,267 @@ textarea::placeholder {
     background-color: #45a049;
   }
 
+
+
+.product {
+    padding: 5px;
+    border: 2px solid #ccc;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.discount-badge {
+    background-color: #FF5733;
+    color: white;
+    font-size: 24px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.product-code {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+#countdown {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* for the card plastic */
+.dicount_on_card_badge{
+    position: absolute;
+    left: 400px;
+    top:30px;
+    width:150px;
+}
+
+.members_only_text{
+color: white;
+position: absolute;
+top:150px;
+left:450px;
+}
+/* --------------------------------------------------------------main site look */
+.group-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid var(--Yellow);
+    color: var(--Yellow);
+    background-color: #ffffff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 5px; /* Add some margin between buttons */
+  }
+
+  .group-button:hover {
+    background-color: var(--Yellow);
+    color: #ffffff;
+  }
+#hero-section {
+    position: relative;
+    color: #fff;
+}
+
+#hero-image {
+    width: 100%;
+    height: 500px;
+    opacity: 0.5;
+    background-color: #5092cb;
+}
+
+#title_hero{
+    position: absolute;
+    width:60%;
+    top: 100px;
+    left: 50px;
+    font-size: 3em;
+    font-weight: bolder;
+}
+
+#subtitle {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    font-weight: bolder;
+}
+
+
+#search-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width:450px;
+    border-radius: 44px;
+    height:56px;
+}
+
+#search-input {
+    width: 70%;
+    padding: 10px;
+    font-size: 1em;
+    border:none;
+    outline: none; /* Remove focus border */
+    line-height: 1.375rem;
+    font-weight: 500;
+}
+#search-input::placeholder{
+    font-weight: 500px;
+    color: #1a2b49;
+    font-size: 20px;
+
+}
+
+
+#search-button {
+    width: 20%;
+    padding: 10px;
+    background-color: #FBB900;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    border: none;
+}
+#search-button:hover{
+    background-color: #FEDF00;
+
+}
+
+#loop-icon {
+    width: 10%;
+    margin-left: 10px;
+}
+
+#logo-site {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    width: 200px; /* Adjust the size as needed */
+    z-index: 5;
+}
+
+#other-icons {
+    position: absolute;
+    top: 10px;
+    right: 2%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 30px;
+}
+
+.icon {
+    font-size: 20px;;
+}
+/* dropdown */
+.site-color{
+color:var(--white);
+background-color: var(--Yellow);
+}
+.site-color:hover{
+    background-color: var(--Yellow_lighter);
+}
+
+.button-container {
+    text-align: center;
+}
+
+/* button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+} */
+
+.shoping-cart-container{
+    position: relative;
+    padding: 0.25rem 1rem;
+    /* the profile has the same and it comes from bootstrap */
+}
+
+.cart-counter{
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background-color: #FBB900;
+    position: absolute;
+    top:0;
+    right: 10px;
+    text-align: center;
+}
+
+.d-of-discovery{
+    background-color: #FBB900;
+    border-radius: 50%;
+    padding: 10px;
+    width: 10px;
+    height: 10px;
+}
+.d{
+    position: absolute;
+    top:-2px;
+    left:5px;
+}
+.subtitle-span{
+    position: absolute;
+    left:26px;
+    top:-2px;
+    width:700px
+}
+.square-btn-sortby{
+    position: absolute;
+    bottom: 0px;
+    background-color: #f2f2f2;
+    width:150px;
+    height:60px;
+    left: 300px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+}
+.square-btn{
+    position: absolute;
+    bottom: 0px;
+    background-color: #f2f2f2;
+    width:150px;
+    height:60px;
+    left: 50px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+}
+.main-link{
+    position: absolute;
+    color: #333;
+    font-weight: bolder;
+    margin-top: 10px;
+    left:30px;
+}
+
+.overlay {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value (0.5) for the desired transparency */
+pointer-events: none; /* Allows clicks to go through the overlay to the image */
+}
+
 /* -------------------------------------------------------------------- Media queries */
 
 /* large devices (tablet, etc 1492px and down) */
@@ -1301,6 +1600,9 @@ textarea::placeholder {
 
     .overview {
         width: 70%;
+    }
+    #subtitle {
+        top: 65%;
     }
 
 }
@@ -1365,6 +1667,7 @@ textarea::placeholder {
         #search_input{
         width: 95%;
         }
+        Baileyedwards1*
 
     .display_on_phone{
         display: block;
@@ -1436,7 +1739,22 @@ iframe {
     z-index: 0 !important;
   }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 1069px) {
+    /* main look site */
+    #title_hero{
+        width:60%;
+        top: 35%;
+        font-size: 30px;
+
+    }
+    #subtitle {
+        top: 65%;
+    }
+    #search-container {
+        top: 20%;
+    }
+
+    /* footer */
     #footer {
         height: 100px;
         z-index: 10;
@@ -1508,9 +1826,44 @@ iframe {
 }
 
 
+@media only screen and (max-width: 783px) {
+    #title_hero{
+        width:80%;
+        top: 35%;
+        font-size: 30px;
 
+    }
+    #subtitle {
+        top: 65%;
+    }
+    .subtitle-span{
+        width:400px
+    }
+    #search-container {
+        width:450px;
+        border-radius: 44px;
+        height:56px;
+    }
+
+    
+}
 /* medium devices (631px and down) */
 @media only screen and (max-width: 631px) {
+    #title_hero{
+        font-size: 25px;
+    }
+    .subtitle-span{
+        width:300px
+    }
+    #search-container {
+        width:400px;
+    }
+    #other-icons {
+        /* right: -5%; */
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 30px;
+    }
     .subcontainer span{
         font-size: 30px;
     }
@@ -1560,6 +1913,14 @@ iframe {
 
 /* Small devices (phones, 503px and down) */
 @media only screen and (max-width: 503px) {
+    #other-icons {
+        /* right: -6%; */
+        gap: 15px;
+    }
+    #search-container {
+        width:390px;
+    }
+    
     .subcontainer p,h3{
         font-size: 15px;
     }
@@ -1613,6 +1974,10 @@ iframe {
 
 /* very Small devices (phones, 373px and down) */
 @media only screen and (max-width: 373px) {
+
+    #search-container {
+        width:100%;
+    }
     .contact_form {
         width: 100%;
         padding: 10px;
@@ -1637,50 +2002,4 @@ iframe {
     }
 
 
-}
-
-.product {
-    padding: 5px;
-    border: 2px solid #ccc;
-    text-align: center;
-    margin: auto;
-    position: relative;
-    border-radius: 10px;
-    background-color: #f4f4f4;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.discount-badge {
-    background-color: #FF5733;
-    color: white;
-    font-size: 24px;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.product-code {
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-#countdown {
-    font-size: 24px;
-    color: #333;
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-/* for the card plastic */
-.dicount_on_card_badge{
-    position: absolute;
-    left: 400px;
-    top:30px;
-    width:150px;
-}
-
-.members_only_text{
-color: white;
-position: absolute;
-top:150px;
-left:450px;
 }
