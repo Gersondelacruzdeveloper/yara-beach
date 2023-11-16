@@ -7,6 +7,24 @@
 
 
 {% block content %}
+<!-- header for adding to cart -->
+{% if cart_items%}
+<hr>
+<div class="header-pop-up-cart">
+    <div class="cart-pop-up-title"><i class="fa-solid fa-circle-check" style="color:green"></i> Added to cart </div>
+    <img class="cart-pop-up-img" src="{{last_item.excursion.main_image.url}}" alt="{{excursion.image_name}}" style="width:100px">
+    <span class="x">{{last_item.excursion.title}}</span>
+    <p class="cart-excursion_date-pop-up">{{last_item.values.excursion_date}}</p>
+    <div id="time-container">
+        <p class="p-pop-cart">We’ll hold your spot for <span id="timer"> </span> minutes</p>
+    </div>
+    <div class="cart-pop-up-btn">
+        <a href="{% url 'excursion-cart' %}" class="group-button"> Go to Cart</a>
+        <a href="{% url 'checkout' %}"  class="group-button"> Checkout</a>
+    </div>
+    <hr>
+</div>
+{% endif %}
 <section>
     <div class="detail-container">
         <h1 class="detail-title">{{excursions.title}}</h1>
