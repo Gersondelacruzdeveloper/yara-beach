@@ -66,10 +66,6 @@ def add_to_cart(request, item_id):
                          'child_qty': child_qty, 'infant_qty':infant_qty,'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time}
         
 
-    cart_url = reverse('excursion-cart')  # Replace 'cart' with the name of your cart view
-    # Create the success message with a link
-    success_message = f'Item added to cart Successfully! <a href="{cart_url}"><i class="fa-solid fa-cart-shopping site-default-color"></i> Go to cart</a>'
-    messages.success(request, success_message)
     request.session['cart'] = cart
     return redirect(redirect_url)
 

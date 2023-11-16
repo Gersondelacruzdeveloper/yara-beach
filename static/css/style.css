@@ -582,6 +582,49 @@ bottom: 10%;
 
 
 /* --------------------------------------------------------------------- Cart */
+/* -------------------------------------------------pop up cart timer header */
+
+.header-pop-up-cart{
+    position: relative;
+    width:100%;
+}
+.cart-pop-up-title{
+font-weight: bolder;
+font-size: 1.5rem;
+line-height: 1.875rem;
+padding: 10px;
+margin-left: 100px;
+}
+.cart-pop-up-img{
+    margin-left: 110px;
+    margin-top: 10px;
+}
+.item-title-pop-up{
+    margin-left: 10px;
+}
+.cart-excursion_date-pop-up{
+    margin-left: 220px;
+    margin-top: -20px;
+}
+
+.minute-pop-up{
+    position: absolute;
+    right: -10px;
+}
+#time-container{
+    position: absolute;
+    right:110px;
+    top:10px;
+}
+
+.p-pop-cart{
+    font-weight: bolder;
+}
+.cart-pop-up-btn{
+    position: absolute;
+    right:120px;
+    top:50px;
+}
 .cart {
     position: relative;
 }
@@ -778,7 +821,6 @@ bottom: 10%;
     font-size: 1.25rem;
     font-weight: 600;
     text-align: center;
-    margin-top: 50px;
 }
 
 .main-image img {
@@ -1780,8 +1822,6 @@ iframe {
     .detail-title {
         font-size: 1rem;
         padding: 20px;
-        width: 80%;
-        margin: auto;
     }
 
     .thumbnails {
@@ -1827,6 +1867,43 @@ iframe {
 
 
 @media only screen and (max-width: 783px) {
+
+    /* -------------------------------------------------------pop up timers mobile*/
+    .cart-pop-up-img{
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    .header-pop-up-cart{
+        text-align: center;
+        position: static;
+    }
+    .cart-pop-up-title{
+    margin-left:0;
+    }
+    .item-title-pop-up{
+        margin-left: 10px;
+    }
+    .cart-excursion_date-pop-up{
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+    
+    .minute-pop-up{
+        position: static;
+    }
+    #time-container{
+        position: static;
+    }
+    
+    .p-pop-cart{
+        font-weight: bolder;
+    }
+    .cart-pop-up-btn{
+        position: static;
+        padding: 0px;
+    }
+
+    /* -----------------------------------------------------main mobile search  */
     #title_hero{
         width:80%;
         top: 35%;
@@ -1942,17 +2019,11 @@ iframe {
     }
 
     .main-image img {
-        width: 300px;
         height: 300px;
     }
 
     .photos {
         width: 300px;
-    }
-
-    .detail-title {
-        width: 80%;
-        margin: auto;
     }
 
     .thumbnails {

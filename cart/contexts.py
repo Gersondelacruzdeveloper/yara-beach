@@ -24,6 +24,7 @@ def cart_contents(request):
     tomorrow = today + timedelta(days=2)
     # Format the date as a string in the desired format
     tomorrow_str = tomorrow.strftime('%Y-%m-%d')
+     
 
     for id, value in cart.items():
         try:
@@ -50,12 +51,13 @@ def cart_contents(request):
         except Excursions.DoesNotExist:
             # Handle the case where the Excursions object does not exist
             print(f"Excursions with id {id} does not exist.")
-
+ 
     context = {
         'cart_items': cart_items,
         'product_count': product_count,
         'total': total,
-        'tomorrow_str':tomorrow_str
+        'tomorrow_str':tomorrow_str,
+        'last_item': cart_items[-1] if cart_items else None
     }
     checkout_cart['total'] = str(total)
     request.session['checkout_cart'] = checkout_cart
