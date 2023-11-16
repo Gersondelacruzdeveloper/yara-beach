@@ -20,6 +20,8 @@
     line-height: 200px;
     cursor: grab;
     z-index: 10;
+    top:300px;
+    right:0;
 }
 
 * {
@@ -50,8 +52,6 @@ a{
 .display_on_phone{
     display: none;
 }
-
-
 
 
 
@@ -1056,13 +1056,14 @@ ul.socialaccount_providers {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 50px;
     background-color: var(--Yellow);
     background-size: cover;
     box-shadow: var(--shadow);
     color: var(--black);
     display: grid;
-    grid-template-columns:  auto;
+    grid-template-columns:  auto auto;
+    padding: 10px;
 }
 
 .footer-copyright {
@@ -1758,11 +1759,6 @@ iframe {
         top: 20%;
     }
 
-    /* footer */
-    #footer {
-        height: 100px;
-        z-index: 10;
-    }
     /* --detail page */
     .main-image img {
         width: 400px;
