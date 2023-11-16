@@ -1,12 +1,12 @@
 /*-------------------------------------------------------------------- Variables */
-
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 :root {
     --black: #212529;
     --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     --Yellow: #FBB900;
     --Yellow_lighter: #FEDF00;
     --gun-metal: #212a30;
-    --font: sans-serif, "Montserrat", Georgia;
+    --font: "Inter", Sans-serif;
     --culture: #f2f2f2;
     --white:white;
 }
@@ -35,7 +35,6 @@ body {
     min-height: 400px;
     margin-bottom: 150px;
     font-family: var(--font);
-    font-family:'sans-serif';
 }
 
 a{
@@ -331,7 +330,7 @@ bottom: 10%;
 }
 
 .data_table td {
-    font-family: sans-serif;
+    font-family: var(--font);
     padding: 10px;
     border: 1px solid #ddd;
     padding: 8px;
@@ -349,7 +348,7 @@ bottom: 10%;
     width: 90%;
     margin: auto;
     padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font);
     border-collapse: collapse;
 
 }
@@ -441,7 +440,6 @@ bottom: 10%;
 }
 
 .home-banner h3 {
-    font-family: 'Qwitcher Grypen', Cursive, sans-serif;
     position: absolute;
     bottom: 0px;
     left: 2%;
@@ -1143,7 +1141,7 @@ justify-content: center;
 
 .contact_word {
     font-size: 80px;
-    font-family: "noticia text", serif;
+    font-family: var(--font);
     color: var(--black);
     text-align: center;
     margin-top: 100px;
@@ -1162,7 +1160,7 @@ justify-content: center;
     box-sizing: border-box;
     color: var(--black);
     background-color: var(--white);
-    font-family: "open sans", sans-serif;
+    font-family: var(--font);
     font-size: 15px;
     height: 40px;
     border: none;
@@ -1176,7 +1174,7 @@ justify-content: center;
     box-sizing: border-box;
     color: black;
     background-color: var(--white);
-    font-family: "open sans", sans-serif;
+    font-family: var(--font);
     font-size: 15px;
     resize: none;
     border: none;
@@ -1191,14 +1189,14 @@ justify-content: center;
 
 textarea::placeholder {
     color: var(--black);
-    font-family: "open sans", sans-serif;
+    font-family: var(--font);
     font-size: 15px;
 
 }
 
 ::placeholder {
     color: var(--black);
-    font-family: "open sans", sans-serif;
+    font-family: var(--font);
     font-size: 15px;
 }
 
@@ -1244,12 +1242,12 @@ textarea::placeholder {
 
 .sub-container p {
     font-size: 18px;
-    font-family: "noticia text", serif;
+    font-family: var(--font);
     color: var(--Yellow);
 }
 
 .sub-container h1 {
-    font-family: "noticia text", serif;
+    font-family: var(--font);
     color: var(--Yellow);
 }
 
