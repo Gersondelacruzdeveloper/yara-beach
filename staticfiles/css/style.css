@@ -420,7 +420,7 @@ bottom: 10%;
     justify-content: space-between;
 }
 
- /* .button {
+ .my-button {
     padding: 10px 20px;
     background-color: #fbb900;
     color: var(--black);
@@ -430,10 +430,10 @@ bottom: 10%;
     transition: transform 0.3s ease-in-out;
 }
 
-.button:hover {
+.my-button:hover {
     transform: scale(1.1);
     color:var(--black)
-} */
+}
 
 /* Slides */
 .home-banner {
@@ -1234,6 +1234,10 @@ textarea::placeholder {
 }
 
 /* ------------------------------------------------CSS styles for the model */
+    /* Custom CSS */
+      .custom-modal {
+        max-height: 50vh; /* You can adjust this value to make the modal shorter or taller */
+    }
 
 .modal-content {
     background-color: #fff;

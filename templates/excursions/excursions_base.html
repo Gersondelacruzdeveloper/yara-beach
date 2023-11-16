@@ -107,29 +107,31 @@
     <a href="{% url 'oldest_result' %}" class="group-button">Oldest</a>
 </div>
 
-    <style>
-        /* Custom CSS */
-        .custom-modal {
-            max-height: 50vh; /* You can adjust this value to make the modal shorter or taller */
-        }
-    </style>
+<!-- floating whatsapp code -->
+<div class="whatsap-container draggable" id="draggableElement">
+    <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone=447541147634"
+        target="_blank"><img id="whatsapp-floating" class="text-center"
+            src="{% static 'images/excursions/whatsapp.png'%}"></a>
+</div>
+
 <div class="modal custom-modal" id="myModal" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa-solid fa-user"></i> Profile</h4>
+                <button class="close my-button" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="row mt-5">
+                <div class="row ">
                     <div class="d-grid gap-2">
                     {% if user.is_authenticated %}
-                    <a href="{% url 'account_logout' %}" class="btn site-color"> <i
-                        class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     <a href="{% url 'excursion-bookings' %}" class="btn site-color"> <i class="fa-solid fa-book"></i> My
                         Bookings</a>
                     {% if request.user.is_superuser %}
                     <a href="{% url 'administrator' %}" class="btn btn-danger col mb-2">Admin Board</a>
                     {% endif %}
+                    <a href="{% url 'account_logout' %}" class="btn site-color"> <i
+                        class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     {% else %}
                     <a href="{% url 'account_signup' %}" class="btn site-color">Register</a>
                     <a href="{% url 'account_login' %}" class="btn  site-color">Sign in</a>
@@ -163,12 +165,6 @@
     {% endif %}
 </div>
 
-<!-- floating whatsapp code -->
-<div class="whatsap-container draggable" id="draggableElement">
-    <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone=447541147634"
-        target="_blank"><img id="whatsapp-floating" class="text-center"
-            src="{% static 'images/excursions/whatsapp.png'%}"></a>
-</div>
 <main>
     {% block content %}
     <!-- Main Content -->
@@ -196,8 +192,6 @@
         title_hero.innerText = cardTitle.innerText
         searchContainer.style.top = "30%";
         title_hero.style.top = "50%"
-        otherIcons.style.right = "-1%"
-
     }
 
 

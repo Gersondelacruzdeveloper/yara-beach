@@ -109,18 +109,17 @@
                         <!-- form btn -->
                         <div class="form_detail_btn">
                             <!-- go back to keep shopping btn -->
-                            <div class="form-group mt-3 p-2">
-                                <a href="{% url 'excursions' %}" class="user_button  my_hover btn">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="keep-shoping"> Keep Shopping</span>
-                                </a>
-                            </div>
+                                <!-- Submit button -->
+                                <div class="form-group mt-3 p-2">
+                                    <a href="{% url 'excursions' %}">
+                                    <button type="submit" class="my-button"><i
+                                            class="fa-solid fa-arrow-left"></i> Keep Shopping</button>
+                                     </a> 
+                                </div>
 
                             <!-- Submit button -->
                             <div class="form-group mt-3 p-2">
-                                <button type="submit" class="user_button my_hover btn add-cart"><i
+                                <button type="submit" class="my-button"><i
                                         class="fa-solid fa-cart-plus"></i> Add to cart</button>
                             </div>
 
