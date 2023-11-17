@@ -91,7 +91,10 @@
                     <td>{{order.child_qty}}</td>
                     <td>{{order.place_pickup}}</td>
                     <td>{{order.order_number}}</td>
-                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.cellphone_number}}
+                        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{order.cellphone_number}}"
+                        target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+                    </td>
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
@@ -129,12 +132,10 @@
                     <td>{{order.child_qty}}</td>
                     <td>{{order.place_pickup}}</td>
                     <td>{{order.order_number}}</td>
-                    <td>
-                        <div class="whatsap-container">
-                            <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{order.cellphone_number}}"
-                                target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
-                            </div>
-                        </td>
+                    <td>{{order.cellphone_number}}
+                        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{order.cellphone_number}}"
+                        target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+                    </td>
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
@@ -173,7 +174,10 @@
                     <td>{{order.child_qty}}</td>
                     <td>{{order.place_pickup}}</td>
                     <td>{{order.order_number}}</td>
-                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.cellphone_number}}
+                        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{order.cellphone_number}}"
+                        target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+                    </td>
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
@@ -212,7 +216,10 @@
                     <td>{{order.child_qty}}</td>
                     <td>{{order.place_pickup}}</td>
                     <td>{{order.order_number}}</td>
-                    <td>{{order.cellphone_number}}</td>
+                    <td>{{order.cellphone_number}}
+                        <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone={{order.cellphone_number}}"
+                        target="_blank"><img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a>
+                    </td>
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
