@@ -11,6 +11,8 @@ import datetime
 from datetime import date, timedelta
 from django.db.models import Q
 from .utils import filter_category
+from .models import Post
+from django.shortcuts import render, get_object_or_404
 
 
 # this function 
@@ -424,3 +426,4 @@ def delete_excursions_photos(request, pk):
 #     for i in Santo_domingo_orders:
 #             for j in Santo_domingo_orders[i]:
 #                 print(j)
+

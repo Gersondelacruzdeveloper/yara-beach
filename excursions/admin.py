@@ -1,7 +1,15 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Excursions, Photos,Review,Reference,Company,AvailableTime,DayOfWeek,PageVisit, Excurasion_category
+from .models import (Excursions, 
+                     Photos,Review,
+                     Reference,
+                     Company,
+                     AvailableTime,
+                     DayOfWeek,
+                     PageVisit,
+                     Excurasion_category, 
+                     )
 admin.site.register(Excursions)
 admin.site.register(Photos)
 admin.site.register(Review)

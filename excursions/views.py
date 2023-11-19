@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from datetime import timedelta, datetime
 import random
 from datetime import timedelta, datetime
-
+from administrator.models import Post
 
 # import qrcode
 # Create your views here.
@@ -204,3 +204,11 @@ def cancel_excursion(request, pk):
     print('new', new, pk)
     context= {'new':new}
     return 
+
+
+# Show the excursion details
+def post_details(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    context = {'post': post}
+    print('yes it works', post)
+    return render(request, 'administrator/post.html', context)
