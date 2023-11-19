@@ -414,16 +414,17 @@ def delete_excursions_photos(request, pk):
 
 
 
-#    Santo_domingo = Excursions.objects.filter(category__category='Santo Domingo')
+# all post
+@login_required(login_url='/accounts/login/')
+def admin_post(request):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    #  total post
+    total_post = Post.objects.all().count()
+    # post queries
+    posts = Post.objects.all()
 
-#     Santo_domingo_orders = []
-#     # look through the orders from santo domingo
-#     for santo_domingo_excursion in Santo_domingo:
-#          # Filter ExcursionOrder instances with excursion_id matching Santo Domingo IDs
-#         excursion_orders = ExcursionOrder.objects.get(excursion_id=santo_domingo_excursion.id)
-#         Santo_domingo_orders.append(excursion_orders)
-
-#     for i in Santo_domingo_orders:
-#             for j in Santo_domingo_orders[i]:
-#                 print(j)
-
+    context = {'posts':posts}
+    return render(request, 'administrator/admin_post.html', context)

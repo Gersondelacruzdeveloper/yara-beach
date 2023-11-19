@@ -25,5 +25,6 @@ urlpatterns = [
     path('delete_seller/<int:pk>', views.delete_seller, name="delete_seller"),
     path('generate_users', views.generate_users, name="generate_users"),
     path('company_bookings', views.company_bookings, name="company_bookings"),
+    path('all_post', views.admin_post, name="all_post"),
 
 ]
