@@ -24,8 +24,13 @@ def add_to_cart(request, item_id):
     date_str = request.POST.get('excursion_date')
     selected_time = request.POST.get('selected_time')
     adult_qty = int(request.POST.get('adult_qty'))
-    child_qty = int(request.POST.get('child_qty'))
-    infant_qty = int(request.POST.get('infant_qty'))
+    try:
+        child_qty = int(request.POST.get('child_qty'))
+        infant_qty = int(request.POST.get('infant_qty'))
+    except TypeError:
+        child_qty = 0
+        infant_qty = 0
+
     place_pickup = request.POST.get('place_pickup')
     redirect_url = request.POST.get("redirect_url")
     price = request.POST.get("price")
@@ -43,8 +48,7 @@ def add_to_cart(request, item_id):
             cart[item_id]['child_qty'] = child_qty
 
         if 'infant_qty' in cart[item_id].keys():
-            cart[item_id]['infant_qty'] = child_qty
-
+                cart[item_id]['infant_qty'] = infant_qty
 
         if 'place_pickup' in cart[item_id].keys():
             cart[item_id]['place_pickup'] = place_pickup

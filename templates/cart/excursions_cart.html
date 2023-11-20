@@ -65,6 +65,7 @@
                                         max="99" readonly>
                                 </td>
                                 <!-- Child quantity-->
+                                {% if not item.excursion.just_adult %}
 
                                 <td>
                                     <input type="number" class="form-control cart-input" name="cart-child_qty"
@@ -74,6 +75,7 @@
                                     <input type="number" class="form-control cart-input" name="cart-infant_qty"
                                         value="{{item.values.infant_qty}}" min="0" max="99">
                                 </td>
+                                {% endif %}
 
 
                                 <td>{{item.values.place_pickup | slice:":26"|title}}...</td>
