@@ -9,6 +9,7 @@ from .models import (Excursions,
                      DayOfWeek,
                      PageVisit,
                      Excurasion_category, 
+                     Excursion_type,
                      )
 admin.site.register(Excursions)
 admin.site.register(Photos)
@@ -19,4 +20,6 @@ admin.site.register(AvailableTime)
 admin.site.register(DayOfWeek)
 admin.site.register(PageVisit)
 admin.site.register(Excurasion_category)
+admin.site.register(Excursion_type)
+
 

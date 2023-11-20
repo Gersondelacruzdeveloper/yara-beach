@@ -76,3 +76,34 @@ def send_email_to_seller(request, extracted_reference, checkout_cart):
     # Empty the cart when payment has been processed
     request.session['cart'] = {}
     return redirect('checkout-success')
+
+
+
+# def calculate_final_amount(initial_price, additional_amount, paypal_percentage_fee, paypal_fixed_fee, additional_percentage):
+#     # Step 1: Add initial price and additional amount
+#     total_amount = initial_price + additional_amount
+
+#     # Step 2: Add PayPal fees
+#     paypal_fee = total_amount * paypal_percentage_fee + paypal_fixed_fee
+#     total_amount += paypal_fee
+
+#     # Step 3: Add additional percentage
+#     additional_amount = total_amount * additional_percentage
+#     total_amount += additional_amount
+
+#     return total_amount
+
+# # Example usage:
+#there are 3 dolars different 
+# because of the percentage
+# from where i add the percentage as from where i took of the percentage.
+
+
+# initial_price = 53.60
+# additional_amount = 20
+# paypal_percentage_fee = 0.0349  # 3.49%
+# paypal_fixed_fee = 0.49
+# additional_percentage = 0.20  # 20%
+
+# final_amount = calculate_final_amount(initial_price, additional_amount, paypal_percentage_fee, paypal_fixed_fee, additional_percentage)
+# print(f'The final amount is: ${final_amount:.2f}')

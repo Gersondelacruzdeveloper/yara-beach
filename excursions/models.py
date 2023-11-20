@@ -31,6 +31,14 @@ class Excurasion_category(models.Model):
 
     def __str__(self):
         return self.category
+    
+    # Create your models here.
+class Excursion_type(models.Model):
+    category = models.CharField(max_length=201, null=True, blank=True)
+
+    def __str__(self):
+        return self.category
+    
 
 # Creates a Excursion model containing data about each individual Excursion
 class Excursions(models.Model):
@@ -58,6 +66,7 @@ class Excursions(models.Model):
     slugy = models.SlugField(unique=True, blank=True)
     group =  models.BooleanField(default=False)  # Boolean field for group
     category = models.ManyToManyField('Excurasion_category', related_name='Excurasion_category', blank=True, null=True)
+    type_dropdown = models.ManyToManyField('Excursion_type', related_name='Excursion_type', blank=True, null=True)
     company_Price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
     video_id = models.TextField(null=True, blank=True, max_length=201, default='')
