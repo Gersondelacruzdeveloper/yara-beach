@@ -37,7 +37,7 @@
 
                 <!-- rest of the photos -->
                 <div class="photos-and-icon-wrapper">
-                    {% if excursions.photos.count > 4%}
+                    {% if  excursions.photos.count > 0 %}
                     <i id="arrow-left" class="fa-solid fa-circle-arrow-left"></i>
                     {% endif %}
                     <div class="photos" id="allphotos">
@@ -47,7 +47,7 @@
                         <img class="thumbnails" src="{{excursion.images.url}}" alt="{{excursions.image_name}}">
                         {% endfor %}
                     </div>
-                    {% if excursions.photos.count > 4%}
+                    {% if  excursions.photos.count > 0%}
                     <i id="arrow-right" class="fa-solid fa-circle-arrow-right"></i>
                     {% endif %}
                 </div>
@@ -173,7 +173,9 @@
     <!-- Review form -->
     <h5 class="text-center mt-5">Write your reviews</h5>
 
-    <form class="review-form" action="" method="POST" enctype="multipart/form-data">
+    <form
+    
+    class="review-form" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
             <input type="text" class="form-control" placeholder="Review title" name="review-title" required>

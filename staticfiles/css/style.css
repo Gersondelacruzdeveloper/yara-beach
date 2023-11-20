@@ -845,6 +845,7 @@ margin-left: 100px;
     flex-wrap: nowrap;
     overflow-x: auto;
     margin-top: 10px;
+    position: relative;
 }
 
 .thumbnails {
@@ -857,29 +858,31 @@ margin-left: 100px;
     cursor: pointer;
 }
 
-.photos-and-icon-wrapper {
+/* .photos-and-icon-wrapper {
     position: relative;
-}
+} */
 
 #arrow-left {
     position: absolute;
-    left: -35px;
-    top: 23px;
+    left: 2%;
+    top: 30%;
     border-radius: 50%;
     cursor: pointer;
     transition: .3s;
     font-size: 30px;
+    color: var(--white);
 
 }
 
 #arrow-right {
     position: absolute;
-    right: -35px;
-    top: 23px;
+    right: 2%;
+    top: 30%;
     border-radius: 50%;
     cursor: pointer;
     transition: .3s;
     font-size: 30px;
+    color: var(--white);
 }
 
 .active-image {
