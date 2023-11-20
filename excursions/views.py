@@ -139,7 +139,7 @@ def input_search_result(request):
     excursions = Excursions.objects.filter(status='Active')
     navbar_input = request.GET.get('navbar')
     if navbar_input:
-        excursions = Excursions.objects.filter(Q(title__icontains=navbar_input) | Q(description__icontains=navbar_input))
+        excursions = excursions.filter(Q(title__icontains=navbar_input) | Q(description__icontains=navbar_input))
     context = {'excursions': excursions, 'navbar_input': navbar_input}
     return render(request,'excursions/input_search_result.html', context )
 
