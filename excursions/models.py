@@ -70,6 +70,8 @@ class Excursions(models.Model):
     company_Price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
     video_id = models.TextField(null=True, blank=True, max_length=201, default='')
+    dicount = models.BooleanField(default=True)  # Boolean field for transfer
+
 
     def save(self, *args, **kwargs):
         if not self.slugy:
