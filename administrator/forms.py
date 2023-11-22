@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from excursions.models import Excursions, Photos,Reference
+from .models import Post
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
 
@@ -57,3 +58,19 @@ class SellerForm(ModelForm):
     class Meta:
         model = Reference
         fields = '__all__'
+
+
+
+# Gets a already made form  and add the new excursion
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = '__all__'
+        exclude = ['user','date_posted', 'slug']
+
+    # def __init__(self, *args, **kwargs):
+    #     super(PostForm, self).__init__(*args, **kwargs)
+    #     self.fields['title'].widget.attrs.update(
+    #         {'class': 'form-control', 'placeholder': ' Add title'})
+    #     self.fields['Price'].widget.attrs.update(
+    #         {'class': 'form-control', 'placeholder': 'Add price..'})

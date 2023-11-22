@@ -93,17 +93,13 @@ def send_email_to_seller(request, extracted_reference, checkout_cart):
 
 #     return total_amount
 
-# # Example usage:
-#there are 3 dolars different 
-# because of the percentage
-# from where i add the percentage as from where i took of the percentage.
 
-
-# initial_price = 53.60
-# additional_amount = 20
-# paypal_percentage_fee = 0.0349  # 3.49%
+# initial_price = 71.82
+# additional_amount = 15
+# paypal_percentage_fee = 0.05
 # paypal_fixed_fee = 0.49
 # additional_percentage = 0.20  # 20%
 
 # final_amount = calculate_final_amount(initial_price, additional_amount, paypal_percentage_fee, paypal_fixed_fee, additional_percentage)
 # print(f'The final amount is: ${final_amount:.2f}')
+

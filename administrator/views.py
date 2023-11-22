@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from excursions.models import Excursions, Photos, Reference,PageVisit
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
-from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos,SellerForm
+from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos,SellerForm, PostForm
 from django.contrib import messages
 from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
@@ -13,6 +13,7 @@ from django.db.models import Q
 from .utils import filter_category
 from .models import Post
 from django.shortcuts import render, get_object_or_404
+from django.core.exceptions import ValidationError
 
 
 # this function 
@@ -328,7 +329,6 @@ def admin_excursions(request):
 
 # Add excursion
 
-
 @login_required(login_url='/accounts/login/')
 def add_excursions(request):
     if not request.user.is_superuser:
@@ -428,3 +428,66 @@ def admin_post(request):
 
     context = {'posts':posts}
     return render(request, 'administrator/admin_post.html', context)
+
+# add post
+
+@login_required(login_url='/accounts/login/')
+def add_post(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'You do not have permission to access that page')
+        return redirect('home')
+
+    form = PostForm()
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+
+        # Check for duplicate post names
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            if Post.objects.filter(name=cleaned_data['name']).exists():
+                messages.error(request, 'A post with the same name already exists. Please provide a unique name.')
+                return redirect('add_post')
+
+            post = form.save(commit=False)
+            post.save()
+
+            messages.success(request, 'Post created successfully')
+            return redirect('all_post')
+
+    context = {'form': form}
+    return render(request, 'administrator/add_post.html', context)
+
+
+# Edit post
+@login_required(login_url='/accounts/login/')
+def edit_post(request, pk):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    posts = Post.objects.get(id=pk)
+    form = PostForm(instance=posts)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=posts)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Post edit Succesfullly')
+        return redirect('all_post')
+    context = {'form': form}
+    return render(request, 'administrator/edit_posts.html', context)
+
+# delete post
+@login_required(login_url='/accounts/login/')
+def delete_post(request, pk):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    post = Post.objects.get(id=pk)
+    if request.method == 'POST':
+        post.delete()
+        messages.success(request, 'Post deleted Succesfullly')
+        return redirect('all_post')
+    context = {'post': post}
+    return render(request, 'administrator/delete-post.html', context)

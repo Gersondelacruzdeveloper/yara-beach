@@ -25,6 +25,10 @@ urlpatterns = [
     path('delete_seller/<int:pk>', views.delete_seller, name="delete_seller"),
     path('generate_users', views.generate_users, name="generate_users"),
     path('company_bookings', views.company_bookings, name="company_bookings"),
+     # posts
     path('all_post', views.admin_post, name="all_post"),
+    path('edit_post/<int:pk>', views.edit_post, name="edit_post"),
+    path('delete_post/<int:pk>', views.delete_post, name="delete_post"),
+    path('add_post', views.add_post, name="add_post"),
 
 ]

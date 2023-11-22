@@ -4,16 +4,20 @@
 {% block content %}
 
 <!-- header and card section -->
-    <h1 class="text-center mt-5">Admin Posts</h1>
+<h1 class="text-center mt-5">Admin Posts</h1>
 
+<div class="text-center mt-5">
+    <a href="{% url 'add_post'%}"><button type="button" class="btn user_button_sm my_hover"><i
+                class="fa-solid fa-plus"></i> Add Post</button></a>
+</div>
 
+<!-- add_post -->
 <div class="bookings_container">
-        <!------------------------------------------------------------------------------ today bookings -->
+    <!------------------------------------------------------------------------------ today bookings -->
     {% if posts %}
     <div id="excursion_booking_section">
         <!-- today excursions bookings admin -->
-        <h4 class="text-center mt-5">All Post <span
-                class="badge bg-site-color">{{posts.count}}</span></h4>
+        <h4 class="text-center mt-5">All Post <span class="badge bg-site-color">{{posts.count}}</span></h4>
         <div class="table_wrapper table-responsive">
             <table class="data_table">
                 <tr>
@@ -31,13 +35,20 @@
                     <td><a href="{% url 'post' post.slug %}" target="_blank">{{post.slug|slice:":30"|title}}</td></a>
                     <td>{{post.date_posted}}</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+
+                    <td><a href="{% url 'edit_post'  post.pk  %}"><button class="btn btn-sm btn-primary"><i
+                                    class="far fa-edit">
+                                    Edit</i></button></a> </td>
+                    <td><a href="{% url 'delete_post'  post.pk  %}"><button class="btn btn-sm btn-danger "><i
+                                    class="fas fa-trash-alt">
+                                    Delete</i></button></a>
+                    </td>
+
                 </tr>
                 {% endfor %}
             </table>
         </div>
         {% endif %}
-</div>
+    </div>
 
-{% endblock content %}
+    {% endblock content %}
