@@ -1,4 +1,6 @@
 {% extends 'excursions/excursions_base.html' %}
+{% block title %}{{post.name}}{% endblock %}
+{% block description %}{{post.meta_description}}{% endblock %}
 {% load static %}
 {% block content %}
 <div style="width:90%; margin: auto;">{{post.post|safe}} </div>

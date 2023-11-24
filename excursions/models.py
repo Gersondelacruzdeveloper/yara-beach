@@ -72,6 +72,8 @@ class Excursions(models.Model):
     video_id = models.TextField(null=True, blank=True, max_length=201, default='')
     dicount = models.BooleanField(default=True)  # Boolean field for transfer
     just_adult = models.BooleanField(default=False)  # Boolean field for transfer
+    meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
+
 
 
     def save(self, *args, **kwargs):

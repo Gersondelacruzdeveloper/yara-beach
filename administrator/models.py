@@ -10,6 +10,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     post = RichTextUploadingField(null=False, blank=False)
     date_posted = models.DateTimeField(default=timezone.now)
+    meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
 
     def __str__(self):
         return self.name
