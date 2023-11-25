@@ -51,6 +51,7 @@ class Excursions(models.Model):
         User, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=201, null=True)
     Price = models.DecimalField(
+
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
     main_image = models.ImageField(upload_to='excursions/uploads/',  blank=True, null=True)
     image_name = models.CharField(max_length=201, null=True, blank=True)
@@ -70,7 +71,7 @@ class Excursions(models.Model):
     type_dropdown = models.ManyToManyField('Excursion_type', related_name='Excursion_type', blank=True, null=True)
     company_Price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
-    video_id = models.TextField(null=True, blank=True, max_length=201, default='')
+    video_id = models.CharField(null=True, blank=True, max_length=201, default='')
     dicount = models.BooleanField(default=True)  # Boolean field for transfer
     just_adult = models.BooleanField(default=False)  # Boolean field for transfer
     meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
