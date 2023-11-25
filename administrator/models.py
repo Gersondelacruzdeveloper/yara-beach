@@ -18,7 +18,7 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         # If the slug is not provided, generate it based on the name
         if not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.name[:50])
 
         # Ensure the slug is unique
         if Post.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():

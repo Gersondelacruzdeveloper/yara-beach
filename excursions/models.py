@@ -9,6 +9,7 @@ from decimal import Decimal
 from django.utils.text import slugify
 from django.db.models import Count
 from django.utils import timezone  # Import timezone module
+from django.core.exceptions import ValidationError
 
 
 
@@ -51,15 +52,15 @@ class Excursions(models.Model):
     title = models.CharField(max_length=201, null=True)
     Price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
-    main_image = models.ImageField(upload_to='excursions/uploads/', null=True)
+    main_image = models.ImageField(upload_to='excursions/uploads/',  blank=True, null=True)
     image_name = models.CharField(max_length=201, null=True, blank=True)
-    description = RichTextUploadingField(null=False, blank=False, default='')
+    description = RichTextUploadingField(null=False, blank=False)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(
         choices=CHOICES, default='Inactive', max_length=20)
     is_transfer = models.BooleanField(default=False)  # Boolean field for transfer
     available_times = models.ManyToManyField(AvailableTime)
-    unavailable_days = models.ManyToManyField('DayOfWeek', related_name='excursions', blank=True)
+    unavailable_days = models.ManyToManyField('DayOfWeek', related_name='excursions', blank=True, null=True)
     duration_time = models.IntegerField(null=True, blank=True, default=0)
     tour_guide = models.BooleanField(default=False)  # Boolean field for transfer
     transportation = models.BooleanField(default=False)  # Boolean field for transfer
@@ -75,15 +76,24 @@ class Excursions(models.Model):
     meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
 
 
-
     def save(self, *args, **kwargs):
+        # If the slug is not provided, generate it based on the name
         if not self.slugy:
-            self.slugy = slugify(self.title)
+            self.slugy = slugify(self.title[:50])
+
+        # Ensure the slug is unique
+        if Excursions.objects.filter(slugy=self.slugy).exclude(pk=self.pk).exists():
+            raise ValidationError('Slug already exists. Please provide a unique name.')
+
         super().save(*args, **kwargs)
+     
+    def clean(self):
+        super().clean()
 
+        # Check if the description is still the default message
+        if self.description == 'Default description message.':
+            raise ValidationError({'description': 'Please provide a description.'})
 
-    def __str__(self):
-        return self.title
 
 
 # Creates all the Excursion fotos

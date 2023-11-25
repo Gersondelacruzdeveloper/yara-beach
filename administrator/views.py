@@ -344,6 +344,7 @@ def add_excursions(request):
             form.save()
             messages.success(request, 'Excursion created Succesfullly')
         return redirect('admin-excursion')
+        
     context = {'form': form}
     return render(request, 'administrator/excursions/add_excursions.html', context)
 

@@ -38,7 +38,11 @@
             {% for excursion in excursions %}
             <tr>
                 <td>{{excursion.status}}</td>
+                {% if excursion.main_image %}
                 <td><img src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}" style="width:75px"></td>
+                {%else %}
+                <td><img src="" alt="no img asociated" style="width:75px"></td>
+                {% endif %}
                 <td>{{excursion.date_created}}</td>
                 <td><a href="{% url 'excursion_detail' excursion.slugy %}" target="_blank">{{excursion.title|slice:":30"|title}}</td></a>
                 <td>£{{excursion.Price}}</td>

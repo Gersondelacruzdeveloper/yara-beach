@@ -10,7 +10,7 @@ class ExcursionForm(ModelForm):
     class Meta:
         model = Excursions
         fields = '__all__'
-        exclude = ['user']
+        exclude = ['user', 'is_transfer', 'company_Price', 'type_dropdown' ]
 
     def __init__(self, *args, **kwargs):
         super(ExcursionForm, self).__init__(*args, **kwargs)
@@ -20,6 +20,15 @@ class ExcursionForm(ModelForm):
             {'class': 'form-control', 'placeholder': 'Add price..'})
         self.fields['image_name'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Add an image name'})
+        
+    def clean(self):
+        cleaned_data = super().clean()
+        description = cleaned_data.get('description')
+
+        if not description:
+            self.add_error('description', 'Please provide a description.')
+
+        return cleaned_data
 
 
 # Gets a already made form and add the new excursion photos
