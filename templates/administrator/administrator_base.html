@@ -113,14 +113,19 @@
                         <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i></i> Customer
                             Home Page</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'pageVisit' %}"><i class="fa-solid fa-eye"></i>
-                            PageVisit</a>
-                    </li>
+       
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-book"></i> Others
+                        </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'all_post' %}"><i class="fa-solid fa-signs-post"></i>
-                            Post</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'pageVisit' %}"> 
+                                <i class="fa-solid fa-eye"></i> Page Visit</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all_post' %}"> <i class="fa-solid fa-signs-post"></i> Add Post</a></li>
+                            <li><a class="dropdown-item" href="{% url 'open_message' %}"> <i class="fa-brands fa-whatsapp"></i> Send Whatsapp Mesage</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

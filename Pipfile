@@ -57,6 +57,7 @@ types-cryptography = "==3.3.23"
 typing-extensions = "==4.8.0"
 ua-parser = "==0.18.0"
 user-agents = "==2.2.0"
+selenium = "==3.141.0"
 
 [dev-packages]
 

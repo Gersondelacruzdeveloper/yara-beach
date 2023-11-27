@@ -30,5 +30,7 @@ urlpatterns = [
     path('edit_post/<int:pk>', views.edit_post, name="edit_post"),
     path('delete_post/<int:pk>', views.delete_post, name="delete_post"),
     path('add_post', views.add_post, name="add_post"),
-
+    # send whatsapp message
+    path('open_message', views.open_message, name="open_message"),
+    path('send_wh_message', views.send_whatsaap_message, name="send_wh_message"),
 ]

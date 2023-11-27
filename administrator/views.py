@@ -10,10 +10,11 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from datetime import date, timedelta
 from django.db.models import Q
-from .utils import filter_category
+from .utils import filter_category, simulate_human_behavior
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ValidationError
+
 
 
 # this function 
@@ -422,7 +423,8 @@ def admin_post(request):
         messages.error(
             request, 'You do not have persmision to access that page')
         return redirect('home')
-    #  total post
+    print('before')
+    # total post
     total_post = Post.objects.all().count()
     # post queries
     posts = Post.objects.all()
@@ -492,3 +494,19 @@ def delete_post(request, pk):
         return redirect('all_post')
     context = {'post': post}
     return render(request, 'administrator/delete-post.html', context)
+
+
+
+def open_message(request):
+    return render(request, 'administrator/send_whatsaap_message.html')
+
+def send_whatsaap_message(request):
+    message = request.POST.get('whatsapp-message')
+    contact_name = []
+    sellers = Reference.objects.exclude(full_name__startswith="automated seller")
+    for seller in sellers:
+        contact_name.append(seller.full_name)
+    messages = [message]
+    simulate_human_behavior(contact_name, messages)
+    print('done')
+    return render(request, 'administrator/send_whatsaap_message.html')
