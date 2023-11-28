@@ -43,6 +43,7 @@ def simulate_human_behavior(contact_names, messages):
                         EC.presence_of_element_located((By.XPATH, search_box_xpath))
                     )
                     search_box.clear()  # Clear the search box
+                    
                     search_box.send_keys(contact_name)
                 except TimeoutException:
                     print("Timeout: Search box not found.")
@@ -52,11 +53,6 @@ def simulate_human_behavior(contact_names, messages):
 
                 search_box.send_keys(Keys.RETURN)
                 time.sleep(2)
-
-                # Check if the contact exists
-                if "No chats, contacts or messages found" in driver.page_source:
-                    print(f"Contact '{contact_name}' not found. Skipping...")
-                    continue
 
                 try:
                     message_box_xpath = '//div[@title="Type a message" and @role="textbox"]'
