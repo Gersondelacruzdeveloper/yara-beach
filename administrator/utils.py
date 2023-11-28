@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from django.conf import settings
 import time
 import datetime
 import random
@@ -31,7 +32,8 @@ def simulate_human_behavior(contact_names, messages):
         driver = webdriver.Chrome(executable_path=driver_path)
 
         driver.get('https://web.whatsapp.com/')
-        input('Press Enter after scanning QR code...')
+        time.sleep(int(settings.TIME_WATING_FOR_BARCODE))
+      
 
         for contact_name in contact_names:
             for message in messages:

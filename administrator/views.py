@@ -14,7 +14,7 @@ from .utils import filter_category, simulate_human_behavior
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ValidationError
-
+from django.conf import settings
 
 
 # this function 
