@@ -28,7 +28,7 @@ def simulate_human_behavior(contact_names, messages):
     driver = None  # Initialize the driver variable outside the try block
 
     try:
-        driver_path = '/usr/local/bin/chromedriver_mac_arm64/chromedriver'
+        driver_path = './chromedriver_mac_arm64/chromedriver'
         driver = webdriver.Chrome(executable_path=driver_path)
 
         driver.get('https://web.whatsapp.com/')
