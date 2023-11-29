@@ -33,4 +33,6 @@ urlpatterns = [
     # send whatsapp message
     path('open_message', views.open_message, name="open_message"),
     path('send_wh_message', views.send_whatsaap_message, name="send_wh_message"),
+    # generate auto post
+    path('generate_auto_post', views.generate_auto_post, name="generate_auto_post"),
 ]

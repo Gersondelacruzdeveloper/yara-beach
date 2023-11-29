@@ -58,6 +58,7 @@ typing-extensions = "==4.8.0"
 ua-parser = "==0.18.0"
 user-agents = "==2.2.0"
 selenium = "==3.141.0"
+openai = "*"
 
 [dev-packages]
 

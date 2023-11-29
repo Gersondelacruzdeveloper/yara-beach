@@ -15,6 +15,7 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ValidationError
 from django.conf import settings
+from openai import OpenAI
 
 
 # this function 
@@ -509,4 +510,23 @@ def send_whatsaap_message(request):
     messages = [message]
     simulate_human_behavior(contact_name, messages)
     print('done')
-    return render(request, 'administrator/send_whatsaap_message.html')
+    return redirect('open_message')
+
+
+# generate auto post
+def generate_auto_post(request):
+    # if request.user.is_superuser and request.method == 'POST':
+    #     titles = ['saona-tour']
+    #     for title in titles:
+    #         if Post.objects.filter(name=title).exists():
+    #             messages.error(request, 'A post with the same name already exists. Please provide a unique name.')
+    #             continue
+    #         post = Post.objects.create(
+    #             name = title[:50],
+    #             post = '<!ELEMENT saona-tour (item*)>\n<!ELEMENT item (#PCDATA)>\n<saona-tour>\n  <item>Sunscreen</item>\n  <item>Bathing suit</item>\n  <item>Towel</item>\n  <item>Sunglasses</item>\n  <item>Flip flops</item>\n  <item>Water bottle</item>\n  <item>Snacks</item>\n  <item>Camera</item>\n  <item>Cash for souvenirs</item>\n</saona-tour>',
+    #             meta_description = 'the best',
+    #         )
+    #         post.save()
+        return redirect('all_post')
+    
+

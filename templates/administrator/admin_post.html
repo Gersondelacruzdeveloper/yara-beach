@@ -11,6 +11,11 @@
                 class="fa-solid fa-plus"></i> Add Post</button></a>
 </div>
 
+<form method="POST" action="{% url 'generate_auto_post' %}">
+    {% csrf_token %}
+<input type="submit" class="btn">
+</form>
+
 <!-- add_post -->
 <div class="bookings_container">
     <!------------------------------------------------------------------------------ today bookings -->
