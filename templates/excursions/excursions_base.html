@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
+{% load google_translate %}
+{% google_translate type='vertical' language='en' %}
+
 
 <head>
     <!-- Metas -->
@@ -45,6 +48,7 @@
   gtag('config', 'AW-11294930508');
 </script>
 </head>
+<!---------------------------------------------------- google translate btn -->
 
 
 <div id="hero-section">
@@ -266,6 +270,19 @@
 <script src="{% static 'js/offerCountDown.js' %}"></script>
 <script src="{% static 'js/timer_pop_up.js' %}"></script>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let languageSelectElement = document.getElementById('google_translate_element');
+        let arrowSpan = document.querySelector('#google_translate_element span[aria-hidden="true"][style="color: rgb(155, 155, 155);"]');
+        // Check if the element is found
+        console.log("arrowSpan:", arrowSpan);
+        // Modify styles for the main translation container
+        languageSelectElement.style.cssText = "background-color: #fbb900;";
+    
+      }); // Adjust the delay as needed
+    
+    </script>
 </body>
 
 </html>

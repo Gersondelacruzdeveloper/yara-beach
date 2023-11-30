@@ -59,6 +59,7 @@ ua-parser = "==0.18.0"
 user-agents = "==2.2.0"
 selenium = "==3.141.0"
 openai = "*"
+django-google-translate = "*"
 
 [dev-packages]
 
