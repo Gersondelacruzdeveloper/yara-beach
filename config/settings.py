@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from distutils.command.config import config
 from pathlib import Path
 import os
-from django.apps import AppConfig
 from environs import Env  # new
 env = Env()  # new
 env.read_env()  # new
@@ -54,7 +53,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'storages',
-    'google_translate',
     # My apps
     'home',
     'excursions',
@@ -247,6 +245,3 @@ DISCOUNT_PERCENTAGE = env.str("DISCOUNT_PERCENTAGE")
 
 TIME_WATING_FOR_BARCODE = env.str("DISCOUNT_PERCENTAGE")
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
-
-from django.apps import AppConfig
-AppConfig.default = False
