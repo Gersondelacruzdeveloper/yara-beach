@@ -33,7 +33,8 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- Local stylesheets -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
-
+  <!-- translation -->
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11294930508">
 </script>
@@ -44,10 +45,22 @@
 
   gtag('config', 'AW-11294930508');
 </script>
+
+<!-- Initialize the API: -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,fr,ru,pt,it', // Specify the languages you want to allow
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  
+  
 </head>
 <!---------------------------------------------------- google translate btn -->
-
-
 <div id="hero-section">
     <div class="overlay"> </div>
     <!-- logo -->
@@ -100,6 +113,9 @@
             </button>
             <p class="underline-btn">Profile</p>
         </div>
+
+
+        <div id="google_translate_element"></div>
     </div>
 </div>
 <div class="text-center">
