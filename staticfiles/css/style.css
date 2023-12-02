@@ -1539,7 +1539,7 @@ left:450px;
     right: 2%;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    gap: 30px;
+
 }
 
 .icon {
@@ -1567,7 +1567,7 @@ background-color: var(--Yellow);
 
 .shoping-cart-container{
     position: relative;
-    padding: 0.25rem 1rem;
+    padding: 10px ;
     /* the profile has the same and it comes from bootstrap */
 }
 
@@ -1943,7 +1943,7 @@ iframe {
         /* right: -5%; */
         display: grid;
         grid-template-columns: auto auto;
-        gap: 30px;
+
     }
     .subcontainer span{
         font-size: 30px;
@@ -1994,10 +1994,6 @@ iframe {
 
 /* Small devices (phones, 503px and down) */
 @media only screen and (max-width: 503px) {
-    #other-icons {
-        /* right: -6%; */
-        gap: 15px;
-    }
     #search-container {
         width:390px;
     }

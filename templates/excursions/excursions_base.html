@@ -99,17 +99,15 @@
                 <div class="icon">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </div>
-                <p class="underline-btn">Cart</p>
                 {% if total %}
                 <div class="cart-counter" id="cart-item-count">{{cart_items|length}}</div>
                 {% endif %}
             </a>
         </div>
 
-        <div class="dropdown" data-toggle="modal" data-target="#myModal">
+        <div class="dropdown-user" data-toggle="modal" data-target="#myModal">
             <button class="dropdown-item icon"><i class="fa-solid fa-user"></i>
             </button>
-            <p class="underline-btn">Profile</p>
         </div>
     </div>
 </div>
