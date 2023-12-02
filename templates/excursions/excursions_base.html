@@ -64,16 +64,14 @@
 <div id="hero-section">
     <div class="overlay"> </div>
     <!-- logo -->
-    <img id="logo-site" class="palm-tree" src="{% static 'images/excursions/Logo.png' %}" alt="Logo">
+    <a href="{% url 'home'%}" id="logo-link" target="_blank">
+        <img id="logo-site" class="palm-tree" src="{% static 'images/excursions/Logo.png' %}" alt="Logo">
+    </a>
     <!-- hero img -->
     <img id="hero-image" src="{% static 'images/excursions/hero-img-puj.jpg' %}" alt="Hero Image">
 
     <!-- titles -->
     <div id="title_hero">Memorable Adventures Await: Unforgettable Excursion Experiences</div>
-    <div id="subtitle">
-        <div class="d-of-discovery"><span class="d">D</span></div>
-        <span class="subtitle-span"> Embark on a Journey of a Lifetime with Our Amazing Excursion Experiences</span>
-    </div>
 
     <!-- Add more square links as needed -->
     <div class="square-btn"><span class="main-link underline-btn"><a href="{% url 'excursions' %}">Excursions</a></span>

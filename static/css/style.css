@@ -1462,7 +1462,7 @@ left:450px;
 #title_hero{
     position: absolute;
     width:60%;
-    top: 100px;
+    top: 40%;
     left: 50px;
     font-size: 3em;
     font-weight: bolder;
@@ -1529,8 +1529,8 @@ left:450px;
     position: absolute;
     top: 10px;
     left: 50px;
-    width: 200px; /* Adjust the size as needed */
-    /* z-index: 1; */
+    width: 300px; /* Adjust the size as needed */
+    z-index: 1;
 }
 
 #other-icons {
@@ -1713,7 +1713,7 @@ pointer-events: none; /* Allows clicks to go through the overlay to the image */
         grid-template-columns: auto;
         justify-items: center;
         width: 100%;
-        margin-top: 15%;
+        margin-top: 10px;
         }
         #search_input{
         width: 95%;
@@ -1794,7 +1794,7 @@ iframe {
     /* main look site */
     #title_hero{
         width:60%;
-        top: 35%;
+        top: 40%;
         font-size: 30px;
 
     }
@@ -1802,7 +1802,7 @@ iframe {
         top: 65%;
     }
     #search-container {
-        top: 20%;
+        top: 25%;
     }
 
     /* --detail page */
@@ -1910,7 +1910,7 @@ iframe {
     /* -----------------------------------------------------main mobile search  */
     #title_hero{
         width:80%;
-        top: 35%;
+        top: 40%;
         font-size: 30px;
 
     }
@@ -2078,3 +2078,4 @@ iframe {
 
 
 }
+
