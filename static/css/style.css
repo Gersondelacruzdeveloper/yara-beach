@@ -20,7 +20,6 @@
     line-height: 200px;
     cursor: grab;
     z-index: 10;
-    top:300px;
     right:0;
 }
 
@@ -32,9 +31,9 @@
 
 body {
     background-color: var(--culture);
-    min-height: 400px;
-    margin-bottom: 150px;
+    min-height: 450px;
     font-family: var(--font);
+    border:2px solid red;
 }
 
 a{
@@ -1102,7 +1101,6 @@ ul.socialaccount_providers {
 
 /* -------------------------------------------------------------------- footer */
 #footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -1495,16 +1493,15 @@ left:450px;
 #search-input {
     width: 70%;
     padding: 10px;
-    font-size: 1em;
     border:none;
     outline: none; /* Remove focus border */
     line-height: 1.375rem;
-    font-weight: 500;
+    font-size: 20px;
 }
 #search-input::placeholder{
-    font-weight: 500px;
+    font-weight: 20px;
     color: #1a2b49;
-    font-size: 20px;
+    font-size: 15px;
 
 }
 
