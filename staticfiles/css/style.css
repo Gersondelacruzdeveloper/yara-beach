@@ -117,6 +117,13 @@ font-size: 14px;
 
 
 /* -------------------------------------------------------------------- navbar */
+#google_translate_element{
+text-align: center;
+padding: 5px;
+background-color: var(--Yellow);
+margin: auto;
+}
+
 .sear-btn {
     background-color: var(--Yellow);
     color: var(--black);
