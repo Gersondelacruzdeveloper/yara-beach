@@ -1534,7 +1534,7 @@ left:450px;
     top: 10px;
     left: 50px;
     width: 200px; /* Adjust the size as needed */
-    z-index: 5;
+    /* z-index: 1; */
 }
 
 #other-icons {
