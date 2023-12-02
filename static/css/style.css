@@ -33,7 +33,6 @@ body {
     background-color: var(--culture);
     min-height: 450px;
     font-family: var(--font);
-    border:2px solid red;
 }
 
 a{
@@ -1431,7 +1430,7 @@ left:450px;
 /* --------------------------------------------------------------main site look */
 .group-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 5px 10px;
     font-size: 16px;
     text-align: center;
     text-decoration: none;
