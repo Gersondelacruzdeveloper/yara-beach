@@ -75,6 +75,8 @@ class Excursions(models.Model):
     dicount = models.BooleanField(default=True)  # Boolean field for transfer
     just_adult = models.BooleanField(default=False)  # Boolean field for transfer
     meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
+    price_children = models.DecimalField(
+        max_digits=7, decimal_places=2, null=False, blank=False, default=0)
 
 
     def save(self, *args, **kwargs):
@@ -82,9 +84,14 @@ class Excursions(models.Model):
         if not self.slugy:
             self.slugy = slugify(self.title[:50])
 
+
         # Ensure the slug is unique
         if Excursions.objects.filter(slugy=self.slugy).exclude(pk=self.pk).exists():
             raise ValidationError('Slug already exists. Please provide a unique name.')
+       # Set price_children to half of the Price by default
+       
+        if self.price_children == 0:
+            self.price_children = self.Price / 2
 
         super().save(*args, **kwargs)
      

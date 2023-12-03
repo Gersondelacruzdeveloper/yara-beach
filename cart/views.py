@@ -34,6 +34,7 @@ def add_to_cart(request, item_id):
     place_pickup = request.POST.get('place_pickup')
     redirect_url = request.POST.get("redirect_url")
     price = request.POST.get("price")
+    price_children= request.POST.get("price_children")
     cart = request.session.get('cart', {})
     # Parse the date string into a datetime object with the input format
     date_obj = datetime.strptime(date_str, '%m/%d/%Y')
@@ -62,14 +63,16 @@ def add_to_cart(request, item_id):
         if 'price' in cart[item_id].keys():
             cart[item_id]['price'] = price
 
+        if 'price_children' in cart[item_id].keys():
+            cart[item_id]['price_children'] = price_children
+
         messages.success(
             request, 'You already added this item so we just updated')
     else:
         # if the item id is not in  the cart it will add a new one
         cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
-                         'child_qty': child_qty, 'infant_qty':infant_qty,'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time}
+                         'child_qty': child_qty, 'infant_qty':infant_qty,'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time, 'price_children': price_children}
         
-
     request.session['cart'] = cart
     return redirect(redirect_url)
 

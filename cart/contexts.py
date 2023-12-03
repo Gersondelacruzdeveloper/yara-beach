@@ -34,7 +34,7 @@ def cart_contents(request):
             total_price_children = 0
             if value['child_qty']:
                 try:
-                    total_price_children = Decimal(value['price']) / 2 * int(value['child_qty'])
+                    total_price_children = Decimal(value['price_children']) * int(value['child_qty'])
                 except ValueError:
                     print("An error occurred in our system. Please try again later.")
             total += Decimal(total_price_adult + total_price_children)
