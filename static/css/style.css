@@ -1571,6 +1571,10 @@ background-color: var(--Yellow);
     /* the profile has the same and it comes from bootstrap */
 }
 
+.dropdown-item {
+    padding: 10px;
+}
+
 .cart-counter{
     border-radius: 50%;
     width: 20px;
