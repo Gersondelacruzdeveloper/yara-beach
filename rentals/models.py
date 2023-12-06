@@ -52,3 +52,20 @@ class Review(models.Model):
         return self.title
 
     
+
+
+# This to collect the person info in order to sell and add the excursions
+class Company(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=300, blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    person_incharge_name = models.CharField(max_length=100, blank=True, null=True)
+    prices = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+    
+    
