@@ -530,3 +530,14 @@ def generate_auto_post(request):
         return redirect('all_post')
     
 
+
+@login_required(login_url='/accounts/login/')
+def active_sellers(request):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    active_sellers = Reference.objects.exclude(phone_number=None)
+    sellers_to_be_pay = Reference.objects.filter(due_to_pay_amount__gt=0)
+    context = {'active_sellers': active_sellers, 'sellers_to_be_pay': sellers_to_be_pay}
+    return render(request, 'administrator/active_sellers.html', context)
