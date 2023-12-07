@@ -3,6 +3,7 @@ from django.conf import settings
 from datetime import date
 from .models import ExcursionOrder
 from django.shortcuts import redirect
+from decimal import Decimal,ROUND_HALF_UP
 
 def send_booking_email(request, guest_email=None):
     if request.user.is_authenticated:
@@ -89,6 +90,9 @@ def calculate_final_amount(initial_price, additional_amount, paypal_percentage_f
     # Step 3: Add additional percentage
     additional_amount = total_amount * additional_percentage
     total_amount += additional_amount
+    
+    # Round the total_amount to the nearest integer
+    total_amount = Decimal(total_amount).quantize(Decimal('1.'), rounding=ROUND_HALF_UP)
 
     return total_amount
 
