@@ -10,8 +10,8 @@ from django.utils.text import slugify
 from django.db.models import Count
 from django.utils import timezone  # Import timezone module
 from django.core.exceptions import ValidationError
-
-
+from checkout.utils import calculate_final_amount
+from django.conf import settings
 
 # Create your models here.
 class AvailableTime(models.Model):
@@ -77,13 +77,13 @@ class Excursions(models.Model):
     meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
     price_children = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
+    our_excursions =  models.BooleanField(default=False)
 
 
     def save(self, *args, **kwargs):
         # If the slug is not provided, generate it based on the name
         if not self.slugy:
             self.slugy = slugify(self.title[:50])
-
 
         # Ensure the slug is unique
         if Excursions.objects.filter(slugy=self.slugy).exclude(pk=self.pk).exists():
@@ -92,6 +92,21 @@ class Excursions(models.Model):
        
         if self.price_children == 0:
             self.price_children = self.Price / 2
+      
+       # Calculate final amount if it's our excursions
+        if self.our_excursions:
+            self.Price = calculate_final_amount(
+                Decimal(self.company_Price),
+                Decimal(settings.SELLER_PLUS_COMPANY_AMOUNT),
+                Decimal(settings.PAYPAL_PERCENTAGE_FEES),
+                Decimal(settings.PAYPAL_FIXED_FEES),
+                Decimal(settings.DISCOUNT_PERCENTAGE),
+            )
+            print(self.company_Price)
+            print(settings.SELLER_PLUS_COMPANY_AMOUNT)
+            print(settings.PAYPAL_PERCENTAGE_FEES)
+            print(settings.PAYPAL_FIXED_FEES)
+            print(settings.DISCOUNT_PERCENTAGE)
 
         super().save(*args, **kwargs)
      
@@ -101,7 +116,6 @@ class Excursions(models.Model):
         # Check if the description is still the default message
         if self.description == 'Default description message.':
             raise ValidationError({'description': 'Please provide a description.'})
-
 
 
 # Creates all the Excursion fotos

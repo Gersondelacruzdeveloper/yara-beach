@@ -78,6 +78,20 @@ def send_email_to_seller(request, extracted_reference, checkout_cart):
     return redirect('checkout-success')
 
 
+def calculate_final_amount(initial_price, additional_amount, paypal_percentage_fee, paypal_fixed_fee, additional_percentage):
+    # Step 1: Add initial price and additional amount
+    total_amount = initial_price + additional_amount
+
+    # Step 2: Add PayPal fees
+    paypal_fee = total_amount * paypal_percentage_fee + paypal_fixed_fee
+    total_amount += paypal_fee
+
+    # Step 3: Add additional percentage
+    additional_amount = total_amount * additional_percentage
+    total_amount += additional_amount
+
+    return total_amount
+
 
 # def calculate_final_amount(initial_price, additional_amount, paypal_percentage_fee, paypal_fixed_fee, additional_percentage):
 #     # Step 1: Add initial price and additional amount

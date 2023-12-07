@@ -5,7 +5,6 @@ from django.core.validators import URLValidator
 import uuid
 from django.core.exceptions import ObjectDoesNotExist
 from decimal import Decimal
-from excursions.models import Reference
 # Create your models here.
 
 # Contains all orders related to excursions

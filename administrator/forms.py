@@ -10,7 +10,7 @@ class ExcursionForm(ModelForm):
     class Meta:
         model = Excursions
         fields = '__all__'
-        exclude = ['user', 'is_transfer', 'company_Price', 'type_dropdown', 'slugy']
+        exclude = ['user', 'is_transfer', 'type_dropdown', 'slugy']
 
     def __init__(self, *args, **kwargs):
         super(ExcursionForm, self).__init__(*args, **kwargs)
