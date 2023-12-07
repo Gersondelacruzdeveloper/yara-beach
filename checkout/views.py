@@ -34,7 +34,7 @@ def apply_discount_code(request):
 
             if checkout_cart['total']:
                 original_total = Decimal(checkout_cart['total'])
-                total_discount = (original_total * discount_percentage / 100)
+                total_discount = original_total * discount_percentage
                 new_total = Decimal(checkout_cart['total']) - Decimal(total_discount)
                 messages.success(request, 'Discount has been applied')    
         else: 
