@@ -126,12 +126,12 @@
 
     <div id="other-icons">
         <div class="shoping-cart-container">
-            <a href="{% url 'excursion-cart' %}" style="color:white">
+            <a href="{% url 'rental-cart' %}" style="color:white">
                 <div class="icon">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </div>
                 {% if total %}
-                <div class="cart-counter" id="cart-item-count">{{cart_items|length}}</div>
+                <div class="cart-counter" id="cart-item-count">{{rental_cart_items|length}}</div>
                 {% endif %}
             </a>
         </div>
