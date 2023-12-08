@@ -58,6 +58,8 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="links-container">
+
+                    <!-- For excursions bookings -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,11 +73,21 @@
                         </ul>
                     </li>
 
+                    <!-- For rentals bookings -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-book"></i> Bussiness
+                        </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admin-excursion' %}"><i class="fa-solid fa-mountain-sun"></i>
-                            Excursions</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'admin-excursion' %}"> 
+                                <i class="fa-solid fa-mountain-sun"></i> Excursions</a></li>
+                            <li><a class="dropdown-item" href="{% url 'admin-rental' %}"> <i class="fa-solid fa-house-chimney-crack"></i> Rentals</a></li>
+                        </ul>
                     </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'seller' %}"> <i class="fa-brands fa-salesforce"></i>
                             Sellers</a>
@@ -117,7 +129,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-book"></i> Others
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Others
                         </a>
 
                         <ul class="dropdown-menu">
