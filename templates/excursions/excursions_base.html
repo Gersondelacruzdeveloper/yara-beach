@@ -102,6 +102,11 @@
     <!-- Add more square links as needed -->
     <div class="square-btn"><span class="main-link underline-btn"><a href="{% url 'excursions' %}">Excursions</a></span>
     </div>
+    {% if request.user.is_superuser%}
+         <!-- Add more square links as needed -->
+         <div class="square-btn2"><span class="main-link2 underline-btn"><a href="{% url 'rentals' %}">Stays</a></span>
+         </div>
+    {% endif %}
 
 
     <!-- form -->

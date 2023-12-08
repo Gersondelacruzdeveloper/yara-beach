@@ -6,24 +6,16 @@
     <!-- Metas -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Explore our huge selection of excursions and places to stay in punta cana.
-Visit Saona Island, an idyllic speck of sand and palm trees in the blue Caribbean, 
-during a full-day tour from Punta Cana. Board a small speedboat for the thrilling ride out to the island, 
-including a stop at a natural swimming pool where you can see starfish.
- And stay in one of our beautiful rooms or rent a whole apartment with us at a very low price. 
-">
-    <meta name="keywords" content="punta cana, bavaro, rent, room,excursions,Visit Saona Island,
-blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
- Day Trip, things to do in puntacana, puntacana tours, Scape Park Punta Cana,
-  Scape Park Punta Cana, Wild Buggy Eco Adventure, Full Safari Zipline, 
-  Buggies & Horse Riding, Punta Cana Off-Road Dune, Buggy Adventure, Amazing Water Cave,tours, 
-  Horseback Riding, City Tour, Cacao Farm,  Zipline / Dune Buggy, holiday rentals, home deals, 
-  Luxury Condo, Steps Away From The Beach, ocean view, punta cana el cortecito ">
+    <meta name="description"
+        content="{% block description %}Explore and discover the best 2023 Punta Cana excursions for family adventures, including Saona Island tours and unique activities in Punta Cana Bavaro. Discover excursiones en Republica Dominicana, delve into the Caribbean's treasures, and find excursiones near you. Contact excursiones VIP Punta Cana for affordable, child-friendly options, and explore the diverse excursiones Punta Cana has to offer, all at great prices. Don't miss the top Punta Cana tours and tourist attractions with trusted tour companies.{% endblock %}">
+    <meta name="keywords"
+        content="punta cana, Discovery, adventure, the adventure travelers, 2023, backpacking tours,explore tours, vacations, biking tours,adventure travel, bavaro,excursions,Visit Saona Island, blue Caribbean, natural swimming pool, Day Trip, things to do in puntacana, puntacana Scape Park Punta Cana, Wild Buggy Eco Adventure, Full Safari Zipline, Buggies & Horse Riding, Hoyo Azul y Cap Cana,Excursión de un día isla Saona, Cana Off-Road Dune, Amazing Water Cave,tours, Horseback City Tour, Cacao Farm, Zipline / Dune Full-Day Catalina Island Snorkeling Tour Ecological Riding Paradise, Diving: Certification Required, Scuba Diving Adventure: Certified Experience, with Altos Chavon - All Inclusive, Santo Domingo Colonial Samaná Cayo Levantado and Cascada Limón, Playa Rincon Levantado, Los Haitises National Montana Redonda, River Lunch">
     <meta name="author" content="Gerson De La Cruz">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="https://myonlinerecipes.herokuapp.com/">
+    <link rel="canonical" href="https://www.puntacana-explore.com/excursions/">
     <meta name="robots" content="index, follow">
-    <title>Yara Beach </title>
+    <!-- <title>Punta cana Explore</title> -->
+    <title>{% block title %}Punta Cana Discovery {% endblock %}</title>
     <!-- Bootstrap 5.0.2-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -35,200 +27,290 @@ blue Caribbean, natural swimming pool, beautiful rooms, rent a whole apartment,
     <link rel="icon" type="image/png" sizes="512x512" href="{% static 'images/favicon/android-chrome-512x512.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+    <!-- jquery -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- Local stylesheets -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <!-- translation -->
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11294930508">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11294930508');
+</script>
+
+<!-- Initialize the API: -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,fr,ru,pt,it', // Specify the languages you want to allow
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+    
 </head>
+<!-- 
+<style>
+    #google_translate_element{
+    z-index: 6 !important;
+}
+.VIpgJd-ZVi9od-xl07Ob-lTBxed{
+    border:2px solid pink;
+}
+.goog-te-gadget-simple .VIpgJd-ZVi9od-xl07Ob-lTBxed{
+    border:2px solid green;
+}
+.goog-te-gadget-simple{
+    z-index: 6 !important;
+    border:2px solid yellow;
+}
+.goog-te-gadget-simple .VIpgJd-ZVi9od-xl07Ob-lTBxed span {
+    z-index: 6 !important;
+   border:2px solid red;
+}
 
-<body>
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/Yara-logo.png' %}"
-                 alt="Yara name with a palm tree"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+.VIpgJd-ZVi9od-vH1Gmf-ibnC6b div, .VIpgJd-ZVi9od-vH1Gmf-ibnC6b:link div, .VIpgJd-ZVi9od-vH1Gmf-ibnC6b:visited div, .VIpgJd-ZVi9od-vH1Gmf-ibnC6b:active div{
+    border:2px solid red;
+    z-index: 6 !important;
+}
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="links-container">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house-user"></i>
-                            Home</a>
-                    </li>
-                    <!-- Sort by -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-filter"></i>Sort by
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'newest_rentals_result' %}">Sort by
-                                    newest</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'oldest_rentals_result' %}">Sort by Oldest</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_ascend' %}">Price
-                                    (low to high)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'filter_rentals_by_price_descend' %}">Price
-                                    (high to low) </a></li>
-                            <li><a class="dropdown-item" href="{% url 'rooms' %}">All Rooms </a></li>
-                            <li><a class="dropdown-item" href="{% url 'apartments' %}">All Apartments </a></li>
-                            <li><a class="dropdown-item" href="{% url 'villas' %}">All Villas</a></li>
-                        </ul>
-                    </li>
-                    {% if not user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-user"></i> My account
-                        </a>
+</style> -->
+<div id="google_translate_element"></div>
+<!---------------------------------------------------- google translate btn -->
+<div id="hero-section">
+    <div class="overlay"> </div>
+    <!-- logo -->
+    <a href="{% url 'home'%}" id="logo-link" target="_blank">
+        <img id="logo-site" class="palm-tree" src="{% static 'images/excursions/Logo.png' %}" alt="Logo">
+    </a>
+    <!-- hero img -->
+    <img id="hero-image" src="{% static 'images/excursions/hero-img-puj.jpg' %}" alt="Hero Image">
 
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="{% url 'account_login' %}"><i
-                                        class="fa-solid fa-user"></i> Sign in</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{% url 'account_signup' %}"><i class="fa-solid fa-user-plus"></i> Register </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {% else %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-user"></i> Hi {{user|title}}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}"><i
-                                        class="fa-solid fa-user"></i> Logout</a>
+    <!-- titles -->
+    <div id="title_hero">Memorable Adventures Await: Unforgettable Excursion Experiences</div>
 
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="{% url 'account_change_password' %}"><i class="fa-solid fa-user"> </i> Change Password</a>
-                            </li>
-
-                            {% if request.user.is_superuser %}
-                            <li>
-                                <a class="dropdown-item" href="{% url 'administrator' %}"><i
-                                        class="fa-solid fa-toolbox"></i> Admin board</a>
-                            </li>
-                            {% else %}
-
-                            <li>
-                                <a class="dropdown-item" href="{% url 'excursion-bookings' %}"> <i
-                                        class="fa-solid fa-book-circle-arrow-up"></i>
-                                    Excursion Bookings</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{% url 'rental-bookings' %}">
-                                    <i class="fa-solid fa-book-circle-arrow-up"></i>
-                                    Rental Bookings</a>
-                            </li>
-                            {% endif %}
-                        </ul>
-
-                    {% endif %}
-                    <!-- Contacts -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-envelope"></i>
-                            Contact</a>
-                    </li>
-
-                    <!-- cart -->
-                    <li class="nav-item cart">
-                        <a class="nav-link btn my_hover sear-btn btn-outline-secondary position-relative" href="{% url 'rental-cart' %}">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                {% if rental_cart_total %}
-                                £{{rental_cart_total | floatformat:2}}
-                                {% else %}
-                                £0.00
-                                {% endif %}
-                        </a>
-                    </li>
-                </ul>
-                <!-- Search form -->
-                <form class="d-flex" role="search" method="get" autocomplete="on"
-                    action="{% url 'rental_search_results' %}">
-                    {% if navbar_input %}
-                    <input class="form-control me-2" type="search" name="navbar" placeholder="{{navbar_input}}"
-                        aria-label="Search">
-                    {% else %}
-                    <input class="form-control me-2" type="search" name="navbar" placeholder="Search rentals"
-                        aria-label="Search">
-                    {% endif %}
-                    <button class="btn my_hover sear-btn btn-outline-secondary" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <!-- flash messages -->
-    <div class="message mt-3">
-        {% if messages %}
-        {% for message in messages %}
-        {% if message.tags == "success" %}
-        <div class="alert alert-success" role="alert">
-            {{message}}
-        </div>
-        {% else %}
-        <div class="alert alert-danger" role="alert">
-            {{message}}
-        </div>
-        {% endif%}
-        {% endfor %}
-        {% endif %}
+    <!-- Add more square links as needed -->
+    <div class="square-btn"><span class="main-link underline-btn"><a href="{% url 'excursions' %}">Excursions</a></span>
     </div>
-    <main>
-        {% block content %}
-        <!-- Main Content -->
-        {% endblock %}
-    </main>
+    {% if request.user.is_superuser%}
+         <!-- Add more square links as needed -->
+         <div class="square-btn2"><span class="main-link2 underline-btn"><a href="{% url 'rentals' %}">Stays</a></span>
+         </div>
+    {% endif %}
 
-    <footer id="footer">
 
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <p>&copy;
-                <script>document.write(new Date().getFullYear())</script> Yara beach
-            </p>
+    <!-- form -->
+    <form role="search" method="get" autocomplete="on" action="{% url 'rental_search_results' %}">
+        <div id="search-container">
+            <i class="fa-solid fa-magnifying-glass" style="color:black;padding-left: 20px;"></i>
+            {% if navbar_input %}
+            <input type="text" id="search-input" placeholder="{{navbar_input}}" type="search" name="navbar">
+            {% else %}
+            <input type="text" id="search-input" placeholder="Search for Memorable Getaways" type="search"
+                name="navbar">
+            {% endif %}
+            <button id="search-button" type="submit">Search </button>
+        </div>
+    </form>
+
+
+    <div id="other-icons">
+        <div class="shoping-cart-container">
+            <a href="{% url 'excursion-cart' %}" style="color:white">
+                <div class="icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                {% if total %}
+                <div class="cart-counter" id="cart-item-count">{{cart_items|length}}</div>
+                {% endif %}
+            </a>
         </div>
 
-        <!--links Icon-->
-        <div class="social-media-links">
-            <div class="social_links">
-                <a aria-label="facebook" rel="noopener" href="https://www.facebook.com/" target="_blank"><i
-                        class="fa-brands fa-facebook"></i></a>
+        <div class="dropdown-user" data-toggle="modal" data-target="#myModal">
+            <button class="dropdown-item icon"><i class="fa-solid fa-user"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mobile-btn" >
+    <a href="{% url 'filter_rentals_by_price_descend' %}" class="group-button">Price High</a>
+    <a href="{% url 'filter_rentals_by_price_ascend' %}" class="group-button">Price Low</a>
+    <a href="{% url 'newest_rentals_result' %}" class="group-button">Newest</a>
+    <a href="{% url 'oldest_rentals_result' %}" class="group-button">Oldest</a>
+      <!-- filter individuals type acomodations-->
+    <a href="{% url 'rooms' %}" class="group-button">All Rooms</a>
+    <a href="{% url 'apartments' %}" class="group-button">All Apartments</a>
+    <a href="{% url 'villas' %}" class="group-button">All Villas</a>
+</div>
+
+<!-- floating whatsapp code -->
+<div class="whatsap-container draggable" id="draggableElement">
+    <a aria-label="Whatsapp" rel="noopener" rel="whatsapp" href="https://api.whatsapp.com/send?phone=447541147634"
+        target="_blank"><img id="whatsapp-floating" class="text-center"
+            src="{% static 'images/excursions/whatsapp.png'%}"></a>
+</div>
+
+<div class="modal custom-modal" id="myModal" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa-solid fa-user"></i> Profile</h4>
+                <button class="close my-button" data-dismiss="modal">&times;</button>
             </div>
-            <div class="social_links">
-                <a aria-label="instagram" rel="noopener" href="https://www.instagram.com/" target="_blank"><i
-                        class="fa-brands fa-instagram"></i></a>
+            <div class="modal-body">
+                <div class="row ">
+                    <div class="d-grid gap-2">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'excursion-bookings' %}" class="btn site-color"> <i class="fa-solid fa-book"></i> My
+                        Bookings</a>
+                    {% if request.user.is_superuser %}
+                    <a href="{% url 'administrator' %}" class="btn btn-danger col mb-2">Admin Board</a>
+                    {% endif %}
+                    <a href="{% url 'account_logout' %}" class="btn site-color"> <i
+                        class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    {% else %}
+                    <a href="{% url 'account_signup' %}" class="btn site-color">Register</a>
+                    <a href="{% url 'account_login' %}" class="btn  site-color">Sign in</a>
+                    <a href="{% url 'account_change_password' %}" class="btn site-color">Change Password</a>
+                  {% endif%}
+                </div>
             </div>
-            <div class="social_links">
-                <a aria-label="twitter" rel="noopener" target="_blank" href="https://twitter.com/"><i
-                        class="fa-brands fa-twitter"></i></a>
             </div>
-            <div class="social_links">
-                <a aria-label="tiktok" rel="noopener" target="_blank" href="https://www.tiktok.com/"><i
-                        class="fa-brands fa-tiktok"></i></a>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
+    </div>
+</div>
 
-    </footer>
 
-    <!--Bootstrap 5.2 Javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
-    <!-- jQuery -->
+<!-- flash messages -->
+<div class="message mt-3">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "success" %}
+    <div class="alert alert-success" role="alert">
+        {{ message|safe }}
+    </div>
+    {% else %}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+    {% endif%}
+    {% endfor %}
+    {% endif %}
+</div>
+
+<main>
+    {% block content %}
+    <!-- Main Content -->
+    {% endblock %}
+</main>
+
+<script>
+    let navbarinput = '{{navbar_input}}'
+    let subtitle = document.getElementById('subtitle')
+    let title_hero = document.getElementById('title_hero')
+    let heroImg = document.getElementById('hero-image')
+    let itemImg = document.getElementsByClassName("position-relative")
+    let cardTitle = document.getElementsByClassName('card-title')[0]
+    let squareBtn = document.getElementsByClassName('square-btn')[0]
+    let h1Title = document.getElementsByClassName('h1Title')[0]
+    let searchContainer = document.getElementById('search-container')
+    let otherIcons = document.getElementById('other-icons')
+
+
+
+    if (navbarinput) {
+        heroImg.src = itemImg[0].children[0].src
+        heroImg.style.height = '300px'
+        subtitle.style.display = "none"
+        title_hero.innerText = cardTitle.innerText
+        searchContainer.style.top = "30%";
+        title_hero.style.top = "50%"
+    }
+
+
+
+    // You can replace the URLs with the actual links you want to redirect to
+    document.getElementById("btn1").addEventListener("click", function () {
+        window.location.href = "https://www.example.com/link1";
+    });
+
+    document.getElementById("btn2").addEventListener("click", function () {
+        window.location.href = "https://www.example.com/link2";
+    });
+
+    document.getElementById("btn3").addEventListener("click", function () {
+        window.location.href = "https://www.example.com/link3";
+    });
+
+</script>
+
+<footer id="footer">
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <p>&copy;
+            <script>document.write(new Date().getFullYear())</script> Punta Cana Discovery
+        </p>
+    </div>
+
+    <!--links Icon-->
+    <div class="social-media-links">
+        <div class="social_links">
+            <a aria-label="facebook" rel="noopener" href="https://www.facebook.com/" target="_blank"><i
+                    class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div class="social_links">
+            <a aria-label="instagram" rel="noopener" href="https://www.instagram.com/" target="_blank"><i
+                    class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div class="social_links">
+            <a aria-label="twitter" rel="noopener" target="_blank" href="https://twitter.com/"><i
+                    class="fa-brands fa-twitter"></i></a>
+        </div>
+        <div class="social_links">
+            <a aria-label="tiktok" rel="noopener" target="_blank" href="https://www.tiktok.com/"><i
+                    class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <!-- <div class="referecia" style="color:white">
+            <a aria-label="tiktok" rel="reference" target="_blank" href="{% url 'reference' %}">Referencia</a>
+        </div> -->
+
+</footer>
+
+<!--Bootstrap 5.2 Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- jQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+<!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+<!-- Local Javascript -->
 
-    <!-- Local Javascript -->
-    <script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/dragable_whatsapp.js' %}"></script>
+<script src="{% static 'js/offerCountDown.js' %}"></script>
+<script src="{% static 'js/timer_pop_up.js' %}"></script>
 
 </body>
 

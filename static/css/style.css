@@ -1623,15 +1623,34 @@ background-color: var(--Yellow);
     height:60px;
     left: 50px;
     border-radius: 20px 20px 0 0;
-    text-align: center;
 }
+
+.square-btn2{
+    position: absolute;
+    bottom: 0px;
+    background-color: #f2f2f2;
+    width:150px;
+    height:60px;
+    left: 250px;
+    border-radius: 20px 20px 0 0;
+
+}
+
 .main-link{
     position: absolute;
     color: #333;
     font-weight: bolder;
-    margin-top: 10px;
+    padding: 20px;
+    left:15px;
+}
+.main-link2{
+    position: absolute;
+    color: #333;
+    font-weight: bolder;
+    padding: 20px;
     left:30px;
 }
+
 
 .overlay {
 content: "";
