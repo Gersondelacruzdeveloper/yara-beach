@@ -24,6 +24,8 @@ class Rentals(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     ACCOM_type = models.CharField(choices=CHOICES, default='Room', max_length=20)
     status = models.CharField(choices=STATUS_CHOICES, default='Inactive', max_length=20)
+    meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
+
 
     def __str__(self):
         return self.title
