@@ -1,4 +1,6 @@
 {% extends 'rentals/rentals_base.html' %}
+{% block title %}{{rentals.title}}{% endblock %}
+{% block description %}{{ rentals.meta_description }}{% endblock %}
 {% load static %}
 
 {% block content %}
