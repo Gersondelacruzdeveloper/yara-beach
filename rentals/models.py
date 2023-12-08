@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.text import slugify
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -25,10 +27,23 @@ class Rentals(models.Model):
     ACCOM_type = models.CharField(choices=CHOICES, default='Room', max_length=20)
     status = models.CharField(choices=STATUS_CHOICES, default='Inactive', max_length=20)
     meta_description = models.CharField(max_length=201, null=True, blank=True, default='')
+    slug = models.SlugField(unique=True, blank=True)
 
 
     def __str__(self):
         return self.title
+    
+
+    def save(self, *args, **kwargs):
+        # If the slug is not provided, generate it based on the name
+        if not self.slug:
+            self.slug = slugify(self.title[:50])
+
+        # Ensure the slug is unique
+        if Rentals.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+            raise ValidationError('Slug already exists. Please provide a unique name.')
+
+        super().save(*args, **kwargs)
 
 
 # Creates all the Rentals fotos

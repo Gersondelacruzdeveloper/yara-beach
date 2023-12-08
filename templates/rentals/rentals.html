@@ -8,7 +8,7 @@
     <div class="card-container">
         {% for rental in rentals %}
         <div class="card-wrapper">
-            <a href="{% url 'rental_detail' rental.pk %}"><img src="{{rental.main_image.url}}"
+            <a href="{% url 'rental_detail' rental.slug %}"><img src="{{rental.main_image.url}}"
                     alt="{{rental.image_name}}"> </a>
             <h5 class="card-title">{{rental.title|slice:":30"|title}}..</h5>
             <span

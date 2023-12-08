@@ -3,7 +3,8 @@ from .models import Rentals,Review
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
-
+from django.shortcuts import render, get_object_or_404
+from django.utils.text import slugify
 # Show all the rentals
 def rentals(request):
     if not request.user.is_superuser:
@@ -16,10 +17,10 @@ def rentals(request):
     return render(request, 'rentals/rentals.html', context)
 
 # Show the rental details
-def rental_details(request, pk):
+def rental_details(request, slug):
     if not request.user.is_superuser:
         return redirect("excursions")
-    rental = Rentals.objects.get(id=pk)
+    rental = get_object_or_404(Rentals, slug=slug)
     context = {'rentals': rental}
 
     # create review 

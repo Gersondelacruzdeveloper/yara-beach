@@ -33,12 +33,12 @@
             </div>
             <!-- item details aside -->
             <div class="item-detail card">
-                <form class="form" action="{% url 'add_rental' rentals.id %}" method="POST">
+                <form class="form" action="{% url 'add_rental' rentals.slug %}" method="POST">
                     {% csrf_token %}
 
                     <!-- price -->
                     <div class="form-row">
-                        <div class="detail-price"> <strong>Night:</strong> £{{rentals.Price}}</div>
+                        <div class="detail-price"> <strong>Night:</strong> ${{rentals.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
                         <!-- check-In date -->

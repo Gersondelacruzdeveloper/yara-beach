@@ -12,6 +12,7 @@ from datetime import timedelta, datetime
 import random
 from datetime import timedelta, datetime
 from administrator.models import Post
+from django.core.exceptions import ValidationError
 
 # import qrcode
 # Create your views here.
