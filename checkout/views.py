@@ -142,8 +142,6 @@ def checkout_success(request):
 # Chekout and process payment for rental cart
 # @login_required(login_url='/accounts/login/')
 def checkout_rental(request):
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
     rental_cart = request.session.get('rental_cart', {})
     current_cart = rental_cart_contents(request)
     # Create the order
@@ -207,15 +205,8 @@ def checkout_rental(request):
        # process the payment
     rental_cart_total = current_cart['rental_cart_total']
     stripe_total = round(rental_cart_total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY
-    )
-    context = {
-        'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
-    }
+
+    context = {}
     return render(request, 'checkout/checkout_rental.html', context)
 
 
