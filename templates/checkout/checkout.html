@@ -101,19 +101,19 @@
         <div class="row payments-container">
           <div class="col-md-6 mb-3">
             <label for="full_name">Full name *</label>
-            <input onchange="myFunction()" type="text" class="form-control" id="full_name" name="full_name"
+            <input type="text" class="form-control" id="full_name" name="full_name"
               placeholder="Full Name" required>
           </div>
 
           <div class="col-md-6 mb-3">
             <label for="Phone_number">Phone number</label>
-            <input onchange="myFunction()" type="text" class="form-control" id="Phone_number" name="Phone_number"
+            <input  type="text" class="form-control" id="Phone_number" name="Phone_number"
               placeholder="Phone number" required>
           </div>
           {% if not request.user.is_authenticated %}
           <div class="col-md-12 mb-3">
             <label for="email">Email</label>
-            <input onchange="myFunction()" type="text" class="form-control" id="email" name="email"
+            <input  type="text" class="form-control" id="email" name="email"
               placeholder="Email" required>
           </div>
           {%endif%}
