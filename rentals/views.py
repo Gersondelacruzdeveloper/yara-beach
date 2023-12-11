@@ -20,6 +20,7 @@ def rentals(request):
 def rental_details(request, slug):
     if not request.user.is_superuser:
         return redirect("excursions")
+    
     rental = Rentals.objects.get(slug=slug)
     context = {'rentals': rental}
 

@@ -42,7 +42,7 @@
                 <td>{{rental.ACCOM_type}}</td>
                 <td><img src="{{rental.main_image.url}}" alt="{{rental.image_name}}" style="width:75px"></td>
                 <td>{{rental.date_created}}</td>
-                <td><a href="{% url 'rental_detail' rental.slug %}" target="_blank">{{rental.title|slice:":30"|title}}</td></a>
+                <td><a href="{% url 'rental_detail' rental.slug %}" target="_blank">{{rental.title|slice:":30"|title}}</a></td>
                 <td>${{rental.Price}}</td>
                 <td><a href="{% url 'edit_rental' rental.pk %}"><button class="btn btn-sm btn-primary"><i class="far fa-edit">
                                 Edit</i></button></a> </td>
