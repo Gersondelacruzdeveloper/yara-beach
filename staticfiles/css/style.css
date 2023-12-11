@@ -11,6 +11,8 @@
     --white:white;
 }
 
+
+
 /* -------------------------------------------------------------------- Resets */
 .draggable {
     position: fixed;
@@ -799,6 +801,33 @@ margin-left: 100px;
     border-radius: .375rem;
 }
 
+
+
+#paypal-button-container{
+    width:100vw;
+    margin: auto;
+}
+.col-md-8{
+    margin: auto; 
+    padding:20px;
+    width:91%
+}
+
+.row{
+     width:91%; 
+     margin: auto;
+}
+.col-md-4{
+    margin:auto; 
+    width:100%;
+}
+
+.payments-container{
+    width:70%; 
+    margin: auto;
+}
+
+
 /* ------------------------------------------------------------------search classes */
 
 .no-result {
@@ -808,6 +837,7 @@ margin-left: 100px;
 .site-color {
     color: var(--Yellow)
 }
+
 
 /* -------------------------------------------------------------------- detail page */
 .item-detail-and-image-container {
@@ -1700,6 +1730,10 @@ pointer-events: none; /* Allows clicks to go through the overlay to the image */
     .photos {
         width: 400px;
     }
+    .payments-container{
+        width:100%; 
+    }
+    
 
 
 

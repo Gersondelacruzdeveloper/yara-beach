@@ -93,12 +93,12 @@
       {% endfor %}
 
     <!-- card pytments infomation -->
-    <div class="col-md-8 order-md-1" style="margin: auto; padding:20px">
-      <h4 class="mb-3">Provide your personal information</h4>
-      <p style="color:green;"><i class="fa-solid fa-lock"></i> Checkout is fast and secure with Paypal</p>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3 text-center">Provide your personal information</h4>
+      <p style="color:green; text-align: center;"><i class="fa-solid fa-lock"></i> Checkout is fast and secure with Paypal</p>
       <form action=" " method="POST" id="payment-form">
         {% csrf_token %}
-        <div class="row">
+        <div class="row payments-container">
           <div class="col-md-6 mb-3">
             <label for="full_name">Full name *</label>
             <input onchange="myFunction()" type="text" class="form-control" id="full_name" name="full_name"
