@@ -20,7 +20,7 @@ def rentals(request):
 def rental_details(request, slug):
     if not request.user.is_superuser:
         return redirect("excursions")
-    rental = get_object_or_404(Rentals, slug=slug)
+    rental = Rentals.objects.get(slug=slug)
     context = {'rentals': rental}
 
     # create review 
