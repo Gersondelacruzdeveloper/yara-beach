@@ -120,32 +120,6 @@
           <hr class="mb-4">
           <div id="paypal-button-container"></div>
           <p class="p-3"><i class="fa-solid fa-circle-check" style="color:green;"></i> Free Cancellation</p>
-          <script>
-            // let continues = document.getElementById('continue')
-            // let paypalBtnId = document.getElementById('paypal-button-container')
-            // paypalBtnId.style.display = "none"
-            // Initialize a counter variable to keep track of the function calls
-            let functionCallCount = 0;
-            const full_name = document.getElementById('full_name').value;
-            const phone_number = document.getElementById('Phone_number').value;
-            const email = document.getElementById('email')?.value;
-            const get_user = '{{request.user}}'
-            // function myFunction() {
-            //   functionCallCount++
-            //   if(get_user != 'AnonymousUser'){
-            //     if (functionCallCount == 2) {
-            //     paypalBtnId.style.display = 'block'
-            //   }
-            //   }else{
-            //     if (functionCallCount == 3) {
-            //     paypalBtnId.style.display = 'block'
-            //   }
-
-            //   }
-            // }
-      
-          </script>
-          <!-- </button> -->
       </form>
     </div>
   </div>
@@ -157,35 +131,19 @@
 
   <!-- create token -->
   <script>
-
-    function getCookie(name) {
-      var cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-          var cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    }
     const csrftoken = getCookie('csrftoken');
     const total = '{{new_total | floatformat:2}}'
     const user = '{{user}}'
     const home_url = "{% url 'checkout-success' %}"
     console.log('user', user)
     console.log('total', total)
-    
+    console.log(csrftoken)
 
+    // Make pyment function
     function makepayment() {
-      console.log('checkers csrftoken', csrftoken)
-      const full_name = document.getElementById('full_name').value;
-      const phone_number = document.getElementById('Phone_number').value;
-      const reference = document.getElementById('reference').value
+      const full_name = document.getElementById('full_name')?.value;
+      const phone_number = document.getElementById('Phone_number')?.value;
+      const reference = document.getElementById('reference')?.value
       const email = document.getElementById('email')?.value
       console.log('this is the referene inside payment', reference)
       const url = "{% url 'checkout' %}";
@@ -221,8 +179,7 @@
           //Show a success message to the buyer
           makepayment()
            window.location.href = home_url;
-          alert('Transaction completed by ' + details.payer.name.given_name + '!')
-        });
+          });
       }
 
     }).render('#paypal-button-container');
