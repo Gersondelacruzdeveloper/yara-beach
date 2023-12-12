@@ -35,7 +35,7 @@ def cart_contents(request):
             total_price_adult = Decimal(value['price']) * int(value['adult_qty'])
             try:
                 company_total_price_adult = Decimal(value['company_Price']) * int(value['adult_qty'])
-            except ValueError:
+            except KeyError:
                 company_total_price_adult = 0
             total_price_children = 0
             if value['child_qty']:
