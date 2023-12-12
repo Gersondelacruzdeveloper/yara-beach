@@ -67,12 +67,14 @@ def checkout(request):
     paypal_client_id = settings.PAYPAL_CLIENT_ID
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
+    anticipo = current_cart['anticipo']
+    
+
     # Create the orders
     if request.method == 'POST':
         # print('checkout_cart', checkout_cart)
         data = json.loads(request.body)
-        print('email', data)
-
+    
         reference = checkout_cart.get('reference', '')
         extracted_reference = Reference.objects.filter(reference_number=reference)
         # Add the item in the database
@@ -93,7 +95,7 @@ def checkout(request):
             formatted_date = parsed_date.strftime('%Y-%m-%d')
 
             ExcursionOrder.objects.create(
-                excursion_name=item['excursion'].title,
+                excursion_name=item['excursion'].title + '' + 'Anticipo->' + str(anticipo),
                 user=user,
                 full_name=data['full_name'],
                 image=item['excursion'].main_image.url,
@@ -111,14 +113,14 @@ def checkout(request):
                 time_selected = item['values']['selected_time'],
                 excursion_id = int(item['excursion'].id),
             )
+
         # send an email with all the info to the user
-        send_booking_email(request, guest_email)
+        send_booking_email(request, anticipo, guest_email)
         send_email_to_seller(request, extracted_reference, checkout_cart)
         
     context = {'paypal_client_id': paypal_client_id,
                'new_total': new_total,'total_discount': 
                total_discount, 'discount_applied':discount_applied
-
                }
     return render(request, 'checkout/checkout.html', context)
 

@@ -116,6 +116,9 @@ class Excursions(models.Model):
         # Check if the description is still the default message
         if self.description == 'Default description message.':
             raise ValidationError({'description': 'Please provide a description.'})
+        
+    def __str__(self):
+        return self.title + "Id->" + str(self.id)
 
 
 # Creates all the Excursion fotos

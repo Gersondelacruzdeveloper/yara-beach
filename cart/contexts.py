@@ -12,6 +12,8 @@ from datetime import date, timedelta
 def cart_contents(request):
     cart_items = []
     total = Decimal(0.00)
+    anticipo = Decimal(0.00)
+    company_price_total = Decimal(0.00)
     product_count = 0
     cart = request.session.get('cart', {})
     checkout_cart = request.session.get('checkout_cart', {})
@@ -31,14 +33,21 @@ def cart_contents(request):
             excursion = Excursions.objects.get(pk=id)
             is_transfer = excursion.is_transfer
             total_price_adult = Decimal(value['price']) * int(value['adult_qty'])
+            try:
+                company_total_price_adult = Decimal(value['company_Price']) * int(value['adult_qty'])
+            except ValueError:
+                company_total_price_adult = 0
             total_price_children = 0
             if value['child_qty']:
                 try:
                     total_price_children = Decimal(value['price_children']) * int(value['child_qty'])
+                    # company_total_price_children = Decimal(value['price_children']) * int(value['child_qty'])
                 except ValueError:
                     print("An error occurred in our system. Please try again later.")
             total += Decimal(total_price_adult + total_price_children)
+            company_price_total += Decimal(company_total_price_adult + total_price_children)
             subTotal = total_price_adult + total_price_children
+            anticipo += total - company_price_total
 
             cart_items.append({
                 'item_id': id,
@@ -46,6 +55,8 @@ def cart_contents(request):
                 'excursion': excursion,
                 'is_transfer': is_transfer,
                 'subTotal': subTotal,
+                'company_price_total':company_price_total,
+                'anticipo':anticipo,
             })
 
         except Excursions.DoesNotExist:
@@ -57,7 +68,8 @@ def cart_contents(request):
         'product_count': product_count,
         'total': total,
         'tomorrow_str':tomorrow_str,
-        'last_item': cart_items[-1] if cart_items else None
+        'last_item': cart_items[-1] if cart_items else None,
+        'anticipo':anticipo,
     }
     checkout_cart['total'] = str(total)
     request.session['checkout_cart'] = checkout_cart

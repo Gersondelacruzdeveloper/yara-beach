@@ -47,10 +47,25 @@
       
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (US)</span>
-            <strong>${{total | floatformat:2}}</strong>
-            <p style="color: green">All taxes and fees included</p>
+            <strong>${{total | floatformat:2}}</strong> 
           </li>
 
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Anticipo <span style="color:green">The payment required now to secure the reservation.</span></span>
+            <span>$</span><strong id="anticipo">
+              {{item.anticipo|floatformat:2}}
+            </strong>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Restante <span style="color:green">The remaining amount can be paid upon pick-up.</span></span>
+            <strong>${{item.company_price_total}}</strong>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            <p style="color: green">All taxes and fees included</p>
+          </li>
+    
           {% if total_discount != 0%}
           <li class="list-group-item d-flex justify-content-between">
             <span>Discount</span>
@@ -86,11 +101,12 @@
           <label for="apply">Apply Discount Code</label>
           <button id="apply" class=" form-control btn my_hover btn-outline-secondary">Apply</button>
         </div>
-    </div>
     </form>
+  </div>
     {% endif %}
       </div>
       {% endfor %}
+    </div>
 
     <!-- card pytments infomation -->
     <div class="col-md-8 order-md-1">
@@ -133,10 +149,11 @@
   <script>
     const csrftoken = getCookie('csrftoken');
     const total = '{{new_total | floatformat:2}}'
+    const anticipo = document.getElementById('anticipo')?.innerText
     const user = '{{user}}'
     const home_url = "{% url 'checkout-success' %}"
     console.log('user', user)
-    console.log('total', total)
+    console.log('anticipo', anticipo)
     console.log(csrftoken)
 
     // Make pyment function
@@ -153,7 +170,7 @@
           'Content-type': 'application/json',
           'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify({ 'user': user, 'full_name': full_name, 'phone_number': phone_number, 'reference': reference,'email':email })
+        body: JSON.stringify({ 'user': user, 'full_name': full_name, 'phone_number': phone_number, 'reference': reference,'email':email})
       })
       console.log(user)
       console.log('payment prcess alreay')
@@ -167,7 +184,7 @@
         return actions.order.create({
           purchase_units: [{
             amount: {
-              value: total
+              value: parseFloat(anticipo)
             }
           }]
         });
