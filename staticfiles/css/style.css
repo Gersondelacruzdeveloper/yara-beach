@@ -63,6 +63,12 @@ width:50px;
     padding: 10px;
 }
 
+#draggableElement{
+    border:2px solid red;
+    position: fixed;
+    top:300px;
+    right:-10px;
+}
 #logo{
     border-radius: 50%;
     position: relative;
@@ -805,6 +811,7 @@ margin-left: 100px;
 #paypal-button-container{
     width:100vw;
     margin: auto;
+    z-index: 10;
 }
 .col-md-8{
     margin: auto; 
