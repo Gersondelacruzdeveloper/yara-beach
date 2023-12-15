@@ -61,14 +61,14 @@ class Excursions(models.Model):
         choices=CHOICES, default='Inactive', max_length=20)
     is_transfer = models.BooleanField(default=False)  # Boolean field for transfer
     available_times = models.ManyToManyField(AvailableTime)
-    unavailable_days = models.ManyToManyField('DayOfWeek', related_name='excursions', blank=True, null=True)
+    unavailable_days = models.ManyToManyField('DayOfWeek', related_name='excursions', blank=True)
     duration_time = models.IntegerField(null=True, blank=True, default=0)
     tour_guide = models.BooleanField(default=False)  # Boolean field for transfer
     transportation = models.BooleanField(default=False)  # Boolean field for transfer
     slugy = models.SlugField(unique=True, blank=True)
     group =  models.BooleanField(default=False)  # Boolean field for group
-    category = models.ManyToManyField('Excurasion_category', related_name='Excurasion_category', blank=True, null=True)
-    type_dropdown = models.ManyToManyField('Excursion_type', related_name='Excursion_type', blank=True, null=True)
+    category = models.ManyToManyField('Excurasion_category', related_name='Excurasion_category', blank=True)
+    type_dropdown = models.ManyToManyField('Excursion_type', related_name='Excursion_type', blank=True)
     company_Price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
     video_id = models.CharField(null=True, blank=True, max_length=201, default='')
