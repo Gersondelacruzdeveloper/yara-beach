@@ -16,7 +16,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ValidationError
 from django.conf import settings
 from openai import OpenAI
-
+from .utils import get_excursions_from_id, update_image
 
 # this function 
 # make sure to get everything for the companys 
@@ -62,16 +62,22 @@ def administrator(request):
     # Today bookings
     today_excursion_bookings = all_excursion_orders.filter(
         excursion_date=datetime.date.today())
+    update_image(today_excursion_bookings)
+
     # tomorow bookings
     tomorow_excursion_bookings = all_excursion_orders.filter(
         excursion_date=datetime.date.today() + timedelta(days=1))
+    update_image(tomorow_excursion_bookings)
 
     # Future bookings
     future_excursion_bookings = all_excursion_orders.filter(
         excursion_date__gt=datetime.date.today())
+    update_image(future_excursion_bookings)
+
     # Previous bookings
     previous_excursion_bookings = all_excursion_orders.filter(
         excursion_date__lt=datetime.date.today())
+    update_image(previous_excursion_bookings)
 
     # All rentals
     all_rental_orders = AccommodationOrder.objects.all()

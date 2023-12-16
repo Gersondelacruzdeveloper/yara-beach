@@ -164,8 +164,10 @@
                     <th>Full Name</th>
                     <th>Total</th>
                 </tr>
+            
 
                 {% for order in future_excursion_bookings %}
+
                 <tr>
                     <td><img src="{{order.image}}" alt="{{order.excursion_name}}" style="width:75px"></td>
                     <td>{{order.excursion_name |slice:":25"|title}}</td>

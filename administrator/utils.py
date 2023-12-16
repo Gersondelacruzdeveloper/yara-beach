@@ -86,3 +86,20 @@ def simulate_typing_speed(message, message_box):
     for char in message:
         message_box.send_keys(char)
         time.sleep(random.uniform(0.1, 0.3))
+
+
+# get all the excursions related to that id
+def get_excursions_from_id(id):
+    arrays = []
+    for order in id:
+        excursions = Excursions.objects.get(id=order.excursion_id)
+        arrays.append(excursions)
+    return arrays
+
+    
+def update_image(excursion_bookings):
+     for order in excursion_bookings:
+        excursions = Excursions.objects.get(id=order.excursion_id)
+        if order.image != excursions.main_image.url:
+            order.image = excursions.main_image.url
+            order.save()
