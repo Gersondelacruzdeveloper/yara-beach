@@ -1,94 +1,88 @@
-{% extends 'rentals/rentals_base.html' %}
-{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
 
-{% block content %}
+<h1>Responsive Checkout Form</h1>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
 
-<section>
-    <h1 class="text-center mt-5"> All Rentals</h1>
-
-    <div class="card-container">
-        {% for rental in rentals %}
-        <div class="card-wrapper">
-            <a href="{% url 'rental_detail' rental.pk %}"><img src="{{rental.main_image.url}}"
-                    alt="{{rental.image_name}}"> </a>
-            <h5 class="card-title">{{rental.title|slice:":30"|title}}..</h5>
-            <span
-                class="ACCOM_type {% if rental.ACCOM_type == 'Room' %} green {% elif rental.ACCOM_type == 'Apartment' %} blue {% else %} red {% endif %}">{{rental.ACCOM_type}}</span>
-            <!-- Reviews -->
-            <div class="card-star">
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                {% if rental.reviews.count > 1 or rental.reviews.count == 0 %}
-                <span> {{rental.reviews.count}} reviews</span>
-                {% else %}
-                <span> {{rental.reviews.count}} review</span>
-                {% endif%}
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
             </div>
+          </div>
 
-            <div class="price">
-                ${{rental.Price}}
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+          
         </div>
-        {% endfor%} 
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+        </label>
+        <input type="submit" value="Continue to checkout" class="btn">
+      </form>
     </div>
+  </div>
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+</div>
 
-     <!--Pagination-->
-    {% if counts > 8 %}
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            {% if rentals.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ rentals.previous_page_number }}">Previous</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
-            </li>
-            {% endif %}
+</body>
+</html>
 
-            {% if rentals.number|add:'-4' > 1 %}
-            <li class="page-item"><a class="page-link" href="?page={{ rentals.number|add:'-5' }}">&hellip;</a></li>
-            {% endif %}
-
-            {% for i in rentals.paginator.page_range %}
-            {% if rentals.number == i %}
-            <li class="page-item active" aria-current="page">
-                <span class="page-link">
-                    {{ i }}
-                    <span class="sr-only">(current)</span>
-                </span>
-            </li>
-            {% elif i > rentals.number|add:'-5' and i < rentals.number|add:'5' %} <li class="page-item"><a
-                    class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-                {% endfor %}
-
-                {% if rentals.paginator.num_pages > rentals.number|add:'4' %}
-                <li class="page-item"><a class="page-link" href="?page={{ rentals.number|add:'5' }}">&hellip;</a></li>
-                {% endif %}
-
-                {% if rentals.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ rentals.next_page_number }}">Next</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
-                </li>
-                {% endif %}
-        </ul>
-    </nav>
-    <!--end of Pagination-->
-    {%endif%}
-
-
-
-
-
-
-</section>
-
-{% endblock content %}

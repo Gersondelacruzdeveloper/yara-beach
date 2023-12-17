@@ -20,27 +20,21 @@ from datetime import datetime as newTime
 
 def apply_discount_code(request):
     discount_percentage = Decimal(settings.DISCOUNT_PERCENTAGE)
-    new_total = 0.00
-    total_discount = 0
     checkout_cart = request.session.get('checkout_cart', {})
+    checkout_cart['discount'] = str(Decimal(0.00))
+    checkout_cart['my_new_total'] = str(Decimal(0.00))
     reference_applied = False
+    current_cart = cart_contents(request)
+
     if request.method == 'POST':
         discount_reference = request.POST.get('reference')
         extracted_reference = Reference.objects.filter(reference_number=discount_reference)
-        if extracted_reference and not reference_applied:
-            checkout_cart['reference'] = str(discount_reference)
-            checkout_cart['discount_applied'] = True
-            reference_applied = True 
-
-            if checkout_cart['total']:
-                original_total = Decimal(checkout_cart['total'])
-                total_discount = original_total * discount_percentage
-                new_total = Decimal(checkout_cart['total']) - Decimal(total_discount)
-                messages.success(request, 'Discount has been applied')    
-        else: 
+        if extracted_reference:
+            checkout_cart['discount'] = str(Decimal(current_cart['m_total']) * Decimal(discount_percentage))
+            checkout_cart['my_new_total'] = str(Decimal(current_cart['m_total']) - Decimal(checkout_cart['discount']))
+            request.session['checkout_cart'] = checkout_cart
+        else:
             messages.error(request, 'The discount code is invalid. Please check the spelling.')
-    checkout_cart['total_discount'] = str(total_discount)
-    request.session['cart_total'] = str(new_total)
     request.session['checkout_cart'] = checkout_cart
     return redirect('checkout')
 
@@ -50,7 +44,7 @@ def apply_discount_code(request):
 def checkout(request):
     checkout_cart = request.session.get('checkout_cart', {})
     # if the checkout total is 0 then go home
-    if checkout_cart['total'] == '0':
+    if checkout_cart.get('total', '0') == '0':
         return redirect('home')
     
     cart = request.session.get('cart', {})

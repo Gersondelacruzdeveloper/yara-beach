@@ -148,7 +148,7 @@
                 <div class="icon">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </div>
-                {% if total %}
+                {% if cart_items %}
                 <div class="cart-counter" id="cart-item-count">{{cart_items|length}}</div>
                 {% endif %}
             </a>
@@ -226,7 +226,7 @@
     {% endif %}
 </div>
 
-<main>
+<main style="margin-bottom: 100px;">
     {% block content %}
     <!-- Main Content -->
     {% endblock %}
