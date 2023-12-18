@@ -28,6 +28,8 @@ class ExcursionOrder(models.Model):
     reference = models.CharField(max_length=6, null=False, blank=False, default='')
     time_selected = models.CharField(max_length=200, null=False, blank=False, default='')
     excursion_id =  models.IntegerField(null=False, blank=False, default=None)
+    advanced = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    remaining = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
     def _generate_order_number(self):
         """

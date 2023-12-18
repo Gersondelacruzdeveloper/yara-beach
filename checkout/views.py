@@ -61,8 +61,9 @@ def checkout(request):
     paypal_client_id = settings.PAYPAL_CLIENT_ID
     cart = request.session.get('cart', {})
     current_cart = cart_contents(request)
-    anticipo = current_cart['anticipo']
-    
+    charge_amount = Decimal(current_cart['charge_amount'])
+    company_price_total = Decimal(current_cart['company_price_total'])
+
 
     # Create the orders
     if request.method == 'POST':
@@ -79,6 +80,8 @@ def checkout(request):
             user = None
             guest_email = data['email']
 
+        
+
         for item in current_cart['cart_items']:
             date_str = item['values']['excursion_date']
             parsed_date = newTime.strptime(date_str, '%A, %d %B')
@@ -89,7 +92,7 @@ def checkout(request):
             formatted_date = parsed_date.strftime('%Y-%m-%d')
 
             ExcursionOrder.objects.create(
-                excursion_name=item['excursion'].title + '' + 'Anticipo->' + str(anticipo),
+                excursion_name=item['excursion'].title,
                 user=user,
                 full_name=data['full_name'],
                 image=item['excursion'].main_image.url,
@@ -106,10 +109,12 @@ def checkout(request):
                 reference=reference,
                 time_selected = item['values']['selected_time'],
                 excursion_id = int(item['excursion'].id),
+                advanced = charge_amount,
+                remaining = company_price_total,
             )
 
         # send an email with all the info to the user
-        send_booking_email(request, anticipo, guest_email)
+        send_booking_email(request, round(charge_amount, 2), guest_email)
         send_email_to_seller(request, extracted_reference, checkout_cart)
         
     context = {'paypal_client_id': paypal_client_id,

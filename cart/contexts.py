@@ -94,6 +94,7 @@ def cart_contents(request):
         'discount':Decimal(discount),
         'my_new_total':Decimal(my_new_total),
         'charge_amount':charge_amount,
+        'company_price_total':company_price_total
     }
     checkout_cart['total'] = str(total)
     request.session['checkout_cart'] = checkout_cart

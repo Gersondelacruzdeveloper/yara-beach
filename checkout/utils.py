@@ -5,7 +5,7 @@ from .models import ExcursionOrder
 from django.shortcuts import redirect
 from decimal import Decimal,ROUND_HALF_UP
 
-def send_booking_email(request,anticipo, guest_email=None,):
+def send_booking_email(request,anticipo,guest_email=None,):
     if request.user.is_authenticated:
         user_orders = ExcursionOrder.objects.filter(user=request.user)
     else:
@@ -32,7 +32,7 @@ def send_booking_email(request,anticipo, guest_email=None,):
             template += f"<strong>Infant Quantity:</strong> {item.infant_qty}<br/>"
         template += f"<strong>Pick up:</strong> {item.place_pickup} <br/>"
         template += f"<strong>Excursion Booking Number:</strong> {item.order_number} <br/>"
-        template += f"<strong>SubTotal:</strong> {item.subtotal} <hr>"
+        template += f"<strong>Total:</strong> {round(item.subtotal,2)} <hr>"
 
     template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> ${anticipo}<hr>"
 

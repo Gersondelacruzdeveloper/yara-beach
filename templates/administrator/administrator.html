@@ -80,6 +80,8 @@
                     <th>Email</th>
                     <th>Full Name</th>
                     <th>Total</th>
+                    <th>Advanced</th>
+                    <th>Remaining</th>
                 </tr>
 
                 {% for order in today_excursion_bookings %}
@@ -98,6 +100,8 @@
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
+                    <td>{{order.advanced}}</td>
+                    <td>£{{order.remaining}}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -121,6 +125,8 @@
                     <th>Email</th>
                     <th>Full Name</th>
                     <th>Total</th>
+                    <th>Advanced</th>
+                    <th>Remaining</th>
                 </tr>
 
                 {% for order in tomorow_excursion_bookings %}
@@ -139,6 +145,8 @@
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
+                    <td>{{order.advanced}}</td>
+                    <td>£{{order.remaining}}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -163,6 +171,8 @@
                     <th>Email</th>
                     <th>Full Name</th>
                     <th>Total</th>
+                    <th>Advanced</th>
+                    <th>Remaining</th>
                 </tr>
             
 
@@ -183,6 +193,8 @@
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>£{{order.subtotal}}</td>
+                    <td>{{order.advanced}}</td>
+                    <td>£{{order.remaining}}</td>
                 </tr>
                 {% endfor %}
             </table>
