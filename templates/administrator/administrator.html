@@ -82,6 +82,7 @@
                     <th>Total</th>
                     <th>Advanced</th>
                     <th>Remaining</th>
+                    <th>Heard from </th>
                 </tr>
 
                 {% for order in today_excursion_bookings %}
@@ -102,6 +103,7 @@
                     <td>${{order.subtotal}}</td>
                     <td>{{order.advanced}}</td>
                     <td>${{order.remaining}}</td>
+                    <td>{{order.where_heard_from_us}}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -127,6 +129,7 @@
                     <th>Total</th>
                     <th>Advanced</th>
                     <th>Remaining</th>
+                    <th>Heard from </th>
                 </tr>
 
                 {% for order in tomorow_excursion_bookings %}
@@ -147,6 +150,7 @@
                     <td>${{order.subtotal}}</td>
                     <td>{{order.advanced}}</td>
                     <td>${{order.remaining}}</td>
+                    <td>{{order.where_heard_from_us}}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -173,6 +177,7 @@
                     <th>Total</th>
                     <th>Advanced</th>
                     <th>Remaining</th>
+                    <th>Heard from </th>
                 </tr>
             
 
@@ -195,6 +200,7 @@
                     <td>${{order.subtotal}}</td>
                     <td>{{order.advanced}}</td>
                     <td>${{order.remaining}}</td>
+                    <td>{{order.where_heard_from_us}}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -219,6 +225,7 @@
                     <th>Email</th>
                     <th>Full Name</th>
                     <th>Total</th>
+                    <th>Heard from </th>
                 </tr>
 
                 {% for order in previous_excursion_bookings %}
@@ -237,6 +244,7 @@
                     <td>{{order.customer_email}}</td>
                     <td>{{order.full_name}}</td>
                     <td>${{order.subtotal}}</td>
+                    <td>{{order.where_heard_from_us}}</td>
                 </tr>
                 {% endfor %}
             </table>
