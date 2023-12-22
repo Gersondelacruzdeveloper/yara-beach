@@ -64,7 +64,6 @@ def checkout(request):
     charge_amount = Decimal(current_cart['charge_amount'])
     company_price_total = Decimal(current_cart['company_price_total'])
 
-
     # Create the orders
     if request.method == 'POST':
         # print('checkout_cart', checkout_cart)
@@ -80,16 +79,14 @@ def checkout(request):
             user = None
             guest_email = data['email']
 
-        
-
+    
         for item in current_cart['cart_items']:
             date_str = item['values']['excursion_date']
-            parsed_date = newTime.strptime(date_str, '%A, %d %B')
-            # Get the current year
-            current_year = newTime.now().year
-            parsed_date = parsed_date.replace(year=current_year)
-            # Format the date as "YYYY-MM-DD"
-            formatted_date = parsed_date.strftime('%Y-%m-%d')
+            print('date_str', date_str)
+            format_string = '%m/%d/%Y' 
+            parsed_date = newTime.strptime(date_str, format_string)
+            print('parsed_date', parsed_date)
+    
 
             ExcursionOrder.objects.create(
                 excursion_name=item['excursion'].title,
@@ -102,7 +99,7 @@ def checkout(request):
                 adult_qty=item['values']['adult_qty'],
                 child_qty=item['values']['child_qty'],
                 infant_qty = item['values']['infant_qty'],
-                excursion_date=formatted_date,
+                excursion_date=parsed_date,
                 customer_email=guest_email,
                 place_pickup=item['values']['place_pickup'],
                 date_created=datetime.date.today(),

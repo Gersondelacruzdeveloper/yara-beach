@@ -21,7 +21,7 @@ def view_excursion_cart(request):
 
 # Add a quantity of the specified product to the shopping excursion cart
 def add_to_cart(request, item_id):
-    date_str = request.POST.get('excursion_date')
+    excursion_date = request.POST.get('excursion_date')
     selected_time = request.POST.get('selected_time')
     adult_qty = int(request.POST.get('adult_qty'))
     try:
@@ -38,8 +38,12 @@ def add_to_cart(request, item_id):
     company_Price = request.POST.get('company_Price')
     cart = request.session.get('cart', {})
     # Parse the date string into a datetime object with the input format
-    date_obj = datetime.strptime(date_str, '%m/%d/%Y')
-    excursion_date =  date_obj.strftime('%A, %d %B')
+
+    # try: 
+    #     date_obj = datetime.strptime(date_str, '%m/%d/%Y')
+    #     excursion_date =  date_obj.strftime('%A, %d %B')
+    # except ValueError:
+    #     excursion_date = date_str
 
 # if the item id is already on the excursion cart then it update it
     if item_id in list(cart.keys()):
