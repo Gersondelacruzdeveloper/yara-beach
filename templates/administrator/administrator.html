@@ -82,7 +82,9 @@
                     <th>Total</th>
                     <th>Advanced</th>
                     <th>Remaining</th>
+                    <th>flight Link</th>
                     <th>Heard from </th>
+
                 </tr>
 
                 {% for order in today_excursion_bookings %}
@@ -103,6 +105,10 @@
                     <td>${{order.subtotal}}</td>
                     <td>{{order.advanced}}</td>
                     <td>${{order.remaining}}</td>
+                    <td>
+                    <a href="{{order.url_flight}}">
+                        <button type="button">Click me</button>
+                    </a></td>
                     <td>{{order.where_heard_from_us}}</td>
                 </tr>
                 {% endfor %}

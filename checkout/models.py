@@ -31,6 +31,11 @@ class ExcursionOrder(models.Model):
     advanced = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     remaining = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     where_heard_from_us = models.CharField(max_length=200, null=True, blank=True, default='')
+    url_flight = models.URLField(max_length=400, blank=True, null=True, default = '')
+    flight_number = models.CharField(max_length=200, null=False, blank=False, default='')
+    room_number = models.CharField(max_length=200, null=False, blank=False, default='')
+    send_email_onclick = models.BooleanField(default=False)
+
 
     def _generate_order_number(self):
         """
