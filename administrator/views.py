@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from excursions.models import Excursions, Photos, Reference,PageVisit
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
-from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos,SellerForm, PostForm
+from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos,SellerForm, PostForm, AddManualBookingForm
 from django.contrib import messages
 from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
@@ -41,6 +41,41 @@ def company_bookings(request):
        }
    return render(request, 'administrator/company_bookings.html', context)
 
+@login_required(login_url='/accounts/login/')
+def add_excursions(request):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    form = ExcursionForm()
+    if request.method == 'POST':
+        user = request.user
+        author = Excursions(user=user)
+        form = ExcursionForm(request.POST, request.FILES, instance=author)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Excursion created Succesfullly')
+        return redirect('admin-excursion')
+        
+    context = {'form': form}
+    return render(request, 'administrator/excursions/add_excursions.html', context)
+
+
+# add the bookings manually functions
+def add_manual_booking(request):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    form = AddManualBookingForm()
+    if request.method == 'POST':
+         form = AddManualBookingForm(request.POST)
+         if form.is_valid():
+            form.save()
+            messages.success(request, 'Order manually created Succesfullly')
+            return redirect('administrator')
+    context = {'form': form}
+    return render(request, 'administrator/add_manual_booking.html', context)
 
 # Create your views here.
 def pageVisit(request):
