@@ -12,18 +12,13 @@ from django.shortcuts import HttpResponse, render, redirect
 # A content processor, vailable in all templates
 
 def cart_contents(request):
+    cart = request.session.get('cart', {})
     cart_items = []
-    total = Decimal(0.00)
+    total_price_adul_child = Decimal(0.00)
     taxes_and_fees = Decimal(0.00)
     anticipo = Decimal(0.00)
     company_price_total = Decimal(0.00)
     product_count = 0
-    cart = request.session.get('cart', {})
-    checkout_cart = request.session.get('checkout_cart', {})
-    checkout_cart['total_discount'] = str(Decimal(0.00))
-    checkout_cart['discount_applied'] = False
-    charge_amount =  Decimal(0.00)
-
     # for selcting tomorow excursions only
     today = date.today()
     # Calculate tomorrow's date
@@ -48,10 +43,11 @@ def cart_contents(request):
                     # company_total_price_children = Decimal(value['price_children']) * int(value['child_qty'])
                 except ValueError:
                     print("An error occurred in our system. Please try again later.")
-            total += Decimal(total_price_adult + total_price_children)
+            total_price_adul_child += Decimal(total_price_adult + total_price_children)
             company_price_total += Decimal(company_total_price_adult + total_price_children)
             subTotal = total_price_adult + total_price_children
-            anticipo += total - company_price_total
+
+            
 
             cart_items.append({
                 'item_id': id,
@@ -60,47 +56,27 @@ def cart_contents(request):
                 'is_transfer': is_transfer,
                 'subTotal': subTotal,
                 'company_price_total':company_price_total,
-                'anticipo':anticipo,
             })
     
         except Excursions.DoesNotExist:
             # Handle the case where the Excursions object does not exist
             print(f"Excursions with id {id} does not exist.")
-    taxes_and_fees += total * Decimal(settings.TAXES_AND_FEES)
-    m_total = total + taxes_and_fees
-
-
-    # if there is a discount it will fire this try except
-    try:
-      discount = checkout_cart['discount']
-      my_new_total = checkout_cart['my_new_total']
-      charge_amount = m_total - company_price_total - Decimal(discount)
-    except KeyError:
-        # if there are no discount it will try this
-        discount  = Decimal(0.00)
-        my_new_total = Decimal(0.00)
-        charge_amount = Decimal(m_total) - company_price_total
-
+    taxes_and_fees += total_price_adul_child * Decimal(settings.TAXES_AND_FEES)
+    final_total = total_price_adul_child + taxes_and_fees
+    anticipo = final_total - company_price_total
 
     context = {
         'cart_items': cart_items,
         'product_count': product_count,
-        'subtotal': total,
         'tomorrow_str':tomorrow_str,
         'last_item': cart_items[-1] if cart_items else None,
         'anticipo':anticipo,
         'taxes_and_fees':taxes_and_fees,
-        'm_total':Decimal(m_total),
-        'discount':Decimal(discount),
-        'my_new_total':Decimal(my_new_total),
-        'charge_amount':charge_amount,
-        'company_price_total':company_price_total
+        'company_price_total':company_price_total,
+        'final_total':final_total
     }
-    checkout_cart['total'] = str(total)
-    request.session['checkout_cart'] = checkout_cart
+    request.session['cart'] = cart
     return context
-
-
 
 
 

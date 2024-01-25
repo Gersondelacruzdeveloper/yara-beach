@@ -5,36 +5,30 @@ from .models import ExcursionOrder
 from django.shortcuts import redirect
 from decimal import Decimal,ROUND_HALF_UP
 
-def send_booking_email(request,anticipo,guest_email=None,):
-    if request.user.is_authenticated:
-        user_orders = ExcursionOrder.objects.filter(user=request.user)
-    else:
-        user_orders = ExcursionOrder.objects.filter(customer_email=guest_email)
-
-    user_orders = user_orders.filter(date_created=date.today())
-    excursion_total = 0
-
+def send_booking_email(cart_content,order_number,company_price_total, anticipo,guest_email=None,):
     thanks_booking = "<h2 style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Thank you for booking with us</h2><hr>"
     subtitle = "<h3>Here are your bookings from today</h3><hr>"
     warning = '<h4 style="color:red;">Please be aware that this is the advance payment, and the remaining amount will need to be paid upon pick-up.</h4>'
     template = thanks_booking + subtitle + warning
 
-    for item in user_orders:
-        excursion_total += item.subtotal
-        template += f"<p><strong>Item Name:</strong>{item.excursion_name[:25].title()}</p>"
-        template += f"<img src='{item.image}' alt='{item.excursion_name}' style='object-fit:cover' width='200' height='200'><br/>"
-        template += f"<strong>Excursion Date:</strong> {item.excursion_date}<br/>"
-        template += f"<strong>Excursion Time:</strong> {item.time_selected}<br/>"
-        template += f"<strong>Adult Quantity:</strong> {item.adult_qty}<br/>"
-        if item.child_qty:
-            template += f"<strong>Child Quantity:</strong> {item.child_qty}<br/>"
-        if item.infant_qty:
-            template += f"<strong>Infant Quantity:</strong> {item.infant_qty}<br/>"
-        template += f"<strong>Pick up:</strong> {item.place_pickup} <br/>"
-        template += f"<strong>Excursion Booking Number:</strong> {item.order_number} <br/>"
-        template += f"<strong>Total:</strong> {round(item.subtotal,2)} <hr>"
+    for item in cart_content['cart_items']:
+        print('cart_content', cart_content)
+        template += f"<p><strong>Item Name:</strong>{item['excursion'].title}</p>"
+        template += f"<img src='{item['excursion'].main_image.url}' alt='{item['excursion'].title}' style='object-fit:cover' width='200' height='200'><br/>"
+        template += f"<strong>Excursion Date:</strong> {item['values']['excursion_date']}<br/>"
+        template += f"<strong>Excursion Time:</strong> {item['values']['selected_time']}<br/>"
+        template += f"<strong>Adult Quantity:</strong>{item['values']['adult_qty']}<br/>"
+        if item['values']['child_qty']:
+            template += f"<strong>Child Quantity:</strong> {item['values']['child_qty']}<br/>"
+        if item['values']['infant_qty']:
+            template += f"<strong>Infant Quantity:</strong> {item['values']['infant_qty']}<br/>"
+        template += f"<strong>Pick up:</strong> {item['values']['place_pickup']} <br/>"
+        template += f"<strong>Excursion Booking Number:</strong> {order_number} <br/>"
+        template += f"<strong>Total:</strong> {item['subTotal']} <hr>"
 
     template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> ${anticipo}<hr>"
+    template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Payment due upon pickup:</strong> ${company_price_total}<hr>"
+
 
     email = EmailMultiAlternatives(
         'From Punta Cana Explore',

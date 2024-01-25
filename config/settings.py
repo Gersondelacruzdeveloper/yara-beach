@@ -252,3 +252,8 @@ DISCOUNT_PERCENTAGE = env.str("DISCOUNT_PERCENTAGE")
 
 # goverment taxes and fees
 TAXES_AND_FEES = env.str("TAXES_AND_FEES")
+
+
+# stripe keys
+STRIPE_SECRET_KEY = env.str("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = env.str("STRIPE_PUBLIC_KEY")

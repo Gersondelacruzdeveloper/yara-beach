@@ -16,7 +16,8 @@ import time
 from decimal import Decimal, ROUND_HALF_UP
 # Create your views here.
 from datetime import datetime as newTime
-
+from django.http import JsonResponse
+from django.http import HttpResponse
 
 def apply_discount_code(request):
     discount_percentage = Decimal(settings.DISCOUNT_PERCENTAGE)
@@ -42,98 +43,93 @@ def apply_discount_code(request):
 
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
-    checkout_cart = request.session.get('checkout_cart', {})
-    # if the checkout total is 0 then go home
-    if checkout_cart.get('total', '0') == '0':
-        return redirect('home')
-    
     cart = request.session.get('cart', {})
-
-    if 'total_discount' in checkout_cart:
-        total_discount = Decimal(checkout_cart['total_discount'])
-    else:
-        total_discount = Decimal(0)  # or some default value
-    try:
-        new_total = Decimal(checkout_cart['total']) - total_discount
-    except KeyError:
-         return redirect('excursions')
-    discount_applied = checkout_cart['discount_applied']
-    paypal_client_id = settings.PAYPAL_CLIENT_ID
-    cart = request.session.get('cart', {})
-    current_cart = cart_contents(request)
-    charge_amount = Decimal(current_cart['charge_amount'])
-    company_price_total = Decimal(current_cart['company_price_total'])
-
-    # Create the orders
-    if request.method == 'POST':
-        # print('checkout_cart', checkout_cart)
-        data = json.loads(request.body)
-    
-        reference = checkout_cart.get('reference', '')
-        extracted_reference = Reference.objects.filter(reference_number=reference)
-        # Add the item in the database
-        if request.user.is_authenticated:
-            user  = request.user
-            guest_email = request.user.email
-        else:
-            user = None
-            guest_email = data['email']
-
-    
-        for item in current_cart['cart_items']:
-            date_str = item['values']['excursion_date']
-            print('date_str', date_str)
-            format_string = '%m/%d/%Y' 
-            parsed_date = newTime.strptime(date_str, format_string)
-            print('parsed_date', parsed_date)
-    
-
-            ExcursionOrder.objects.create(
-                excursion_name=item['excursion'].title,
-                user=user,
-                full_name=data['full_name'],
-                image=item['excursion'].main_image.url,
-                cellphone_number=data['phone_number'],
-                price=item['values']['price'],
-                subtotal=item['subTotal'],
-                adult_qty=item['values']['adult_qty'],
-                child_qty=item['values']['child_qty'],
-                infant_qty = item['values']['infant_qty'],
-                excursion_date=parsed_date,
-                customer_email=guest_email,
-                place_pickup=item['values']['place_pickup'],
-                date_created=datetime.date.today(),
-                reference=reference,
-                time_selected = item['values']['selected_time'],
-                excursion_id = int(item['excursion'].id),
-                advanced = charge_amount,
-                remaining = company_price_total,
-            )
-
-        # send an email with all the info to the user
-        send_booking_email(request, round(charge_amount, 2), guest_email)
-        send_email_to_seller(request, extracted_reference, checkout_cart)
-        
-    context = {'paypal_client_id': paypal_client_id,
-               'new_total': new_total,'total_discount': 
-               total_discount, 'discount_applied':discount_applied
-               }
+    context = {  'carts':cart}
     return render(request, 'checkout/checkout.html', context)
+
+
+def stripe_checkout(request):
+    # This is your test secret API key.
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    cart_content = cart_contents(request)
+    anticipo = round(cart_content['anticipo'])
+    print('anticipo', anticipo)
+    print('numer 1')
+    try:
+        print('numer 2')
+        # load json data
+        data = json.loads(request.body)
+        # Create a PaymentIntent with the order amount and currency
+        intent = stripe.PaymentIntent.create(
+            amount=anticipo * 100,
+            currency='usd',
+            automatic_payment_methods={
+                'enabled': True,
+            },
+        )
+        print('numer 3')
+        print('intent', intent)
+        print('numer 4')
+        return JsonResponse({'clientSecret': intent.client_secret})
+    except Exception as e:
+        print('here error', str(e))
+        return JsonResponse({'error': str(e)}, status=500)
+
+
 
 
 # Allow the user know that the purchase has been successful
 def checkout_success(request):
      # Get the current user
-    if request.user.is_authenticated:
-        user = request.user 
-        user_orders = ExcursionOrder.objects.all().filter(user=user)
-        user_orders = user_orders.filter(date_created=datetime.date.today())
-        excursion_total = sum(item.subtotal for item in user_orders)
-    else:
-        user_orders = []
-         # An empty list for anonymous users
-        excursion_total = 0
-    context = {'user_orders': user_orders, 'excursion_total': excursion_total}
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    payment_intent = request.GET['payment_intent']
+    redirect_status = request.GET['redirect_status']
+    payment_intent_client_secret = request.GET['payment_intent_client_secret']
+    # print('payment_intent', payment_intent)
+    # print('redirect_status', redirect_status)
+    # print('payment_intent_client_secret', payment_intent_client_secret)
+    response = stripe.PaymentIntent.retrieve(payment_intent)
+    print('response', response)
+    if response.status == 'succeeded':
+        order_number = response.id 
+        cart_content = cart_contents(request)
+        anticipo = cart_content['anticipo']
+        company_price_total = cart_content['company_price_total']
+        
+        
+        for item in cart_content['cart_items']:
+                date_str = item['values']['excursion_date']
+                format_string = '%m/%d/%Y' 
+                parsed_date = newTime.strptime(date_str, format_string)
+        
+
+                ExcursionOrder.objects.create(
+                    excursion_name=item['excursion'].title,
+                    user= None,
+                    order_number = order_number,
+                    full_name= 'Gerson de la cruz',
+                    image=item['excursion'].main_image.url,
+                    cellphone_number= '07100588008',
+                    price=item['values']['price'],
+                    subtotal=item['subTotal'],
+                    adult_qty=item['values']['adult_qty'],
+                    child_qty=item['values']['child_qty'],
+                    infant_qty = item['values']['infant_qty'],
+                    excursion_date=parsed_date,
+                    customer_email='qapuntacana@gmail.com',
+                    place_pickup=item['values']['place_pickup'],
+                    date_created=datetime.date.today(),
+                    reference= '',
+                    time_selected = item['values']['selected_time'],
+                    excursion_id = int(item['excursion'].id),
+                    advanced = anticipo,
+                    remaining = company_price_total,
+                )
+                # send an email with all the info to the user
+                send_booking_email(cart_content, order_number,company_price_total, round(anticipo, 2), 'qapuntacana@gmail.com')
+
+
+    context = {'order_number': order_number, 'Anticipo': anticipo, 'restante': company_price_total }
     return render(request, 'checkout/success.html', context)
 
 

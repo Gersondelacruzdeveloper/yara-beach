@@ -826,6 +826,11 @@ margin-left: 100px;
 #paypal-button-container{
     width:inherit;
     
+
+}
+
+#payment-button-container{
+display: none;
 }
 .col-md-8{
     margin: auto; 

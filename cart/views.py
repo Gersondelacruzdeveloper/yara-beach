@@ -115,7 +115,6 @@ def update_cart(request, item_id):
 # Remove the item from the excursion shopping cart
 def remove_from_cart(request, item_id):
     cart = request.session.get('cart', {})
-
     try:
         if item_id in list(cart.keys()):
             cart.pop(item_id)
