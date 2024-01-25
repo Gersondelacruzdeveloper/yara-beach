@@ -80,22 +80,19 @@ def stripe_checkout(request):
 
 # Allow the user know that the purchase has been successful
 def checkout_success(request):
-     # Get the current user
+    # Get the current user
     stripe.api_key = settings.STRIPE_SECRET_KEY
     payment_intent = request.GET['payment_intent']
-    redirect_status = request.GET['redirect_status']
-    payment_intent_client_secret = request.GET['payment_intent_client_secret']
     # print('payment_intent', payment_intent)
     # print('redirect_status', redirect_status)
     # print('payment_intent_client_secret', payment_intent_client_secret)
     response = stripe.PaymentIntent.retrieve(payment_intent)
-    print('response', response)
     if response.status == 'succeeded':
         order_number = response.id 
         cart_content = cart_contents(request)
         anticipo = cart_content['anticipo']
         company_price_total = cart_content['company_price_total']
-        
+
         
         for item in cart_content['cart_items']:
                 date_str = item['values']['excursion_date']
@@ -128,8 +125,16 @@ def checkout_success(request):
                 # send an email with all the info to the user
                 send_booking_email(cart_content, order_number,company_price_total, round(anticipo, 2), 'qapuntacana@gmail.com')
 
-
-    context = {'order_number': order_number, 'Anticipo': anticipo, 'restante': company_price_total }
+    # delete the cart 
+    cart = request.session.get('cart', {})
+    if cart:
+        cart.popitem()
+        # After modifying the dictionary, you might want to update the session
+    request.session['cart'] = cart
+    # If you want to set cart_content to an empty list, you can do that separately
+    cart_content = []
+    # du to stripe adding the amount in cents we have to multiply again to make it look normal for the customers
+    context = {'order_number': order_number, 'Anticipo': response.amount/100}
     return render(request, 'checkout/success.html', context)
 
 

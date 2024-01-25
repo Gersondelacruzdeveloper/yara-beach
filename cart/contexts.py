@@ -16,7 +16,7 @@ def cart_contents(request):
     cart_items = []
     total_price_adul_child = Decimal(0.00)
     taxes_and_fees = Decimal(0.00)
-    anticipo = Decimal(0.00)
+    anticipo = round(0.00)
     company_price_total = Decimal(0.00)
     product_count = 0
     # for selcting tomorow excursions only
@@ -70,7 +70,7 @@ def cart_contents(request):
         'product_count': product_count,
         'tomorrow_str':tomorrow_str,
         'last_item': cart_items[-1] if cart_items else None,
-        'anticipo':anticipo,
+        'anticipo':round(anticipo),
         'taxes_and_fees':taxes_and_fees,
         'company_price_total':company_price_total,
         'final_total':final_total

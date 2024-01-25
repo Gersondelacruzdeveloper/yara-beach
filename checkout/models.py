@@ -44,15 +44,22 @@ class ExcursionOrder(models.Model):
         return uuid.uuid4().hex.upper()
 
     def save(self, *args, **kwargs):
-        """
-        Overide the original save method to set the order number
-        if it has not been set already
-        """
-        if not self.order_number:
-            self.order_number = self._generate_order_number()
+            """
+            Override the original save method to set the order number
+            if it has not been set already. Check for existing order_number
+            before creating a new order.
+            """
+            if not self.order_number:
+                # Check if an order with the same order_number already exists
+                existing_order = ExcursionOrder.objects.filter(order_number=self._generate_order_number()).first()
+                if existing_order:
+                    # If an order with the same order_number exists, do not create a new one
+                    return
 
-        super().save(*args, **kwargs)
+                # If order_number does not exist, set it
+                self.order_number = self._generate_order_number()
 
+            super().save(*args, **kwargs)
 
     def __str__(self):
         return self.order_number
