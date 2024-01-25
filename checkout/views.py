@@ -44,6 +44,8 @@ def apply_discount_code(request):
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
     cart = request.session.get('cart', {})
+    if not cart:
+        return redirect('home')
     context = {  'carts':cart}
     return render(request, 'checkout/checkout.html', context)
 
