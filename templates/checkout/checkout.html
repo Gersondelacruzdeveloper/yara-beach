@@ -66,6 +66,8 @@
   </div>
     <!-- store the url valus -->
     <div id="url_stripe" data-url="{% url 'stripe_checkout' %}"></div>
+    <input type="hidden" value="{{stripe_pk}}" id="stripe_pk" >
+    <input type="hidden" value="{% url 'checkout-success' %}" id="redirect_url":>
 
     {% if not customer_contact %}
     <!-- modal to load whe html from checkout loads -->

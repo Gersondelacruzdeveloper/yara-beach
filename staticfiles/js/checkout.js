@@ -17,8 +17,11 @@ function getCookie(name) {
   }
   
   
+stripe_pk = document.getElementById('stripe_pk').value
+redirect_url = document.getElementById('redirect_url').value
+
 // This is your test publishable API key.
-const stripe = Stripe("pk_live_zNj8ISxGct4DwFkvGmtakGVL00xXkCPHM0");
+const stripe = Stripe(stripe_pk);
 
 // The items the customer wants to buy
 const items = [{ id: "xl-tshirt" }];
@@ -70,7 +73,7 @@ async function handleSubmit(e) {
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: 'https://www.puntacana-explore.com/checkout/checkout-success',
+      return_url: 'https://www.puntacanadiscovery.com/checkout/checkout-success',
     },
   });
 

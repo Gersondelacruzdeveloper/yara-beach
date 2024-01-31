@@ -45,6 +45,7 @@ def apply_discount_code(request):
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
     cart = request.session.get('cart', {})
+    stripe_pk = settings.STRIPE_PUBLIC_KEY
     if not cart:
         return redirect('home')
     customer_contact = request.session.get('customer_contact', {})
@@ -56,7 +57,7 @@ def checkout(request):
         customer_contact['email'] = email
         customer_contact['phone'] = phone
     request.session['customer_contact'] = customer_contact
-    context = {  'carts':cart, 'customer_contact':customer_contact}
+    context = {  'carts':cart, 'customer_contact':customer_contact, 'stripe_pk':stripe_pk}
     return render(request, 'checkout/checkout.html', context)
 
 
@@ -88,9 +89,6 @@ def checkout_success(request):
     # Get the current user
     stripe.api_key = settings.STRIPE_SECRET_KEY
     payment_intent = request.GET['payment_intent']
-    # print('payment_intent', payment_intent)
-    # print('redirect_status', redirect_status)
-    # print('payment_intent_client_secret', payment_intent_client_secret)
     response = stripe.PaymentIntent.retrieve(payment_intent)
     if response.status == 'succeeded':
         customer_contact = request.session.get('customer_contact', {})
