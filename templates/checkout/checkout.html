@@ -66,8 +66,50 @@
   </div>
     <!-- store the url valus -->
     <div id="url_stripe" data-url="{% url 'stripe_checkout' %}"></div>
+
+    {% if not customer_contact %}
+    <!-- modal to load whe html from checkout loads -->
+    <div class="modal" tabindex="-1" id="exampleModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Please Privide contact Information</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="contact-checkout-form" method="POST" action="{% url  'checkout' %}">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" id="name"  name="name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email">
+              </div>
+              <div class="form-group">
+                <label for="Phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone" name="phone">
+              </div>
+              <div class="modal-footer">
+                <input type="submit" class="btn btn-primary"></input>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </body>
 </html>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{% static 'js/checkout.js' %}" defer></script>
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get the modal element
+    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    // Show the modal
+    myModal.show();
+  });
+</script>

@@ -19,6 +19,7 @@ from datetime import datetime as newTime
 from django.http import JsonResponse
 from django.http import HttpResponse
 
+
 def apply_discount_code(request):
     discount_percentage = Decimal(settings.DISCOUNT_PERCENTAGE)
     checkout_cart = request.session.get('checkout_cart', {})
@@ -46,7 +47,16 @@ def checkout(request):
     cart = request.session.get('cart', {})
     if not cart:
         return redirect('home')
-    context = {  'carts':cart}
+    customer_contact = request.session.get('customer_contact', {})
+    if request.method == 'POST':
+        email=request.POST['email']
+        name = request.POST['name']
+        phone = request.POST['phone']
+        customer_contact['name'] = name
+        customer_contact['email'] = email
+        customer_contact['phone'] = phone
+    request.session['customer_contact'] = customer_contact
+    context = {  'carts':cart, 'customer_contact':customer_contact}
     return render(request, 'checkout/checkout.html', context)
 
 
@@ -55,10 +65,7 @@ def stripe_checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     cart_content = cart_contents(request)
     anticipo = round(cart_content['anticipo'])
-    print('anticipo', anticipo)
-    print('numer 1')
     try:
-        print('numer 2')
         # load json data
         data = json.loads(request.body)
         # Create a PaymentIntent with the order amount and currency
@@ -69,14 +76,10 @@ def stripe_checkout(request):
                 'enabled': True,
             },
         )
-        print('numer 3')
-        print('intent', intent)
-        print('numer 4')
         return JsonResponse({'clientSecret': intent.client_secret})
     except Exception as e:
         print('here error', str(e))
         return JsonResponse({'error': str(e)}, status=500)
-
 
 
 
@@ -90,6 +93,7 @@ def checkout_success(request):
     # print('payment_intent_client_secret', payment_intent_client_secret)
     response = stripe.PaymentIntent.retrieve(payment_intent)
     if response.status == 'succeeded':
+        customer_contact = request.session.get('customer_contact', {})
         order_number = response.id 
         cart_content = cart_contents(request)
         anticipo = cart_content['anticipo']
@@ -100,22 +104,21 @@ def checkout_success(request):
                 date_str = item['values']['excursion_date']
                 format_string = '%m/%d/%Y' 
                 parsed_date = newTime.strptime(date_str, format_string)
-        
 
                 ExcursionOrder.objects.create(
                     excursion_name=item['excursion'].title,
                     user= None,
-                    order_number = order_number,
-                    full_name= 'Gerson de la cruz',
+                    order_number = order_number, 
+                    full_name= customer_contact['name'],
                     image=item['excursion'].main_image.url,
-                    cellphone_number= '07100588008',
+                    cellphone_number= customer_contact['phone'],
                     price=item['values']['price'],
                     subtotal=item['subTotal'],
                     adult_qty=item['values']['adult_qty'],
                     child_qty=item['values']['child_qty'],
                     infant_qty = item['values']['infant_qty'],
                     excursion_date=parsed_date,
-                    customer_email='qapuntacana@gmail.com',
+                    customer_email=customer_contact['email'],
                     place_pickup=item['values']['place_pickup'],
                     date_created=datetime.date.today(),
                     reference= '',
