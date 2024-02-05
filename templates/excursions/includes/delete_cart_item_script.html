@@ -8,6 +8,7 @@
             const csrfToken = "{{ csrf_token }}";
             let url = `/cart/remove/${item_id}/`
             let data = { 'csrfmiddlewaretoken': csrfToken, 'item_id': item_id }
+            console.log('data', data)
             $.post(url, data)
                 .done(function () {
                     location.reload();

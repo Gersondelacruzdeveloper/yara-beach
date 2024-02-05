@@ -1,36 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% load static %}
-  <head>
-    <meta charset="utf-8" />
-    <title>Accept a payment</title>
-    <script src="https://kit.fontawesome.com/392c1ed101.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <meta name="description" content="A demo of a payment on Stripe" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="{% static 'css/stripe.css' %}" rel="stylesheet" type="text/css">
-  </head>
-  <body>
- <div style="text-align: center;">
- <a href="{% url 'home'%}" id="logo-link" target="_blank">
-  <img style="width:400px" class="palm-tree" src="{% static 'images/excursions/Logo.png' %}" alt="Logo">
-</a>
-</div>
+{% load static %}
 
+<head>
+  <meta charset="utf-8" />
+  <title>Accept a payment</title>
+  <script src="https://kit.fontawesome.com/392c1ed101.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <meta name="description" content="A demo of a payment on Stripe" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{% static 'css/stripe.css' %}" rel="stylesheet" type="text/css">
+  <!-- jquery -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+
+<body>
+  <div style="text-align: center;">
+    <a href="{% url 'home'%}" id="logo-link" target="_blank">
+      <img style="width:400px" class="palm-tree" src="{% static 'images/excursions/Logo.png' %}" alt="Logo">
+    </a>
+  </div>
+
+  <!-- flash messages -->
+  <div class="message mt-3" style="width:300px; margin: auto;">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "success" %}
+    <div class="alert alert-success" role="alert">
+      {{ message|safe }}
+    </div>
+    {% else %}
+    <div class="alert alert-danger" role="alert">
+      {{message}}
+    </div>
+    {% endif%}
+    {% endfor %}
+    {% endif %}
+  </div>
+<style>
+  .remove-item:hover{
+    cursor: pointer;
+
+  }
+</style>
+<div style="width:200px; margin: auto;">
+  <a href="{% url 'home' %}"><button type="button" class="btn btn-outline-primary"> <i class="fa-solid fa-hand-point-left"></i> Keep Shooping </button></a>
+
+</div>
   <div class="grid-container">
     <div id="checkout-detail-container">
       <div class="accordion" id="accordionPanelsStayOpenExample">
 
-         {% for item in cart_items %}
+        {% for item in cart_items %}
+
         <div class="accordion-item">
+
+          <!-- delte items -->
+          <a class="remove-item" data-excursion_id="{{item.item_id}}"><i
+              class="fa-solid fa-rectangle-xmark cart-icon-x" style="color:red; padding: 10px"></i></a>
+
           <h5 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{forloop.counter}}" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapse{{forloop.counter}}" aria-expanded="true"
+              aria-controls="panelsStayOpen-collapseOne">
               {{item.excursion.title|slice:":25"|title}}
-            </button>
           </h5>
           <div id="panelsStayOpen-collapse{{forloop.counter}}" class="accordion-collapse collapse show">
             <div class="accordion-body">
-              <img src="{{item.excursion.main_image.url}}" style="width:100px" class="img-thumbnail mt-3" alt="{{item.excursion.title}}"> <br>
+              <img src="{{item.excursion.main_image.url}}" style="width:100px" class="img-thumbnail mt-3"
+                alt="{{item.excursion.title}}"> <br>
               <i class="fa-solid fa-user mt-3"></i> Adult {{item.values.adult_qty}} <br>
               {% if item.values.child_qty %}
               <i class="fa-solid fa-user mt-3"></i> Children {{item.values.child_qty}} <br>
@@ -48,12 +89,12 @@
       <div style="padding:10px 20px">
         <span> Taxes ${{taxes_and_fees|floatformat:2}}</span><br>
         <span>Total (US) <strong>${{final_total | floatformat:2}}</strong></span><br>
-        <span style="color:green" >Reserve now with: <strong>${{anticipo| floatformat:2}}</span> <br>
+        <span style="color:green">Reserve now with: <strong>${{anticipo| floatformat:2}}</span> <br>
       </div>
-     </div>
+    </div>
 
     <form id="payment-form">
-     <!-- Display a payment form -->
+      <!-- Display a payment form -->
       <div id="payment-element">
         <!--Stripe.js injects the Payment Element-->
       </div>
@@ -64,51 +105,53 @@
       <div id="payment-message" class="hidden"></div>
     </form>
   </div>
-    <!-- store the url valus -->
-    <div id="url_stripe" data-url="{% url 'stripe_checkout' %}"></div>
-    <input type="hidden" value="{{stripe_pk}}" id="stripe_pk" >
-    <input type="hidden" value="{% url 'checkout-success' %}" id="redirect_url":>
+  <!-- store the url valus -->
+  <div id="url_stripe" data-url="{% url 'stripe_checkout' %}"></div>
+  <input type="hidden" value="{{stripe_pk}}" id="stripe_pk">
+  <input type="hidden" value="{% url 'checkout-success' %}" id="redirect_url" :>
 
-    {% if not customer_contact %}
-    <!-- modal to load whe html from checkout loads -->
-    <div class="modal" tabindex="-1" id="exampleModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Please Privide contact Information</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form id="contact-checkout-form" method="POST" action="{% url  'checkout' %}">
-            {% csrf_token %}
-              <div class="form-group">
-                <label for="Name">Name</label>
-                <input type="text" class="form-control" id="name"  name="name">
-              </div>
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email">
-              </div>
-              <div class="form-group">
-                <label for="Phone">Phone Number</label>
-                <input type="text" class="form-control" id="phone" name="phone">
-              </div>
-              <div class="modal-footer">
-                <input type="submit" class="btn btn-primary"></input>
-              </div>
-            </form>
+  {% if not customer_contact %}
+  <!-- modal to load whe html from checkout loads -->
+  <div class="modal" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Please Privide contact Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form id="contact-checkout-form" method="POST" action="{% url  'checkout' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="Phone">Phone Number</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-primary"></input>
+          </div>
+        </form>
       </div>
     </div>
-    {% endif %}
-  </body>
-</html>
+  </div>
+  {% endif %}
+</body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>
+{% include 'excursions/includes/delete_cart_item_script.html' %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{% static 'js/checkout.js' %}" defer></script>
 <script>
   // Wait for the DOM to be fully loaded
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Get the modal element
     var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
     // Show the modal
