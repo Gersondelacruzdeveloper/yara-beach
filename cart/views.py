@@ -27,10 +27,11 @@ def add_to_cart(request, item_id):
     try:
         child_qty = int(request.POST.get('child_qty'))
         infant_qty = int(request.POST.get('infant_qty'))
+        place_dropup = request.POST.get('place_dropup')
     except TypeError:
         child_qty = 0
         infant_qty = 0
-
+        place_dropup = None
     place_pickup = request.POST.get('place_pickup')
     redirect_url = request.POST.get("redirect_url")
     price = request.POST.get("price")
@@ -74,12 +75,15 @@ def add_to_cart(request, item_id):
         if 'company_Price' in cart[item_id].keys():
             cart[item_id]['company_Price'] = company_Price
 
+        if 'place_dropup' in cart[item_id].keys():
+            cart[item_id]['place_dropup'] = place_dropup
+
         messages.success(
             request, 'You already added this item so we just updated')
     else:
         # if the item id is not in  the cart it will add a new one
         cart[item_id] = {'adult_qty': adult_qty,  'excursion_date': excursion_date,
-                         'child_qty': child_qty, 'infant_qty':infant_qty,'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time, 'price_children': price_children, 'company_Price':company_Price}
+                         'child_qty': child_qty, 'infant_qty':infant_qty,'place_pickup': place_pickup, 'price': price, 'selected_time':selected_time, 'price_children': price_children, 'company_Price':company_Price, 'place_dropup':place_dropup}
         
     request.session['cart'] = cart
     return redirect(redirect_url)

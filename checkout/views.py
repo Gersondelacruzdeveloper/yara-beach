@@ -118,6 +118,7 @@ def checkout_success(request):
                     excursion_date=parsed_date,
                     customer_email=customer_contact['email'],
                     place_pickup=item['values']['place_pickup'],
+                    place_dropup = item['values']['place_dropup'] or '',
                     date_created=datetime.date.today(),
                     reference= '',
                     time_selected = item['values']['selected_time'],
@@ -126,7 +127,7 @@ def checkout_success(request):
                     remaining = company_price_total,
                 )
                 # send an email with all the info to the user
-                send_booking_email(cart_content, order_number,company_price_total, round(anticipo, 2), 'qapuntacana@gmail.com')
+                send_booking_email(cart_content, order_number,company_price_total, round(anticipo, 2), customer_contact['email'])
 
     # delete the cart 
     cart = request.session.get('cart', {})

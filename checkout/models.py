@@ -24,6 +24,7 @@ class ExcursionOrder(models.Model):
     customer_email = models.EmailField(null=True, blank=False)
     cellphone_number = models.CharField(max_length=70, null=True, blank=False)
     place_pickup = models.CharField(max_length=70, null=True, blank=False)
+    place_dropup = models.CharField(max_length=70, null=True, blank=True)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     reference = models.CharField(max_length=6, null=True, blank=True, default='')
     time_selected = models.CharField(max_length=200, null=False, blank=False, default='')

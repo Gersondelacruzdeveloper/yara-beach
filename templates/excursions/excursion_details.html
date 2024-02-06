@@ -107,9 +107,17 @@
                         {% endif %}
                         <!-- pick up info -->
                         <div class="form-group mt-3">
-                            <label for="inputCity">Manual pick up Location</label>
+                            <label for="inputCity">Pick up Location</label>
                             <input type="text" class="form-control" id="inputCity" name="place_pickup" required>
                         </div>
+                        {% if excursions.transportation %}
+                          <!-- place drop up info -->
+                          <div class="form-group mt-3">
+                            <label for="place_dropup"> Drop up Location</label>
+                            <input type="text" class="form-control" id="place_dropup" name="place_dropup" required>
+                        </div>
+                        {% endif %}
+
                         <!-- <ul id="hotelList"></ul> -->
 
                         <!-- <div class="form-group mt-3">
