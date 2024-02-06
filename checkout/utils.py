@@ -24,7 +24,7 @@ def send_booking_email(cart_content,order_number,company_price_total, anticipo,g
             template += f"<strong>Infant Quantity:</strong> {item['values']['infant_qty']}<br/>"
         template += f"<strong>Pick up:</strong> {item['values']['place_pickup']} <br/>"
         if item['values']['place_dropup']:
-            template += f"<strong>Drop Up:</strong> {item['values']['place_dropup']} <br/>"
+            template += f"<strong>Drop Off:</strong> {item['values']['place_dropup']} <br/>"
         template += f"<strong>Excursion Booking Number:</strong> {order_number} <br/>"
         template += f"<strong>Total:</strong> {item['subTotal']} <hr>"
 
