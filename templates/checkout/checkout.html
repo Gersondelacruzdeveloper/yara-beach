@@ -133,15 +133,15 @@
           {% csrf_token %}
           <div class="form-group">
             <label for="Name">Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" required>
           </div>
           <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email" required>
           </div>
           <div class="form-group">
             <label for="Phone">Phone Number</label>
-            <input type="text" class="form-control" id="phone" name="phone">
+            <input type="text" class="form-control" id="phone" name="phone" required>
           </div>
           <div class="modal-footer">
             <input type="submit" class="btn btn-primary"></input>
