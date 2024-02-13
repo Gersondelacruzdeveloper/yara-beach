@@ -25,6 +25,7 @@ def cart_contents(request):
     tomorrow = today + timedelta(days=2)
     # Format the date as a string in the desired format
     tomorrow_str = tomorrow.strftime('%Y-%m-%d')
+    reserve_no_pay = False
      
 
     for id, value in cart.items():
@@ -32,6 +33,8 @@ def cart_contents(request):
             excursion = Excursions.objects.get(pk=id)
             is_transfer = excursion.is_transfer
             total_price_adult = Decimal(value['price']) * int(value['adult_qty'])
+            if value['reserve_no_pay'] == 'True':
+                reserve_no_pay = True
             try:
                 company_total_price_adult = Decimal(value['company_Price']) * int(value['adult_qty'])
             except KeyError:
@@ -73,7 +76,8 @@ def cart_contents(request):
         'anticipo':round(anticipo),
         'taxes_and_fees':taxes_and_fees,
         'company_price_total':company_price_total,
-        'final_total':final_total
+        'final_total':final_total,
+        'reserve_no_pay': reserve_no_pay,
     }
     request.session['cart'] = cart
     return context

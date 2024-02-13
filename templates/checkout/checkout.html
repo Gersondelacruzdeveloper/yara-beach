@@ -96,10 +96,15 @@
       </div>
     </div>
 
+    {% if reserve_no_pay %}
+    <form class="payment-form" action="{% url 'checkout_no_pay' %}">
+      <button type="submit" class="btn btn-primary">Reserve now and pay at pick up</button>
+    </form>
+    {% else %}
     <form id="payment-form">
       <!-- Display a payment form -->
       <div id="payment-element">
-        <!--Stripe.js injects the Payment Element-->
+        <!-- Stripe.js injects the Payment Element -->
       </div>
       <button id="submit">
         <div class="spinner hidden" id="spinner"></div>
@@ -107,6 +112,8 @@
       </button>
       <div id="payment-message" class="hidden"></div>
     </form>
+     {% endif %}
+
   </div>
   <!-- store the url valus -->
   <div id="url_stripe" data-url="{% url 'stripe_checkout' %}"></div>

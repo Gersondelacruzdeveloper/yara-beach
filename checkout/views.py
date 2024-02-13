@@ -141,6 +141,54 @@ def checkout_success(request):
     context = {'order_number': order_number, 'Anticipo': response.amount/100}
     return render(request, 'checkout/success.html', context)
 
+def checkout_no_pay(request):
+        cart_content = cart_contents(request)
+        anticipo = cart_content['anticipo']
+        company_price_total = cart_content['company_price_total']
+        customer_contact = request.session.get('customer_contact', {})
+           
+        for item in cart_content['cart_items']:
+                date_str = item['values']['excursion_date']
+                format_string = '%m/%d/%Y' 
+                parsed_date = newTime.strptime(date_str, format_string)
+
+                ExcursionOrder.objects.create(
+                    excursion_name=item['excursion'].title,
+                    user= None,
+                    full_name= customer_contact['name'],
+                    image=item['excursion'].main_image.url,
+                    cellphone_number= customer_contact['phone'],
+                    price=item['values']['price'],
+                    subtotal=item['subTotal'],
+                    adult_qty=item['values']['adult_qty'],
+                    child_qty=item['values']['child_qty'],
+                    infant_qty = item['values']['infant_qty'],
+                    excursion_date=parsed_date,
+                    customer_email=customer_contact['email'],
+                    place_pickup=item['values']['place_pickup'],
+                    place_dropup = item['values']['place_dropup'] or '',
+                    date_created=datetime.date.today(),
+                    reference= '',
+                    time_selected = item['values']['selected_time'],
+                    excursion_id = int(item['excursion'].id),
+                    advanced = 0,
+                    remaining = cart_content['final_total'],
+                )
+                # send an email with all the info to the user
+                send_booking_email(cart_content, '92T76B672934A63A7AECB420D6D8CA4',cart_content['final_total'], round(0), customer_contact['email'])
+
+    # delete the cart 
+        cart = request.session.get('cart', {})
+        if cart:
+            cart.popitem()
+            # After modifying the dictionary, you might want to update the session
+        request.session['cart'] = cart
+        # If you want to set cart_content to an empty list, you can do that separately
+        cart_content = []
+        # du to stripe adding the amount in cents we have to multiply again to make it look normal for the customers
+        context = {'order_number': '92T76B672934A63A7AECB420D6D8CA4', 'Anticipo': 0}
+        return render(request, 'checkout/success.html', context)
+
 
 # Chekout and process payment for rental cart
 # @login_required(login_url='/accounts/login/')

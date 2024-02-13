@@ -10,5 +10,7 @@ urlpatterns = [
     path('rental_checkout', views.checkout_rental, name="checkout_rental"),
     path('checkout-rental-success', views.checkout_rental_success,
          name="checkout-rental-success"),
-    path('stripe_checkout/',views.stripe_checkout, name="stripe_checkout"),  
+    path('stripe_checkout/',views.stripe_checkout, name="stripe_checkout"), 
+    # checkout without reservation 
+    path('checkout_no_pay/',views.checkout_no_pay, name="checkout_no_pay"), 
 ]
