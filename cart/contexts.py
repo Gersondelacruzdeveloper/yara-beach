@@ -33,11 +33,11 @@ def cart_contents(request):
             excursion = Excursions.objects.get(pk=id)
             is_transfer = excursion.is_transfer
             total_price_adult = Decimal(value['price']) * int(value['adult_qty'])
-            if value['reserve_no_pay'] == 'True':
-                reserve_no_pay = True
             try:
                 company_total_price_adult = Decimal(value['company_Price']) * int(value['adult_qty'])
             except KeyError:
+                if value['reserve_no_pay'] == 'True':
+                    reserve_no_pay = True
                 company_total_price_adult = 0
             total_price_children = 0
             if value['child_qty']:
