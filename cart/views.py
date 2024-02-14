@@ -123,10 +123,12 @@ def update_cart(request, item_id):
 # Remove the item from the excursion shopping cart
 def remove_from_cart(request, item_id):
     cart = request.session.get('cart', {})
+    # customer_contact = request.session.get('customer_contact', {})
     try:
         if item_id in list(cart.keys()):
             cart.pop(item_id)
             request.session['cart'] = cart
+            # request.session['customer_contact'] = {}
             messages.success(request, 'Cart item deleted Succesfullly')
             return HttpResponse(status=200)
     except Exception as e:
