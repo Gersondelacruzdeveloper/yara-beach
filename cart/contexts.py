@@ -10,7 +10,6 @@ from django.contrib import messages
 from django.shortcuts import HttpResponse, render, redirect
 
 # A content processor, vailable in all templates
-
 def cart_contents(request):
     cart = request.session.get('cart', {})
     cart_items = []
@@ -27,7 +26,6 @@ def cart_contents(request):
     tomorrow_str = tomorrow.strftime('%Y-%m-%d')
     reserve_no_pay = False
      
-
     for id, value in cart.items():
         try:
             excursion = Excursions.objects.get(pk=id)
@@ -50,7 +48,6 @@ def cart_contents(request):
             company_price_total += Decimal(company_total_price_adult + total_price_children)
             subTotal = total_price_adult + total_price_children
 
-            
 
             cart_items.append({
                 'item_id': id,
@@ -83,7 +80,6 @@ def cart_contents(request):
     return context
 
 
-
 # A content processor for rental cart
 def rental_cart_contents(request):
     rental_cart_items = []
@@ -109,6 +105,6 @@ def rental_cart_contents(request):
     context = {
         'rental_cart_items':rental_cart_items,
         'rental_cart_total':rental_cart_total,
-    }
+}
     return context
 

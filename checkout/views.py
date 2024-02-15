@@ -190,6 +190,14 @@ def checkout_no_pay(request):
         return render(request, 'checkout/success.html', context)
 
 
+
+def clear_customers_info(request):
+    try:
+        request.session['customer_contact'] = {}
+    except KeyError:
+        print('erroir occur')
+    return redirect('checkout')
+
 # Chekout and process payment for rental cart
 # @login_required(login_url='/accounts/login/')
 def checkout_rental(request):

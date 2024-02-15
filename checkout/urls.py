@@ -13,4 +13,5 @@ urlpatterns = [
     path('stripe_checkout/',views.stripe_checkout, name="stripe_checkout"), 
     # checkout without reservation 
     path('checkout_no_pay/',views.checkout_no_pay, name="checkout_no_pay"), 
+    path('clear_customers_info/',views.clear_customers_info, name="clear_customers_info"), 
 ]

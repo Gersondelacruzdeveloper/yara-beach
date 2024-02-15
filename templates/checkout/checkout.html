@@ -100,6 +100,12 @@
     <form class="payment-form" action="{% url 'checkout_no_pay' %}">
       <button type="submit" class="btn btn-primary">Reserve now and pay at pick up</button>
     </form>
+    <!-- for admin Only -->
+    {% if user.is_superuser %}
+    <form class="payment-form" action="{% url 'clear_customers_info' %}">
+      <button type="submit" class="btn btn-danger">Clear customers info</button>
+    </form>
+    {% endif%}
     {% else %}
     <form id="payment-form">
       <!-- Display a payment form -->
