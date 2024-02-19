@@ -1,0 +1,24 @@
+{% extends 'administrator/administrator_base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<section>
+    <h1 class="title mt-5">Edit manual Booking </h1>
+    <form class="admin-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+
+            <div class="mb-3">
+                <input class="btn my_hover user_button_sm" type="submit" value="Add Post">
+            </div>
+        </div>
+
+        <a href="{% url 'admin-excursion' %}" class="btn  my_hover btn-outline-secondary" role="button"
+            aria-pressed="true">Cancel</a>
+    </form>
+</section>
+{% endblock content %}

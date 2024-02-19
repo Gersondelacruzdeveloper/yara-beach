@@ -111,6 +111,12 @@ class SellerForm(ModelForm):
         fields = '__all__'
 
 
+# Gets a already made form and add the new rental photos
+class OrderForm(ModelForm):
+    class Meta:
+        model = ExcursionOrder
+        fields = '__all__'
+
 
 # Gets a already made form  and add the new excursion
 class PostForm(ModelForm):

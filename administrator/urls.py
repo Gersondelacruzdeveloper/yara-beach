@@ -36,6 +36,7 @@ urlpatterns = [
     # generate auto post
     path('generate_auto_post', views.generate_auto_post, name="generate_auto_post"),
     path('active-sellers', views.active_sellers, name="active-sellers"),
-    path('add_manual_booking', views.add_manual_booking, name="add_manual_booking")
-
+    path('add_manual_booking', views.add_manual_booking, name="add_manual_booking"),
+    path('edit_order/<int:pk>', views.edit_order, name="edit_order"),
+    path('delete_order/<int:pk>', views.delete_order, name="delete_order"),
 ]

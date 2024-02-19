@@ -41,7 +41,6 @@ def apply_discount_code(request):
     return redirect('checkout')
 
 
-
 # @login_required(login_url='/accounts/login/' )
 def checkout(request):
     cart = request.session.get('cart', {})
@@ -81,7 +80,6 @@ def stripe_checkout(request):
     except Exception as e:
         print('here error', str(e))
         return JsonResponse({'error': str(e)}, status=500)
-
 
 
 # Allow the user know that the purchase has been successful

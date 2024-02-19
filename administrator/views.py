@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from excursions.models import Excursions, Photos, Reference,PageVisit
 from rentals.models import Rentals
 from rentals.models import Photos as Rental_photos
-from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos,SellerForm, PostForm, AddManualBookingForm
+from .forms import ExcursionForm, ExcursionFormPhotos, RentalForm, RentalFormPhotos,SellerForm, PostForm, AddManualBookingForm,OrderForm
 from django.contrib import messages
 from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
@@ -244,8 +244,41 @@ def edit_seller(request, pk):
     context = {'form': form,'seller': seller}
     return render(request, 'administrator/edit_seller.html', context)
 
-# Delete excursion
+# Edit order and add more photos
+@login_required(login_url='/accounts/login/')
+def edit_order(request, pk):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    order = ExcursionOrder.objects.get(id=pk)
+    form = OrderForm(instance=order)
+    if request.method == 'POST':
+        form = OrderForm(request.POST,  instance=order)
+        if form.is_valid():
+            form.save()
+        messages.success(request, 'order edit Succesfullly')
+        return redirect('administrator')
+    context = {'form': form,'seller': order}
+    return render(request, 'administrator/edit_order_booking.html', context)
 
+# Delete excursion
+@login_required(login_url='/accounts/login/')
+def delete_order(request, pk):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You do not have persmision to access that page')
+        return redirect('home')
+    order = ExcursionOrder.objects.get(id=pk)
+    if request.method == 'POST':
+        order.delete()
+        messages.success(request, 'order deleted Succesfullly')
+        return redirect('administrator')
+    context = {'order': order}
+    return render(request, 'administrator/delete_order.html', context)
+
+
+# Delete excursion
 @login_required(login_url='/accounts/login/')
 def delete_seller(request, pk):
     if not request.user.is_superuser:
