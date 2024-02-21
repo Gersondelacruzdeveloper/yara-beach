@@ -73,12 +73,19 @@
                         </div>
                     
                         <!-- Times availables -->
+                        {% if excursions.is_transfer %}
+                        <div class="form-group mt-3">
+                            <label for="selected_time">Add time</label>
+                            <input type="time" class="form-control" id="selected_time" name="selected_time" required>
+                        </div>
+                        {% else %}
                         <select name="selected_time" class="form-select mt-3" required>
                             <option value="">Select a time</option>
                             {% for time in time_available %}
                             <option value="{{ time.start_time }}" class="form-control">{{ time.start_time }}</option>
                             {% endfor %}
                         </select>
+                        {% endif %}
 
                         <!-- number of adults -->
                         <div class="form-group mt-3">
