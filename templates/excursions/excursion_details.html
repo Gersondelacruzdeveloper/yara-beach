@@ -110,7 +110,7 @@
                             <label for="inputCity">Pick up Location</label>
                             <input type="text" class="form-control" id="inputCity" name="place_pickup" required>
                         </div>
-                        {% if excursions.transportation %}
+                        {% if excursions.is_transfer %}
                           <!-- place drop up info -->
                           <div class="form-group mt-3">
                             <label for="place_dropup"> Drop Off Location</label>
