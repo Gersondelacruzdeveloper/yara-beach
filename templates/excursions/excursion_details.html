@@ -87,6 +87,19 @@
                         </select>
                         {% endif %}
 
+                        {% if excursions.is_transfer %}
+                        <!-- number of adults -->
+                        <div class="form-group mt-3">
+                            <label for="id_adult_qty">vehicle</label>
+                            <input type="number" class="form-control" id="id_adult_qty" name="adult_qty" value="1"
+                            {% if excursions.group %} 
+                            min="4"
+                            {% else%}
+                            min="1"
+                            {%endif%}
+                            max="1" data-item_id="{{excursions.id}}" required>
+                        </div>
+                        {% else %}
                         <!-- number of adults -->
                         <div class="form-group mt-3">
                             <label for="id_adult_qty">Adult (12-85 years old)</label>
@@ -98,6 +111,9 @@
                             {%endif%}
                             max="99" data-item_id="{{excursions.id}}" required>
                         </div>
+
+                        {% endif %}
+
                         {% if not excursions.just_adult%}
                         <!-- number of childrens -->
                         <div class="form-group mt-3">
