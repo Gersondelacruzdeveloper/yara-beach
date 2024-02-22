@@ -63,19 +63,28 @@
                         <div class="detail-price pt-3"> <strong>Price:</strong> ${{excursions.Price}}</div>
                         <div>Lowest Price garantee</div>
                         <hr>
-
+                        {% if excursions.is_transfer %}
                         <!-- date -->
                         <div class="form-group mt-3">
+                            <label for="date">Select Date</label>
+                            <input type="text" class="form-control" id="date" name="excursion_date" min="{{tomorrow_str}}"
+                            value="Select Date"
+                                required>
+                        </div>
+                        {% else %}
+                           <!-- date -->
+                           <div class="form-group mt-3">
                             <label for="date">Select Date and Travellers</label>
                             <input type="text" class="form-control" id="date" name="excursion_date" min="{{tomorrow_str}}"
                             value="Select Date"
                                 required>
                         </div>
+                        {% endif %}
                     
                         <!-- Times availables -->
                         {% if excursions.is_transfer %}
                         <div class="form-group mt-3">
-                            <label for="selected_time">Add time</label>
+                            <label for="selected_time">Pick up time</label>
                             <input type="time" class="form-control" id="selected_time" name="selected_time" required>
                         </div>
                         {% else %}
