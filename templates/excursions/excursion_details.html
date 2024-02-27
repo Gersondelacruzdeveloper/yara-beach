@@ -209,14 +209,14 @@
 
 
     <!-- Reviews -->
-    <h4 class="review-title">Customer reviews: {{excursions.reviews.all.count}}</h4>
+    <h3 class="review-title">Customer reviews: {{excursions.reviews.all.count}}</h3>
     <hr>
 
 
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_autenticated %}
 
     <!-- Review form -->
-    <h5 class="text-center mt-5">Write your reviews</h5>
+    <div class="text-center mt-5">Write your reviews</div>
 
     <form
     
