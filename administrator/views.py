@@ -286,7 +286,7 @@ def delete_seller(request, pk):
             request, 'You do not have persmision to access that page')
         return redirect('home')
     seller = Reference.objects.get(id=pk)
-    name = Reference.full_name
+    name = Reference.full_namere
     if request.method == 'POST':
         seller.delete()
         messages.success(request, 'seller deleted Succesfullly')
