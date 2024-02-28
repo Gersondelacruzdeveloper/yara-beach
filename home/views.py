@@ -11,6 +11,7 @@ from checkout.models import ExcursionOrder, AccommodationOrder
 from django.contrib.auth.decorators import login_required
 import datetime
 from datetime import date, timedelta
+from django.conf import settings
 # Create your views here.
 
 def task(request):
@@ -30,7 +31,8 @@ def task(request):
 
 # show excursions and rentals in home page
 def home(request):
-    return redirect("excursions")
+    if settings.DEPLOYED:
+        return redirect("excursions")
     excursions = Excursions.objects.all()[:4]
     rentals = Rentals.objects.all()[:4]
     context = {'excursions': excursions, 'rentals': rentals}
