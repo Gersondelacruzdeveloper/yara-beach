@@ -121,11 +121,13 @@ font-size: 14px;
 
 
 /* -------------------------------------------------------------------- navbar */
+
 #google_translate_element{
 text-align: center;
 padding: 5px;
-background-color: var(--Yellow);
+background-color: var(--white);
 margin: auto;
+height:70px;
 }
 
 .sear-btn {
@@ -1539,8 +1541,7 @@ left:450px;
 
 #hero-image {
     width: 100%;
-    height: 834px;
-    opacity: 0.5;
+    height: 400px;
     background-color: #5092cb;
 }
 
@@ -1614,7 +1615,7 @@ left:450px;
     position: absolute;
     top: 10px;
     left: 35px;
-    width: 300px; /* Adjust the size as needed */
+    width: 180px; /* Adjust the size as needed */
     /* z-index: 1; */
 }
 
@@ -1896,6 +1897,13 @@ pointer-events: none; /* Allows clicks to go through the overlay to the image */
         width: 100%;
         margin: auto;
     }
+    #google_translate_element{
+        text-align: right;
+        padding: 40px 5px;
+        background-color: var(--white);
+        margin: auto;
+        height:70px;
+     }
 
 }
 iframe {

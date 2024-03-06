@@ -44,7 +44,6 @@ def excursion(request):
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
-
     return render(request, 'excursions/excursions.html', context)
 
 # Show the excursion details

@@ -10,9 +10,16 @@
 }
 
 /*---------------------------------------------------------- header and navbar */
-#header{
+#pd-header{
 height: 84px;
-color:var(--white);
+background-color: var(--white);
 border: 2px solid red;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
