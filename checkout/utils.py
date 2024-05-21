@@ -36,7 +36,7 @@ def send_booking_email(cart_content,order_number,company_price_total, anticipo,g
         'From Punta Cana Explore',
         template,
         settings.EMAIL_HOST_USER,
-        [guest_email, 'puntacanadiscovery@gmail.com', 'qapuntacana@gmail.com']
+        [guest_email, 'puntacanadiscovery@gmail.com']
     )
     email.attach_alternative(template, "text/html")
     email.fail_silently = False
