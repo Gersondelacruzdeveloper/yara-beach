@@ -68,6 +68,7 @@
     <link href="{% static 'css/header.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/cards.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/header-filter.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet" type="text/css">
 
     <title>{% block title %}Best Punta Cana Excursions & Tours for 2024 | Punta Cana Discovery{% endblock %}</title>
 </head>
@@ -152,6 +153,7 @@
     <!-- Main Content -->
     {% endblock %}
     <script src="{% static 'js/header.js' %}"></script>
+    {% include 'footer.html' %}
 </body>
 
 </html>
