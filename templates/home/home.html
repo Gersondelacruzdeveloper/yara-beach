@@ -13,6 +13,26 @@
 
 <div class="header-filter">
     <span class="experience-count">113 Experiences</span>
+
+        <!-- Search form -->
+    <div class="search-bar">
+        <form class="d-flex" role="search" method="get" autocomplete="on"
+              action="{% url 'excursion_search_results' %}">
+            <div class="search-input-container">
+                <span class="search-icon">🔍</span> <!-- Use an icon font here if needed -->
+                {% if navbar_input %}
+                <input class="form-control search-input" type="search" name="navbar" placeholder="{{navbar_input}}"
+                       aria-label="Search">
+                {% else %}
+                <input class="form-control search-input" type="search" name="navbar" placeholder="Search for Memorable Getaways"
+                       aria-label="Search">
+                {% endif %}
+            </div>
+            <button class="btn search-btn" type="submit">Search</button>
+        </form>
+    </div>
+
+
     <div class="sort">
         <span>Sort by: </span>
         <select id="sort-options">
@@ -78,7 +98,6 @@
          <!-- Add more cards here -->
      </div>
  
-
 <script src="{% static 'js/hero-img.js' %}"></script>
 
 {% endblock content %}
