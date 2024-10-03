@@ -1,0 +1,41 @@
+.header-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+}
+
+.header-filter .experience-count {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.header-filter  .sort {
+    display: flex;
+    align-items: center;
+}
+
+.header-filter .sort span {
+    font-size: 1em;
+    color: #666;
+    margin-right: 5px;
+}
+
+.header-filter  #sort-options {
+    font-size: 1em;
+    color: #007bff;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header-filter  #sort-options:focus {
+    outline: none;
+}
+
+.header-filter  #sort-options option {
+    color: #333;
+}
