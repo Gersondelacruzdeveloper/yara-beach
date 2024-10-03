@@ -10,61 +10,9 @@
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
       rel="stylesheet" />
-    <link href="{% static 'css/new/style.css' %}" rel="stylesheet" type="text/css">
-
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
   </head>
-  <style> 
-    body {
-        background-image: url("{% static 'images/waterbackground-img.webp' %}");
-        background-size: cover; /* Or 'contain' */
-        background-repeat: no-repeat;
-        background-attachment: fixed; /* Optional: fixed position */
-      }
-      .pd-navbar-brand img{
-        width:200px;
-        padding: 10px;
-      }
-      .pd-container-fluid{
-        display: grid;
-        grid-template-columns: 30% 60% 10%;
-      }
-      
-      .pd-navbar-nav{
-        display: grid;
-        grid-template-columns: auto auto auto auto auto;
-      }
-      .pd-navbar-nav a{
-        text-decoration: none;
-      }
-      .pd-navbar-nav ul{
-        text-decoration: none;
-      }
-
-    </style>
   <body>
-    <!-- Here is our main header that is used across all the pages of our website -->
-<header id="pd-header">
-<nav class="pd-navbar pd-navbar-inverse">
-  <div class="pd-container-fluid">
-    <div class="pd-navbar-header">
-      <a class="pd-navbar-brand" href="#"><img src="{% static 'images/excursions/Logo.webp' %}" alt="logo"></a>
-    </div>
-    <ul class="pd-nav pd-navbar-nav">
-      <li class="pd-active"><a href="#">Home</a></li>
-      <li class="pd-active"><a href="#">Our service</a></li>
-      <li class="pd-active"><a href="#">Login</a></li>
-      <li class="pd-active"><a href="#">Sign UP</a></li>
-      <li class="pd-active"><a href="#">English</a></li>
-    </ul>
-    <ul class="pd-nav pp-navbar-nav pd-navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
-  
-    </header>
-
     <!-- Here is our page's main content -->
     <main>  
         {% block content %}

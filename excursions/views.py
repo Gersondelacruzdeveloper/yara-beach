@@ -206,7 +206,6 @@ def cancel_excursion(request, pk):
     return 
 
 
-# Show the excursion details
 def post_details(request, slug):
     post = get_object_or_404(Post, slug=slug)
     context = {'post': post}

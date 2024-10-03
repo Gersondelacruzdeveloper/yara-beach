@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+     <script src="https://kit.fontawesome.com/392c1ed101.js" crossorigin="anonymous"></script>
+
+    <link href="{% static 'css/base2.css' %}" rel="stylesheet" type="text/css">
+    <title>Header Navigation</title>
+</head>
+<body>
+    <header>
+        <div class="desktop-container-nav">
+            <div class="logo-desktop">
+                <img src="{% static 'images/Logo.png' %}" alt="Punta Cana Discovery Logo"> <!-- Add your logo here -->
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#">Excursions</a></li>
+                    <li><a href="#">Airport Transfers</a></li>
+                    <li><a href="#">Destinations</a></li>
+                    <li><a href="#">Meetings and Events</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li class="fa-solid fa-phone" ><a href="tel:+529988819507"> +1 849-428-0723</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <nav class="mobile-nav">
+            <div class="menu-icon" onclick="toggleMenu()">
+                &#9776; <!-- Hamburger Icon -->
+            </div>
+    
+
+            <div class="logo-mobile">
+                <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo"> <!-- Add your logo here -->
+            </div>
+
+
+            <div class="shooping-cart">
+                <a href="#" class="cart">🛒</a>
+            </div>
+
+            <ul class="mobile-menu">
+                <li><a href="#">Excursions</a></li>
+                <li><a href="#">Airport Transfers</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Meetings and Events</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li class="fa-solid fa-phone" ><a href="tel:+529988819507"> +1 849-428-0723</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}
+    <!-- Main Content -->
+   {% endblock %}
+</main>
+
+<script src="{% static 'js/base2.js' %}"></script>
+</body>
+</html>
