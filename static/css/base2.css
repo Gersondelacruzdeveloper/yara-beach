@@ -1,16 +1,20 @@
+/* Body and general styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-#whatsapp-floating{
-    width:50px;
-    }
-    .whatsap-container{
-        text-align: center;
-        padding: 10px;
-    }
 
-.desktop-container-nav{
+#whatsapp-floating {
+    width: 50px;
+}
+
+.whatsap-container {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Desktop Navigation */
+.desktop-container-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,13 +39,20 @@ body {
 
 .desktop-nav a {
     text-decoration: none;
-    color: #002e5d; /* Change color as per your requirement */
+    color: #002e5d;
 }
 
+/* Mobile Navigation */
 .mobile-nav {
-    display: none; /* Hide by default */
+    display: none; /* Hidden by default */
 }
 
+/* Shopping cart icon adjustments */
+.shooping-cart {
+    margin: auto;
+}
+
+/* Menu icon */
 .menu-icon {
     font-size: 28px;
     cursor: pointer;
@@ -56,61 +67,58 @@ body {
 
 .contact a {
     text-decoration: none;
-    color: #002e5d; /* Change color as per your requirement */
+    color: #002e5d;
 }
 
+/* Mobile View */
 @media (max-width: 768px) {
-    .mobile-menu{
-        display: none;
-    }
     .logo-desktop img {
         display: none;
     }
+
     .logo-mobile img {
         width: 200px !important;
     }
 
     .desktop-nav {
-        display: none; /* Hide desktop nav */
+        display: none;
     }
+
     .mobile-nav {
-        display:flex;
-        justify-content:space-between;
-        text-align:center;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
         padding: 20px;
+        background-color: white;
     }
-    .shooping-cart{
+
+    .shooping-cart {
         margin: auto;
     }
 
+    /* Mobile Menu Styling */
     .mobile-menu {
-        display:none;
+        display: none;
         position: fixed;
-        background-color: white;;
+        background-color: white;
         height: 100%;
         width: 100%;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
         z-index: 999;
     }
-    
 
-
-    /* Container for the menu */
     .menu-container {
-        background-color: white;
         padding: 20px;
-        width: 300px;
+        margin: 50px auto;
+        width: 80%;
+        background-color: white;
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: relative;
-        margin: 50px auto;
     }
-    
-    /* Close button styles */
+
     .close-btn {
         background: none;
         border: none;
@@ -119,41 +127,20 @@ body {
         position: absolute;
         top: 15px;
         left: 15px;
-        color:black;
-        z-index: 500;
     }
-    
-    /* Cart container styles */
+
     .cart-container {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        position: relative;
     }
-    
-    .cart-icon {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .cart-badge {
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        background-color: red;
-        color: white;
-        border-radius: 50%;
-        padding: 2px 6px;
-        font-size: 12px;
-    }
-    
-    /* Menu item styles */
+
     .menu-items {
         list-style: none;
         padding: 0;
-        margin-top: 20px;
+        margin: 20px 0;
     }
-    
+
     .menu-item {
         display: flex;
         align-items: center;
@@ -165,26 +152,24 @@ body {
         cursor: pointer;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
-    
+
     .menu-item:hover {
         background-color: #e2e2e2;
     }
-    
+
     .menu-image {
         border-radius: 8px;
         width: 50px;
         height: 50px;
     }
-    
+
     .menu-item span {
         flex: 1;
         margin-left: 10px;
     }
-    
+
     .arrow {
         font-size: 24px;
         color: #333;
     }
-    
-    
 }

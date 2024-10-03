@@ -5,31 +5,55 @@
 <head>
     <!-- Metas -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description"
-        content="{% block description %}Explore and discover the best 2023 Punta Cana excursions for family adventures, including Saona Island tours and unique activities in Punta Cana Bavaro. Discover excursiones en Republica Dominicana, delve into the Caribbean's treasures, and find excursiones near you. Contact excursiones VIP Punta Cana for affordable, child-friendly options, and explore the diverse excursiones Punta Cana has to offer, all at great prices. Don't miss the top Punta Cana tours and tourist attractions with trusted tour companies.{% endblock %}">
+        content="{% block description %}Discover the best excursions and tours in Punta Cana for 2023. Explore Saona Island, adventure parks, and family-friendly activities with top-rated operators at unbeatable prices. Book now for the ultimate Caribbean experience.{% endblock %}">
     <meta name="keywords"
-        content="punta cana, Discovery, adventure, the adventure travelers, 2023, backpacking tours,explore tours, vacations, biking tours,adventure travel, bavaro,excursions,Visit Saona Island, blue Caribbean, natural swimming pool, Day Trip, things to do in puntacana, puntacana Scape Park Punta Cana, Wild Buggy Eco Adventure, Full Safari Zipline, Buggies & Horse Riding, Hoyo Azul y Cap Cana,Excursión de un día isla Saona, Cana Off-Road Dune, Amazing Water Cave,tours, Horseback City Tour, Cacao Farm, Zipline / Dune Full-Day Catalina Island Snorkeling Tour Ecological Riding Paradise, Diving: Certification Required, Scuba Diving Adventure: Certified Experience, with Altos Chavon - All Inclusive, Santo Domingo Colonial Samaná Cayo Levantado and Cascada Limón, Playa Rincon Levantado, Los Haitises National Montana Redonda, River Lunch">
+        content="Punta Cana excursions, Saona Island tours, Punta Cana activities, Bavaro tours, Dominican Republic travel, Punta Cana adventure, family excursions Punta Cana">
     <meta name="author" content="Gerson De La Cruz">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="https://www.puntacana-explore.com/excursions/">
+    <link rel="canonical" href="https://www.puntacanadiscovery.com/">
     <meta name="robots" content="index, follow">
+    <!-- Add Open Graph for Social Sharing -->
+    <meta property="og:title" content="Best Punta Cana Excursions and Tours for 2023 | Punta Cana Discovery">
+    <meta property="og:description" content="Book your Punta Cana excursions with top-rated tour operators. Enjoy family-friendly adventures, Saona Island tours, and much more in the heart of the Caribbean.">
+    <meta property="og:image" content="{% static 'images/excursions/og-image.jpg' %}">
+    <meta property="og:url" content="https://www.puntacanadiscovery.com/excursions/">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Best Punta Cana Excursions and Tours for 2023 | Punta Cana Discovery">
+    <meta name="twitter:description" content="Explore the most exciting excursions and family-friendly activities in Punta Cana. Book now for great deals and unforgettable adventures.">
+    <meta name="twitter:image" content="{% static 'images/excursions/twitter-image.jpg' %}">
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Punta Cana Discovery",
+            "url": "https://www.puntacanadiscovery.com",
+            "logo": "https://www.puntacanadiscovery.com/static/images/Logo.png",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-849-428-0723",
+                "contactType": "Customer Service"
+            }
+        }
+        
+    </script>
     <!-- Bootstrap 5.0.2-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- jquery -->
+    <!-- jQuery -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8D597NVLB">
-    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8D597NVLB"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-Z8D597NVLB');
     </script>
     <!-- Font Awesome -->
@@ -37,129 +61,93 @@
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/favicon/android-chrome-192x192.png' %}">
-    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'images/favicon/android-chrome-512x512.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
     <!-- site style -->
     <link href="{% static 'css/base2.css' %}" rel="stylesheet" type="text/css">
-    <title>{% block title %}Punta Cana Discovery {% endblock %}</title>
+    <title>{% block title %}Best Punta Cana Excursions & Tours for 2024 | Punta Cana Discovery{% endblock %}</title>
 </head>
 
 <body>
     <header>
         <div class="desktop-container-nav">
-
             <div class="logo-desktop">
-                <a class="navbar-brand" href="{% url 'excursions' %}"><img
-                        src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo"></a>
+                <a class="navbar-brand" href="{% url 'excursions' %}">
+                    <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
+                </a>
             </div>
             <nav class="desktop-nav">
                 <ul>
-
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'excursions' %}"> 👤<a
-                                href="{% url 'excursions' %}"> Hi {{user|title}} </a></a></li>
+                    <li><a href="{% url 'excursions' %}"> 👤 Hi {{user|title}}</a></li>
                     {% else %}
-                    <li><a href="{% url 'excursions' %}"> 👤 <a
-                                href="{% url 'account_login' %}"> Sign in </a></a></li>
+                    <li><a href="{% url 'account_login' %}"> 👤 Sign in</a></li>
                     {% endif %}
                     <li><a href="{% url 'excursions' %}">Excursions</a></li>
                     <li><a href="#">Transfers</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#"> Events</a></li>
+                    <li><a href="#">Events</a></li>
                     <li><a href="#"> 🛒 {% if total %}
                             ${{total | floatformat:2}}
                             {% else %}
                             $0
-                            {% endif %}</a></li>
-                    <li><a href="https://api.whatsapp.com/send?phone=447541147634"><img id="whatsapp-floating"
-                                class="text-center" src="{% static 'images/excursions/whatsapp.png'%}"></a></li>
+                            {% endif %}
+                        </a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=447541147634">
+                        <img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}" alt="WhatsApp"></a>
+                    </li>
                 </ul>
             </nav>
-
         </div>
         <nav class="mobile-nav">
-            <div class="menu-icon" onclick="toggleMenu()">
-                &#9776; <!-- Hamburger Icon -->
-            </div>
-
-
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
             <div class="logo-mobile">
                 <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
-                <!-- Add your logo here -->
             </div>
-
-
             <div class="shooping-cart">
-                🛒
-                 {% if total %}
-                        ${{total | floatformat:2}}
-                        {% else %}
-                        $0
-                        {% endif %}
-             </div>
-
+                🛒 {% if total %}
+                    ${{total | floatformat:2}}
+                    {% else %}
+                    $0
+                    {% endif %}
+            </div>
             <div class="mobile-menu">
                 <div class="menu-container">
-                    <!-- Close button -->
                     <button class="close-btn" onclick="toggleMenu()">&#10005;</button>
-
-                    <!-- Cart with item count -->
-                    <div class="cart-container">
-                        🛒
-                            {% if total %}
-                                ${{total | floatformat:2}}
-                                {% else %}
-                                $0
-                                {% endif %}
-                    </div>
-
-                    <!-- Menu items -->
                     <ul class="menu-items">
                         <li class="menu-item">
-                            <img src="{% static '/images/mobile-img/sahona.jpeg' %}" alt="Top activities" class="menu-image">
-                        
-                            <span> <a href="{% url 'excursions' %}"> Excursions</a></span>
-                            <span class="arrow">&#8250;</span>
+                            <img src="{% static 'images/mobile-img/sahona.jpeg' %}" alt="Top activities" class="menu-image">
+                            <span><a href="{% url 'excursions' %}">Excursions</a></span>
                         </li>
                         <li class="menu-item">
-                            <img src="{% static '/images/mobile-img/transfer-img.png' %}" alt="Top activities" class="menu-image">
-                            <span> <a href="{% url 'excursions' %}"> Transfer</a></span>
-                            <span class="arrow">&#8250;</span>
+                            <img src="{% static 'images/mobile-img/transfer-img.png' %}" alt="Transfer services" class="menu-image">
+                            <span><a href="{% url 'excursions' %}">Transfers</a></span>
                         </li>
                         <li class="menu-item">
-                            <img src="{% static '/images/mobile-img/blog.jpg' %}" alt="Top activities" class="menu-image">
+                            <img src="{% static 'images/mobile-img/blog.jpg' %}" alt="Blog" class="menu-image">
                             <span>Blog</span>
-                            <span class="arrow">&#8250;</span>
                         </li>
                         <li class="menu-item">
-                            <img src="{% static '/images/mobile-img/event.jpg' %}" alt="Top activities" class="menu-image">
+                            <img src="{% static 'images/mobile-img/event.jpg' %}" alt="Events" class="menu-image">
                             <span>Events</span>
-                            <span class="arrow">&#8250;</span>
                         </li>
                         <li class="menu-item">
-                            <img src="{% static 'images/excursions/whatsapp.png'%}" alt="Explore the world" class="menu-image">
+                            <img src="{% static 'images/excursions/whatsapp.png'%}" alt="WhatsApp" class="menu-image">
                             <span>
-                                <div class="whatsap-container draggable" id="draggableElement">
-                                    <a aria-label="Whatsapp" rel="noopener" rel="whatsapp"
-                                        href="https://api.whatsapp.com/send?phone=447541147634" target="_blank">Contact
-                                    </a>
+                                <div class="whatsapp-container">
+                                    <a aria-label="Whatsapp" href="https://api.whatsapp.com/send?phone=447541147634" target="_blank">Contact via WhatsApp</a>
                                 </div>
                             </span>
-                            <span class="arrow">&#8250;</span>
                         </li>
                     </ul>
                 </div>
-
             </div>
         </nav>
     </header>
     {% block content %}
     <!-- Main Content -->
     {% endblock %}
-    </main>
-
-    <script src="{% static 'js/base2.js' %}"></script>
+    <script src="{% static 'js/header.js' %}"></script>
 </body>
 
 </html>
