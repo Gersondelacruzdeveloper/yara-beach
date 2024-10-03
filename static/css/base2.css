@@ -2,6 +2,13 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+#whatsapp-floating{
+    width:50px;
+    }
+    .whatsap-container{
+        text-align: center;
+        padding: 10px;
+    }
 
 .desktop-container-nav{
     display: flex;
@@ -79,7 +86,7 @@ body {
     .mobile-menu {
         display:none;
         position: fixed;
-        background-color: orange;;
+        background-color: white;;
         height: 100%;
         width: 100%;
         top: 0;
