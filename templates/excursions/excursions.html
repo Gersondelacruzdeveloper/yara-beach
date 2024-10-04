@@ -47,7 +47,7 @@
      <div class="card-container">
         {% for excursion in excursions %}
         <div class="card">
-            <img src="{{excursion.main_image.url}}" alt="Punta Cana beach tour - {{excursion.title}}">
+            <img src="{{excursion.main_image.url}}"  loading="lazy" alt="Punta Cana beach tour - {{excursion.title}}">
             <div class="content">
                 <div class="tag">ACTIVITIES</div>
                 <h3>{{excursion.title|slice:":60"|title}}...</h3>
@@ -79,10 +79,86 @@
                     </a>
                 </div>
             </div>
+
+              <!-- Schema Markup for Excursion -->
+              <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "TouristTrip",
+                    "name": "{{ excursion.title }}",
+                    "description": "{{ excursion.description }}",
+                    "image": "{{ excursion.main_image.url }}",
+                    "offers": {
+                        "@type": "Offer",
+                        "priceCurrency": "USD",
+                        "price": "{{ excursion.Price }}",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{% url 'excursion_detail' excursion.slugy %}"
+                    },
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "excursion.get_average_rating",
+                        "reviewCount": "{{ excursion.reviews.count }}"
+                    },
+                    "touristType": "International",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "Punta Cana Discovery",
+                        "url": "https://puntacanadiscovery.com"
+                    }
+                }
+            </script>
         </div>
+
         {% endfor %}
     </div>
+
+    <!-- Pagination with SEO-friendly URLs -->
+    {% if counts > 8 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if excursions.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="/excursions/page/{{ excursions.previous_page_number }}">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <div class="page-link" tabindex="-1" aria-disabled="true">Previous</div>
+            </li>
+            {% endif %}
+
+            {% if excursions.number|add:'-4' > 1 %}
+            <li class="page-item"><a class="page-link" href="/excursions/page/{{ excursions.number|add:'-5' }}">&hellip;</a></li>
+            {% endif %}
+
+            {% for i in excursions.paginator.page_range %}
+            {% if excursions.number == i %}
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">{{ i }}<span class="sr-only">(current)</span></span>
+            </li>
+            {% elif i > excursions.number|add:'-5' and i < excursions.number|add:'5' %}
+            <li class="page-item"><a class="page-link" href="/excursions/page/{{ i }}">{{ i }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
+            <li class="page-item"><a class="page-link" href="/excursions/page/{{ excursions.number|add:'5' }}">&hellip;</a></li>
+            {% endif %}
+
+            {% if excursions.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="/excursions/page/{{ excursions.next_page_number }}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <div class="page-link" tabindex="-1" aria-disabled="true">Next</div>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </section>
+
 <script src="{% static 'js/hero-img.js' %}"></script>
 <script src="{% static 'js/sort-options.js' %}"></script>
 </section>
