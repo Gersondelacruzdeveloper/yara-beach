@@ -1,0 +1,44 @@
+
+.Hero-header {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 300px;
+}
+
+.Hero-header .header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.Hero-header .overlay {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.Hero-header .header-title {
+    font-size: 4rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.Hero-header .header-subtitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .Hero-header .header-title {
+        font-size: 3rem;
+    }
+
+    .Hero-header .header-subtitle {
+        font-size: 1rem;
+    }
+}

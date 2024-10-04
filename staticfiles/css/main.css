@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px;
+}
+
+.dropdown-content li {
+    padding: 5px 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.language-selector img {
+    height: 20px;
+    margin-right: 5px;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart img {
+    height: 24px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: orange;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 0.8rem;
+}
+
+.header {
+    background-image: url('background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 600px;
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.header p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-discover {
+    background-color: orange;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.btn-discover:hover {
+    background-color: darkorange;
+}
