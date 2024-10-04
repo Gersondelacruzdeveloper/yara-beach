@@ -2,14 +2,8 @@
 <title>{% block title %} Unique things to do in punta cana with punta cana discovery {% endblock %}</title>
 {% load static %}
 {% block content %}
-<header class="header">
-    <div class="overlay">
-        <h1 class="header-title">Punta Cana Excursions</h1>
-        <p class="header-subtitle">Explore the best tours and adventures in the Dominican Republic</p>
-    </div>
-    <img src="{% static 'images/hero-images/macao-beach.jpg'%}" alt="Beautiful beach in Punta Cana" class="header-image">
-</header>
-
+{% include 'excursions/header.html' %}
+{% include 'excursions/hero-header.html' %}
 
 <div class="header-filter">
     <span class="experience-count">113 Experiences</span>
@@ -100,4 +94,7 @@
 <script src="{% static 'js/hero-img.js' %}"></script>
 
 {% endblock content %}
+
+
+
 

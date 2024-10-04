@@ -12,6 +12,7 @@ from django.utils import timezone  # Import timezone module
 from django.core.exceptions import ValidationError
 from checkout.utils import calculate_final_amount
 from django.conf import settings
+from django.db.models import Avg
 
 # Create your models here.
 class AvailableTime(models.Model):
@@ -81,7 +82,11 @@ class Excursions(models.Model):
     reserve_price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=20)
     reserve_no_pay = models.BooleanField(default=False)
-
+    
+    
+    def get_average_rating(self):
+        average_rating = self.reviews.aggregate(Avg('rating'))['rating__avg']
+        return round(average_rating, 1) if average_rating else 0
 
     def save(self, *args, **kwargs):
         # If the slug is not provided, generate it based on the name

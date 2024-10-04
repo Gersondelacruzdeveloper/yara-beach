@@ -65,90 +65,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
     <!-- site style -->
     <link href="{% static 'css/base2.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/header.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/Hero-header.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/cards.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/header-filter.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/footer.css' %}" rel="stylesheet" type="text/css">
-
     <title>{% block title %}Best Punta Cana Excursions & Tours for 2024 | Punta Cana Discovery{% endblock %}</title>
 </head>
 
 <body>
-    <header>
-        <div class="desktop-container-nav">
-            <div class="logo-desktop">
-                <a class="navbar-brand" href="{% url 'excursions' %}">
-                    <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
-                </a>
-            </div>
-            <nav class="desktop-nav">
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'excursions' %}"> 👤 Hi {{user|title}}</a></li>
-                    {% else %}
-                    <li><a href="{% url 'account_login' %}"> 👤 Sign in</a></li>
-                    {% endif %}
-                    <li><a href="{% url 'excursions' %}">Excursions</a></li>
-                    <li><a href="#">Transfers</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#"> 🛒 {% if total %}
-                            ${{total | floatformat:2}}
-                            {% else %}
-                            $0
-                            {% endif %}
-                        </a></li>
-                    <li><a href="https://api.whatsapp.com/send?phone=447541147634">
-                        <img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}" alt="WhatsApp"></a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <nav class="mobile-nav">
-            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-            <div class="logo-mobile">
-                <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
-            </div>
-            <div class="shooping-cart">
-                🛒 {% if total %}
-                    ${{total | floatformat:2}}
-                    {% else %}
-                    $0
-                    {% endif %}
-            </div>
-            <div class="mobile-menu">
-                <div class="menu-container">
-                    <button class="close-btn" onclick="toggleMenu()">&#10005;</button>
-                    <ul class="menu-items">
-                        <li class="menu-item">
-                            <img src="{% static 'images/mobile-img/sahona.jpeg' %}" alt="Top activities" class="menu-image">
-                            <span><a href="{% url 'excursions' %}">Excursions</a></span>
-                        </li>
-                        <li class="menu-item">
-                            <img src="{% static 'images/mobile-img/transfer-img.png' %}" alt="Transfer services" class="menu-image">
-                            <span><a href="{% url 'excursions' %}">Transfers</a></span>
-                        </li>
-                        <li class="menu-item">
-                            <img src="{% static 'images/mobile-img/blog.jpg' %}" alt="Blog" class="menu-image">
-                            <span>Blog</span>
-                        </li>
-                        <li class="menu-item">
-                            <img src="{% static 'images/mobile-img/event.jpg' %}" alt="Events" class="menu-image">
-                            <span>Events</span>
-                        </li>
-                        <li class="menu-item">
-                            <img src="{% static 'images/excursions/whatsapp.png'%}" alt="WhatsApp" class="menu-image">
-                            <span>
-                                <div class="whatsapp-container">
-                                    <a aria-label="Whatsapp" href="https://api.whatsapp.com/send?phone=447541147634" target="_blank">Contact via WhatsApp</a>
-                                </div>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
     {% block content %}
     <!-- Main Content -->
     {% endblock %}

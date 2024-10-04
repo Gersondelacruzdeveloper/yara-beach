@@ -1,12 +1,12 @@
 
-.header {
+.Hero-header {
     position: relative;
     text-align: center;
     color: white;
     height: 300px;
 }
 
-.header-image {
+.Hero-header .header-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -17,28 +17,28 @@
     z-index: -1;
 }
 
-.overlay {
+.Hero-header .overlay {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.header-title {
+.Hero-header .header-title {
     font-size: 4rem;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
-.header-subtitle {
+.Hero-header .header-subtitle {
     font-size: 1.5rem;
     margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
-    .header-title {
+    .Hero-header .header-title {
         font-size: 3rem;
     }
 
-    .header-subtitle {
+    .Hero-header .header-subtitle {
         font-size: 1rem;
     }
 }
