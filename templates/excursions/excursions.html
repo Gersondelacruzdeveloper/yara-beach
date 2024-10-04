@@ -50,8 +50,7 @@
             <img src="{{excursion.main_image.url}}" alt="Punta Cana beach tour - {{excursion.title}}">
             <div class="content">
                 <div class="tag">ACTIVITIES</div>
-                <h3>{{excursion.title|slice:":30"|title}}..</h3>
-                <p>T{{excursion.description|slice:":30"|title | safe}}....</p>
+                <h3>{{excursion.title|slice:":60"|title}}...</h3>
                 {% if excursion.duration_time %}
                 <span class="img_icon1 badge rounded-pill bg-warning text-dark">
                 <i class="fa-solid fa-hourglass-start"></i> {{excursion.duration_time}} hours</span>
