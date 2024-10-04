@@ -18,12 +18,16 @@
                 <li><a href="#">Transfers</a></li>
                 <li><a href="#">Blog</a></li>
                 <li><a href="#">Events</a></li>
-                <li><a href="#"> 🛒 {% if total %}
-                        ${{total | floatformat:2}}
-                        {% else %}
-                        $0
-                        {% endif %}
-                    </a></li>
+                <li>
+                    <a href="{% url 'checkout' %}" class="shooping-cart"> 🛒   
+                        <span class="cart-badge">
+                            {% if cart_items %}
+                            {{ cart_items | length }}
+                            {% endif %}
+                        </span>
+                    </a>
+                </li>
+                
                 <li><a href="https://api.whatsapp.com/send?phone=447541147634">
                     <img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}" alt="WhatsApp"></a>
                 </li>
@@ -36,12 +40,15 @@
             <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
         </div>
         <div class="shooping-cart">
-            🛒 {% if total %}
-                ${{total | floatformat:2}}
-                {% else %}
-                $0
-                {% endif %}
+            <a href="{% url 'checkout' %}"> 🛒   
+                <span class="cart-badge-mobile">
+                    {% if cart_items %}
+                    {{ cart_items | length }}
+                    {% endif %}
+                </span>
+            </a>
         </div>
+
         <div class="mobile-menu">
             <div class="menu-container">
                 <button class="close-btn" onclick="toggleMenu()">&#10005;</button>

@@ -60,6 +60,10 @@ body {
     margin: auto;
 }
 
+.shooping-cart a{
+    text-decoration: none;
+}
+
 /* Menu icon */
 .menu-icon {
     font-size: 28px;
@@ -180,4 +184,27 @@ body {
         font-size: 24px;
         color: #333;
     }
+}
+
+
+.cart-badge {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: relative;
+    top: -10px;
+    left: -5px;
+}
+
+.cart-badge-mobile {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: relative;
+    top: -10px;
+    left: -5px;
 }
