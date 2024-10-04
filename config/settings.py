@@ -197,7 +197,28 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+
+# Ensure to include Django's static file finders
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',  # Needed for Django Compressor
+]
+
+# Django Compressor settings
+COMPRESS_ENABLED = True  # Ensure compression is enabled
+COMPRESS_OFFLINE = True  # Pre-compress files when running `collectstatic`
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.cssmin.CSSMinFilter',  # Minifies CSS files
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',  # Minifies JS files
+]
+
 
 
 # Default primary key field type
@@ -257,3 +278,4 @@ TAXES_AND_FEES = env.str("TAXES_AND_FEES")
 # stripe keys
 STRIPE_SECRET_KEY = env.str("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = env.str("STRIPE_PUBLIC_KEY")
+
