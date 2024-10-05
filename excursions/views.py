@@ -228,6 +228,7 @@ class StaticPageView(View):
             'events': 'static_pages/events.html',
             'blog': 'static_pages/blog.html',
             'faqs': 'static_pages/faqs.html',
+            'afp': 'static_pages/afp.html',
         }
         
         template = templates.get(page)

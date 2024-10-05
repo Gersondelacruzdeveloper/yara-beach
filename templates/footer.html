@@ -22,9 +22,9 @@
     <div class="footer-section">
       <h4>Join Our Travel Advisors Program</h4>
       <ul>
-        <li><a href="#" title="Learn More About Our Affiliation Program">Affiliation Program</a></li>
-        <li><a href="#" title="Sign Up for Our Travel Advisors Program">Sign Up</a></li>
-        <li><a href="#" title="Log In to Manage Your Account">Log In</a></li>
+        <li><a href="{% url 'static_page' 'afp' %}" title="Learn More About Our Affiliation Program">Affiliation Program</a></li>
+        <li><a href="{% url 'account_signup' %}" title="Sign Up for Our Travel Advisors Program">Sign Up</a></li>
+        <li><a href="{% url 'account_login' %}" title="Log In to Manage Your Account">Log In</a></li>
       </ul>
     </div>
 
