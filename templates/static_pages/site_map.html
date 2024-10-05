@@ -11,14 +11,16 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
     <p>Welcome to the <strong>Punta Cana Discovery</strong> site map. Below is a quick overview of the main pages available on our website:</p>
     
     <ul>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/excursions">Excursions</a></li>
-        <li><a href="/transfers">Transfers</a></li>
-        <li><a href="/tours">Tours</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/faqs">FAQs</a></li>
-        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="{% url 'static_page' 'about-us' %}" title="Learn More About Our Company">About Us</a></li>
+        <li><a href="" title="Book Airport Transfers and Transportation">Transfers</a></li>
+        <li><a href="{% url 'excursions' %}" title="Explore Our Excursions and Tours">Excursions</a></li>
+        <li><a href="{% url 'static_page' 'events' %}" title="Plan and Attend Our Special Events">Events</a></li>
+        <li><a href="{% url 'static_page' 'blog' %}" title="Read Our Latest Blog Posts and Articles">Blog</a></li>
+        <li><a href="{% url 'static_page' 'faqs' %}" title="Frequently Asked Questions and Answers">FAQs</a></li>
+        <li><a href="https://api.whatsapp.com/send?phone=18094614942" title="Contact Us Directly via Whatsapp">Contact us via Whatsapp</a></li>
+        <li><a href="{% url 'static_page' 'terms-and-conditions' %}" title="Read Our Terms and Conditions">Terms & Conditions</a></li>
+        <li><a href="{% url 'static_page' 'privacy-policy' %}" title="View Our Privacy Policy">Privacy Policy</a></li>
+        <li><a href="{% url 'static_page' 'cookies-and-privacy' %}" title="Review Our Cookies & Privacy Policy">Cookies & Privacy</a></li>
     </ul>
     
     <p>If you have any questions, feel free to <a title="Contact Us Directly via Whatsapp" href="https://api.whatsapp.com/send?phone=18094614942">Contact us via Whatsapp</a>.</p>
@@ -26,3 +28,4 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
 </section>
 
 {% endblock content %}
+
