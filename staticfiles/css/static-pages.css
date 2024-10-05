@@ -1,0 +1,66 @@
+
+/* Container Styling */
+.container-static-pages{
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: white; /* White background for content */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Heading Styling */
+.container-static-pages h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #024a86; /* Same blue as in the image */
+}
+
+/* Paragraph Styling */
+.container-static-pages p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Links */
+.container-static-pages a {
+    color: #024a86; /* Consistent blue for links */
+    text-decoration: none;
+}
+
+.container-static-pages a:hover {
+    text-decoration: underline;
+}
+
+
+
+.container-static-pages .faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.container-static-pages .faq-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.container-static-pages .faq-intro {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.container-static-pages .contact-info {
+    list-style-type: none;
+    padding: 0;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+
+

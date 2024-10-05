@@ -16,4 +16,7 @@ urlpatterns = [
     path('cancel_excursion/<int:pk>', views.cancel_excursion, name="cancel_excursion"),
     path('generate_reviews/<int:pk>', views.generate_reviews, name="generate_reviews"),
     path('post/<slug:slug>', views.post_details, name="post"),
+
+    # Static Pages
+    path('<page>/', views.StaticPageView.as_view(), name='static_page'),
 ]

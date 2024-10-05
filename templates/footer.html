@@ -10,12 +10,12 @@
     <div class="footer-section">
       <h4>Explore Our Services and Resources</h4>
       <ul>
-        <li><a href="#" title="Learn More About Our Company">About Us</a></li>
-        <li><a href="#" title="Book Airport Transfers and Transportation">Transfers</a></li>
-        <li><a href="#" title="Explore Our Excursions and Tours">Excursions</a></li>
-        <li><a href="#" title="Plan and Attend Our Special Events">Events</a></li>
-        <li><a href="#" title="Read Our Latest Blog Posts and Articles">Blog</a></li>
-        <li><a href="#" title="Frequently Asked Questions and Answers">FAQs</a></li>
+        <li><a href="{% url 'static_page' 'about-us' %}" title="Learn More About Our Company">About Us</a></li>
+        <li><a href="" title="Book Airport Transfers and Transportation">Transfers</a></li>
+        <li><a href="{% url 'excursions' %}" title="Explore Our Excursions and Tours">Excursions</a></li>
+        <li><a href="{% url 'static_page' 'events' %}" title="Plan and Attend Our Special Events">Events</a></li>
+        <li><a href="{% url 'static_page' 'blog' %}" title="Read Our Latest Blog Posts and Articles">Blog</a></li>
+        <li><a href="{% url 'static_page' 'faqs' %}" title="Frequently Asked Questions and Answers">FAQs</a></li>
       </ul>
     </div>
 
@@ -32,10 +32,10 @@
       <h4>Contact Us and Read Our Terms</h4>
       <ul>
         <li><a href="https://api.whatsapp.com/send?phone=18094614942" title="Contact Us Directly via Whatsapp">Contact us via Whatsapp</a></li>
-        <li><a href="#" title="Read Our Terms and Conditions">Terms & Conditions</a></li>
-        <li><a href="#" title="View Our Privacy Policy">Privacy Policy</a></li>
-        <li><a href="#" title="Review Our Cookies & Privacy Policy">Cookies & Privacy</a></li>
-        <li><a href="#" title="Navigate Our Site Map">Site map</a></li>
+        <li><a href="{% url 'static_page' 'terms-and-conditions' %}" title="Read Our Terms and Conditions">Terms & Conditions</a></li>
+        <li><a href="{% url 'static_page' 'privacy-policy' %}" title="View Our Privacy Policy">Privacy Policy</a></li>
+        <li><a href="{% url 'static_page' 'cookies-and-privacy' %}" title="Review Our Cookies & Privacy Policy">Cookies & Privacy</a></li>
+        <li><a href="{% url 'static_page' 'site-map' %}" title="Navigate Our Site Map">Site map</a></li>
       </ul>
     </div>
 

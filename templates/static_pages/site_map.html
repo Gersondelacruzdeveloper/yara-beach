@@ -1,0 +1,28 @@
+{% extends 'base2.html' %}
+{% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours {% endblock %}
+{% block description %}Book the best Punta Cana excursions with Punta Cana Discovery, offering unforgettable guided
+tours, thrilling activities, and unique experiences in the Dominican Republic. {% endblock %}
+{% load static %}
+{% block content %}
+{% include 'excursions/header.html' %}
+
+<section class="container-static-pages">
+    <h1>Site Map</h1>
+    <p>Welcome to the <strong>Punta Cana Discovery</strong> site map. Below is a quick overview of the main pages available on our website:</p>
+    
+    <ul>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/excursions">Excursions</a></li>
+        <li><a href="/transfers">Transfers</a></li>
+        <li><a href="/tours">Tours</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+    </ul>
+    
+    <p>If you have any questions, feel free to <a title="Contact Us Directly via Whatsapp" href="https://api.whatsapp.com/send?phone=18094614942">Contact us via Whatsapp</a>.</p>
+
+</section>
+
+{% endblock content %}

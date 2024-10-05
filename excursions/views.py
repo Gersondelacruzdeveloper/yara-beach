@@ -13,6 +13,7 @@ import random
 from datetime import timedelta, datetime
 from administrator.models import Post
 from django.core.exceptions import ValidationError
+from django.views import View
 
 # import qrcode
 # Create your views here.
@@ -211,3 +212,27 @@ def post_details(request, slug):
     context = {'post': post}
     print('yes it works', post)
     return render(request, 'administrator/post.html', context)
+
+
+
+
+# static pages
+class StaticPageView(View):
+    def get(self, request, page):
+        templates = {
+            'terms-and-conditions': 'static_pages/terms_and_conditions.html',
+            'privacy-policy': 'static_pages/privacy_policy.html',
+            'cookies-and-privacy': 'static_pages/cookies_and_privacy.html',
+            'site-map': 'static_pages/site_map.html',
+            'about-us': 'static_pages/about_us.html',
+            'events': 'static_pages/events.html',
+            'blog': 'static_pages/blog.html',
+            'faqs': 'static_pages/faqs.html',
+        }
+        
+        template = templates.get(page)
+        if template:
+            return render(request, template)
+        else:
+            # You can raise a 404 error or return a default page
+            return render(request, 'static_pages/404.html', status=404)

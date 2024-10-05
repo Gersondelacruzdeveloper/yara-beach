@@ -1,0 +1,123 @@
+{% extends 'base2.html' %}
+{% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours {% endblock %}
+{% block description %}Discover the best Punta Cana excursions with Punta Cana Discovery! Unforgettable guided tours, thrilling activities, and unique experiences in the Dominican Republic. Plan your adventure today. {% endblock %}
+{% load static %}
+{% block content %}
+{% include 'excursions/header.html' %}
+
+<section class="container-static-pages">
+    <div class="faq-container">
+        <h1 class="faq-title">Frequently Asked Questions</h1>
+        <p class="faq-intro">
+            Have questions? We've got answers! Check out our frequently asked questions about our Punta Cana excursions, tours, and more. Can't find what you're looking for? Feel free to reach out to us:
+        </p>
+        <ul class="contact-info">
+            <li><strong>United Kingdom:</strong> +1447541147634</li>
+            <li><strong>Dominican Republic:</strong> +18094614942</li>
+        </ul>
+
+        <div class="accordion" id="faqAccordion">
+            <!-- FAQ Item 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Do I need to print my booking receipt?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        No, it's not necessary. You can show the receipt on your mobile device when checking in for your excursion.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        How do I change or cancel my booking?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        To change or cancel your booking, contact us at least 24 hours before your excursion to avoid cancellation fees. For last-minute changes, please call us directly.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        What is the refund process and its timelines?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Refunds are processed within 7-10 business days. If you don't receive your refund within this period, please reach out to our support team.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional FAQ Item 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Are your Punta Cana excursions suitable for children?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, many of our excursions are family-friendly and suitable for children of all ages. Be sure to check the specific age restrictions for each tour when booking.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional FAQ Item 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        What should I bring on my excursion?
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We recommend bringing sunscreen, a hat, sunglasses, comfortable clothing, and swimwear if applicable. Don't forget your camera to capture unforgettable moments!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional FAQ Item 6 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Are meals or drinks included in the tours?
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Many of our tours include meals and drinks. Check the details of each excursion for more information on what's included.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional FAQ Item 7 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        What is the best way to get around Punta Cana?
+                    </button>
+                </h2>
+                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We offer convenient transportation options as part of our excursions. You can also rent a car or take a taxi for getting around the local area.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p>If you have more questions, feel free to <a title="Contact Us Directly via Whatsapp" href="https://api.whatsapp.com/send?phone=18094614942">Contact us via Whatsapp</a>.</p>
+</section>
+
+{% endblock content %}
