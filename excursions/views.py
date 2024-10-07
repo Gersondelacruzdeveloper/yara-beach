@@ -56,10 +56,10 @@ def excursion_details(request, slugy):
     for i in unavailable_days:
         unavailableDay.append(i.day_number)
     rating_counts = excursion.get_rating_counts()
-    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay, 'rating_counts': rating_counts,}
+    related_activities = Excursions.objects.filter(category__in=excursion.category.all()).exclude(id=excursion.id)[:4]
+    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay, 'rating_counts': rating_counts, 'related_activities':related_activities}
 
     # make_barcode()
-
     # create review 
     if request.method == 'POST':
         Review.objects.create(

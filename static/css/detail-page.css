@@ -400,3 +400,71 @@ header {
     font-size: 12px;
   }
 }
+
+
+
+
+/* 
+related activities */
+
+.related-activities {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.related-activities-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.activity-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 0 0 250px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.activity-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.activity-details {
+  margin-top: 10px;
+}
+
+.activity-details h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.activity-details p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.activity-card:hover {
+  transform: scale(1.05);
+}
