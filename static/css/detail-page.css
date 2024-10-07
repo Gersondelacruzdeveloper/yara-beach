@@ -1,8 +1,8 @@
 
-header {
+.detail-page-title {
     text-align: center;
     padding: 20px;
-    background-color: #fff;
+    background-color:white;
     border-bottom: 1px solid #ddd;
 }
 
