@@ -10,230 +10,292 @@
 {% include 'excursions/header.html' %}
 <!-- header for adding to cart -->
 <div class="gallery">
-    {% for excursion in excursions.photos.all %}
-    <img src="{{excursion.images.url}}" alt="{{excursions.image_name}}" data-index="{{forloop.counter }}">
-    {% endfor %}
-  </div>
-  
-  <header>
-    <h1><i class="fas fa-umbrella-beach"></i> {{excursions.title}}</h1>
-    <p><span class="rating">⭐ {{ excursion.get_average_rating }}/5</span> | 
-       <a href="#reviews">{{excursion.reviews.count}} reviews</a></p>
-  </header>
-  
-  <div class="fullscreen" id="fullscreen">
-    <span class="close-btn" onclick="closeFullscreen()">&#10005;</span>
-    <span class="counter" id="counter"></span>
-    <img id="fullscreen-img" src="" alt="Fullscreen Image">
-    <span class="arrow arrow-left" onclick="prevImage()">&#10094;</span>
-    <span class="arrow arrow-right" onclick="nextImage()">&#10095;</span>
-  </div>
-  
+  {% for excursion in excursions.photos.all %}
+  <img src="{{excursion.images.url}}" alt="{{excursions.image_name}}" data-index="{{forloop.counter }}">
+  {% endfor %}
+</div>
+
+<header>
+  <h1><i class="fas fa-umbrella-beach"></i> {{excursions.title}}</h1>
+  <p><span class="rating">⭐ {{ excursions.get_average_rating }}/5</span> |
+    <a href="#reviews">{{excursion.reviews.count}} reviews</a>
+  </p>
+</header>
+
+<div class="fullscreen" id="fullscreen">
+  <span class="close-btn" onclick="closeFullscreen()">&#10005;</span>
+  <span class="counter" id="counter"></span>
+  <img id="fullscreen-img" src="" alt="Fullscreen Image">
+  <span class="arrow arrow-left" onclick="prevImage()">&#10094;</span>
+  <span class="arrow arrow-right" onclick="nextImage()">&#10095;</span>
+</div>
+
 
 <!-- cart message -->
 {% if cart_items %}
 <div class="cart-container-message">
   <div class="cart-pop-up-title"><i class="fa-solid fa-circle-check" style="color:green"></i> Added to cart </div>
-    <div class="cart-content">
-        <div class="image" style="background-image: url('{{last_item.excursion.main_image.url}}');"></div>
-        <div class="content">
-            <h4>{{last_item.excursion.title}}</h4>
-            <p id="mesage-date">{{last_item.values.excursion_date}}</p> <!-- Date element -->
-        </div>
+  <div class="cart-content">
+    <div class="image" style="background-image: url('{{last_item.excursion.main_image.url}}');"></div>
+    <div class="content">
+      <h4>{{last_item.excursion.title}}</h4>
+      <p id="mesage-date">{{last_item.values.excursion_date}}</p> <!-- Date element -->
     </div>
-    <div class="checkout-section">
-        <div class="timer">We’ll hold your spot for <span id="time">29:22</span> minutes</div> <!-- Timer element -->
-        <a class="checkout-btn" href="{% url 'checkout' %}"> Checkout</a>
-    </div>
+  </div>
+  <div class="checkout-section">
+    <div class="timer">We’ll hold your spot for <span id="time">29:22</span> minutes</div> <!-- Timer element -->
+    <a class="checkout-btn" href="{% url 'checkout' %}"> Checkout</a>
+  </div>
 </div>
 <hr>
 {% endif %}
 
 <!-- section up is finished -->
 
-    <div class="tour-info-container">
-      <div class="tour-info">
-        {% if excursions.video_id %}
-        <div style="width:100%">
-        <iframe width="100%" height="300px" src="https://www.youtube.com/embed/{{excursions.video_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        {% endif%}
-  
-        <div class="activity-details">
-          <h2>About this activity</h2>
-          <ul>
-            <li><i class="fas fa-times-circle"></i> <strong>Free cancellation:</strong> Cancel up to 24 hours in advance for a full refund</li>
-            <li><i class="fas fa-calendar-check"></i> <strong>Reserve now :</strong> Book your spot and pay just for reservation and rest at pick up</li>
-            <li><i class="fas fa-clock"></i> <strong>Duration:</strong> {{excursion.duration_time}} hours</li>
-            <li><i class="fas fa-ticket-alt"></i> <strong>Skip the ticket line</strong></li>
-            <li><i class="fas fa-globe"></i> <strong>Live tour guide:</strong> Available in Spanish, English, French, Portuguese</li>
-            <li><i class="fas fa-shuttle-van"></i> <strong>Pickup included:</strong> Pickups are arranged from hotel lobbies. Contact the local partner the day before to confirm the pickup time.</li>
-          </ul>
-        </div>
-  
-        <div class="good-to-know">
-          <h2>Good To Know</h2>
-          <ul>
-            <li><i class="fas fa-language"></i> <strong>Tour Language:</strong> English</li>
-            <li><i class="fas fa-map-marker-alt"></i> <strong>Tour Location:</strong> Punta Cana</li>
-            <li><i class="fas fa-calendar-alt"></i> <strong>Season:</strong> All year long</li>
-            <li><i class="fas fa-hourglass-half"></i> <strong>Duration:</strong> {{excursion.duration_time}} hours</li>
-            <li><i class="fas fa-user-check"></i> <strong>Minimum Age Requirement:</strong> 18 years old</li>
-            <li><i class="fas fa-running"></i> <strong>Good Physical Condition Required:</strong> No</li>
-            <li><i class="fas fa-child"></i> <strong>Suitable For Children:</strong> No</li>
-            <li><i class="fas fa-blind"></i> <strong>Suitable For Elderly:</strong> No</li>
-            <li><i class="fas fa-baby"></i> <strong>Pregnant Women Allowed:</strong> No</li>
-          </ul>
-        </div>
-      </div>
-  
-      <div class="booking-form">
-        <form class="form" action="{% url 'add_to_cart' excursions.id %}" method="POST">
-          {% csrf_token %}
-        <h2><i class="fas fa-calendar-alt"></i> Availability and Prices</h2>
-        <div class="availability">
-          <label for="pickup-point"><i class="fas fa-map-marker-alt"></i> Select pickup point:</label>
-          <select id="pickup-point" name="place_pickup" required>
-            <option value="" disabled selected>Select a resort</option>
-            <option>Bahia Principe Fantasia Punta Cana</option>
-            <option>Bahia Principe Grand Aquamarine (Adults Only)</option>
-            <option>Bahia Principe Grand Punta Cana</option>
-            <option>Bahia Principe Luxury Ambar</option>
-            <option>Bahia Principe Luxury Esmeralda</option>
-            <option>Barceló Bávaro Beach (Adults Only)</option>
-            <option>Barceló Bávaro Palace</option>
-            <option>Be Live Collection Punta Cana</option>
-            <option>Breathless Punta Cana Resort & Spa</option>
-            <option>Caribe Deluxe Princess</option>
-            <option>Catalonia Punta Cana Golf & Casino Resort</option>
-            <option>Catalonia Royal Bávaro (Adults Only)</option>
-            <option>CHIC by Royalton</option>
-            <option>Club Med Punta Cana</option>
-            <option>Dreams Flora Resort & Spa</option>
-            <option>Dreams Macao Beach Punta Cana</option>
-            <option>Dreams Palm Beach Punta Cana</option>
-            <option>Dreams Royal Beach Punta Cana</option>
-            <option>Eden Roc at Cap Cana</option>
-            <option>Excellence Punta Cana</option>
-            <option>Grand Bávaro Princess</option>
-            <option>Grand Memories Splash Punta Cana</option>
-            <option>Grand Palladium Bávaro Suites Resort & Spa</option>
-            <option>Grand Palladium Palace Resort Spa & Casino</option>
-            <option>Grand Sirenis Punta Cana Resort</option>
-            <option>Hard Rock Hotel & Casino Punta Cana</option>
-            <option>Hilton La Romana All-Inclusive Resort</option>
-            <option>Hyatt Ziva Cap Cana</option>
-            <option>Iberostar Grand Bávaro</option>
-            <option>Impressive Premium Resort & Spa Punta Cana</option>
-            <option>Impressive Resort & Spa Punta Cana</option>
-            <option>Lopesan Costa Bávaro Resort, Spa & Casino</option>
-            <option>Luxury Bahia Principe Samana (Adults Only)</option>
-            <option>Majestic Colonial Punta Cana</option>
-            <option>Majestic Elegance Punta Cana</option>
-            <option>Melia Caribe Beach Resort</option>
-            <option>Nickelodeon Hotels & Resorts Punta Cana</option>
-            <option>Now Onyx Punta Cana</option>
-            <option>Occidental Caribe</option>
-            <option>Occidental Punta Cana</option>
-            <option>Ocean El Faro Resort</option>
-            <option>Paradisus Palma Real Golf & Spa Resort</option>
-            <option>PortBlue Le Sivory Punta Cana</option>
-            <option>Punta Cana Princess All Suites Resort & Spa (Adults Only)</option>
-            <option>Radisson Blu Punta Cana</option>
-            <option>Riu Palace Punta Cana</option>
-            <option>Riu Republica (Adults Only)</option>
-            <option>Royalton CHIC Punta Cana (Adults Only)</option>
-            <option>Royalton Punta Cana Resort & Casino</option>
-            <option>Royalton Resort</option>
-            <option>Royalton Splash Punta Cana</option>
-            <option>Sanctuary Cap Cana</option>
-            <option>Secrets Cap Cana Resort & Spa</option>
-            <option>Secrets Royal Beach Punta Cana</option>
-            <option>Serenade Punta Cana Beach Resort & Spa</option>
-            <option>Sunscape Dominican Beach Punta Cana</option>
-            <option>The Reserve at Paradisus Palma Real</option>
-            <option>The Westin Puntacana Resort & Club</option>
-            <option>Tortuga Bay Puntacana Resort & Club</option>
-            <option>TRS Cap Cana Waterfront & Marina Hotel</option>
-            <option>TRS Turquesa Hotel</option>
-            <option>VIK Hotel Arena Blanca</option>
-            <option>Vista Sol Punta Cana Beach Resort & Spa</option>
-            <option>Whala! Bavaro</option>
-            <option>Zoëtry Agua Punta Cana</option>
+<div class="tour-info-container">
+  <div class="tour-info">
+    {% if excursions.video_id %}
+    <div style="width:100%">
+      <iframe width="100%" height="300px" src="https://www.youtube.com/embed/{{excursions.video_id}}"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+    {% endif%}
+
+    <div class="activity-details">
+      <h2>About this activity</h2>
+      <ul>
+        <li><i class="fas fa-times-circle"></i> <strong>Free cancellation:</strong> Cancel up to 24 hours in advance for
+          a full refund</li>
+        <li><i class="fas fa-calendar-check"></i> <strong>Reserve now :</strong> Book your spot and pay just for
+          reservation and rest at pick up</li>
+        <li><i class="fas fa-clock"></i> <strong>Duration:</strong> {{excursion.duration_time}} hours</li>
+        <li><i class="fas fa-ticket-alt"></i> <strong>Skip the ticket line</strong></li>
+        <li><i class="fas fa-globe"></i> <strong>Live tour guide:</strong> Available in Spanish, English, French,
+          Portuguese</li>
+        <li><i class="fas fa-shuttle-van"></i> <strong>Pickup included:</strong> Pickups are arranged from hotel
+          lobbies. Contact the local partner the day before to confirm the pickup time.</li>
+      </ul>
+    </div>
+
+    <div class="good-to-know">
+      <h2>Good To Know</h2>
+      <ul>
+        <li><i class="fas fa-language"></i> <strong>Tour Language:</strong> English</li>
+        <li><i class="fas fa-map-marker-alt"></i> <strong>Tour Location:</strong> Punta Cana</li>
+        <li><i class="fas fa-calendar-alt"></i> <strong>Season:</strong> All year long</li>
+        <li><i class="fas fa-hourglass-half"></i> <strong>Duration:</strong> {{excursion.duration_time}} hours</li>
+        <li><i class="fas fa-user-check"></i> <strong>Minimum Age Requirement:</strong> 18 years old</li>
+        <li><i class="fas fa-running"></i> <strong>Good Physical Condition Required:</strong> No</li>
+        <li><i class="fas fa-child"></i> <strong>Suitable For Children:</strong> No</li>
+        <li><i class="fas fa-blind"></i> <strong>Suitable For Elderly:</strong> No</li>
+        <li><i class="fas fa-baby"></i> <strong>Pregnant Women Allowed:</strong> No</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="booking-form">
+    <form class="form" action="{% url 'add_to_cart' excursions.id %}" method="POST">
+      {% csrf_token %}
+      <h2><i class="fas fa-calendar-alt"></i> Availability and Prices</h2>
+      <div class="availability">
+        <label for="pickup-point"><i class="fas fa-map-marker-alt"></i> Select pickup point:</label>
+        <select id="pickup-point" name="place_pickup" required>
+          <option value="" disabled selected>Select a resort</option>
+          <option>Bahia Principe Fantasia Punta Cana</option>
+          <option>Bahia Principe Grand Aquamarine (Adults Only)</option>
+          <option>Bahia Principe Grand Punta Cana</option>
+          <option>Bahia Principe Luxury Ambar</option>
+          <option>Bahia Principe Luxury Esmeralda</option>
+          <option>Barceló Bávaro Beach (Adults Only)</option>
+          <option>Barceló Bávaro Palace</option>
+          <option>Be Live Collection Punta Cana</option>
+          <option>Breathless Punta Cana Resort & Spa</option>
+          <option>Caribe Deluxe Princess</option>
+          <option>Catalonia Punta Cana Golf & Casino Resort</option>
+          <option>Catalonia Royal Bávaro (Adults Only)</option>
+          <option>CHIC by Royalton</option>
+          <option>Club Med Punta Cana</option>
+          <option>Dreams Flora Resort & Spa</option>
+          <option>Dreams Macao Beach Punta Cana</option>
+          <option>Dreams Palm Beach Punta Cana</option>
+          <option>Dreams Royal Beach Punta Cana</option>
+          <option>Eden Roc at Cap Cana</option>
+          <option>Excellence Punta Cana</option>
+          <option>Grand Bávaro Princess</option>
+          <option>Grand Memories Splash Punta Cana</option>
+          <option>Grand Palladium Bávaro Suites Resort & Spa</option>
+          <option>Grand Palladium Palace Resort Spa & Casino</option>
+          <option>Grand Sirenis Punta Cana Resort</option>
+          <option>Hard Rock Hotel & Casino Punta Cana</option>
+          <option>Hilton La Romana All-Inclusive Resort</option>
+          <option>Hyatt Ziva Cap Cana</option>
+          <option>Iberostar Grand Bávaro</option>
+          <option>Impressive Premium Resort & Spa Punta Cana</option>
+          <option>Impressive Resort & Spa Punta Cana</option>
+          <option>Lopesan Costa Bávaro Resort, Spa & Casino</option>
+          <option>Luxury Bahia Principe Samana (Adults Only)</option>
+          <option>Majestic Colonial Punta Cana</option>
+          <option>Majestic Elegance Punta Cana</option>
+          <option>Melia Caribe Beach Resort</option>
+          <option>Nickelodeon Hotels & Resorts Punta Cana</option>
+          <option>Now Onyx Punta Cana</option>
+          <option>Occidental Caribe</option>
+          <option>Occidental Punta Cana</option>
+          <option>Ocean El Faro Resort</option>
+          <option>Paradisus Palma Real Golf & Spa Resort</option>
+          <option>PortBlue Le Sivory Punta Cana</option>
+          <option>Punta Cana Princess All Suites Resort & Spa (Adults Only)</option>
+          <option>Radisson Blu Punta Cana</option>
+          <option>Riu Palace Punta Cana</option>
+          <option>Riu Republica (Adults Only)</option>
+          <option>Royalton CHIC Punta Cana (Adults Only)</option>
+          <option>Royalton Punta Cana Resort & Casino</option>
+          <option>Royalton Resort</option>
+          <option>Royalton Splash Punta Cana</option>
+          <option>Sanctuary Cap Cana</option>
+          <option>Secrets Cap Cana Resort & Spa</option>
+          <option>Secrets Royal Beach Punta Cana</option>
+          <option>Serenade Punta Cana Beach Resort & Spa</option>
+          <option>Sunscape Dominican Beach Punta Cana</option>
+          <option>The Reserve at Paradisus Palma Real</option>
+          <option>The Westin Puntacana Resort & Club</option>
+          <option>Tortuga Bay Puntacana Resort & Club</option>
+          <option>TRS Cap Cana Waterfront & Marina Hotel</option>
+          <option>TRS Turquesa Hotel</option>
+          <option>VIK Hotel Arena Blanca</option>
+          <option>Vista Sol Punta Cana Beach Resort & Spa</option>
+          <option>Whala! Bavaro</option>
+          <option>Zoëtry Agua Punta Cana</option>
         </select>
-        
-  
+
+
         <label for="date"><i class="fas fa-calendar-day"></i> Select date:</label>
         <input type="text" id="date" name="excursion_date" placeholder="Select Date" autocomplete="off" required>
 
-          <!-- select time -->
-          <label for="pickup-point"><i class="fas fa-time"></i> Select the time:</label>
-          <select name="selected_time" class="form-select mt-3" required>
-            <option value="">Select a time</option>
-            {% for time in time_available %}
-            <option value="{{ time.start_time }}" class="form-control">{{ time.start_time }}</option>
-            {% endfor %}
-         </select>
-      
-        
+        <!-- select time -->
+        <label for="pickup-point"><i class="fas fa-time"></i> Select the time:</label>
+        <select name="selected_time" class="form-select mt-3" required>
+          <option value="">Select a time</option>
+          {% for time in time_available %}
+          <option value="{{ time.start_time }}" class="form-control">{{ time.start_time }}</option>
+          {% endfor %}
+        </select>
+
+
+      </div>
+
+      <div class="ticket-selection">
+        <h3><i class="fas fa-ticket-alt"></i> Select your tickets</h3>
+
+        <div class="ticket">
+          <span>Adult (13+)</span>
+          <span class="price" id="adult-price">${{excursions.Price}}</span>
+          <div class="quantity-control">
+            <span class="span-btn" onclick="updateTicketCount('adult', -1)">-</span>
+            <input name="adult_qty" id="adult-count" value="0" required>
+            <span class="span-btn" onclick="updateTicketCount('adult', 1)">+</span>
+          </div>
         </div>
-  
-        <div class="ticket-selection">
-            <h3><i class="fas fa-ticket-alt"></i> Select your tickets</h3>
-          
-            <div class="ticket">
-              <span>Adult (13+)</span>
-              <span class="price" id="adult-price">${{excursions.Price}}</span>
-              <div class="quantity-control">
-                <span class="span-btn" onclick="updateTicketCount('adult', -1)">-</span>
-                <input name="adult_qty" id="adult-count" value="0" required>
-                <span class="span-btn" onclick="updateTicketCount('adult', 1)">+</span>                
-              </div>
-            </div>
-          
-            <div class="ticket">
-              <span>Child (3-12)</span>
-              <span class="price" id="children-price">${{excursions.price_children}}</span>
-              <div class="quantity-control">
-                <span class="span-btn" onclick="updateTicketCount('child', -1)">-</span>
-                <input name="child_qty" id="child-count" value="0">
-                <span class="span-btn" onclick="updateTicketCount('child', 1)">+</span>
-              </div>
-            </div>
-          
-            <div class="ticket">
-              <span>Child (0-2)</span>
-              <span class="price">Free</span>
-              <div class="quantity-control">
-                <span class="span-btn" onclick="updateTicketCount('infant', -1)">-</span>
-                <input name="infant_qty" id="infant-count" value="0">
-                <span class="span-btn" onclick="updateTicketCount('infant', 1)">+</span>
-              </div>
-            </div>
+
+        <div class="ticket">
+          <span>Child (3-12)</span>
+          <span class="price" id="children-price">${{excursions.price_children}}</span>
+          <div class="quantity-control">
+            <span class="span-btn" onclick="updateTicketCount('child', -1)">-</span>
+            <input name="child_qty" id="child-count" value="0">
+            <span class="span-btn" onclick="updateTicketCount('child', 1)">+</span>
           </div>
-          
-          <div class="total-price">
-            <h3>Total: $<span id="total">0.00</span></h3>
-            <button type="submit" onclick="checkout()"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+
+        <div class="ticket">
+          <span>Child (0-2)</span>
+          <span class="price">Free</span>
+          <div class="quantity-control">
+            <span class="span-btn" onclick="updateTicketCount('infant', -1)">-</span>
+            <input name="infant_qty" id="infant-count" value="0">
+            <span class="span-btn" onclick="updateTicketCount('infant', 1)">+</span>
           </div>
-    </div>
-    <input type="hidden" name="redirect_url" value="{{request.path}}">
-    <!-- hidden input for the price-->
-    <input type="hidden" name="price" value="{{excursions.Price}}">
-    <!-- hidden input for the children price -->
-    <input type="hidden" name="price_children" value="{{excursions.price_children}}">
+        </div>
+      </div>
+
+      <div class="total-price">
+        <h3>Total: $<span id="total">0.00</span></h3>
+        <button type="submit" onclick="checkout()"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+      </div>
+  </div>
+  <input type="hidden" name="redirect_url" value="{{request.path}}">
+  <!-- hidden input for the price-->
+  <input type="hidden" name="price" value="{{excursions.Price}}">
+  <!-- hidden input for the children price -->
+  <input type="hidden" name="price_children" value="{{excursions.price_children}}">
   <!-- hidden input for the company price-->
-    <input type="hidden" name="company_Price" value="{{excursions.company_Price}}">
-    <input type="hidden" name="reserve_no_pay" value="{{excursions.reserve_no_pay}}">
- </form>
+  <input type="hidden" name="company_Price" value="{{excursions.company_Price}}">
+  <input type="hidden" name="reserve_no_pay" value="{{excursions.reserve_no_pay}}">
+  </form>
 </div>
 
+
+<!-- reviews sections -->
+<div class="reviews-section">
+  <h2>What people say about this experience</h2>
+  <div class="overall-rating">
+    <h3>
+      {% if excursions.get_average_rating >= 5 %}
+      Excellent ⭐ {{ excursions.get_average_rating }}/5 ({{excursions.reviews.all.count}} reviews)
+      {% elif excursions.get_average_rating >= 4 %}
+      Great ⭐ {{ excursions.get_average_rating }}/5 ({{excursions.reviews.all.count}} reviews)
+      {% elif excursions.get_average_rating >= 3 %}
+      Average ⭐ {{ excursions.get_average_rating }}/5 ({{excursions.reviews.all.count}} reviews)
+      {% elif excursions.get_average_rating >= 2 %}
+      Poor ⭐ {{ excursions.get_average_rating }}/5 ({{excursions.reviews.all.count}} reviews)
+      {% elif excursions.get_average_rating >= 1 %}
+      Bad ⭐ {{ excursions.get_average_rating }}/5 ({{excursions.reviews.all.count}} reviews)
+      {% else %}
+      No ratings yet
+      {% endif %}
+    </h3>
+
+    <p>Based on {{excursions.reviews.all.count}} reviews from verified customers</p>
+    <div class="rating-filter">
+      <label><input type="radio" name="rating" value="all" checked> All ratings ({{ excursions.reviews.all.count }})</label>
+      <label><input type="radio" name="rating" value="5"> Excellent ({{ rating_counts.5 }})</label>
+      <label><input type="radio" name="rating" value="4"> Great ({{ rating_counts.4 }})</label>
+      <label><input type="radio" name="rating" value="3"> Average ({{ rating_counts.3 }})</label>
+      <label><input type="radio" name="rating" value="2"> Poor ({{ rating_counts.2 }})</label>
+      <label><input type="radio" name="rating" value="1"> Bad ({{ rating_counts.1 }})</label>
+    </div>
+  </div>
+
+  <div class="reviews-list">
+    {% for review in excursions.reviews.all %}
+    <div class="review" data-rating="{{ review.rating }}">
+      <i id="user_circle"></i> <span class="user_name"> 👤 {{review.user |title }}</span>
+      <h5>{{ review.title }} <small>from {{ review.country }} - {{ review.created }}</small></h5>
+      <i class="fa-star {% if review.rating >= 1 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+      <i class="fa-star {% if review.rating >= 2 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+      <i class="fa-star {% if review.rating >= 3 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+      <i class="fa-star {% if review.rating >= 4 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+      <i class="fa-star {% if review.rating >= 5 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+      <p>{{ review.content }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+<!-- script section -->
 <script>
-let tomorrowDate = new Date('{{tomorrow_str}}'); // Tomorrow's date
+  let tomorrowDate = new Date('{{tomorrow_str}}'); // Tomorrow's date
   // Define an array of days to disable (0 = Sunday, 1 = Monday, etc.)
-let disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
+  let disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
 </script>
 <script src="{% static 'js/calender.js' %}"></script>
 <script src="{% static 'js/detail.js' %}"></script>
 <script src="{% static 'js/cart.js' %}"></script>
+<script src="{% static 'js/reviews-section.js' %}"></script>
+
+
 {% endblock content %}

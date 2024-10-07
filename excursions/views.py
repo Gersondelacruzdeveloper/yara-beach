@@ -55,7 +55,8 @@ def excursion_details(request, slugy):
     unavailableDay = []
     for i in unavailable_days:
         unavailableDay.append(i.day_number)
-    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay}
+    rating_counts = excursion.get_rating_counts()
+    context = {'excursions': excursion,'time_available':time_available, 'unavailableDay':unavailableDay, 'rating_counts': rating_counts,}
 
     # make_barcode()
 
@@ -69,6 +70,7 @@ def excursion_details(request, slugy):
             user=request.user,
         )
         messages.success(request, 'Your review has been published.')
+
     
     return render(request, 'excursions/excursion_details.html', context)
 

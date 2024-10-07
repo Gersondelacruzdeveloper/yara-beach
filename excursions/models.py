@@ -127,6 +127,16 @@ class Excursions(models.Model):
         
     def __str__(self):
         return self.title + "Id->" + str(self.id)
+    
+    def get_rating_counts(self):
+        # Get counts of reviews by rating
+        return {
+            5: self.reviews.filter(rating=5).count(),
+            4: self.reviews.filter(rating=4).count(),
+            3: self.reviews.filter(rating=3).count(),
+            2: self.reviews.filter(rating=2).count(),
+            1: self.reviews.filter(rating=1).count(),
+        }
 
 
 # Creates all the Excursion fotos
