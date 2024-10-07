@@ -1,5 +1,5 @@
 {% extends 'base2.html' %}
-{% block title %}Top Punta Cana Tours | Book {{ excursions.title }} for the Best Adventure{% endblock %}
+{% block title %}{{ excursions.title }} - Best Punta Cana Adventure Tour{% endblock %}
 {% block description %}"Discover top Punta Cana tours like {{ excursions.title }}. Unforgettable activities, stunning views, and easy booking. Reserve now for an adventure!"
 {% endblock %}
 
@@ -40,7 +40,7 @@
 <!-- header for adding to cart -->
 <div class="gallery">
   {% for excursion in excursions.photos.all %}
-  <img loading="lazy" src="{{excursion.images.url}}" alt="Best Punta Cana Tours - {{excursions.title}}">
+  <img loading="lazy" src="{{excursion.images.url}}" alt="Excursion in Punta Cana - {{excursions.title}}">
   {% endfor %}
 </div>
 
@@ -93,7 +93,7 @@
     {% endif%}
 
     <div class="activity-details">
-      <h2><h2>About {{ excursions.title }} Tour in Punta Cana</h2></h2>
+      <h2>Details of {{ excursions.title }} - Punta Cana Adventure</h2>
       <ul>
         <li><i class="fas fa-times-circle"></i> <strong>Free cancellation:</strong> Cancel up to 24 hours in advance for
           a full refund</li>
@@ -111,7 +111,7 @@
     </div>
 
     <div class="good-to-know">
-      <h2>Good To Know</h2>
+      <h3>Good to Know About the Excursion</h3>
       <ul>
         <li><i class="fas fa-language"></i> <strong>Tour Language:</strong> English</li>
         <li><i class="fas fa-map-marker-alt"></i> <strong>Tour Location:</strong> Punta Cana</li>
@@ -267,6 +267,13 @@
   </form>
 </div>
 
+<!-- Optimized Description Section for SEO -->
+<section class="excursion-overview">
+  <h2>Detailed Information on Punta Cana Excursions and Activities</h2>
+  <div class="excursion-description">
+    <p>{{excursions.description|safe}}</p>
+  </div>
+</section>
 
 <!-- reviews sections -->
 <div class="reviews-section" id="reviews">
@@ -395,7 +402,7 @@
 
 
 
-
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
 <!-- script section -->
 <script>
   let tomorrowDate = new Date('{{tomorrow_str}}'); // Tomorrow's date

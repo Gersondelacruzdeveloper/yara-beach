@@ -7,7 +7,7 @@
                 <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
             </a>
         </div>
-        <nav class="desktop-nav">
+        <nav class="desktop-nav" aria-label="breadcrumb">
             <ul>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'excursions' %}"> 👤 Hi {{user|title}}</a></li>
