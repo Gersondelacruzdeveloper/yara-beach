@@ -327,9 +327,14 @@ header {
   .tour-info-container {
     flex-direction: column;
   }
+
   .tour-info-container  .tour-info{
     width: 100%;
   }
+    /* excursion description */
+    .excursion-overview{
+      max-width: 90%;
+    }
 
   .tour-info, .booking-form {
     padding: 20px;
