@@ -46,7 +46,7 @@
 <!-- header for adding to cart -->
 <div class="gallery">
   {% for excursion in excursions.photos.all %}
-  <img src="{{excursion.images.url}}" alt="Best Punta Cana Tours - {{excursions.title}}">
+  <img loading="lazy" src="{{excursion.images.url}}" alt="Best Punta Cana Tours - {{excursions.title}}">
   {% endfor %}
 </div>
 
