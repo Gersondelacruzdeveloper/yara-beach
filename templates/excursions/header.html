@@ -4,83 +4,76 @@
     <div class="desktop-container-nav">
         <div class="logo-desktop">
             <a class="navbar-brand" href="{% url 'excursions' %}">
-                <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
+                <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery - Best Excursions in Punta Cana">
             </a>
         </div>
-        <nav class="desktop-nav" aria-label="breadcrumb">
+        <nav class="desktop-nav" aria-label="Primary Navigation">
             <ul>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'excursions' %}"> 👤 Hi {{user|title}}</a></li>
                 {% else %}
-                <li><a href="{% url 'account_login' %}"> 👤 Sign in</a></li>
+                <li><a href="{% url 'account_login' %}" title="Login to your account"> 👤 Sign in</a></li>
                 {% endif %}
-                <li><a href="{% url 'excursions' %}">Excursions</a></li>
-                <li><a href="#">Transfers</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Events</a></li>
+                <li><a href="{% url 'excursions' %}" title="Browse all excursions in Punta Cana">Excursions</a></li>
+                <li><a href="#" title="Transfer services in Punta Cana">Transfers</a></li>
+                <li><a href="{% url 'static_page' 'events' %}" title="Plan and Attend Special Events in Punta Cana">Events</a></li>
+                <li><a href="{% url 'static_page' 'blog' %}" title="Latest Blog Posts on Punta Cana Activities and Tips">Blog</a></li>
                 {% if cart_items %}
                 <li>
-                    <a href="{% url 'checkout' %}" class="shooping-cart"> 🛒   
-                        <span class="cart-badge">
-                            {{ cart_items | length }}
-                        </span>
+                    <a href="{% url 'checkout' %}" class="shooping-cart" title="Proceed to checkout">
+                        🛒 <span class="cart-badge">{{ cart_items | length }}</span>
                     </a>
                 </li>
                 {% else %}
-                <li>
-                 🛒   
-                </li>
-
+                <li title="Your cart is empty"> 🛒 </li>
                 {% endif %}
-                
-                <li><a href="https://api.whatsapp.com/send?phone=18094614942">
-                    <img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}" alt="WhatsApp"></a>
+                <li>
+                    <a href="https://api.whatsapp.com/send?phone=18094614942" aria-label="Contact us via WhatsApp">
+                        <img id="whatsapp-floating" class="text-center" src="{% static 'images/excursions/whatsapp.png'%}" alt="Contact us on WhatsApp">
+                    </a>
                 </li>
             </ul>
         </nav>
     </div>
-    <nav class="mobile-nav">
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+    <nav class="mobile-nav" aria-label="Mobile Navigation">
+        <div class="menu-icon" onclick="toggleMenu()" aria-label="Open Menu">&#9776;</div>
         <div class="logo-mobile">
-            <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
+            <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery - Best Excursions in Punta Cana">
         </div>
         <div class="shooping-cart">
             {% if cart_items %}
-            <a href="{% url 'checkout' %}"> 🛒   
-                <span class="cart-badge-mobile">
-                    {{ cart_items | length }}
-                </span>
-            </a>
+            <a href="{% url 'checkout' %}" title="Proceed to checkout"> 🛒 <span class="cart-badge-mobile">{{ cart_items | length }}</span></a>
             {% else %}
             🛒
             {% endif %}
         </div>
 
-        <div class="mobile-menu">
+        <div class="mobile-menu" aria-label="Mobile Menu">
             <div class="menu-container">
-                <button class="close-btn" onclick="toggleMenu()">&#10005;</button>
+                <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">&#10005;</button>
                 <ul class="menu-items">
                     <li class="menu-item">
-                        <img src="{% static 'images/mobile-img/sahona.jpeg' %}" alt="Top activities" class="menu-image">
-                        <span><a href="{% url 'excursions' %}">Excursions</a></span>
+                        <img src="{% static 'images/mobile-img/sahona.jpeg' %}" alt="Top Excursions in Punta Cana" class="menu-image">
+                        <span><a href="{% url 'excursions' %}" title="Browse Excursions in Punta Cana">Excursions</a></span>
                     </li>
                     <li class="menu-item">
-                        <img src="{% static 'images/mobile-img/transfer-img.png' %}" alt="Transfer services" class="menu-image">
-                        <span><a href="{% url 'excursions' %}">Transfers</a></span>
+                        <img src="{% static 'images/mobile-img/transfer-img.png' %}" alt="Best Transfer Services in Punta Cana" class="menu-image">
+                        <span><a href="{% url 'excursions' %}" title="View Transfer Services in Punta Cana">Transfers</a></span>
                     </li>
                     <li class="menu-item">
-                        <img src="{% static 'images/mobile-img/blog.jpg' %}" alt="Blog" class="menu-image">
-                        <span>Blog</span>
+                        <img src="{% static 'images/mobile-img/blog.jpg' %}" alt="Punta Cana Blog" class="menu-image">
+                        <span><a href="{% url 'static_page' 'blog' %}" title="Read Our Blog">Blog</a></span>
                     </li>
                     <li class="menu-item">
-                        <img src="{% static 'images/mobile-img/event.jpg' %}" alt="Events" class="menu-image">
-                        <span>Events</span>
+                        <img src="{% static 'images/mobile-img/event.jpg' %}" alt="Special Events in Punta Cana" class="menu-image">
+                        <span><a href="{% url 'static_page' 'events' %}" title="Plan Events in Punta Cana">Events</a></span>
                     </li>
                     <li class="menu-item">
-                        <img src="{% static 'images/excursions/whatsapp.png'%}" alt="WhatsApp" class="menu-image">
+                        <img src="{% static 'images/excursions/whatsapp.png'%}" alt="Contact via WhatsApp" class="menu-image">
                         <span>
                             <div class="whatsapp-container">
-                                <a aria-label="Whatsapp" href="https://api.whatsapp.com/send?phone=18094614942" target="_blank">Contact via WhatsApp</a>
+                                <a href="https://api.whatsapp.com/send?phone=18094614942" target="_blank" title="Contact us via WhatsApp">Contact via WhatsApp</a>
                             </div>
                         </span>
                     </li>
