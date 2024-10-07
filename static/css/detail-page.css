@@ -1,0 +1,404 @@
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.rating {
+    color: #f39c12;
+}
+
+
+  /* Gallery container */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* Image container */
+  .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Fullscreen overlay */
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+  }
+
+  .fullscreen img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .fullscreen .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Image counter */
+  .counter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    color: white;
+  }
+
+  /* Arrows */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2000;
+  }
+
+  .arrow-left {
+    left: 10px;
+  }
+
+  .arrow-right {
+    right: 10px;
+  }
+
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 5px;
+    }
+
+    .arrow {
+      font-size: 30px;
+      padding: 8px;
+    }
+
+    .fullscreen img {
+      max-width: 95%;
+      max-height: 95%;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      top: 10px;
+      right: 10px;
+    }
+
+    .counter {
+      font-size: 14px;
+      top: 10px;
+      left: 10px;
+    }
+  }
+
+
+
+
+
+  /* tour info */
+  
+  .tour-info-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 40px;
+    
+    
+  }
+  
+  .tour-info-container .tour-info, .booking-form {
+    padding: 20px;
+  }
+  
+  .tour-info-container .tour-info {
+    width: 60%;
+    border-right: 1px solid #e5e5e5;
+    padding: 20px;
+  }
+  
+  .tour-info-container .booking-form {
+    width: 40%;
+  }
+  
+  .tour-info-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .tour-info-container h2, h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .tour-info-container .activity-details, .good-to-know {
+    margin-bottom: 20px;
+  }
+  
+  .tour-info-container .activity-details ul, .good-to-know ul {
+    list-style-type: none;
+  }
+  
+  .tour-info-container .activity-details ul li, .good-to-know ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .tour-info-container .booking-form h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .tour-info-container .availability label, .ticket-selection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .tour-info-container .availability label {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .tour-info-container #pickup-point, #date, #language {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .tour-info-container .ticket-selection .ticket {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+    
+  .tour-info-container .ticket-selection  {
+    margin-top:20px;
+
+  }
+
+  .tour-info-container .ticket-selection .ticket:last-child {
+    border-bottom: none;
+  }
+  
+  .tour-info-container .ticket span {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .tour-info-container  .ticket .price {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  .tour-info-container .quantity-control {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tour-info-container .quantity-control button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid orange;
+    background-color: orange;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .tour-info-container .quantity-control .span-btn {
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: orange; /* Button background color (blue) */
+    color: white; /* Button text color */
+    padding: 5px 15px; /* Adjust padding to make it look like a button */
+    border: none; /* Remove any default borders */
+    border-radius: 5px; /* Make the button corners rounded */
+    cursor: pointer; /* Change cursor to pointer for a clickable feel */
+    text-align: center; /* Center the text */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.tour-info-container .quantity-control .span-btn:hover {
+    background-color: orange; /* Darker shade on hover */
+}
+
+  
+  .tour-info-container .total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .tour-info-container button {
+    padding: 10px 20px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .tour-info-container  button:hover {
+    background-color: orange;
+  }
+  
+  .tour-info-container  button:active {
+    background-color: orange;
+  }
+  
+  .tour-info-container .booking-form h2 i {
+    margin-right: 8px;
+  }
+  
+  .tour-info-container .ticket-selection .ticket i {
+    margin-right: 10px;
+  }
+  
+  .tour-info-container ul li i, .availability label i, .total-price h3 i, h1 i, h2 i, h3 i {
+    margin-right: 8px;
+    color: orange;
+  }
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .tour-info-container {
+    flex-direction: column;
+  }
+  .tour-info-container  .tour-info{
+    width: 100%;
+  }
+
+  .tour-info, .booking-form {
+    padding: 20px;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .tour-info-container .booking-form {
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .availability label, .total-price h3 {
+    font-size: 14px;
+  }
+
+  #pickup-point, #date, #language {
+    font-size: 14px;
+  }
+
+  .ticket span {
+    font-size: 14px;
+  }
+
+  .quantity-control button {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .quantity-control span {
+    font-size: 14px;
+  }
+
+  .total-price {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  .quantity-control button {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .quantity-control span {
+    font-size: 12px;
+  }
+}

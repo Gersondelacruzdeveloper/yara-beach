@@ -24,6 +24,8 @@ def add_to_cart(request, item_id):
     excursion_date = request.POST.get('excursion_date')
     selected_time = request.POST.get('selected_time')
     adult_qty = int(request.POST.get('adult_qty'))
+    print('adult_qty', adult_qty)
+
     try:
         child_qty = int(request.POST.get('child_qty'))
         infant_qty = int(request.POST.get('infant_qty'))

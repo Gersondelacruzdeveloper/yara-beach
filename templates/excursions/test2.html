@@ -1,0 +1,539 @@
+{% extends 'base2.html' %}
+{% block title %}{{excursions.title}}{% endblock %}
+{% block description %}{{ excursions.meta_description }}{% endblock %}
+{% load static %}
+
+<!-- <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG9TokC3lqJJD7aPJhfAotYVBXq0508ng&libraries=places"></script> -->
+
+{% block content %}
+{% include 'excursions/header.html' %}
+<!-- header for adding to cart -->
+<div class="gallery">
+    {% for excursion in excursions.photos.all %}
+    <img src="{{excursion.images.url}}" alt="{{excursions.image_name}}" data-index="{{forloop.counter }}">
+    {% endfor %}
+  </div>
+  
+  <header>
+    <h1><i class="fas fa-umbrella-beach"></i> {{excursions.title}}</h1>
+    <p><span class="rating">⭐ {{ excursion.get_average_rating }}/5</span> | 
+       <a href="#reviews">{{excursion.reviews.count}} reviews</a></p>
+  </header>
+  
+  <div class="fullscreen" id="fullscreen">
+    <span class="close-btn" onclick="closeFullscreen()">&#10005;</span>
+    <span class="counter" id="counter"></span>
+    <img id="fullscreen-img" src="" alt="Fullscreen Image">
+    <span class="arrow arrow-left" onclick="prevImage()">&#10094;</span>
+    <span class="arrow arrow-right" onclick="nextImage()">&#10095;</span>
+  </div>
+  
+
+<!-- Preview of cart when added to cart -->
+{% if cart_items %}
+<div class="cart-container-message">
+    <div class="cart-content">
+        <div class="image" style="background-image: url('{{last_item.excursion.main_image.url}}');"></div>
+        <div class="content">
+            <h4>{{last_item.excursion.title}}</h4>
+            <p id="date">{{last_item.values.excursion_date}}</p> <!-- Date element -->
+        </div>
+    </div>
+    <div class="checkout-section">
+        <div class="timer">We’ll hold your spot for <span id="time">29:22</span> minutes</div> <!-- Timer element -->
+        <a class="checkout-btn" href="{% url 'checkout' %}"> Checkout</a>
+    </div>
+</div>
+<hr>
+{% endif %}
+
+<!-- section up is finished -->
+
+    <div class="tour-info-container">
+      <div class="tour-info">
+        {% if excursions.video_id %}
+        <div style="width:100%">
+        <iframe width="100%" height="300px" src="https://www.youtube.com/embed/{{excursions.video_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        {% endif%}
+  
+        <div class="activity-details">
+          <h2>About this activity</h2>
+          <ul>
+            <li><i class="fas fa-times-circle"></i> <strong>Free cancellation:</strong> Cancel up to 24 hours in advance for a full refund</li>
+            <li><i class="fas fa-calendar-check"></i> <strong>Reserve now :</strong> Book your spot and pay just for reservation and rest at pick up</li>
+            <li><i class="fas fa-clock"></i> <strong>Duration:</strong> {{excursion.duration_time}} hours</li>
+            <li><i class="fas fa-ticket-alt"></i> <strong>Skip the ticket line</strong></li>
+            <li><i class="fas fa-globe"></i> <strong>Live tour guide:</strong> Available in Spanish, English, French, Portuguese</li>
+            <li><i class="fas fa-shuttle-van"></i> <strong>Pickup included:</strong> Pickups are arranged from hotel lobbies. Contact the local partner the day before to confirm the pickup time.</li>
+          </ul>
+        </div>
+  
+        <div class="good-to-know">
+          <h2>Good To Know</h2>
+          <ul>
+            <li><i class="fas fa-language"></i> <strong>Tour Language:</strong> English</li>
+            <li><i class="fas fa-map-marker-alt"></i> <strong>Tour Location:</strong> Punta Cana</li>
+            <li><i class="fas fa-calendar-alt"></i> <strong>Season:</strong> All year long</li>
+            <li><i class="fas fa-hourglass-half"></i> <strong>Duration:</strong> {{excursion.duration_time}} hours</li>
+            <li><i class="fas fa-user-check"></i> <strong>Minimum Age Requirement:</strong> 18 years old</li>
+            <li><i class="fas fa-running"></i> <strong>Good Physical Condition Required:</strong> No</li>
+            <li><i class="fas fa-child"></i> <strong>Suitable For Children:</strong> No</li>
+            <li><i class="fas fa-blind"></i> <strong>Suitable For Elderly:</strong> No</li>
+            <li><i class="fas fa-baby"></i> <strong>Pregnant Women Allowed:</strong> No</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="booking-form">
+     <form class="form" action="{% url 'add_to_cart' excursions.id %}" method="POST">
+            {% csrf_token %}
+        <h2><i class="fas fa-calendar-alt"></i> Availability and Prices</h2>
+        <div class="availability">
+          <label for="pickup-point"><i class="fas fa-map-marker-alt"></i> Select pickup point:</label>
+          <select id="pickup-point" required>
+            <option value="" disabled selected>Select a resort</option>
+            <option>Bahia Principe Fantasia Punta Cana</option>
+            <option>Bahia Principe Grand Aquamarine (Adults Only)</option>
+            <option>Bahia Principe Grand Punta Cana</option>
+            <option>Bahia Principe Luxury Ambar</option>
+            <option>Bahia Principe Luxury Esmeralda</option>
+            <option>Barceló Bávaro Beach (Adults Only)</option>
+            <option>Barceló Bávaro Palace</option>
+            <option>Be Live Collection Punta Cana</option>
+            <option>Breathless Punta Cana Resort & Spa</option>
+            <option>Caribe Deluxe Princess</option>
+            <option>Catalonia Punta Cana Golf & Casino Resort</option>
+            <option>Catalonia Royal Bávaro (Adults Only)</option>
+            <option>CHIC by Royalton</option>
+            <option>Club Med Punta Cana</option>
+            <option>Dreams Flora Resort & Spa</option>
+            <option>Dreams Macao Beach Punta Cana</option>
+            <option>Dreams Palm Beach Punta Cana</option>
+            <option>Dreams Royal Beach Punta Cana</option>
+            <option>Eden Roc at Cap Cana</option>
+            <option>Excellence Punta Cana</option>
+            <option>Grand Bávaro Princess</option>
+            <option>Grand Memories Splash Punta Cana</option>
+            <option>Grand Palladium Bávaro Suites Resort & Spa</option>
+            <option>Grand Palladium Palace Resort Spa & Casino</option>
+            <option>Grand Sirenis Punta Cana Resort</option>
+            <option>Hard Rock Hotel & Casino Punta Cana</option>
+            <option>Hilton La Romana All-Inclusive Resort</option>
+            <option>Hyatt Ziva Cap Cana</option>
+            <option>Iberostar Grand Bávaro</option>
+            <option>Impressive Premium Resort & Spa Punta Cana</option>
+            <option>Impressive Resort & Spa Punta Cana</option>
+            <option>Lopesan Costa Bávaro Resort, Spa & Casino</option>
+            <option>Luxury Bahia Principe Samana (Adults Only)</option>
+            <option>Majestic Colonial Punta Cana</option>
+            <option>Majestic Elegance Punta Cana</option>
+            <option>Melia Caribe Beach Resort</option>
+            <option>Nickelodeon Hotels & Resorts Punta Cana</option>
+            <option>Now Onyx Punta Cana</option>
+            <option>Occidental Caribe</option>
+            <option>Occidental Punta Cana</option>
+            <option>Ocean El Faro Resort</option>
+            <option>Paradisus Palma Real Golf & Spa Resort</option>
+            <option>PortBlue Le Sivory Punta Cana</option>
+            <option>Punta Cana Princess All Suites Resort & Spa (Adults Only)</option>
+            <option>Radisson Blu Punta Cana</option>
+            <option>Riu Palace Punta Cana</option>
+            <option>Riu Republica (Adults Only)</option>
+            <option>Royalton CHIC Punta Cana (Adults Only)</option>
+            <option>Royalton Punta Cana Resort & Casino</option>
+            <option>Royalton Resort</option>
+            <option>Royalton Splash Punta Cana</option>
+            <option>Sanctuary Cap Cana</option>
+            <option>Secrets Cap Cana Resort & Spa</option>
+            <option>Secrets Royal Beach Punta Cana</option>
+            <option>Serenade Punta Cana Beach Resort & Spa</option>
+            <option>Sunscape Dominican Beach Punta Cana</option>
+            <option>The Reserve at Paradisus Palma Real</option>
+            <option>The Westin Puntacana Resort & Club</option>
+            <option>Tortuga Bay Puntacana Resort & Club</option>
+            <option>TRS Cap Cana Waterfront & Marina Hotel</option>
+            <option>TRS Turquesa Hotel</option>
+            <option>VIK Hotel Arena Blanca</option>
+            <option>Vista Sol Punta Cana Beach Resort & Spa</option>
+            <option>Whala! Bavaro</option>
+            <option>Zoëtry Agua Punta Cana</option>
+        </select>
+        
+  
+          <label for="date"><i class="fas fa-calendar-day"></i> Select date:</label>
+          <input type="date" id="date" name="excursion_date" min="{{tomorrow_str}}" value="Select Date"
+          required>
+        </div>
+  
+        <div class="ticket-selection">
+            <h3><i class="fas fa-ticket-alt"></i> Select your tickets</h3>
+          
+            <div class="ticket">
+              <span>Adult (13+)</span>
+              <span class="price" id="adult-price">${{excursions.Price}}</span>
+              <div class="quantity-control">
+                <button onclick="updateTicketCount('adult', -1)">-</button>
+                <span id="adult-count">0</span>
+                <button onclick="updateTicketCount('adult', 1)">+</button>
+              </div>
+            </div>
+          
+            <div class="ticket">
+              <span>Child (3-12)</span>
+              <span class="price" id="children-price">${{excursions.price_children}}</span>
+              <div class="quantity-control">
+                <button onclick="updateTicketCount('child', -1)">-</button>
+                <span id="child-count">0</span>
+                <button onclick="updateTicketCount('child', 1)">+</button>
+              </div>
+            </div>
+          
+            <div class="ticket">
+              <span>Child (0-2)</span>
+              <span class="price">Free</span>
+              <div class="quantity-control">
+                <button onclick="updateTicketCount('infant', -1)">-</button>
+                <span id="infant-count">0</span>
+                <button onclick="updateTicketCount('infant', 1)">+</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="total-price">
+            <h3>Total: $<span id="total">0.00</span></h3>
+            <button onclick="checkout()"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+    </div>
+ </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+this section is not for use -->
+<section>
+    <div class="detail-container">
+        <h1 class="detail-title">{{excursions.title}}</h1>
+        <div class="item-detail-and-image-container">
+       
+            <!-- item details aside -->
+            <div class="item-detail card">
+                {% if excursions.video_id %}
+                <iframe width="auto" height="300px" src="https://www.youtube.com/embed/{{excursions.video_id}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                {% endif%}
+                <form class="form" action="{% url 'add_to_cart' excursions.id %}" method="POST">
+                    {% csrf_token %}
+                    <!-- price -->
+                    <div class="form-row">
+                        <div class="detail-price pt-3"> <strong>Price:</strong> ${{excursions.Price}}</div>
+                        <div>Lowest Price garantee</div>
+                        <hr>
+                        {% if excursions.is_transfer %}
+                        <!-- date -->
+                        <div class="form-group mt-3">
+                            <label aria-label="Select Date" for="date">Select Date</label>
+                            <input type="text" class="form-control" id="date" name="excursion_date" min="{{tomorrow_str}}"
+                            value="Select Date"
+                                required>
+                        </div>
+                        {% else %}
+                           <!-- date -->
+                           <div class="form-group mt-3">
+                            <label for="date">Select Date and Travellers</label>
+                            <input type="text" class="form-control" id="date" name="excursion_date" min="{{tomorrow_str}}"
+                            value="Select Date"
+                                required>
+                        </div>
+                        {% endif %}
+                    
+                        <!-- Times availables -->
+                        {% if excursions.is_transfer %}
+                        <div class="form-group mt-3">
+                            <label for="selected_time">Pick up time</label>
+                            <input type="time" class="form-control" id="selected_time" name="selected_time" required>
+                        </div>
+                        {% else %}
+                        <select name="selected_time" class="form-select mt-3" required>
+                            <option value="">Select a time</option>
+                            {% for time in time_available %}
+                            <option value="{{ time.start_time }}" class="form-control">{{ time.start_time }}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+
+                        {% if excursions.is_transfer %}
+                        <!-- number of adults -->
+                        <div class="form-group mt-3">
+                            <label for="id_adult_qty">vehicle</label>
+                            <input type="number" class="form-control" id="id_adult_qty" name="adult_qty" value="1"
+                            {% if excursions.group %} 
+                            min="4"
+                            {% else%}
+                            min="1"
+                            {%endif%}
+                            max="1" data-item_id="{{excursions.id}}" required>
+                        </div>
+                        {% else %}
+                        <!-- number of adults -->
+                        <div class="form-group mt-3">
+                            <label for="id_adult_qty">Adult (12-85 years old)</label>
+                            <input type="number" class="form-control" id="id_adult_qty" name="adult_qty" value="1"
+                            {% if excursions.group %} 
+                            min="4"
+                            {% else%}
+                            min="1"
+                            {%endif%}
+                            max="99" data-item_id="{{excursions.id}}" required>
+                        </div>
+
+                        {% endif %}
+
+                        {% if not excursions.just_adult%}
+                        <!-- number of childrens -->
+                        <div class="form-group mt-3">
+                            <label for="id_child_qty"> Child (5 - 11 years old)</label>
+                            <input type="number" class="form-control" id="id_child_qty" name="child_qty" value="0"
+                                min="0" max="99">
+                        </div>
+                           <!-- number of childrens -->
+                           <div class="form-group mt-3">
+                            <label for="id_infant_qty"> Infant (0-4 years old)</label>
+                            <input type="number" class="form-control" id="id_infant_qty" name="infant_qty" value="0"
+                                min="0" max="99">
+                        </div>
+                        {% endif %}
+                        <!-- pick up info -->
+                        <div class="form-group mt-3">
+                            <label for="inputCity">Pick up Location</label>
+                            <input type="text" class="form-control" id="inputCity" name="place_pickup" required>
+                        </div>
+                        {% if excursions.is_transfer %}
+                          <!-- place drop up info -->
+                          <div class="form-group mt-3">
+                            <label for="place_dropup"> Drop Off Location</label>
+                            <input type="text" class="form-control" id="place_dropup" name="place_dropup" required>
+                        </div>
+                        {% endif %}
+
+                        <!-- <ul id="hotelList"></ul> -->
+
+                        <!-- <div class="form-group mt-3">
+                            <label for="inputCity">Auto Pick up location</label>
+                            <div class="input-group">
+                                <input onclick="getLocation()" type="button" class="form-control" id="locationButton"
+                                    name="location" value="Get My Location">
+                            </div>
+                        </div> -->
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.238432416923!2d-68.37336401812402!3d18.563286322864528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ea892172ce48f89%3A0x957aa624da170f8c!2sPunta%20Cana%20International%20Airport!5e0!3m2!1sen!2sdo!4v1691787965270!5m2!1sen!2sdo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                        <!-- hidden input to get the url-->
+                        <input type="hidden" name="redirect_url" value="{{request.path}}">
+                        <!-- hidden input for the price-->
+                        <input type="hidden" name="price" value="{{excursions.Price}}">
+                        <!-- hidden input for the children price -->
+                        <input type="hidden" name="price_children" value="{{excursions.price_children}}">
+                      <!-- hidden input for the company price-->
+                        <input type="hidden" name="company_Price" value="{{excursions.company_Price}}">
+                        <input type="hidden" name="reserve_no_pay" value="{{excursions.reserve_no_pay}}">
+                        <!-- form btn -->
+                        <div class="form_detail_btn">
+                            <!-- go back to keep shopping btn -->
+                                <!-- Submit button -->
+                                <div class="form-group mt-3 p-2">
+                                    <a href="{% url 'excursions' %}">
+                                    <button type="submit" class="my-button"><i
+                                            class="fa-solid fa-arrow-left"></i> Keep Shopping</button>
+                                     </a> 
+                                </div>
+
+                            <!-- Submit button -->
+                            <div class="form-group mt-3 p-2">
+                                <button type="submit" class="my-button"><i
+                                        class="fa-solid fa-cart-plus"></i> Add to cart</button>
+                            </div>
+
+                        </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="text-center mt-5 bold">Overview</div>
+    <div class="overview">
+        {{excursions.description|safe}}
+        <!-- Add a draggable element -->
+        <div class="whatsap-container">
+            <p clas="text-center mt-5">To cancel your booking, please send a WhatsApp message to our support team at 👇
+                In your message, include the text "cancel" along with your booking number.</p>
+            <a aria-label="Whatsapp" rel="noopener" rel="whatsapp"
+                href="https://api.whatsapp.com/send?phone=18094614942" target="_blank"><img alt="image link for whatsapp" id="whatsapp-floating"
+                    class="text-center" src="{% static 'images/excursions/whatsapp.png'%}">
+                Connect via WhatsApp</a>
+        </div>
+    </div>
+
+
+    <!-- Reviews -->
+    <h3 class="review-title">Customer reviews: {{excursions.reviews.all.count}}</h3>
+    <hr>
+
+
+    {% if request.user.is_autenticated %}
+
+    <!-- Review form -->
+    <div class="text-center mt-5">Write your reviews</div>
+
+    <form class="review-form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Review title" name="review-title" required>
+        </div>
+        <div class="mb-3">
+            <textarea required class="form-control" placeholder="Leave a review..." name="review-content"></textarea>
+        </div>
+        <div class="rating-container">
+            <strong>Your Rating</strong>
+            <div class="rating">
+                <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                <label for="star5">☆</label>
+                <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                <label for="star4">☆</label>
+                <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                <label for="star3">☆</label>
+                <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                <label for="star2">☆</label>
+                <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                <label for="star1">☆</label>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <input class="btn user_button_sm" type="submit" value="Submit">
+        </div>
+
+    </form>
+    {% if request.user.is_superuser%}
+    <h2 class="text-center mt-5">For admin only</h2>
+    <form class="review-form" action="{% url 'generate_reviews'  excursions.pk %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mt-3">
+            <input class="btn user_button_sm" type="textera" name="reviews_content" placeholder="add each reviews with a comma" required>
+            <input class="btn user_button_sm" type="submit" value="Generate">
+        </div>
+    </form>
+    {%endif%}
+
+
+    {% else %}
+    <p class="text-center">Create an account to add a review:</p>
+    <div class="text-center">
+        <a class="btn my_hover user_button_sm" href="{% url 'account_signup' %}">Register/Login</a>
+    </div>
+    {% endif %}
+
+    <!-- all reviews reviews -->
+    <div class="reviews mt-5">
+        {% for review in excursions.reviews.all %}
+        <div class="sub_container">
+            <i id="user_circle" class="fas fa-user-circle"></i><span class="user_name"> {{review.user |title }}</span>
+            <div class="card-star">
+                <i class="fa-star {% if review.rating >= 1 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 2 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 3 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 4 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <i class="fa-star {% if review.rating >= 5 %} fa-solid {% else %} fa-regular {% endif %}"></i>
+                <strong>{{review.title}}</strong>
+            </div>
+            <p class="date_created"> Commented on {{ review.created }}</p>
+            <p class="review_content">{{review.content }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<script>
+var tomorrowDate = new Date('{{tomorrow_str}}'); // Tomorrow's date
+  // Define an array of days to disable (0 = Sunday, 1 = Monday, etc.)
+var disabledDays = '{{unavailableDay}}'; // Disables Sunday and Saturday
+</script>
+<script src="{% static 'js/calender.js' %}"></script>
+<script src="{% static 'js/detail.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock content %}

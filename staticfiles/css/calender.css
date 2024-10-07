@@ -1,0 +1,60 @@
+/* General Datepicker Styles */
+.ui-datepicker {
+    background-color: #f5f5f5; /* Background color */
+    border: 1px solid #ccc;    /* Border color */
+    color: #333;               /* Text color */
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Header Styles */
+.ui-datepicker-header {
+    background-color: orange; /* Green header */
+    color: white;              /* White text */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+/* Day Styles (Numbers) */
+.ui-datepicker-calendar td a {
+    background-color: #fff;    /* Default background for day */
+    color: #333;               /* Default text color */
+    border-radius: 50%;        /* Circular days */
+    padding: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover Effect on Days */
+.ui-datepicker-calendar td a:hover {
+    background-color: orange; /* Green on hover */
+    color: white;              /* White text on hover */
+}
+
+/* Selected Day Styles */
+.ui-datepicker-calendar td .ui-state-active {
+    background-color: #FF5722; /* Orange background for selected date */
+    color: white !important;   /* White text for selected date */
+}
+
+/* Disabled Days */
+.ui-datepicker-unselectable .ui-state-disabled {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #999;               /* Gray text */
+    pointer-events: none;      /* Disable click */
+}
+
+/* Navigation (Prev/Next) Buttons */
+.ui-datepicker-prev, .ui-datepicker-next {
+    background-color: orange; /* Green prev/next buttons */
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+/* Hover Effect on Navigation Buttons */
+.ui-datepicker-prev:hover, .ui-datepicker-next:hover {
+    background-color: #FF5722; /* Orange on hover */
+    color: white;
+}
