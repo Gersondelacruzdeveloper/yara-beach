@@ -3,7 +3,7 @@
 <header>
     <div class="desktop-container-nav">
         <div class="logo-desktop">
-            <a class="navbar-brand" href="{% url 'excursions' %}">
+            <a class="navbar-brand" href="{% url 'excursions' %}" title="Discover the best excursions in Punta Cana">
                 <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery - Best Excursions in Punta Cana">
             </a>
         </div>
@@ -11,13 +11,13 @@
             <ul class="navbar-user">
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a href="#" class="nav-link-user" id="userDropdown">👤 Hi {{ user|title }}</a>
+                    <a href="#" class="nav-link-user" id="userDropdown" aria-haspopup="true" aria-expanded="false" aria-label="User account options">👤 Hi {{ user|title }}</a>
                     <ul class="dropdown-menu" id="dropdownMenu">
                         <li><a href="{% url 'account_logout' %}">Logout</a></li>
                         <li><a href="{% url 'account_change_password' %}">Change Password</a></li>
                         {% if request.user.is_superuser %}
                         <li>
-                            <a class="dropdown-item" href="{% url 'administrator' %}">
+                            <a class="dropdown-item" href="{% url 'administrator' %}" title="Administrator dashboard">
                                 <i class="fa-solid fa-toolbox"></i> Admin board</a>
                         </li>
                         {% endif %}
@@ -28,14 +28,14 @@
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="#" class="nav-link-user" id="userDropdown">👤 Sign in</a>
+                    <a href="#" class="nav-link-user" id="userDropdown" aria-haspopup="true" aria-expanded="false" aria-label="Sign in or register">👤 Sign in</a>
                     <ul class="dropdown-menu" id="dropdownMenu">
                         <li><a href="{% url 'account_login' %}">👤 Sign in</a></li>
-                        <li><a href="{% url 'account_signup' %}"> 👤 Register</a></li>
+                        <li><a href="{% url 'account_signup' %}">👤 Register</a></li>
                     </ul>
                 </li>
                 {% endif %}
-
+                
                 <li><a href="{% url 'excursions' %}" title="Browse all excursions in Punta Cana">Excursions</a></li>
                 <li><a href="#" title="Transfer services in Punta Cana">Transfers</a></li>
                 <li><a href="{% url 'static_page' 'events' %}" title="Plan and Attend Special Events in Punta Cana">Events</a></li>
@@ -76,18 +76,18 @@
                 <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">&#10005;</button>
                 <ul class="menu-items navbar-user">
                     {% if user.is_authenticated %}      
-                    <li class="nav-item menu-item" >
-                        <img src="{% static 'images/user-profile.png' %}" alt="Top Excursions in Punta Cana" class="menu-image">
-                        <span><a id="userDropdown" class="nav-link-user" title="Browse Excursions in Punta Cana">Hi {{ user|title }}</a></span>
+                    <li class="nav-item menu-item">
+                        <img src="{% static 'images/user-profile.png' %}" alt="User profile" class="menu-image">
+                        <span><a id="userDropdown" class="nav-link-user" title="User profile options">Hi {{ user|title }}</a></span>
                         <ul class="dropdown-menu" id="dropdownMenu">
                             <li><a href="{% url 'account_logout' %}">Logout</a></li>
                             <li><a href="{% url 'account_change_password' %}">Change Password</a></li>
                         </ul>
                     </li>
                     {% else %}
-                    <li class="nav-item menu-item" >
-                        <img src="{% static 'images/user-profile.png' %}" alt="Top Excursions in Punta Cana" class="menu-image">
-                        <span><a id="userDropdown" class="nav-link-user" title="Browse Excursions in Punta Cana">👤 Sign in</a></span>
+                    <li class="nav-item menu-item">
+                        <img src="{% static 'images/user-profile.png' %}" alt="User sign-in" class="menu-image">
+                        <span><a id="userDropdown" class="nav-link-user" title="Sign in or register">👤 Sign in</a></span>
                         <ul class="dropdown-menu" id="dropdownMenu">
                             <li><a href="{% url 'account_login' %}">👤 Sign in</a></li>
                             <li><a href="{% url 'account_signup' %}">👤 Register</a></li>
@@ -96,20 +96,20 @@
                     {% endif %}
 
                     <li class="menu-item">
-                        <img src="{% static 'images/mobile-img/sahona.jpeg' %}" alt="Top Excursions in Punta Cana" class="menu-image">
-                        <span><a href="{% url 'excursions' %}" title="Browse Excursions in Punta Cana">Excursions</a></span>
+                        <img src="{% static 'images/mobile-img/sahona.jpeg' %}" alt="Sahona Island - Best Excursions in Punta Cana" class="menu-image">
+                        <span><a href="{% url 'excursions' %}" title="Browse excursions to Sahona Island">Excursions</a></span>
                     </li>
                     <li class="menu-item">
-                        <img src="{% static 'images/mobile-img/transfer-img.png' %}" alt="Best Transfer Services in Punta Cana" class="menu-image">
-                        <span><a href="{% url 'excursions' %}" title="View Transfer Services in Punta Cana">Transfers</a></span>
+                        <img src="{% static 'images/mobile-img/transfer-img.png' %}" alt="Punta Cana Transfers" class="menu-image">
+                        <span><a href="#" title="View Transfer Services in Punta Cana">Transfers</a></span>
                     </li>
                     <li class="menu-item">
                         <img src="{% static 'images/mobile-img/blog.jpg' %}" alt="Punta Cana Blog" class="menu-image">
-                        <span><a href="{% url 'static_page' 'blog' %}" title="Read Our Blog">Blog</a></span>
+                        <span><a href="{% url 'static_page' 'blog' %}" title="Read the latest blogs about Punta Cana">Blog</a></span>
                     </li>
                     <li class="menu-item">
-                        <img src="{% static 'images/mobile-img/event.jpg' %}" alt="Special Events in Punta Cana" class="menu-image">
-                        <span><a href="{% url 'static_page' 'events' %}" title="Plan Events in Punta Cana">Events</a></span>
+                        <img src="{% static 'images/mobile-img/event.jpg' %}" alt="Punta Cana Special Events" class="menu-image">
+                        <span><a href="{% url 'static_page' 'events' %}" title="Plan special events in Punta Cana">Events</a></span>
                     </li>
                     <li class="menu-item">
                         <img src="{% static 'images/excursions/whatsapp.png'%}" alt="Contact via WhatsApp" class="menu-image">
