@@ -64,7 +64,8 @@ def cart_contents(request):
     taxes_and_fees += total_price_adul_child * Decimal(settings.TAXES_AND_FEES)
     final_total = total_price_adul_child + taxes_and_fees
     anticipo = final_total - company_price_total
-
+    pay_at_pickup = final_total - anticipo
+    # views.py
     context = {
         'cart_items': cart_items,
         'product_count': product_count,
@@ -75,6 +76,7 @@ def cart_contents(request):
         'company_price_total':company_price_total,
         'final_total':final_total,
         'reserve_no_pay': reserve_no_pay,
+        'pay_at_pickup':pay_at_pickup,
     }
     request.session['cart'] = cart
     return context
