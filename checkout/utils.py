@@ -5,7 +5,7 @@ from .models import ExcursionOrder
 from django.shortcuts import redirect
 from decimal import Decimal,ROUND_HALF_UP
 
-def send_booking_email(cart_content,order_number,company_price_total, anticipo,guest_email=None,):
+def send_booking_email(cart_content,order_number,pay_at_pickup, anticipo,guest_email=None,):
     thanks_booking = "<h2 style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Thank you for booking with us</h2><hr>"
     subtitle = "<h3>Here are your bookings from today</h3><hr>"
     warning = '<h4 style="color:red;">Please be aware that this is the advance payment, and the remaining amount will need to be paid upon pick-up.</h4>'
@@ -29,7 +29,7 @@ def send_booking_email(cart_content,order_number,company_price_total, anticipo,g
         template += f"<strong>Total:</strong> {item['subTotal']} <hr>"
 
     template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Amount Paid:</strong> ${anticipo}<hr>"
-    template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Payment due upon pickup:</strong> ${company_price_total}<hr>"
+    template += f"<strong style='background-color:#f85a15; padding: 10px; color:#ffffff;'>Payment due upon pickup:</strong> ${pay_at_pickup}<hr>"
 
 
     email = EmailMultiAlternatives(

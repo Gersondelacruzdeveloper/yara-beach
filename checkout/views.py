@@ -93,7 +93,7 @@ def checkout_success(request):
         order_number = response.id 
         cart_content = cart_contents(request)
         anticipo = cart_content['anticipo']
-        company_price_total = cart_content['company_price_total']
+        pay_at_pickup = cart_content['pay_at_pickup']
 
         
         for item in cart_content['cart_items']:
@@ -122,10 +122,10 @@ def checkout_success(request):
                     time_selected = item['values']['selected_time'],
                     excursion_id = int(item['excursion'].id),
                     advanced = anticipo,
-                    remaining = company_price_total,
+                    remaining = pay_at_pickup,
                 )
                 # send an email with all the info to the user
-                send_booking_email(cart_content, order_number,company_price_total, round(anticipo, 2), customer_contact['email'])
+                send_booking_email(cart_content, order_number,pay_at_pickup, round(anticipo, 2), customer_contact['email'])
 
     # delete the cart 
     cart = request.session.get('cart', {})
