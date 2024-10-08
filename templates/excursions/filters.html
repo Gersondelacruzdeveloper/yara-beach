@@ -1,11 +1,11 @@
 {% extends 'base2.html' %}
 {% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours {% endblock %}
-{% block description %}Book the best Punta Cana excursions with Punta Cana Discovery, offering unforgettable guided
-tours, thrilling activities, and unique experiences in the Dominican Republic. {% endblock %}
+{% block description %}Book the best Punta Cana excursions with Punta Cana Discovery, offering unforgettable guided tours, thrilling activities, and unique experiences in the Dominican Republic. {% endblock %}
 {% load static %}
 {% block content %}
 {% include 'excursions/hero-header.html' %}
 {% include 'excursions/header-filter.html' %}
+
 <!-- cards -->
 <section>
     <div class="card-container">
@@ -62,7 +62,7 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
                     },
                     "aggregateRating": {
                         "@type": "AggregateRating",
-                        "ratingValue": "excursion.get_average_rating",
+                        "ratingValue": "{{ excursion.get_average_rating }}",
                         "reviewCount": "{{ excursion.reviews.count }}"
                     },
                     "touristType": "International",
@@ -74,12 +74,10 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
                 }
             </script>
         </div>
-
         {% endfor %}
     </div>
 
     <!-- Pagination with SEO-friendly URLs -->
-    <!-- Pagination -->
     {% if counts > 8 %}
     <nav aria-label="Page navigation" class="pagination-container">
         <ul class="pagination justify-content-center">
@@ -136,7 +134,7 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
     {% if excursions.has_next %}
     <link rel="next" href="?page={{ excursions.next_page_number }}">
     {% endif %}
-    <meta name="description" content="Viewing page {{ excursions.number }} of excursions.">
+    <meta name="description" content="Browse the best excursions in Punta Cana on page {{ excursions.number }} of our filtered tours and activities.">
     {% endblock meta %}
     {% endif %}
     <!-- end of Pagination -->
@@ -145,6 +143,4 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
 
 <script src="{% static 'js/hero-img.js' %}"></script>
 <script src="{% static 'js/sort-options.js' %}"></script>
-</section>
-
 {% endblock content %}

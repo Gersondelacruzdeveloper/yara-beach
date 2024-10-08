@@ -1,17 +1,17 @@
 {% extends 'base2.html' %}
-{% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours {% endblock %}
-{% block description %}Book the best Punta Cana excursions with Punta Cana Discovery, offering unforgettable guided
-tours, thrilling activities, and unique experiences in the Dominican Republic. {% endblock %}
+{% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours{% endblock %}
+{% block description %}Explore top-rated excursions in Punta Cana with Punta Cana Discovery, featuring guided tours, adventure activities, and immersive experiences in the Dominican Republic. {% endblock %}
 {% load static %}
 {% block content %}
 {% include 'excursions/hero-header.html' %}
 {% include 'excursions/header-filter.html' %}
+
 <!-- cards -->
 <section>
     <div class="card-container">
         {% for excursion in excursions %}
         <div class="card">
-            <img src="{{excursion.main_image.url}}" loading="lazy" alt="Punta Cana beach tour - {{excursion.title}}">
+            <img src="{{excursion.main_image.url}}" loading="lazy" alt="Punta Cana excursion - {{excursion.title}}">
             <div class="content">
                 <div class="tag">ACTIVITIES</div>
                 <h3>{{excursion.title|slice:":60"|title}}...</h3>
@@ -24,18 +24,17 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
                     <i class="fa-solid fa-user"></i> Tour Guide</span>
                 {% endif %}
                 {% if excursion.transportation %}
-                <span class="img_icon3  badge rounded-pill bg-warning text-dark">
+                <span class="img_icon3 badge rounded-pill bg-warning text-dark">
                     <i class="fa-solid fa-van-shuttle"></i> Transportation</span>
                 {% endif %}
                 <div class="rating-price" itemscope itemtype="https://schema.org/Review">
                     <meta itemprop="name" content="{{excursion.title}}" />
                     <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="{{excursion.reviews.count}}" />
+                        <meta itemprop="ratingValue" content="{{excursion.get_average_rating}}" />
                         ⭐ {{ excursion.get_average_rating }}/5 ({{excursion.reviews.count}})
                     </span>
                     <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                        <span itemprop="priceCurrency" content="USD">$</span><span
-                            itemprop="price">{{excursion.Price}}</span>
+                        <span itemprop="priceCurrency" content="USD">$</span><span itemprop="price">{{excursion.Price}}</span>
                     </span>
                 </div>
                 <div class="action">
@@ -62,7 +61,7 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
                     },
                     "aggregateRating": {
                         "@type": "AggregateRating",
-                        "ratingValue": "excursion.get_average_rating",
+                        "ratingValue": "{{ excursion.get_average_rating }}",
                         "reviewCount": "{{ excursion.reviews.count }}"
                     },
                     "touristType": "International",
@@ -74,19 +73,16 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
                 }
             </script>
         </div>
-
         {% endfor %}
     </div>
 
     <!-- Pagination with SEO-friendly URLs -->
-    <!-- Pagination -->
     {% if counts > 8 %}
     <nav aria-label="Page navigation" class="pagination-container">
         <ul class="pagination justify-content-center">
             {% if excursions.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ excursions.previous_page_number }}" rel="prev"
-                    aria-label="Previous page">Previous</a>
+                <a class="page-link" href="?page={{ excursions.previous_page_number }}" rel="prev" aria-label="Previous page">Previous</a>
             </li>
             {% else %}
             <li class="page-item disabled">
@@ -103,27 +99,24 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
             <li class="page-item active" aria-current="page">
                 <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
             </li>
-            {% elif i > excursions.number|add:'-5' and i < excursions.number|add:'5' %} <li class="page-item">
-                <a class="page-link" href="?page={{ i }}" aria-label="Go to page {{ i }}">{{ i }}</a>
-                </li>
-                {% endif %}
-                {% endfor %}
+            {% elif i > excursions.number|add:'-5' and i < excursions.number|add:'5' %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}" aria-label="Go to page {{ i }}">{{ i }}</a></li>
+            {% endif %}
+            {% endfor %}
 
-                {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
-                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a>
-                </li>
-                {% endif %}
+            {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
+            <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a></li>
+            {% endif %}
 
-                {% if excursions.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ excursions.next_page_number }}" rel="next"
-                        aria-label="Next page">Next</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <span class="page-link" aria-disabled="true">Next</span>
-                </li>
-                {% endif %}
+            {% if excursions.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ excursions.next_page_number }}" rel="next" aria-label="Next page">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-disabled="true">Next</span>
+            </li>
+            {% endif %}
         </ul>
     </nav>
 
@@ -136,15 +129,11 @@ tours, thrilling activities, and unique experiences in the Dominican Republic. {
     {% if excursions.has_next %}
     <link rel="next" href="?page={{ excursions.next_page_number }}">
     {% endif %}
-    <meta name="description" content="Viewing page {{ excursions.number }} of excursions.">
+    <meta name="description" content="Explore top excursions in Punta Cana with Punta Cana Discovery on page {{ excursions.number }}. Find your ideal guided tour or adventure experience today!">
     {% endblock meta %}
     {% endif %}
-    <!-- end of Pagination -->
-
 </section>
 
 <script src="{% static 'js/hero-img.js' %}"></script>
 <script src="{% static 'js/sort-options.js' %}"></script>
-</section>
-
 {% endblock content %}
