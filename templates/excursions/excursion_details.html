@@ -6,35 +6,35 @@
 {% load static %}
 {% block content %}
 
-<!-- Schema Markup for Main Excursion -->
+<!-- Structured Data for SEO -->
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    "name": "{{ excursions.title }}",
-    "description": "{{ excursions.meta_description }}",
-    "image": "{{ excursions.main_image.url }}",
-    "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "{{ excursions.Price }}",
-        "availability": "https://schema.org/InStock",
-        "url": "{{ request.build_absolute_uri }}"
-    },
-    "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "{{ excursions.get_average_rating }}",
-        "reviewCount": "{{ excursions.reviews.count }}",
-        "priceCurrency": "USD"
-    },
-    "touristType": "International",
-    "provider": {
-        "@type": "Organization",
-        "name": "Punta Cana Discovery",
-        "url": "https://puntacanadiscovery.com"
-    }
-}
-</script>
+  {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "name": "{{ excursions.title }}",
+      "description": "{{ excursions.meta_description }}",
+      "image": "{{ excursions.main_image.url }}",
+      "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "{{ excursions.Price }}",
+          "availability": "https://schema.org/InStock",
+          "url": "{{ request.build_absolute_uri }}"
+      },
+      "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ excursions.get_average_rating }}",
+          "reviewCount": "{{ excursions.reviews.count }}",
+          "priceCurrency": "USD"
+      },
+      "touristType": "International",
+      "provider": {
+          "@type": "Organization",
+          "name": "Punta Cana Discovery",
+          "url": "https://puntacanadiscovery.com"
+      }
+  }
+  </script>
 
 <!-- header for adding to cart -->
 <div class="gallery">
@@ -324,7 +324,7 @@
 
 
 <div class="related-activities">
-  <h2>You might also like</h2>
+  <h2>Related Punta Cana Activities</h2>
   <div class="related-activities-slider">
       {% for excursion in related_activities %}
     <div class="card-container">
