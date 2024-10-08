@@ -337,9 +337,9 @@
 </div>
 
 
-
+{% if related_activities %}
 <div class="related-activities">
-  <h2>Related Punta Cana Activities</h2>git 
+  <h2>Related Punta Cana Activities</h2>
   <div class="related-activities-slider">
       {% for excursion in related_activities %}
     <div class="card-container">
@@ -412,6 +412,7 @@
       {% endfor %}
   </div>
 </div>
+{% endif%}
 
 
 
