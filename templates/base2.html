@@ -74,12 +74,13 @@
     <link href="{% static 'css/cart.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/calender.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/reviews-section.css' %}" rel="stylesheet" type="text/css">
-
+    <link href="{% static 'css/longin-signup.css' %}" rel="stylesheet" type="text/css">
 
     <title>{% block title %}Best Punta Cana Excursions & Tours for 2024 | Punta Cana Discovery{% endblock %}</title>
 </head>
 
 <body>
+    {% include 'excursions/header.html' %}
     {% block content %}
     <!-- Main Content -->
     {% endblock %}

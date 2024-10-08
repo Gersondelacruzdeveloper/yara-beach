@@ -1,0 +1,74 @@
+/* -------------------------------------------------------------------- accounts signup/signin etc */
+
+.user_card {
+    width: 350px;
+    margin-top: 5%;
+    background: var(--white);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.form_container {
+    margin-top: 20px;
+}
+
+.user_button {
+    width: 100%;
+    background-color: orange;
+    color: var(--black)
+}
+
+.user_button_sm {
+    background-color: orange;
+    color: black;
+    margin:10px;
+}
+
+
+
+.my_hover:hover {
+    color: white;
+    background-color: orange;
+    border-color: black;
+}
+
+.my_hover:focus {
+    color: var(--black);
+    background-color: var(--Yellow_lighter);
+    border-color: var(--black);
+}
+
+.form-title {
+    text-align: center;
+}
+
+ul.socialaccount_providers {
+    list-style-type: none;
+    text-align: center;
+
+}
+
+.socialaccount_ballot a {
+    text-decoration: none;
+}
+
+.socialaccount_ballot {
+    height: 40px;
+
+}
+
+.socialaccount_ballot img {
+    width:200px;
+    height: auto;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+}

@@ -1,73 +1,150 @@
-{% extends 'excursions/excursions_base.html' %}
-<title>{% block title %}things to do in punta cana{% endblock %}</title>
-{% block description %}Punta Cana excursions for families offer the perfect blend of adventure and relaxation, making it an ideal destination for your next getaway. In 2023, create lasting memories with your loved ones as you explore the pristine beaches, vibrant marine life, and cultural wonders that Punta Cana has to offer. From thrilling Saona Island tours to discovering the beauty of Bavaro, there's something for every member of the family to enjoy. These excursions are thoughtfully designed to cater to all ages, ensuring that parents, kids, and even the youngest adventurers have an unforgettable experience. Discover the joy of bonding with your family in the captivating setting of Punta Cana, where every moment becomes a cherished adventure together.{% endblock %}
-
+{% extends 'base2.html' %}
+{% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours {% endblock %}
+{% block description %}Book the best Punta Cana excursions with Punta Cana Discovery, offering unforgettable guided
+tours, thrilling activities, and unique experiences in the Dominican Republic. {% endblock %}
 {% load static %}
-
 {% block content %}
-
+{% include 'excursions/hero-header.html' %}
+{% include 'excursions/header-filter.html' %}
+<!-- cards -->
 <section>
-    {% if navbar_input != '' and excursions %}
-    <h2 class="text-center mt-5"> You search for "{{navbar_input|upper}}"</h2>
-    {% elif navbar_input == '' %}
-    <h2 class="text-center mt-5"> All Excursions</h2>
-    {% else %}
-    <div></div>
-    {% endif %}
-    
     <div class="card-container">
         {% for excursion in excursions %}
-        <div class="card-wrapper">
-            <div class="image-container">
-                <a class="position-relative" href="{% url 'excursion_detail' excursion.slugy %}"><img
-                        src="{{excursion.main_image.url}}" alt="{{excursion.image_name}}">
-                </a>
-                {% if excursion.duration_time%}
+        <div class="card">
+            <img src="{{excursion.main_image.url}}" loading="lazy" alt="Punta Cana beach tour - {{excursion.title}}">
+            <div class="content">
+                <div class="tag">ACTIVITIES</div>
+                <h3>{{excursion.title|slice:":60"|title}}...</h3>
+                {% if excursion.duration_time %}
                 <span class="img_icon1 badge rounded-pill bg-warning text-dark">
                     <i class="fa-solid fa-hourglass-start"></i> {{excursion.duration_time}} hours</span>
                 {% endif %}
-                {% if excursion.tour_guide%}
+                {% if excursion.tour_guide %}
                 <span class="img_icon2 badge rounded-pill bg-warning text-dark">
                     <i class="fa-solid fa-user"></i> Tour Guide</span>
                 {% endif %}
-                {% if excursion.transportation%}
+                {% if excursion.transportation %}
                 <span class="img_icon3  badge rounded-pill bg-warning text-dark">
                     <i class="fa-solid fa-van-shuttle"></i> Transportation</span>
                 {% endif %}
-            </div>
-            <h5 class="card-title">{{excursion.title|slice:":30"|title}}..</h5>
-            <!-- Reviews -->
-            <div class="card-star">
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                <i class="fa-star fa-solid"></i>
-                {% if excursion.reviews.count > 1 or excursion.reviews.count == 0 %}
-                <span> {{excursion.reviews.count}} reviews</span>
-                {% else %}
-                <span> {{excursion.reviews.count}} review</span>
-                {% endif%}
+                <div class="rating-price" itemscope itemtype="https://schema.org/Review">
+                    <meta itemprop="name" content="{{excursion.title}}" />
+                    <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                        <meta itemprop="ratingValue" content="{{excursion.reviews.count}}" />
+                        ⭐ {{ excursion.get_average_rating }}/5 ({{excursion.reviews.count}})
+                    </span>
+                    <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <span itemprop="priceCurrency" content="USD">$</span><span
+                            itemprop="price">{{excursion.Price}}</span>
+                    </span>
+                </div>
+                <div class="action">
+                    <a href="{% url 'excursion_detail' excursion.slugy %}" class="book-link">
+                        <button class="book-btn">Learn More</button>
+                    </a>
+                </div>
             </div>
 
-            <div class="price">
-                ${{excursion.Price}}
-            </div>
-            <div class="button_card">
-                <a href="{% url 'excursion_detail' excursion.slugy %}" class="my-button">Book Now</a>
-                <a href="{% url 'excursion_detail' excursion.slugy %}" class="my-button">Learn More</a>
-            </div>
+            <!-- Schema Markup for Excursion -->
+            <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "TouristTrip",
+                    "name": "{{ excursion.title }}",
+                    "description": "{{ excursion.description }}",
+                    "image": "{{ excursion.main_image.url }}",
+                    "offers": {
+                        "@type": "Offer",
+                        "priceCurrency": "USD",
+                        "price": "{{ excursion.Price }}",
+                        "availability": "https://schema.org/InStock",
+                        "url": "{% url 'excursion_detail' excursion.slugy %}"
+                    },
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "excursion.get_average_rating",
+                        "reviewCount": "{{ excursion.reviews.count }}"
+                    },
+                    "touristType": "International",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "Punta Cana Discovery",
+                        "url": "https://puntacanadiscovery.com"
+                    }
+                }
+            </script>
         </div>
 
-        {% empty %}
-        <div class="no-result">
-            <h1> No results for <span class="site-color">{{navbar_input}}</span> </h1>
-            <p>Try checking your spelling or use more general terms</p>
-        </div>
         {% endfor %}
-        <div>
+    </div>
 
+    <!-- Pagination with SEO-friendly URLs -->
+    <!-- Pagination -->
+    {% if counts > 8 %}
+    <nav aria-label="Page navigation" class="pagination-container">
+        <ul class="pagination justify-content-center">
+            {% if excursions.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ excursions.previous_page_number }}" rel="prev"
+                    aria-label="Previous page">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-disabled="true">Previous</span>
+            </li>
+            {% endif %}
 
+            {% if excursions.number|add:'-4' > 1 %}
+            <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'-5' }}">&hellip;</a></li>
+            {% endif %}
+
+            {% for i in excursions.paginator.page_range %}
+            {% if excursions.number == i %}
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+            </li>
+            {% elif i > excursions.number|add:'-5' and i < excursions.number|add:'5' %} <li class="page-item">
+                <a class="page-link" href="?page={{ i }}" aria-label="Go to page {{ i }}">{{ i }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+
+                {% if excursions.paginator.num_pages > excursions.number|add:'4' %}
+                <li class="page-item"><a class="page-link" href="?page={{ excursions.number|add:'5' }}">&hellip;</a>
+                </li>
+                {% endif %}
+
+                {% if excursions.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ excursions.next_page_number }}" rel="next"
+                        aria-label="Next page">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link" aria-disabled="true">Next</span>
+                </li>
+                {% endif %}
+        </ul>
+    </nav>
+
+    <!-- SEO Improvements -->
+    {% block meta %}
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    {% if excursions.has_previous %}
+    <link rel="prev" href="?page={{ excursions.previous_page_number }}">
+    {% endif %}
+    {% if excursions.has_next %}
+    <link rel="next" href="?page={{ excursions.next_page_number }}">
+    {% endif %}
+    <meta name="description" content="Viewing page {{ excursions.number }} of excursions.">
+    {% endblock meta %}
+    {% endif %}
+    <!-- end of Pagination -->
+
+</section>
+
+<script src="{% static 'js/hero-img.js' %}"></script>
+<script src="{% static 'js/sort-options.js' %}"></script>
 </section>
 
 {% endblock content %}

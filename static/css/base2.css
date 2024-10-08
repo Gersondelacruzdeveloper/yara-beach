@@ -11,7 +11,6 @@ body {
     background-color: white;
 }
 
-
 #whatsapp-floating {
     width: 50px;
 }
@@ -34,9 +33,6 @@ body {
     width: 250px !important;
 }
 
-.desktop-nav {
-    display: flex;
-}
 
 .desktop-nav ul {
     list-style: none;
@@ -184,6 +180,7 @@ body {
         font-size: 24px;
         color: #333;
     }
+    /* Basic styling for the navigation bar */
 }
 
 
@@ -208,3 +205,52 @@ body {
     top: -10px;
     left: -5px;
 }
+
+
+/* dropdown for */
+
+/* Navigation items */
+.navbar-user .nav-item {
+    position: relative;
+}
+
+
+/* Dropdown menu is hidden by default */
+.navbar-user .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Positioned below the parent item */
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    width: 150px;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+/* Dropdown items styling */
+.navbar-user .dropdown-menu li {
+    margin: 5px 0;
+}
+
+.navbar-user .dropdown-menu a {
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+    color: black;
+    font-size: 14px;
+}
+
+/* Highlight the dropdown item on hover */
+.navbar-user .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown when hovering over the nav-item */
+.navbar-user .nav-item:hover .dropdown-menu {
+    display: block;
+}
+

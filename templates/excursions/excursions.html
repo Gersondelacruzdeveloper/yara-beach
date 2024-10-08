@@ -4,45 +4,8 @@
 tours, thrilling activities, and unique experiences in the Dominican Republic. {% endblock %}
 {% load static %}
 {% block content %}
-{% include 'excursions/header.html' %}
 {% include 'excursions/hero-header.html' %}
-<section>
-    <div class="header-filter">
-        <span class="experience-count">{{counts}} Experiences</span>
-
-        <!-- Search form -->
-        <div class="search-bar">
-            <form class="d-flex" role="search" method="get" autocomplete="on"
-                action="{% url 'excursion_search_results' %}">
-                <div class="search-input-container">
-                    <span class="search-icon">🔍</span> <!-- Use an icon font here if needed -->
-                    {% if navbar_input %}
-                    <input class="form-control search-input" type="search" name="navbar" placeholder="{{navbar_input}}"
-                        aria-label="Search">
-                    {% else %}
-                    <input class="form-control search-input" type="search" name="navbar"
-                        placeholder="Search for Memorable Getaways" aria-label="Search">
-                    {% endif %}
-                </div>
-                <button class="btn search-btn" type="submit">Search</button>
-            </form>
-        </div>
-
-        <!-- Sort by -->
-        <div class="sort">
-            <span>Sort by: </span>
-            <select id="sort-options">
-                <option value="{% url 'newest_result' %}">Newest</option>
-                <option value="{% url 'oldest_result' %}">Oldest</option>
-                <option value="{% url 'filter_by_ascend' %}">Price (low to high)</option>
-                <option value="{% url 'filter_by_descend' %}">Price (high to low)</option>
-            </select>
-        </div>
-
-    </div>
-</section>
-
-
+{% include 'excursions/header-filter.html' %}
 <!-- cards -->
 <section>
     <div class="card-container">
