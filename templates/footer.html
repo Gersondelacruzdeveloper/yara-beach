@@ -1,65 +1,60 @@
 {% load static %}
-<!-- Footer Section -->
+<!-- Footer Section for Punta Cana Discovery -->
 <footer>
   <div class="footer-container">
     <div class="footer-brand">
-      <a href="{% url 'excursions' %}">
-        <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo">
+      <a href="{% url 'excursions' %}" title="Punta Cana Discovery - Excursions and Adventures">
+        <img src="{% static 'images/excursions/Logo.png' %}" alt="Punta Cana Discovery Logo - Excursions, Transfers, and More">
       </a>
     </div>
+    
     <div class="footer-section">
       <h4>Explore Our Services and Resources</h4>
       <ul>
-        <li><a href="{% url 'static_page' 'about-us' %}" title="Learn More About Our Company">About Us</a></li>
-        <li><a href="" title="Book Airport Transfers and Transportation">Transfers</a></li>
-        <li><a href="{% url 'excursions' %}" title="Explore Our Excursions and Tours">Excursions</a></li>
-        <li><a href="{% url 'static_page' 'events' %}" title="Plan and Attend Our Special Events">Events</a></li>
-        <li><a href="{% url 'static_page' 'blog' %}" title="Read Our Latest Blog Posts and Articles">Blog</a></li>
-        <li><a href="{% url 'static_page' 'faqs' %}" title="Frequently Asked Questions and Answers">FAQs</a></li>
+        <li><a href="{% url 'static_page' 'about-us' %}" title="Learn More About Punta Cana Discovery">About Us</a></li>
+        <li><a href="" title="Book Airport Transfers and Transportation Services">Transfers</a></li>
+        <li><a href="{% url 'excursions' %}" title="Exciting Excursions and Tours in Punta Cana">Excursions</a></li>
+        <li><a href="{% url 'static_page' 'events' %}" title="Special Events in Punta Cana">Events</a></li>
+        <li><a href="{% url 'static_page' 'blog' %}" title="Read Punta Cana Travel Tips and Blog Posts">Blog</a></li>
+        <li><a href="{% url 'static_page' 'faqs' %}" title="Frequently Asked Questions about Punta Cana Discovery">FAQs</a></li>
       </ul>
     </div>
 
     <div class="footer-section">
       <h4>Join Our Travel Advisors Program</h4>
       <ul>
-        <li><a href="{% url 'static_page' 'afp' %}" title="Learn More About Our Affiliation Program">Affiliation Program</a></li>
-        <li><a href="{% url 'account_signup' %}" title="Sign Up for Our Travel Advisors Program">Sign Up</a></li>
-        <li><a href="{% url 'account_login' %}" title="Log In to Manage Your Account">Log In</a></li>
+        <li><a href="{% url 'static_page' 'afp' %}" title="Affiliation Program for Travel Advisors">Affiliation Program</a></li>
+        <li><a href="{% url 'account_signup' %}" title="Sign Up for the Punta Cana Discovery Travel Advisors Program">Sign Up</a></li>
+        <li><a href="{% url 'account_login' %}" title="Log In to Manage Your Travel Advisor Account">Log In</a></li>
       </ul>
     </div>
 
     <div class="footer-section">
-      <h4>Contact Us and Read Our Terms</h4>
+      <h4>Contact and Policies</h4>
       <ul>
-        <li><a href="https://api.whatsapp.com/send?phone=18094614942" title="Contact Us Directly via Whatsapp">Contact us via Whatsapp</a></li>
-        <li><a href="{% url 'static_page' 'terms-and-conditions' %}" title="Read Our Terms and Conditions">Terms & Conditions</a></li>
+        <li><a href="https://api.whatsapp.com/send?phone=18094614942" title="Connect with Punta Cana Discovery on WhatsApp">Contact via WhatsApp</a></li>
+        <li><a href="{% url 'static_page' 'terms-and-conditions' %}" title="Review Terms and Conditions">Terms & Conditions</a></li>
         <li><a href="{% url 'static_page' 'privacy-policy' %}" title="View Our Privacy Policy">Privacy Policy</a></li>
-        <li><a href="{% url 'static_page' 'cookies-and-privacy' %}" title="Review Our Cookies & Privacy Policy">Cookies & Privacy</a></li>
-        <li><a href="{% url 'static_page' 'site-map' %}" title="Navigate Our Site Map">Site map</a></li>
+        <li><a href="{% url 'static_page' 'cookies-and-privacy' %}" title="Learn About Our Cookie and Privacy Policies">Cookies & Privacy</a></li>
+        <li><a href="{% url 'static_page' 'site-map' %}" title="View Our Full Site Map">Site Map</a></li>
       </ul>
     </div>
 
     <div class="footer-section">
-      <h4>Contact Us in the Dominican Republic or UK</h4>
-      <p>Dominican Republic: +18094614942</p>
-      <p>United Kingdom: +44 7541-147-634</p>
+      <h4>Contact Us Directly</h4>
+      <p>Dominican Republic: <a href="tel:+18094614942" title="Call Punta Cana Discovery in the Dominican Republic">+1 809-461-4942</a></p>
+      <p>United Kingdom: <a href="tel:+447541147634" title="Call Punta Cana Discovery in the UK">+44 7541-147-634</a></p>
     </div>
-
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; Copyright 2024 Punta Cana Discovery</p>
+    <p>&copy; 2024 Punta Cana Discovery - All Rights Reserved</p>
     <div class="social-icons">
-      <a aria-label="facebook" rel="noopener" alt="Facebook" href="https://www.facebook.com/" target="_blank"><i
-          class="fa-brands fa-facebook"></i></a>
-      <a aria-label="twitter" alt="X (Twitter)" rel="noopener" target="_blank" href="https://twitter.com/"><i
-          class="fa-brands fa-twitter"></i></a>
-      <a aria-label="tiktok" rel="noopener" alt="tic toc" target="_blank" href="https://www.tiktok.com/"><i
-          class="fa-brands fa-tiktok"></i></a>
-      <a aria-label="instagram" alt="Instagram" rel="noopener" href="https://www.instagram.com/" target="_blank"><i
-          class="fa-brands fa-instagram"></i></a>
-      <a aria-label="youtube" alt="Youtube" rel="noopener" href="https://www.youtube.com/" target="_blank"><i
-          class="fa-brands fa-youtube"></i></a>
+      <a aria-label="Follow Punta Cana Discovery on Facebook" rel="noopener" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a aria-label="Follow Punta Cana Discovery on Twitter (X)" rel="noopener" href="https://twitter.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+      <a aria-label="Follow Punta Cana Discovery on TikTok" rel="noopener" href="https://www.tiktok.com/" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+      <a aria-label="Follow Punta Cana Discovery on Instagram" rel="noopener" href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a aria-label="Subscribe to Punta Cana Discovery on YouTube" rel="noopener" href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
     </div>
   </div>
 </footer>
