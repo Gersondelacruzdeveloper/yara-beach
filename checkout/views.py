@@ -65,10 +65,15 @@ def stripe_checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     cart_content = cart_contents(request)
     anticipo = round(cart_content['anticipo'])
+
+    # Ensure that anticipo is at least 1
+    if anticipo <= 0:
+        return JsonResponse({'error': 'Anticipo must be greater than 0.'}, status=400)
+
     try:
         # Create a PaymentIntent with the order amount and currency
         intent = stripe.PaymentIntent.create(
-            amount=anticipo * 100,
+            amount=anticipo * 100,  # Stripe accepts amounts in cents
             currency='usd',
             automatic_payment_methods={
                 'enabled': True,
@@ -78,6 +83,7 @@ def stripe_checkout(request):
     except Exception as e:
         print('here error', str(e))
         return JsonResponse({'error': str(e)}, status=500)
+
 
 
 # Allow the user know that the purchase has been successful
