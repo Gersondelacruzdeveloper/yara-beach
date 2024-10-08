@@ -28,9 +28,11 @@
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link-user" href="{% url 'account_login' %}" title="Login to your account">👤 Sign in</a>
-                    <a class="nav-link-user" href="{% url 'account_signup' %}" title="Login to your account">👤 Register</a>
-
+                    <a href="#" class="nav-link-user" id="userDropdown">👤 Sign in</a>
+                    <ul class="dropdown-menu" id="dropdownMenu">
+                        <li><a href="{% url 'account_login' %}">👤 Sign in</a></li>
+                        <li><a href="{% url 'account_signup' %}"> 👤 Register</a></li>
+                    </ul>
                 </li>
                 {% endif %}
 
@@ -83,14 +85,16 @@
                         </ul>
                     </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link-user" href="{% url 'account_login' %}" title="Login to your account">👤 Sign in</a>
-                        <a class="nav-link-user" href="{% url 'account_signup' %}" title="Login to your account">👤 Register</a>
-
+                    <li class="nav-item menu-item" >
+                        <img src="{% static 'images/user-profile.png' %}" alt="Top Excursions in Punta Cana" class="menu-image">
+                        <span><a id="userDropdown" class="nav-link-user" title="Browse Excursions in Punta Cana">👤 Sign in</a></span>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                            <li><a href="{% url 'account_login' %}">👤 Sign in</a></li>
+                            <li><a href="{% url 'account_signup' %}">👤 Register</a></li>
+                        </ul>
                     </li>
                     {% endif %}
 
-                    
                     <li class="menu-item">
                         <img src="{% static 'images/mobile-img/sahona.jpeg' %}" alt="Top Excursions in Punta Cana" class="menu-image">
                         <span><a href="{% url 'excursions' %}" title="Browse Excursions in Punta Cana">Excursions</a></span>
