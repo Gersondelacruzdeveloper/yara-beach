@@ -66,8 +66,6 @@ def stripe_checkout(request):
     cart_content = cart_contents(request)
     anticipo = round(cart_content['anticipo'])
     try:
-        # load json data
-        data = json.loads(request.body)
         # Create a PaymentIntent with the order amount and currency
         intent = stripe.PaymentIntent.create(
             amount=anticipo * 100,

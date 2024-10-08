@@ -117,12 +117,16 @@
         <!-- Stripe.js injects the Payment Element -->
       </div>
       <button id="submit">
-        <div class="spinner hidden" id="spinner"></div>
-        <span id="button-text">Pay now</span>
+      <div class="spinner hidden" id="spinner"></div>
+      {% if anticipo %}
+      <span id="button-text">Pay now ${{anticipo| floatformat:2}}</span>
+      {% else %}
+      <span id="button-text">Pay now ${{final_total | floatformat:2}}</span>
+      {% endif %}
       </button>
       <div id="payment-message" class="hidden"></div>
     </form>
-     {% endif %}
+  {% endif %}
 
   </div>
   <!-- store the url valus -->
