@@ -41,7 +41,7 @@ from .models import PageVisit
 # Show all the excursion
 def excursion(request):
     counts = Excursions.objects.filter(status='Active').count()
-    p = Paginator(Excursions.objects.filter(status='Active').order_by('Price'), 8)
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('price'), 8)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
@@ -167,8 +167,8 @@ def oldest_excursions(request):
 
 # filter excursions from low price to high
 def filter_by_price_ascend(request):
-    counts = Excursions.objects.filter(status='Active').order_by('Price').count()
-    p = Paginator(Excursions.objects.filter(status='Active').order_by('Price'), 8)
+    counts = Excursions.objects.filter(status='Active').order_by('price').count()
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('price'), 8)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}
@@ -176,8 +176,8 @@ def filter_by_price_ascend(request):
 
 # filter excursions from high price to low
 def filter_by_price_descend(request):
-    counts = Excursions.objects.filter(status='Active').order_by('-Price').count()
-    p = Paginator(Excursions.objects.filter(status='Active').order_by('-Price'), 8)
+    counts = Excursions.objects.filter(status='Active').order_by('-price').count()
+    p = Paginator(Excursions.objects.filter(status='Active').order_by('-price'), 8)
     page = request.GET.get('page')
     excursions = p.get_page(page)
     context = {'excursions': excursions,'counts': counts}

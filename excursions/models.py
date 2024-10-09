@@ -51,7 +51,7 @@ class Excursions(models.Model):
     user = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=201, null=True)
-    Price = models.DecimalField(
+    price = models.DecimalField(
 
         max_digits=7, decimal_places=2, null=False, blank=False, default=0)
     main_image = models.ImageField(upload_to='excursions/uploads/',  blank=True, null=True)

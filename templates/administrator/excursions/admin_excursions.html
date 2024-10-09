@@ -45,7 +45,7 @@
                 {% endif %}
                 <td>{{excursion.date_created}}</td>
                 <td><a href="{% url 'excursion_detail' excursion.slugy %}" target="_blank">{{excursion.title|slice:":30"|title}}</td></a>
-                <td>£{{excursion.Price}}</td>
+                <td>£{{excursion.price}}</td>
                 <td><a href="{% url 'edit_excursion'  excursion.pk  %}"><button class="btn btn-sm btn-primary"><i class="far fa-edit">
                                 Edit</i></button></a> </td>
                 <td><a href="{% url 'delete_excursion' excursion.pk %}"><button class="btn btn-sm btn-danger "><i class="fas fa-trash-alt">

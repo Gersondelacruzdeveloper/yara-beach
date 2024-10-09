@@ -399,7 +399,7 @@ def admin_excursions(request):
         messages.error(
             request, 'You do not have persmision to access that page')
         return redirect('home')
-    excursions = Excursions.objects.order_by('Price')
+    excursions = Excursions.objects.order_by('price')
     context = {'excursions': excursions}
     return render(request, 'administrator/excursions/admin_excursions.html', context)
 

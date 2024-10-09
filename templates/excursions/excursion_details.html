@@ -4,6 +4,7 @@
 {% block og_title %}{{ excursions.title }}{% endblock %}
 {% block og_description %}{{excursions.meta_description}}{% endblock %}
 
+
 {% load static %}
 {% block content %}
 
@@ -223,7 +224,7 @@
         {% if  excursions.just_adult %}
         <div class="ticket">
           <span>Adult (18+)</span>
-          <span class="price" id="adult-price">${{excursions.Price}}</span>
+          <span class="price" id="adult-price">${{excursions.price}}</span>
           <div class="quantity-control">
             <span class="span-btn" onclick="updateTicketCount('adult', -1)">-</span>
             <input name="adult_qty" id="adult-count" value="0" required>
@@ -233,7 +234,7 @@
         {% else %}
         <div class="ticket">
           <span>Adult (13+)</span>
-          <span class="price" id="adult-price">${{excursions.Price}}</span>
+          <span class="price" id="adult-price">${{excursions.price}}</span>
           <div class="quantity-control">
             <span class="span-btn" onclick="updateTicketCount('adult', -1)">-</span>
             <input name="adult_qty" id="adult-count" value="0" required>
@@ -273,7 +274,7 @@
   </div>
   <input type="hidden" name="redirect_url" value="{{request.path}}">
   <!-- hidden input for the price-->
-  <input type="hidden" name="price" value="{{excursions.Price}}">
+  <input type="hidden" name="price" value="{{excursions.price}}">
   <!-- hidden input for the children price -->
   <input type="hidden" name="price_children" value="{{excursions.price_children}}">
   <!-- hidden input for the company price-->
@@ -369,7 +370,7 @@
                   </span>
                   <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                       <span itemprop="priceCurrency" content="USD">$</span><span
-                          itemprop="price">{{excursion.Price}}</span>
+                          itemprop="price">{{excursion.price}}</span>
                   </span>
               </div>
               <div class="action">
@@ -390,7 +391,7 @@
                   "offers": {
                       "@type": "Offer",
                       "priceCurrency": "USD",
-                      "price": "{{ excursion.Price }}",
+                      "price": "{{ excursion.price }}",
                       "availability": "https://schema.org/InStock",
                       "url": "{% url 'excursion_detail' excursion.slugy %}"
                   },

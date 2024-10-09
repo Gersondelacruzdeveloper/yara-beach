@@ -34,7 +34,7 @@
                         ⭐ {{ excursion.get_average_rating }}/5 ({{excursion.reviews.count}})
                     </span>
                     <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                        <span itemprop="priceCurrency" content="USD">$</span><span itemprop="price">{{excursion.Price}}</span>
+                        <span itemprop="priceCurrency" content="USD">$</span><span itemprop="price">{{excursion.price}}</span>
                     </span>
                 </div>
                 <div class="action">
@@ -55,7 +55,7 @@
                     "offers": {
                         "@type": "Offer",
                         "priceCurrency": "USD",
-                        "price": "{{ excursion.Price }}",
+                        "price": "{{ excursion.price }}",
                         "availability": "https://schema.org/InStock",
                         "url": "{% url 'excursion_detail' excursion.slugy %}"
                     },
