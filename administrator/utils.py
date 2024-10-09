@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 import time
 import datetime
 import random
@@ -98,8 +99,17 @@ def get_excursions_from_id(id):
 
     
 def update_image(excursion_bookings):
-     for order in excursion_bookings:
-        excursions = Excursions.objects.get(id=order.excursion_id)
-        if order.image != excursions.main_image.url:
-            order.image = excursions.main_image.url
-            order.save()
+    for order in excursion_bookings:
+        try:
+            # Try to get the Excursion object
+            excursions = Excursions.objects.get(id=order.excursion_id)
+            
+            # If the images are different, update and save
+            if order.image != excursions.main_image.url:
+                order.image = excursions.main_image.url
+                order.save()
+        except Excursions.DoesNotExist:
+            # Handle the case where the excursion does not exist
+            print(f"Excursion with ID {order.excursion_id} does not exist.")
+            # Optionally, you can log the error or skip to the next order
+            continue
