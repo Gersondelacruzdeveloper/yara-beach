@@ -1,7 +1,6 @@
 {% extends 'base2.html' %}
-{% block title %}{{ excursions.title }} - Best Punta Cana Adventure Tour{% endblock %}
-{% block description %}"Discover top Punta Cana tours like {{ excursions.title }}. Unforgettable activities, stunning views, and easy booking. Reserve now for an adventure!"
-{% endblock %}
+{% block title %}{{ excursions.title }}{% endblock %}
+{% block description %}{{ excursions.meta_description }}{% endblock %}
 
 {% load static %}
 {% block content %}
@@ -92,7 +91,7 @@
     {% endif%}
 
     <div class="activity-details">
-      <h2>Details of {{ excursions.title }} - Punta Cana Adventure</h2>
+      <h2>{{ excursions.title }}</h2>
       <ul>
         <li><i class="fas fa-times-circle"></i> <strong>Free cancellation:</strong> Cancel up to 24 hours in advance for
           a full refund</li>
