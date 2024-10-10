@@ -79,13 +79,17 @@ document.addEventListener("DOMContentLoaded", function() {
   let prices = { adult: adultPrice, child: childrenPrice, infant: infantPrice };
 
   function updateTicketCount(type, change) {
-    ticketCounts[type] = Math.max(0, ticketCounts[type] + change);
-
     let countElement = document.getElementById(`${type}-count`);
-    if (countElement) {
-      countElement.value = ticketCounts[type];
-    }
+    if (!countElement) return;
 
+    // Fetch min and max values from the input attributes
+    let minCount = parseInt(countElement.getAttribute('min')) || 0;
+    let maxCount = parseInt(countElement.getAttribute('max')) || 99;
+
+    // Update ticket count and ensure it's within min/max bounds
+    ticketCounts[type] = Math.max(minCount, Math.min(maxCount, ticketCounts[type] + change));
+
+    countElement.value = ticketCounts[type];
     updateTotal();
   }
 
@@ -102,17 +106,28 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function attachInputListeners() {
-    document.getElementById("adult-count").addEventListener("input", function () {
-      let value = parseInt(this.value) || 0;
-      ticketCounts.adult = value;
-      updateTotal();
-    });
+    let adultInput = document.getElementById("adult-count");
+    if (adultInput) {
+      adultInput.addEventListener("input", function () {
+        let value = parseInt(this.value) || 0;
+        let minCount = parseInt(this.getAttribute('min')) || 0;
+        let maxCount = parseInt(this.getAttribute('max')) || 99;
+
+        // Enforce min/max values
+        ticketCounts.adult = Math.max(minCount, Math.min(maxCount, value));
+        updateTotal();
+      });
+    }
 
     let childInput = document.getElementById("child-count");
     if (childInput) {
       childInput.addEventListener("input", function () {
         let value = parseInt(this.value) || 0;
-        ticketCounts.child = value;
+        let minCount = parseInt(this.getAttribute('min')) || 0;
+        let maxCount = parseInt(this.getAttribute('max')) || 99;
+
+        // Enforce min/max values
+        ticketCounts.child = Math.max(minCount, Math.min(maxCount, value));
         updateTotal();
       });
     }
@@ -121,7 +136,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if (infantInput) {
       infantInput.addEventListener("input", function () {
         let value = parseInt(this.value) || 0;
-        ticketCounts.infant = value;
+        let minCount = parseInt(this.getAttribute('min')) || 0;
+        let maxCount = parseInt(this.getAttribute('max')) || 99;
+
+        // Enforce min/max values
+        ticketCounts.infant = Math.max(minCount, Math.min(maxCount, value));
         updateTotal();
       });
     }
@@ -130,9 +149,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // Validate form submission
   document.querySelector("form").addEventListener("submit", function(event) {
     const adultCount = document.getElementById("adult-count").value;
-    if (adultCount == 0) {
+    const minCount = document.getElementById("adult-count").getAttribute('min') || 1;
+    
+    if (adultCount < minCount) {
       event.preventDefault(); // Prevent form submission
-      alert("Please select at least 1 adult ticket.");
+      alert(`Please select at least ${minCount} adult ticket(s).`);
       document.getElementById("adult-count").focus(); // Set focus on the input field
     }
   });
