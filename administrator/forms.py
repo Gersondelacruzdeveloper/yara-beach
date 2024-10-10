@@ -129,5 +129,5 @@ class PostForm(ModelForm):
     #     super(PostForm, self).__init__(*args, **kwargs)
     #     self.fields['title'].widget.attrs.update(
     #         {'class': 'form-control', 'placeholder': ' Add title'})
-    #     self.fields['Price'].widget.attrs.update(
+    #     self.fields['price'].widget.attrs.update(
     #         {'class': 'form-control', 'placeholder': 'Add price..'})

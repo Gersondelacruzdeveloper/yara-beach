@@ -99,11 +99,11 @@ class Excursions(models.Model):
        # Set price_children to half of the Price by default
        
         if self.price_children == 0:
-            self.price_children = self.Price / 2
+            self.price_children = self.price / 2
       
        # Calculate final amount if it's our excursions
         if self.our_excursions:
-            self.Price = calculate_final_amount(
+            self.price = calculate_final_amount(
                 Decimal(self.company_Price),
                 Decimal(settings.SELLER_PLUS_COMPANY_AMOUNT),
                 Decimal(settings.PAYPAL_PERCENTAGE_FEES),
