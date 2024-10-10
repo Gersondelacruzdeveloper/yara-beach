@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// add to card functionality for customers
 document.addEventListener("DOMContentLoaded", function() {
   let ticketCounts = { adult: 0, child: 0, infant: 0 };
 
@@ -82,13 +81,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let countElement = document.getElementById(`${type}-count`);
     if (!countElement) return;
 
-    // Fetch min and max values from the input attributes
     let minCount = parseInt(countElement.getAttribute('min')) || 0;
     let maxCount = parseInt(countElement.getAttribute('max')) || 99;
 
-    // Update ticket count and ensure it's within min/max bounds
     ticketCounts[type] = Math.max(minCount, Math.min(maxCount, ticketCounts[type] + change));
-
     countElement.value = ticketCounts[type];
     updateTotal();
   }
@@ -113,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function() {
         let minCount = parseInt(this.getAttribute('min')) || 0;
         let maxCount = parseInt(this.getAttribute('max')) || 99;
 
-        // Enforce min/max values
         ticketCounts.adult = Math.max(minCount, Math.min(maxCount, value));
         updateTotal();
       });
@@ -126,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function() {
         let minCount = parseInt(this.getAttribute('min')) || 0;
         let maxCount = parseInt(this.getAttribute('max')) || 99;
 
-        // Enforce min/max values
         ticketCounts.child = Math.max(minCount, Math.min(maxCount, value));
         updateTotal();
       });
@@ -139,26 +133,23 @@ document.addEventListener("DOMContentLoaded", function() {
         let minCount = parseInt(this.getAttribute('min')) || 0;
         let maxCount = parseInt(this.getAttribute('max')) || 99;
 
-        // Enforce min/max values
         ticketCounts.infant = Math.max(minCount, Math.min(maxCount, value));
         updateTotal();
       });
     }
   }
 
-  // Validate form submission
-  document.querySelector("form").addEventListener("submit", function(event) {
-    const adultCount = document.getElementById("adult-count").value;
-    const minCount = document.getElementById("adult-count").getAttribute('min') || 1;
-    
-    if (adultCount < minCount) {
-      event.preventDefault(); // Prevent form submission
+  attachInputListeners();
+
+  // Prevent form submission if minimum adult tickets are not selected
+  document.getElementById("form-add-to-cart").addEventListener("submit", function (event) {
+    let minCount = parseInt(document.getElementById("adult-count").getAttribute('min')) || 0;
+    if (ticketCounts.adult < minCount) {
+      event.preventDefault();
       alert(`Please select at least ${minCount} adult ticket(s).`);
-      document.getElementById("adult-count").focus(); // Set focus on the input field
+      document.getElementById("adult-count").focus();
     }
   });
-
-  attachInputListeners();
 
   window.updateTicketCount = updateTicketCount;
 });
