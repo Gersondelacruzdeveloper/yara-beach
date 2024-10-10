@@ -33,6 +33,7 @@
                 <th>Price</th>
                 <th></th>
                 <th></th>
+                <th>Generate Reviews</th>
             </tr>
 
             {% for excursion in excursions %}
@@ -51,6 +52,16 @@
                 <td><a href="{% url 'delete_excursion' excursion.pk %}"><button class="btn btn-sm btn-danger "><i class="fas fa-trash-alt">
                                 Delete</i></button></a>
                 </td>
+                <td>
+                    <form class="review-form" action="{% url 'generate_reviews'  excursion.pk %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mt-3">
+                            <input class="btn user_button_sm" type="textera" name="reviews_content" placeholder="add each reviews with a comma" required>
+                            <input class="btn user_button_sm" type="submit" value="Generate">
+                        </div>
+                    </form>
+                </td>
+
             </tr>
             {% endfor %}
         </table>

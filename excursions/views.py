@@ -81,8 +81,12 @@ def generate_reviews(request, pk):
         excursion = get_object_or_404(Excursions, id=pk)
         reviews_content = request.POST.get('reviews_content')
         if reviews_content is not None:
+            print('creating review...', reviews_content)
             reviews = [item.strip() for item in reviews_content.split('*')]
             users = User.objects.filter(last_name='generated')
+            print('reviews', reviews)
+            print('users', users)
+            
 
             for review in reviews:
                 # Set a character limit for the title
@@ -111,7 +115,7 @@ def generate_reviews(request, pk):
                     selected_user = random.choice(unused_users)
                     Review.objects.create(rating=rating, title=title, content=content, excursion=excursion, user=selected_user, created=past_date)
 
-        return redirect('home')
+        return redirect('admin-excursion')
 
 
 
