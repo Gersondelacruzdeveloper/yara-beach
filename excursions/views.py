@@ -14,6 +14,7 @@ from datetime import timedelta, datetime
 from administrator.models import Post
 from django.core.exceptions import ValidationError
 from django.views import View
+from blog.views import create_blog_post
 
 # import qrcode
 # Create your views here.
@@ -239,6 +240,8 @@ class StaticPageView(View):
         
         template = templates.get(page)
         if template:
+            print("running blog")
+            create_blog_post()
             return render(request, template)
         else:
             # You can raise a 404 error or return a default page

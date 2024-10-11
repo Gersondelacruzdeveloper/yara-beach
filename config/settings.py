@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+from celery.schedules import crontab
 
 from distutils.command.config import config
 from pathlib import Path
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'storages',
+    'django_celery_beat',
     # My apps
     'home',
     'excursions',
@@ -280,3 +282,10 @@ TAXES_AND_FEES = env.str("TAXES_AND_FEES")
 STRIPE_SECRET_KEY = env.str("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = env.str("STRIPE_PUBLIC_KEY")
 
+
+# OpenAI API key
+OPENAI_API_KEY = env.str("OPENAI_API_KEY")
+
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis as the broker
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # (Optional) store results in Redis

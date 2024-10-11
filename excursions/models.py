@@ -82,7 +82,10 @@ class Excursions(models.Model):
     reserve_price = models.DecimalField(
         max_digits=7, decimal_places=2, null=False, blank=False, default=20)
     reserve_no_pay = models.BooleanField(default=False)
-    
+
+    def get_absolute_url(self):
+        # Assuming there is a URL pattern named 'excursion_detail' that takes a slug parameter
+        return reverse('excursion_detail', kwargs={'slugy': self.slugy})
     
     def get_average_rating(self):
         average_rating = self.reviews.aggregate(Avg('rating'))['rating__avg']
