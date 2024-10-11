@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'checkout',
     'api',
     'rest_framework',
+    'blog',
 ]
 
 # social acount
