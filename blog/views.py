@@ -16,7 +16,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from excursions.models import Excursions  # Adjust to your app name
 from django.db.models import Q
 from django.conf import settings
-
+from django.contrib.auth.models import User
 
 openai.api_key = settings.OPENAI_API_KEY
 
@@ -43,10 +43,6 @@ class BlogPostDetailView(DetailView):
         post.view_count += 1
         post.save()
         return post
-
-
-
-
 
 
 
@@ -98,21 +94,52 @@ def check_for_duplicate_title(excursion_title):
     )
     return similar_titles.exists()
 
-def generate_blog_content(excursion_title, excursion_url):
-    # Create a content prompt for OpenAI
-    prompt = (
-        f"Write a detailed blog post about {excursion_title}. "
-        f"Highlight the main attractions, reasons to book, and add a call-to-action. "
-        f"Include this link to the excursion: {excursion_url}"
+
+def generate_blog_content(excursion_title, excursion_url, duration_time, price, transportation):
+    # Create a content prompt for OpenAI with a detailed request for long content
+    prompt = f"""
+    Write a detailed blog post about {excursion_title} in HTML format. The blog post should be between 2,100 and 2,400 words. 
+    Use appropriate HTML tags paragraphs, and lists. The content should include:
+    1. An engaging introduction to capture the reader's interest.
+    2. Detailed sections on the main attractions of the excursion.
+    3. Reasons why someone should book this excursion.
+    4. Personal stories or hypothetical examples to make the content more relatable.
+    5. A strong call-to-action link at the end.
+    6. Include keywords related to travel, adventure, and excursions to enhance SEO.
+    """
+
+    # Append duration if available
+    if duration_time:
+        prompt += f"Duration: {duration_time}. "
+
+    # Append price if available
+    if price:
+        prompt += f"Price: {price}. "
+
+    # Append transportation if available
+    if transportation:
+        prompt += f"Transportation: {transportation}. "
+
+    # Add the additional information
+    prompt += (
+        "Highlight the main attractions, reasons to book, and add a call-to-action. "
+        f"Include this link to the excursion: {excursion_url}."
+    )
+
+    # Make the API call to generate the blog content in multiple parts if needed
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a professional travel blogger."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=3800,  # Maximize tokens for a longer output
+        temperature=0.6
     )
     
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        max_tokens=800,
-        temperature=0.7
-    )
-    return response['choices'][0]['text'].strip()
+    # Extract and return the generated content
+    return response['choices'][0]['message']['content']
+
 
 def get_random_excursion():
     # Filter only active excursions
@@ -126,10 +153,25 @@ def get_random_excursion():
     
     return random_excursion
 
+
+def get_default_author():
+    try:
+        # Fetch an existing user (e.g., 'admin' or 'system_user')
+        author = User.objects.get(username='Gerson')  # Replace with your default username
+    except ObjectDoesNotExist:
+        # If the user doesn't exist, create a new one
+        author = User.objects.create_user(username='system_user', password='default_password', email='system@domain.com')
+        author.is_staff = True  # Make the user an admin/staff if necessary
+        author.save()
+    return author
+
 def create_blog_post():
     print("creating posts")
     excursion = get_random_excursion()
     title = generate_unique_title(excursion.title)
+    duration_time = excursion.duration_time
+    price = excursion.price
+    transportation = excursion.transportation
     
     # Check if a similar title already exists
     if check_for_duplicate_title(excursion.title):
@@ -138,7 +180,10 @@ def create_blog_post():
     # Get excursion URL
     excursion_url = excursion.get_absolute_url()
     
-    content = generate_blog_content(excursion.title, excursion_url)
+    content = generate_blog_content(excursion.title, excursion_url, duration_time,price, transportation)
+        
+    # Get the default author for automated posts
+    default_author = get_default_author()
     
     # Create and save the blog post
     blog_post = BlogPost.objects.create(
@@ -147,10 +192,16 @@ def create_blog_post():
         is_published=True,
         keywords="Punta Cana excursions, adventure tours, book now",
         meta_description=content[:160],
-        featured_image=excursion.image,
+        featured_image=excursion.main_image,
         og_title=excursion.title,
-        og_description=f"Book your {excursion.title} adventure today!"
+        og_description=f"Book your {excursion.title} adventure today!",
+        author= default_author,
+        rating = excursion.get_average_rating(), 
+        video_id = excursion.video_id, 
     )
+    # Save image URLs from excursion photos to the blog post
+    for photo in excursion.photos.all():
+        blog_post.images.create(image_url=photo.image_url)  # Ensure `BlogImage` has `image_url` field
     blog_post.save()
     return blog_post
 

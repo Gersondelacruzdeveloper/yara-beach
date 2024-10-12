@@ -15,7 +15,6 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import ValidationError
 from django.conf import settings
-from openai import OpenAI
 from .utils import get_excursions_from_id, update_image
 
 # this function 

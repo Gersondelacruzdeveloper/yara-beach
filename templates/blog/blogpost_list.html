@@ -1,37 +1,41 @@
 {% extends 'base2.html' %}
-{% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours {% endblock %}
-{% block description %}Book the best Punta Cana excursions with Punta Cana Discovery, offering unforgettable guided
-tours, thrilling activities, and unique experiences in the Dominican Republic. {% endblock %}
+{% block title %}Best Excursions in Punta Cana | Punta Cana Discovery Tours{% endblock %}
+{% block description %}Book the best Punta Cana excursions with Punta Cana Discovery, offering unforgettable guided tours, thrilling activities, and unique experiences in the Dominican Republic.{% endblock %}
 {% load static %}
+{% load truncate_filters %}
 
 {% block content %}
-  <article class="blog-post">
-    <h1>{{ post.title }}</h1>
-    <p>By {{ post.author.get_full_name }} on {{ post.created_at|date:"F d, Y" }}</p>
+  <h1 class="title text-center mt-3">All Blog Posts</h1>
+  
+  <div class="card-container">
+  {% for post in posts %}
+    <article class="card">
+    <div class="content">
+      <h2><a href="{% url 'blog:blogpost_detail' post.slug %}">{{ post.title }}</a></h2>
+      <p>By {{ post.author.get_full_name }} on {{ post.created_at|date:"F d, Y" }}</p>
 
-    {% if post.featured_image %}
-      <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-    {% endif %}
+      {% if post.featured_image %}
+        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" style="max-width: 100%;">
+      {% endif %}
 
-    <div class="blog-content">
-      {{ post.content|linebreaks }}
+      <div class="blog-content">
+        <p>{{ post.content|truncate_from_to:"63,20" |safe}}</p>
+      </div>
+
+      <!-- <p><strong>Estimated read time:</strong> {{ post.read_time }} minutes</p> -->
+      <p><strong><i class="fa-solid fa-eye"></i>:</strong> {{ post.view_count }}</p>
+
+      <!-- Social media meta tags for SEO -->
+      <meta name="description" content="{{ post.get_meta_description }}">
+      <meta property="og:title" content="{{ post.get_meta_title }}">
+      <meta property="og:description" content="{{ post.og_description }}">
+      {% if post.og_image %}
+        <meta property="og:image" content="{{ post.og_image.url }}">
+      {% endif %}
     </div>
-
-    <p><strong>Estimated read time:</strong> {{ post.read_time }} minutes</p>
-    <p><strong>View count:</strong> {{ post.view_count }}</p>
-
-    <!-- Social media meta tags for SEO -->
-    <meta name="description" content="{{ post.get_meta_description }}">
-    <meta property="og:title" content="{{ post.get_meta_title }}">
-    <meta property="og:description" content="{{ post.og_description }}">
-    {% if post.og_image %}
-      <meta property="og:image" content="{{ post.og_image.url }}">
-    {% endif %}
-  </article>
-
-  <!-- Edit and Delete buttons for the author -->
-  {% if user == post.author %}
-    <a href="{% url 'blog:blogpost_update' post.slug %}">Edit Post</a>
-    <a href="{% url 'blog:blogpost_delete' post.slug %}" onclick="return confirm('Are you sure you want to delete this post?');">Delete Post</a>
-  {% endif %}
+    </article>
+  {% empty %}
+    <p>No blog posts available.</p>
+  {% endfor %}
+</div>
 {% endblock %}

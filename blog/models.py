@@ -11,7 +11,8 @@ class BlogPost(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
-
+    video_id = models.CharField(null=True, blank=True, max_length=201, default='')
+    rating = models.IntegerField(null=True, blank=True, default=0)
     # SEO and Social Media Fields
     featured_image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
     keywords = models.CharField(max_length=255, blank=True, null=True)
@@ -20,6 +21,7 @@ class BlogPost(models.Model):
     og_description = models.CharField(max_length=300, blank=True, null=True)  # Open Graph Description
     og_image = models.ImageField(upload_to='blog_og_images/', blank=True, null=True)  # Open Graph Image
     schema_markup = models.TextField(blank=True, null=True)  # Custom JSON-LD Schema
+
 
     # Performance fields
     view_count = models.IntegerField(default=0)  # To track views
@@ -75,3 +77,8 @@ class BlogPost(models.Model):
         word_count = len(self.content.split())
         self.read_time = word_count // 200
         self.save()
+
+
+class BlogImage(models.Model):
+    blog_post = models.ForeignKey(BlogPost, related_name='images', on_delete=models.CASCADE)
+    image_url = models.URLField()  # Stores the image URL
