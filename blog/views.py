@@ -17,8 +17,7 @@ from excursions.models import Excursions  # Adjust to your app name
 from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.models import User
-
-openai.api_key = settings.OPENAI_API_KEY
+from openai import OpenAI
 
 # BlogPost list view
 class BlogPostListView(ListView):
@@ -95,11 +94,18 @@ def check_for_duplicate_title(excursion_title):
     return similar_titles.exists()
 
 
-def generate_blog_content(excursion_title, excursion_url, duration_time, price, transportation):
+
+
+def generate_blog_content(excursion_title, excursion_url, duration_time=None, price=None, transportation=None):
+    # Create the OpenAI client (make sure to set your API key)
+    client = OpenAI(
+        api_key= settings.OPENAI_API_KEY # Replace with your actual API key or set it in your environment
+    )
+
     # Create a content prompt for OpenAI with a detailed request for long content
     prompt = f"""
     Write a detailed blog post about {excursion_title} in HTML format. The blog post should be between 2,100 and 2,400 words. 
-    Use appropriate HTML tags paragraphs, and lists. The content should include:
+    Use appropriate HTML tags, paragraphs, and lists. The content should include:
     1. An engaging introduction to capture the reader's interest.
     2. Detailed sections on the main attractions of the excursion.
     3. Reasons why someone should book this excursion.
@@ -110,35 +116,36 @@ def generate_blog_content(excursion_title, excursion_url, duration_time, price, 
 
     # Append duration if available
     if duration_time:
-        prompt += f"Duration: {duration_time}. "
+        prompt += f" Duration: {duration_time}."
 
     # Append price if available
     if price:
-        prompt += f"Price: {price}. "
+        prompt += f" Price: {price}."
 
     # Append transportation if available
     if transportation:
-        prompt += f"Transportation: {transportation}. "
+        prompt += f" Transportation: {transportation}."
 
     # Add the additional information
     prompt += (
-        "Highlight the main attractions, reasons to book, and add a call-to-action. "
+        " Highlight the main attractions, reasons to book, and add a call-to-action. "
         f"Include this link to the excursion: {excursion_url}."
     )
 
-    # Make the API call to generate the blog content in multiple parts if needed
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+    # Use the new chat completions API for generating longer text
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",  # Or use "gpt-3.5-turbo" if preferred
         messages=[
-            {"role": "system", "content": "You are a professional travel blogger."},
+            {"role": "system", "content": "You are a helpful assistant that writes blog posts in HTML format."},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=3800,  # Maximize tokens for a longer output
+        max_tokens=3600,  # Limit tokens for content size
         temperature=0.6
     )
-    
+
     # Extract and return the generated content
-    return response['choices'][0]['message']['content']
+    return response.choices[0].message.content
+
 
 
 def get_random_excursion():
@@ -201,7 +208,8 @@ def create_blog_post():
     )
     # Save image URLs from excursion photos to the blog post
     for photo in excursion.photos.all():
-        blog_post.images.create(image_url=photo.image_url)  # Ensure `BlogImage` has `image_url` field
+        blog_post.images.create(image_url=photo.images.url)  # Ensure `BlogImage` has `image_url` field
     blog_post.save()
     return blog_post
+
 

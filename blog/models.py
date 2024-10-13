@@ -81,4 +81,7 @@ class BlogPost(models.Model):
 
 class BlogImage(models.Model):
     blog_post = models.ForeignKey(BlogPost, related_name='images', on_delete=models.CASCADE)
-    image_url = models.URLField()  # Stores the image URL
+    image_url = models.URLField(max_length=500)
+
+    def __str__(self):
+        return self.image_url
