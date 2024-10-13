@@ -64,6 +64,7 @@ schedule = "*"
 redis = "*"
 celery = {extras = ["redis"], version = "*"}
 openai = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
 
