@@ -1,5 +1,5 @@
 {% extends 'base2.html' %}
-
+{% load static %}
 {% block content %}
   <article class="blog-post">
     <p>By {{ post.author }} on {{ post.created_at|date:"F d, Y" }}</p>
@@ -14,6 +14,15 @@
                 <img loading="lazy" src="{{ image.image_url }}" alt="Blog post image for {{ blog_post.title }}">
              {% endfor %}
         </div>
+
+        <div class="fullscreen" id="fullscreen">
+            <span class="close-btn" onclick="closeFullscreen()">&#10005;</span>
+            <span class="counter" id="counter"></span>
+            <img id="fullscreen-img" src="" alt="Fullscreen Image">
+            <span class="arrow arrow-left" onclick="prevImage()">&#10094;</span>
+            <span class="arrow arrow-right" onclick="nextImage()">&#10095;</span>
+          </div>
+          
         
         
         {% if post.video_id %}
@@ -46,5 +55,5 @@
   <a href="{% url 'blog:blogpost_delete' post.slug %}" onclick="return confirm('Are you sure you want to delete this post?');">Delete Post</a>
 {% endif %}
   </article>
-
+  <script src="{% static 'js/blogPostDetail.js' %}"></script>
 {% endblock %}
