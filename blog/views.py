@@ -19,6 +19,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from openai import OpenAI
 from bs4 import BeautifulSoup
+from difflib import SequenceMatcher
 
 # BlogPost list view
 class BlogPostListView(ListView):
@@ -75,15 +76,6 @@ class BlogPostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 # ----------------------------------------------------create auto blog
 
-from datetime import datetime
-import random
-import string
-from django.core.exceptions import ObjectDoesNotExist
-from django.db.models import Q
-from difflib import SequenceMatcher
-
-
-
 
 def generate_blog_content(excursion_title, excursions_description, excursion_url, duration_time=None, price=None, transportation=None):
     # Create the OpenAI client (make sure to set your API key)
@@ -130,7 +122,7 @@ def generate_blog_content(excursion_title, excursions_description, excursion_url
             {"role": "system", "content": "You are a helpful assistant that writes blog posts in HTML format."},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=500,  # Limit tokens for content size
+        max_tokens=3600,  # Limit tokens for content size
         temperature=0.6
     )
 

@@ -41,6 +41,84 @@
     <!-- <p><strong>Estimated read time:</strong> {{ post.read_time }} minutes</p> -->
     <p><strong><i class="fa-solid fa-eye"></i>:</strong> {{ post.view_count }}</p>
 
+    {% if related_activities %}
+<div class="related-activities">
+  <h2>Related Punta Cana Activities</h2>
+  <div class="related-activities-slider">
+    {% for excursion in related_activities %}
+    <div class="card-container">
+      <div class="card">
+        <img src="{{excursion.main_image.url}}" loading="lazy" alt="Punta Cana beach tour - {{excursion.title}}">
+        <div class="content">
+          <div class="tag">ACTIVITIES</div>
+          <h3>{{excursion.title|slice:":60"|title}}...</h3>
+          {% if excursion.duration_time %}
+          <span class="img_icon1 badge rounded-pill bg-warning text-dark">
+            <i class="fa-solid fa-hourglass-start"></i> {{excursion.duration_time}} hours</span>
+          {% endif %}
+          {% if excursion.tour_guide %}
+          <span class="img_icon2 badge rounded-pill bg-warning text-dark">
+            <i class="fa-solid fa-user"></i> Tour Guide</span>
+          {% endif %}
+          {% if excursion.transportation %}
+          <span class="img_icon3  badge rounded-pill bg-warning text-dark">
+            <i class="fa-solid fa-van-shuttle"></i> Transportation</span>
+          {% endif %}
+          <div class="rating-price" itemscope itemtype="https://schema.org/Review">
+            <meta itemprop="name" content="{{excursion.title}}" />
+            <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+              <meta itemprop="ratingValue" content="{{excursion.reviews.count}}" />
+              ⭐ {{ excursion.get_average_rating }}/5 ({{excursion.reviews.count}})
+            </span>
+            <span class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <span itemprop="priceCurrency" content="USD">$</span><span itemprop="price">{{excursion.price}}</span>
+            </span>
+          </div>
+          <div class="action">
+            <a href="{% url 'excursion_detail' excursion.slugy %}" class="book-link">
+              <button class="book-btn">Book Now</button>
+            </a>
+          </div>
+        </div>
+
+        <!-- Schema Markup for Excursion -->
+        <script type="application/ld+json">
+              {
+                  "@context": "https://schema.org",
+                  "@type": "TouristTrip",
+                  "name": "{{ excursion.title }}",
+                  "description": "{{ excursion.description }}",
+                  "image": "{{ excursion.main_image.url }}",
+                  "offers": {
+                      "@type": "Offer",
+                      "priceCurrency": "USD",
+                      "price": "{{ excursion.price }}",
+                      "availability": "https://schema.org/InStock",
+                      "url": "{% url 'excursion_detail' excursion.slugy %}"
+                  },
+                  "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "excursion.get_average_rating",
+                      "reviewCount": "{{ excursion.reviews.count }}",
+                      "priceCurrency": "USD"
+                  },
+                  "touristType": "International",
+                  "provider": {
+                      "@type": "Organization",
+                      "name": "Punta Cana Discovery",
+                      "url": "https://puntacanadiscovery.com"
+                  }
+              }
+          </script>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif%}
+
+
+
     <!-- Social media meta tags for SEO -->
     <meta name="description" content="{{ post.get_meta_description }}">
     <meta property="og:title" content="{{ post.get_meta_title }}">
