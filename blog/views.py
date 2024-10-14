@@ -93,7 +93,7 @@ def generate_blog_content(excursion_title, excursions_description, excursion_url
 
     # Create a content prompt for OpenAI with a detailed request for long content
     prompt = f"""
-    Write a detailed, SEO-friendly blog post in HTML format about "{excursion_title}" with an optimized, catchy, and SEO-focused title that appeals to travelers. Use the {excursions_description} field to extract location and unique excursion details to make the title and content engaging. However, all information should be uniquely rephrased.
+    Write a detailed, SEO-friendly blog post in HTML format about "{excursion_title}" with an optimized, catchy, and SEO-focused title that appeals to travelers in h1. Use the {excursions_description} field to extract location and unique excursion details to make the title and content engaging. However, all information should be uniquely rephrased.
 
     The blog post should be between 2,100 and 2,400 words. Place all content in the body section, with no header or head tags. Use appropriate HTML tags, paragraphs, and lists. The content should include:
     1. An engaging introduction that captures the reader's interest with keywords like "unforgettable adventure," "top travel experience," and rephrased details from {excursions_description}.

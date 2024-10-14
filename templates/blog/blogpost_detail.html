@@ -6,9 +6,13 @@
     <p><span class="rating">⭐ {{ post.rating }}/5 Reviews</span>
 
         <div class="gallery">
-            {% for image in blog_post.images.all %}
+            {% if post.featured_image %}
+            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" style="max-width: 100%;">
+            {% endif %}
+    
+            {% for image in post.images.all %}
                 <img loading="lazy" src="{{ image.image_url }}" alt="Blog post image for {{ blog_post.title }}">
-            {% endfor %}
+             {% endfor %}
         </div>
         
         
