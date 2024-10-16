@@ -39,7 +39,7 @@
                 <li><a href="{% url 'excursions' %}" title="Browse all excursions in Punta Cana">Excursions</a></li>
                 <li><a href="#" title="Transfer services in Punta Cana">Transfers</a></li>
                 <li><a href="{% url 'static_page' 'events' %}" title="Plan and Attend Special Events in Punta Cana">Events</a></li>
-                <li><a href="{% url 'static_page' 'blog' %}" title="Latest Blog Posts on Punta Cana Activities and Tips">Blog</a></li>
+                <li><a href="{% url 'blog_post_list' %}" title="Latest Blog Posts on Punta Cana Activities and Tips">Blog</a></li>
                 {% if cart_items %}
                 <li>
                     <a href="{% url 'checkout' %}" class="shooping-cart" title="Proceed to checkout">
@@ -105,7 +105,7 @@
                     </li>
                     <li class="menu-item">
                         <img src="{% static 'images/mobile-img/blog.jpg' %}" alt="Punta Cana Blog" class="menu-image">
-                        <span><a href="{% url 'static_page' 'blog' %}" title="Read the latest blogs about Punta Cana">Blog</a></span>
+                        <span><a href="{% url 'blog_post_list' %}" title="Read the latest blogs about Punta Cana">Blog</a></span>
                     </li>
                     <li class="menu-item">
                         <img src="{% static 'images/mobile-img/event.jpg' %}" alt="Punta Cana Special Events" class="menu-image">

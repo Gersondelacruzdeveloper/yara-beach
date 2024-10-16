@@ -20,16 +20,17 @@ from django.contrib.auth.models import User
 from openai import OpenAI
 from bs4 import BeautifulSoup
 from difflib import SequenceMatcher
+from django.core.paginator import Paginator
 
 # BlogPost list view
-class BlogPostListView(ListView):
-    model = BlogPost
-    template_name = 'blog/blogpost_list.html'  # Specify your template
-    context_object_name = 'posts'
-    paginate_by = 10  # Add pagination
-
-    def get_queryset(self):
-        return BlogPost.objects.filter(is_published=True).order_by('-created_at')
+# Show all blog posts
+def blog_post_list(request):
+    counts = BlogPost.objects.filter(is_published=True).count()  # Get total number of published posts
+    p = Paginator(BlogPost.objects.filter(is_published=True).order_by('-created_at'), 8)  # Paginate by 8
+    page = request.GET.get('page')  # Get current page number
+    posts = p.get_page(page)  # Get the posts for the current page
+    context = {'posts': posts, 'counts': counts}  # Pass the posts and count to the template
+    return render(request, 'blog/blogpost_list.html', context)  # Render the template with the context
 
 
 # BlogPost detail view
@@ -160,7 +161,6 @@ def create_blog_post():
     """
     Creates a blog post with a unique, SEO-friendly title and generated content.
     """
-    print("creating posts")
     
     excursion = get_random_excursion()
     title = excursion.title
@@ -177,8 +177,6 @@ def create_blog_post():
     soup = BeautifulSoup(content, 'html.parser')
     h1_tag = soup.find('h1')
     title = h1_tag.get_text(strip=True) if h1_tag else title  # Fallback to excursion.title if no <h1> is found
-    print('Title:', title)
-    print('Content:', content)
 
     # Get the default author for automated posts
     default_author = get_default_author()
